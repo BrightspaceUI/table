@@ -1,0 +1,12 @@
+@import '../table.scss';
+@import '../table.css.scss';
+
+body {
+	@include vui-typography;
+}
+
+.on {
+	table {
+		@include vui-table();
+	}
+}

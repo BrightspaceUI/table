@@ -1,0 +1,5 @@
+@import 'table.scss';
+
+.vui-table {
+	@include vui-table;
+}
