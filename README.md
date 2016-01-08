@@ -1,10 +1,12 @@
 # vui-table
 
 This component contains [Sass mixins](http://sass-lang.com) and CSS that you
-can use to style tables.
+can use to style tables for display of [tabular data](http://www.w3.org/TR/html5/tabular-data.html).
+`vui-table` assumes the `table` element has correctly defined `thead` and `tbody` child elements.
 
-For further information on this component and other VUI components, see the
-docs at [ui.valence.d2l.com](http://ui.valence.d2l.com/).
+For element layout concerns see [vui-grid-system](https://github.com/Brightspace/valence-ui-grid-system).
+For further information on this component and other VUI components, see the docs
+at [ui.valence.d2l.com](http://ui.valence.d2l.com/).
 
 ## Usage
 To style tables, first include its `SCSS` file. Then, apply the mixin using the
@@ -41,24 +43,31 @@ table {
 </table>
 ```
 
-Note: for table structures that do not make use of either `thead` or `tfoot`, the
-classes `.vui-table-header` or `.vui-table-footer` can be applied to the table rows
-to acheive that same effect. For example:
+Note: for table structures that do not make use `tfoot` or wish to apply secondary
+headers inside the `tbody`, the classes `.vui-table-footer` or `.vui-table-header` can
+be applied to the table rows instead `tbody` respectively. For example:
 
 ```html
 <table class="vui-table">
-	<tr class="vui-table-header">
-		<th>Header column 1</th>
-		<th>Header column 2</th>
-	</tr>
-	<tr>
-		<td>row 1 column 1</td>
-		<td>row 1 column 2</td>
-	</tr>
-	<tr>
-		<td>row 2 column 1</td>
-		<td>row 2 column 2</td>
-	</tr>
+	<thead>
+		<tr>
+			<th colspan="2">First header</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="vui-table-header">
+			<th>Secondary Header column 1</th>
+			<th>Secondary Header column 2</th>
+		</tr>
+		<tr>
+			<td>row 1 column 1</td>
+			<td>row 1 column 2</td>
+		</tr>
+		<tr>
+			<td>row 2 column 1</td>
+			<td>row 2 column 2</td>
+		</tr>
+	</tbody>
 </table>
 ```
 

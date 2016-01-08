@@ -56,28 +56,25 @@
 	& tr th:last-child {
 		border-right: none;
 	}
+
 	//Correct for corners bleeding outside the rounded corners
-	& >caption+thead>tr>:first-child,
-	  >caption+tbody>tr:first-child>:first-child,
-	  >:first-child>tr:first-child>:first-child {
+	& thead tr:first-child>:first-child {
 		border-top-left-radius: px-to-base-rem(6);
 	}
-	& >caption+thead>tr>:last-child,
-	  >caption+tbody>tr:first-child>:last-child,
-	  >:first-child>tr:first-child>:last-child {
+	& thead tr:first-child>:last-child {
 		border-top-right-radius: px-to-base-rem(6);
 	}
 
-	& > tbody, >tfoot  {
+	& >tfoot, > tbody  {
 		& tr:last-child th {
 			border-bottom: none;
 		}
 
-		& tr:last-child th:first-child {
+		& tr:last-child>:first-child {
 			border-bottom-left-radius: px-to-base-rem(6);
 		}
 
-		& tr:last-child th:last-child {
+		& tr:last-child>:last-child {
 			border-bottom-right-radius: px-to-base-rem(6);
 		}
 	}
