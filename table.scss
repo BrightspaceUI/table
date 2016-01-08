@@ -19,6 +19,9 @@
 		& tr:first-child td {
 			border-top: 1px solid $vui-color-titanius;
 		}
+		& tr:first-child th {
+			border-top: 1px solid $vui-color-titanius;
+		}
 		display: table-footer-group;
 	}
 
@@ -40,6 +43,7 @@
 		border-bottom: none;
 	}
 
+
 	& th {
 		@include vui-typography-small-text();
 		background-color: $vui-color-regolith;
@@ -53,15 +57,33 @@
 		border-right: none;
 	}
 	//Correct for corners bleeding outside the rounded corners
-	& tr:first-child th:first-child {
+	& >caption+thead>tr>:first-child,
+	  >caption+tbody>tr:first-child>:first-child,
+	  >:first-child>tr:first-child>:first-child {
 		border-top-left-radius: px-to-base-rem(6);
 	}
-	& tr:first-child th:last-child {
+	& >caption+thead>tr>:last-child,
+	  >caption+tbody>tr:first-child>:last-child,
+	  >:first-child>tr:first-child>:last-child {
 		border-top-right-radius: px-to-base-rem(6);
 	}
 
+	& > tbody, >tfoot  {
+		& tr:last-child th {
+			border-bottom: none;
+		}
+
+		& tr:last-child th:first-child {
+			border-bottom-left-radius: px-to-base-rem(6);
+		}
+
+		& tr:last-child th:last-child {
+			border-bottom-right-radius: px-to-base-rem(6);
+		}
+	}
+
 	//Apply hover to only rows that are not thead, tfoot or have the class .vui-table-header or .vui-table-footer
-	& *:not(thead):not(tfoot) tr:hover:not(.vui-table-header):not(.vui-table-footer) {
+	& > tbody > tr:hover:not(.vui-table-header):not(.vui-table-footer) {
 		outline: 1px solid $vui-color-celestine;
 		background-color: $vui-color-celestine-light-1;
 	}

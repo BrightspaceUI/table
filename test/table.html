@@ -20,6 +20,7 @@
 		<h2>Mixins</h2>
 			<p>Large table setup
 				<table>
+					<caption>Table Caption</caption>
 					<thead>
 						<tr>
 							<th>Column header 1</th>
@@ -46,7 +47,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>Row 1 Column 1</td>
+							<th>Row 1 Column 1</th>
 							<td>Row 1 Column 2</td>
 							<td>Row 1 Column 3</td>
 							<td>Row 1 Column 4</td>
@@ -68,7 +69,7 @@
 							<td>Row 1 Column 20</td>
 						</tr>
 						<tr>
-							<td>Row 2 Column 1</td>
+							<th>Row 2 Column 1</th>
 							<td>Row 2 Column 2</td>
 							<td>Row 2 Column 3</td>
 							<td>Row 2 Column 4</td>
@@ -90,7 +91,7 @@
 							<td>Row 2 Column 20</td>
 						</tr>
 						<tr>
-							<td>Row 3 Column 1</td>
+							<th>Row 3 Column 1</th>
 							<td>Row 3 Column 2</td>
 							<td>Row 3 Column 3</td>
 							<td>Row 3 Column 4</td>
@@ -112,7 +113,7 @@
 							<td>Row 3 Column 20</td>
 						</tr>
 						<tr>
-							<td>Row 4 Column 1</td>
+							<th>Row 4 Column 1</th>
 							<td>Row 4 Column 2</td>
 							<td>Row 4 Column 3</td>
 							<td>Row 4 Column 4</td>
@@ -134,7 +135,7 @@
 							<td>Row 4 Column 20</td>
 						</tr>
 						<tr>
-							<td>Row 5 Column 1</td>
+							<th>Row 5 Column 1</th>
 							<td>Row 5 Column 2</td>
 							<td>Row 5 Column 3</td>
 							<td>Row 5 Column 4</td>
@@ -156,7 +157,7 @@
 							<td>Row 5 Column 20</td>
 						</tr>
 						<tr>
-							<td>Row 6 Column 1</td>
+							<th>Row 6 Column 1</th>
 							<td>Row 6 Column 2</td>
 							<td>Row 6 Column 3</td>
 							<td>Row 6 Column 4</td>
@@ -178,7 +179,7 @@
 							<td>Row 6 Column 20</td>
 						</tr>
 						<tr>
-							<td>Row 7 Column 1</td>
+							<th>Row 7 Column 1</th>
 							<td>Row 7 Column 2</td>
 							<td>Row 7 Column 3</td>
 							<td>Row 7 Column 4</td>
@@ -200,7 +201,7 @@
 							<td>Row 7 Column 20</td>
 						</tr>
 						<tr>
-							<td>Row 8 Column 1</td>
+							<th>Row 8 Column 1</th>
 							<td>Row 8 Column 2</td>
 							<td>Row 8 Column 3</td>
 							<td>Row 8 Column 4</td>
@@ -222,7 +223,7 @@
 							<td>Row 8 Column 20</td>
 						</tr>
 						<tr>
-							<td>Row 9 Column 1</td>
+							<th>Row 9 Column 1</th>
 							<td>Row 9 Column 2</td>
 							<td>Row 9 Column 3</td>
 							<td>Row 9 Column 4</td>
@@ -244,7 +245,7 @@
 							<td>Row 9 Column 20</td>
 						</tr>
 						<tr>
-							<td>Row 10 Column 1</td>
+							<th>Row 10 Column 1</th>
 							<td>Row 10 Column 2</td>
 							<td>Row 10 Column 3</td>
 							<td>Row 10 Column 4</td>
@@ -266,7 +267,7 @@
 							<td>Row 10 Column 20</td>
 						</tr>
 						<tr>
-							<td>Row 11 Column 1</td>
+							<th>Row 11 Column 1</th>
 							<td>Row 11 Column 2</td>
 							<td>Row 11 Column 3</td>
 							<td>Row 11 Column 4</td>
@@ -288,7 +289,7 @@
 							<td>Row 11 Column 20</td>
 						</tr>
 						<tr>
-							<td>Row 12 Column 1</td>
+							<th>Row 12 Column 1</th>
 							<td>Row 12 Column 2</td>
 							<td>Row 12 Column 3</td>
 							<td>Row 12 Column 4</td>
@@ -310,7 +311,7 @@
 							<td>Row 12 Column 20</td>
 						</tr>
 						<tr>
-							<td>Row 13 Column 1</td>
+							<th>Row 13 Column 1</th>
 							<td>Row 13 Column 2</td>
 							<td>Row 13 Column 3</td>
 							<td>Row 13 Column 4</td>
@@ -332,7 +333,7 @@
 							<td>Row 13 Column 20</td>
 						</tr>
 						<tr>
-							<td>Row 14 Column 1</td>
+							<th>Row 14 Column 1</th>
 							<td>Row 14 Column 2</td>
 							<td>Row 14 Column 3</td>
 							<td>Row 14 Column 4</td>
@@ -354,7 +355,7 @@
 							<td>Row 14 Column 20</td>
 						</tr>
 						<tr>
-							<td>Row 15 Column 1</td>
+							<th>Row 15 Column 1</th>
 							<td>Row 15 Column 2</td>
 							<td>Row 15 Column 3</td>
 							<td>Row 15 Column 4</td>
@@ -391,25 +392,79 @@
 					</thead>
 					<tfoot>
 						<tr>
-							<td colspan="5"> footer </td>
+							<th>footer th</th>
+							<td colspan="4"> footer </td>
 						</tr>
 					</tfoot>
 					<tbody>
 						<tr>
-							<td>Aarons</td>
+							<th>Aarons</th>
 							<td>Meghan</td>
 							<td>of 10</td>
 							<td>of 10</td>
 							<td>-%</td>
 						</tr>
 						<tr>
-							<td>Lourdes</td>
+							<th>Lourdes</th>
 							<td>Beadle</td>
 							<td>of 10</td>
 							<td>of 10</td>
 							<td>-%</td>
 						</tr>
 					</tbody>
+				</table>
+			</p>
+			<p>Simple table setup with caption and tbody
+				<table>
+					<caption>Caption</caption>
+					<tbody>
+						<tr class="vui-table-header">
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Independent Assignments</th>
+							<th>Quizzes</th>
+							<th>Final Calculated Grade</th>
+						</tr>
+						<tr>
+							<th>Aarons</th>
+							<td>Meghan</td>
+							<td>of 10</td>
+							<td>of 10</td>
+							<td>-%</td>
+						</tr>
+						<tr>
+							<th>Lourdes</th>
+							<td>Beadle</td>
+							<td>of 10</td>
+							<td>of 10</td>
+							<td>-%</td>
+						</tr>
+					</tbody>
+				</table>
+			</p>
+			<p>Simple table setup without thead or tfoot
+				<table>
+					<tr class="vui-table-header">
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Independent Assignments</th>
+						<th>Quizzes</th>
+						<th>Final Calculated Grade</th>
+					</tr>
+					<tr>
+						<th>Aarons</th>
+						<td>Meghan</td>
+						<td>of 10</td>
+						<td>of 10</td>
+						<td>-%</td>
+					</tr>
+					<tr>
+						<th>Lourdes</th>
+						<td>Beadle</td>
+						<td>of 10</td>
+						<td>of 10</td>
+						<td>-%</td>
+					</tr>
 				</table>
 			</p>
 		</div>
