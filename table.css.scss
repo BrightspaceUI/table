@@ -3,3 +3,8 @@
 .vui-table {
 	@include vui-table;
 }
+
+.vui-table-header th {
+	@include vui-table-header-cell();
+	font-weight: 400 !important;
+}

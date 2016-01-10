@@ -2,7 +2,6 @@
 
 This component contains [Sass mixins](http://sass-lang.com) and CSS that you
 can use to style tables for display of [tabular data](http://www.w3.org/TR/html5/tabular-data.html).
-`vui-table` assumes the `table` element has correctly defined `thead` and `tbody` child elements.
 
 For element layout concerns see [vui-grid-system](https://github.com/Brightspace/valence-ui-grid-system).
 For further information on this component and other VUI components, see the docs
@@ -43,21 +42,16 @@ table {
 </table>
 ```
 
-Note: for table structures that do not make use `tfoot` or wish to apply secondary
-headers inside the `tbody`, the classes `.vui-table-footer` or `.vui-table-header` can
+Note: for table structures that do not make use `thead` or `tfoot` and to wish to apply
+headers inside the `tbody`, the classes `.vui-table-header` or `.vui-table-footer` can
 be applied to the table rows instead `tbody` respectively. For example:
 
 ```html
 <table class="vui-table">
-	<thead>
-		<tr>
-			<th colspan="2">First header</th>
-		</tr>
-	</thead>
 	<tbody>
 		<tr class="vui-table-header">
-			<th>Secondary Header column 1</th>
-			<th>Secondary Header column 2</th>
+			<th>Header column 1</th>
+			<th>Header column 2</th>
 		</tr>
 		<tr>
 			<td>row 1 column 1</td>
