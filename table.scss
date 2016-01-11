@@ -97,7 +97,7 @@
 			border-bottom: none;
 	}
 
-	//Apply hover to only rows that are not thead, tfoot or have the class .vui-table-header or .vui-table-footer
+	//Apply hover to only rows that are not contained in thead, tfoot or have the class .vui-table-header or .vui-table-footer
 	& > tbody > tr:hover:not(.vui-table-header):not(.vui-table-footer) {
 		outline: 1px solid $vui-color-celestine;
 		background-color: $vui-color-celestine-light-1;

@@ -44,7 +44,7 @@ table {
 
 Note: for table structures that do not make use `thead` or `tfoot` and to wish to apply
 headers inside the `tbody`, the classes `.vui-table-header` or `.vui-table-footer` can
-be applied to the table rows instead `tbody` respectively. For example:
+be applied to the table rows inside `tbody`. For example:
 
 ```html
 <table class="vui-table">
