@@ -120,7 +120,7 @@
 	text-align: left;
 	vertical-align: middle;
 
-	[dir='rtl'] {
+	[dir='rtl'] & {
 		text-align: right;
 	}
 }
