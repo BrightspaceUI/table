@@ -6,7 +6,7 @@
 	background-color: #ffffff;
 	border: 1px solid $vui-color-titanius;
 	border-collapse: separate;
-	border-radius: 6px;
+	border-radius: px-to-base-rem(6);
 	border-spacing: 0;
 	display: table;
 	width: 100%;
@@ -15,7 +15,7 @@
 		display: table-header-group;
 
 		& th {
-			@include vui-table-header-cell();
+			@include _vui-table-header-cell();
 		}
 	}
 
@@ -33,24 +33,24 @@
 		display: table-row;
 	}
 
-	& td {
-		@include vui-table-cell();
-	}
-
-	& tr td:last-child {
-		border-right: none;
-	}
-
 	& tr:last-child td {
 		border-bottom: none;
 	}
 
-	& tbody th,
+	& td,
+	  tbody th,
 	  tfoot th {
-		@include vui-table-cell();
+		@include _vui-table-cell();
 	}
 
-	& tr th:last-child {
+	& tr>:last-child {
+		border-right: none;
+		[dir='rtl'] & {
+			border-right: 1px solid $vui-color-titanius;
+		}
+	}
+
+	[dir='rtl'] & tr>:first-child {
 		border-right: none;
 	}
 
@@ -64,7 +64,12 @@
 	  caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > :first-child,
 	  colgroup:first-child + tbody:last-child > tr:first-child > :first-child,
 	  colgroup:first-child + tfoot + tbody:last-child > tr:first-child > :first-child {
-		border-top-left-radius: 6px;
+		border-top-left-radius: px-to-base-rem(6);
+
+		[dir='rtl'] & {
+			border-top-left-radius: 0;
+			border-top-right-radius: px-to-base-rem(6);
+		}
 	}
 	& thead > tr:first-child > :last-child,
 	  tbody:only-child > tr:first-child > :last-child,
@@ -76,20 +81,35 @@
 	  colgroup:first-child + tbody:last-child > tr:first-child > :last-child,
 	  colgroup:first-child + tfoot + tbody:last-child > tr:first-child > :last-child {
 		border-top-right-radius: 6px;
+
+		[dir='rtl'] & {
+			border-top-right-radius: 0;
+			border-top-left-radius: px-to-base-rem(6);
+		}
 	}
 	& tfoot > tr:last-child > :first-child,
 	  tbody:only-child > tr:last-child > :first-child,
 	  thead + tbody:last-child > tr:last-child > :first-child,
 	  caption + tbody:last-child > tr:last-child > :first-child,
 	  colgroup + tbody:last-child > tr:last-child > :first-child {
-		border-bottom-left-radius: 6px;
+		border-bottom-left-radius: px-to-base-rem(6);
+
+		[dir='rtl'] & {
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: px-to-base-rem(6);
+		}
 	}
 	& tfoot > tr:last-child > :last-child,
 	  tbody:only-child > tr:last-child > :last-child,
 	  thead + tbody:last-child > tr:last-child > :last-child,
 	  caption + tbody:last-child > tr:last-child > :last-child,
 	  colgroup + tbody:last-child > tr:last-child > :last-child {
-		border-bottom-right-radius: 6px;
+		border-bottom-right-radius: px-to-base-rem(6);
+
+		[dir='rtl'] & {
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: px-to-base-rem(6);
+		}
 	}
 
 	& tfoot tr:last-child th,
@@ -97,21 +117,19 @@
 			border-bottom: none;
 	}
 
-	//Apply hover to only rows that are not contained in thead, tfoot or have the class .vui-table-header or .vui-table-footer
-	& > tbody > tr:hover:not(.vui-table-header):not(.vui-table-footer) {
+	& > tbody > tr:hover {
 		outline: 1px solid $vui-color-celestine;
 		background-color: $vui-color-celestine-light-1;
 	}
 }
 
-@mixin vui-table-header-cell() {
+@mixin _vui-table-header-cell() {
+	@include _vui-table-cell();
 	@include vui-typography-small-text();
-	@include vui-table-cell();
 	background-color: $vui-color-regolith;
-	font-weight: 400;
 }
 
-@mixin vui-table-cell() {
+@mixin _vui-table-cell() {
 	border-bottom: 1px solid $vui-color-titanius;
 	border-right: 1px solid $vui-color-titanius;
 	display: table-cell;
