@@ -15,12 +15,12 @@ at [ui.valence.d2l.com](http://ui.valence.d2l.com/).
 
 Install from NPM:
 ```shell
-npm install vui-typography
+npm install vui-table
 ```
 
 Install from Bower:
 ```shell
-bower install vui-typography
+bower install vui-table
 ```
 
 ## Usage
