@@ -1,0 +1,144 @@
+@import 'bower_components/vui-colors/colors.scss';
+@import 'bower_components/vui-typography/typography.scss';
+@import 'bower_components/vui-typography/px-to-base-rem.scss';
+
+@mixin vui-table() {
+	background-color: #ffffff;
+	border: 1px solid $vui-color-titanius;
+	border-collapse: separate;
+	border-radius: px-to-base-rem(6);
+	border-spacing: 0;
+	display: table;
+	width: 100%;
+
+	& thead {
+		display: table-header-group;
+
+		& th {
+			@include _vui-table-header-cell();
+		}
+	}
+
+	& tfoot {
+		& tr:first-child td {
+			border-top: 1px solid $vui-color-titanius;
+		}
+		& tr:first-child th {
+			border-top: 1px solid $vui-color-titanius;
+		}
+		display: table-footer-group;
+	}
+
+	& tr {
+		display: table-row;
+	}
+
+	& tr:last-child td {
+		border-bottom: none;
+	}
+
+	& td,
+	  tbody th,
+	  tfoot th {
+		@include _vui-table-cell();
+	}
+
+	& tr>:last-child {
+		border-right: none;
+		[dir='rtl'] & {
+			border-right: 1px solid $vui-color-titanius;
+		}
+	}
+
+	[dir='rtl'] & tr>:first-child {
+		border-right: none;
+	}
+
+	//Correct for corners bleeding outside the rounded corners
+	& thead > tr:first-child > :first-child,
+	  tbody:only-child > tr:first-child > :first-child,
+	  tfoot:first-child + tbody:last-child > tr:first-child > :first-child,
+	  caption:first-child + tbody:last-child > tr:first-child > :first-child,
+	  caption:first-child + tfoot + tbody:last-child > tr:first-child > :first-child,
+	  caption:first-child + colgroup + tbody:last-child > tr:first-child > :first-child,
+	  caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > :first-child,
+	  colgroup:first-child + tbody:last-child > tr:first-child > :first-child,
+	  colgroup:first-child + tfoot + tbody:last-child > tr:first-child > :first-child {
+		border-top-left-radius: px-to-base-rem(6);
+
+		[dir='rtl'] & {
+			border-top-left-radius: 0;
+			border-top-right-radius: px-to-base-rem(6);
+		}
+	}
+	& thead > tr:first-child > :last-child,
+	  tbody:only-child > tr:first-child > :last-child,
+	  tfoot:first-child + tbody:last-child > tr:first-child > :last-child,
+	  caption:first-child + tbody:last-child > tr:first-child > :last-child,
+	  caption:first-child + tfoot + tbody:last-child > tr:first-child > :last-child,
+	  caption:first-child + colgroup + tbody:last-child > tr:first-child > :last-child,
+	  caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > :last-child,
+	  colgroup:first-child + tbody:last-child > tr:first-child > :last-child,
+	  colgroup:first-child + tfoot + tbody:last-child > tr:first-child > :last-child {
+		border-top-right-radius: 6px;
+
+		[dir='rtl'] & {
+			border-top-right-radius: 0;
+			border-top-left-radius: px-to-base-rem(6);
+		}
+	}
+	& tfoot > tr:last-child > :first-child,
+	  tbody:only-child > tr:last-child > :first-child,
+	  thead + tbody:last-child > tr:last-child > :first-child,
+	  caption + tbody:last-child > tr:last-child > :first-child,
+	  colgroup + tbody:last-child > tr:last-child > :first-child {
+		border-bottom-left-radius: px-to-base-rem(6);
+
+		[dir='rtl'] & {
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: px-to-base-rem(6);
+		}
+	}
+	& tfoot > tr:last-child > :last-child,
+	  tbody:only-child > tr:last-child > :last-child,
+	  thead + tbody:last-child > tr:last-child > :last-child,
+	  caption + tbody:last-child > tr:last-child > :last-child,
+	  colgroup + tbody:last-child > tr:last-child > :last-child {
+		border-bottom-right-radius: px-to-base-rem(6);
+
+		[dir='rtl'] & {
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: px-to-base-rem(6);
+		}
+	}
+
+	& tfoot tr:last-child th,
+	  tbody:last-child>tr:last-child>th {
+			border-bottom: none;
+	}
+
+	& > tbody > tr:hover {
+		outline: 1px solid $vui-color-celestine;
+		background-color: $vui-color-celestine-light-1;
+	}
+}
+
+@mixin _vui-table-header-cell() {
+	@include _vui-table-cell();
+	@include vui-typography-small-text();
+	background-color: $vui-color-regolith;
+}
+
+@mixin _vui-table-cell() {
+	border-bottom: 1px solid $vui-color-titanius;
+	border-right: 1px solid $vui-color-titanius;
+	display: table-cell;
+	font-weight: 300;
+	padding: px-to-base-rem(10) px-to-base-rem(30);
+	text-align: left;
+	vertical-align: middle;
+
+	[dir='rtl'] & {
+		text-align: right;
+	}
+}

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Table Sample</title>
+	<link rel="stylesheet" type="text/css" href="test.css" />
+	<style>
+		html {
+			font-size: 20px;
+		}
+
+		.container {
+			width: 800px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h2>Class name</h2>
+		<p>Table setup - caption, colgroup, thead, tfoot, tbody</p>
+		<table class="vui-table">
+			<caption>Caption</caption>
+			<colgroup></colgroup>
+			<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Independent Assignments</th>
+					<th>Quizzes</th>
+					<th>Final Calculated Grade</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<td colspan="5"> footer </td>
+				</tr>
+			</tfoot>
+			<tbody>
+				<tr>
+					<td>Aarons</td>
+					<td>Meghan</td>
+					<td>of 10</td>
+					<td>of 10</td>
+					<td>-%</td>
+				</tr>
+				<tr>
+					<td>Lourdes</td>
+					<td>Beadle</td>
+					<td>of 10</td>
+					<td>of 10</td>
+					<td>-%</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p>Table setup - thead, tfoot, tbody</p>
+		<table class="vui-table">
+			<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Independent Assignments</th>
+					<th>Quizzes</th>
+					<th>Final Calculated Grade</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<td colspan="5"> footer </td>
+				</tr>
+			</tfoot>
+			<tbody>
+				<tr>
+					<td>Aarons</td>
+					<td>Meghan</td>
+					<td>of 10</td>
+					<td>of 10</td>
+					<td>-%</td>
+				</tr>
+				<tr>
+					<td>Lourdes</td>
+					<td>Beadle</td>
+					<td>of 10</td>
+					<td>of 10</td>
+					<td>-%</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p>Multi-row header and footer table setup</p>
+		<table class="vui-table">
+			<thead>
+				<tr>
+					<th>First</th>
+					<th>Last</th>
+					<th>Independent</th>
+					<th>Quizzes</th>
+					<th>Final Calculated</th>
+				</tr>
+				<tr>
+					<th>Name</th>
+					<th>Name</th>
+					<th>Assignments</th>
+					<th>%</th>
+					<th>Grade</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<td colspan="5"> footer </td>
+				</tr>
+				<tr>
+					<td colspan="5"> second row </td>
+				</tr>
+			</tfoot>
+			<tbody>
+				<tr>
+					<td>Aarons</td>
+					<td>Meghan</td>
+					<td>of 10</td>
+					<td>of 10</td>
+					<td>-%</td>
+				</tr>
+				<tr>
+					<td>Lourdes</td>
+					<td>Beadle</td>
+					<td>of 10</td>
+					<td>of 10</td>
+					<td>-%</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="container on">
+		<h2>Mixins</h2>
+		<p>Large table setup</p>
+		<table>
+			<caption>Table Caption</caption>
+			<colgroup></colgroup>
+			<colgroup></colgroup>
+			<thead>
+				<tr>
+					<th>Column header 1</th>
+					<th>Column header 2</th>
+					<th>Column header 3</th>
+					<th>Column header 4</th>
+					<th>Column header 5</th>
+					<th>Column header 6</th>
+					<th>Column header 7</th>
+					<th>Column header 8</th>
+					<th>Column header 9</th>
+					<th>Column header 10</th>
+					<th>Column header 11</th>
+					<th>Column header 12</th>
+					<th>Column header 13</th>
+					<th>Column header 14</th>
+					<th>Column header 15</th>
+					<th>Column header 16</th>
+					<th>Column header 17</th>
+					<th>Column header 18</th>
+					<th>Column header 19</th>
+					<th>Column header 20</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>Row 1 Column 1</th>
+					<td>Row 1 Column 2</td>
+					<td>Row 1 Column 3</td>
+					<td>Row 1 Column 4</td>
+					<td>Row 1 Column 5</td>
+					<td>Row 1 Column 6</td>
+					<td>Row 1 Column 7</td>
+					<td>Row 1 Column 8</td>
+					<td>Row 1 Column 9</td>
+					<td>Row 1 Column 10</td>
+					<td>Row 1 Column 11</td>
+					<td>Row 1 Column 12</td>
+					<td>Row 1 Column 13</td>
+					<td>Row 1 Column 14</td>
+					<td>Row 1 Column 15</td>
+					<td>Row 1 Column 16</td>
+					<td>Row 1 Column 17</td>
+					<td>Row 1 Column 18</td>
+					<td>Row 1 Column 19</td>
+					<td>Row 1 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 2 Column 1</th>
+					<td>Row 2 Column 2</td>
+					<td>Row 2 Column 3</td>
+					<td>Row 2 Column 4</td>
+					<td>Row 2 Column 5</td>
+					<td>Row 2 Column 6</td>
+					<td>Row 2 Column 7</td>
+					<td>Row 2 Column 8</td>
+					<td>Row 2 Column 9</td>
+					<td>Row 2 Column 10</td>
+					<td>Row 2 Column 11</td>
+					<td>Row 2 Column 12</td>
+					<td>Row 2 Column 13</td>
+					<td>Row 2 Column 14</td>
+					<td>Row 2 Column 15</td>
+					<td>Row 2 Column 16</td>
+					<td>Row 2 Column 17</td>
+					<td>Row 2 Column 18</td>
+					<td>Row 2 Column 19</td>
+					<td>Row 2 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 3 Column 1</th>
+					<td>Row 3 Column 2</td>
+					<td>Row 3 Column 3</td>
+					<td>Row 3 Column 4</td>
+					<td>Row 3 Column 5</td>
+					<td>Row 3 Column 6</td>
+					<td>Row 3 Column 7</td>
+					<td>Row 3 Column 8</td>
+					<td>Row 3 Column 9</td>
+					<td>Row 3 Column 10</td>
+					<td>Row 3 Column 11</td>
+					<td>Row 3 Column 12</td>
+					<td>Row 3 Column 13</td>
+					<td>Row 3 Column 14</td>
+					<td>Row 3 Column 15</td>
+					<td>Row 3 Column 16</td>
+					<td>Row 3 Column 17</td>
+					<td>Row 3 Column 18</td>
+					<td>Row 3 Column 19</td>
+					<td>Row 3 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 4 Column 1</th>
+					<td>Row 4 Column 2</td>
+					<td>Row 4 Column 3</td>
+					<td>Row 4 Column 4</td>
+					<td>Row 4 Column 5</td>
+					<td>Row 4 Column 6</td>
+					<td>Row 4 Column 7</td>
+					<td>Row 4 Column 8</td>
+					<td>Row 4 Column 9</td>
+					<td>Row 4 Column 10</td>
+					<td>Row 4 Column 11</td>
+					<td>Row 4 Column 12</td>
+					<td>Row 4 Column 13</td>
+					<td>Row 4 Column 14</td>
+					<td>Row 4 Column 15</td>
+					<td>Row 4 Column 16</td>
+					<td>Row 4 Column 17</td>
+					<td>Row 4 Column 18</td>
+					<td>Row 4 Column 19</td>
+					<td>Row 4 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 5 Column 1</th>
+					<td>Row 5 Column 2</td>
+					<td>Row 5 Column 3</td>
+					<td>Row 5 Column 4</td>
+					<td>Row 5 Column 5</td>
+					<td>Row 5 Column 6</td>
+					<td>Row 5 Column 7</td>
+					<td>Row 5 Column 8</td>
+					<td>Row 5 Column 9</td>
+					<td>Row 5 Column 10</td>
+					<td>Row 5 Column 11</td>
+					<td>Row 5 Column 12</td>
+					<td>Row 5 Column 13</td>
+					<td>Row 5 Column 14</td>
+					<td>Row 5 Column 15</td>
+					<td>Row 5 Column 16</td>
+					<td>Row 5 Column 17</td>
+					<td>Row 5 Column 18</td>
+					<td>Row 5 Column 19</td>
+					<td>Row 5 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 6 Column 1</th>
+					<td>Row 6 Column 2</td>
+					<td>Row 6 Column 3</td>
+					<td>Row 6 Column 4</td>
+					<td>Row 6 Column 5</td>
+					<td>Row 6 Column 6</td>
+					<td>Row 6 Column 7</td>
+					<td>Row 6 Column 8</td>
+					<td>Row 6 Column 9</td>
+					<td>Row 6 Column 10</td>
+					<td>Row 6 Column 11</td>
+					<td>Row 6 Column 12</td>
+					<td>Row 6 Column 13</td>
+					<td>Row 6 Column 14</td>
+					<td>Row 6 Column 15</td>
+					<td>Row 6 Column 16</td>
+					<td>Row 6 Column 17</td>
+					<td>Row 6 Column 18</td>
+					<td>Row 6 Column 19</td>
+					<td>Row 6 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 7 Column 1</th>
+					<td>Row 7 Column 2</td>
+					<td>Row 7 Column 3</td>
+					<td>Row 7 Column 4</td>
+					<td>Row 7 Column 5</td>
+					<td>Row 7 Column 6</td>
+					<td>Row 7 Column 7</td>
+					<td>Row 7 Column 8</td>
+					<td>Row 7 Column 9</td>
+					<td>Row 7 Column 10</td>
+					<td>Row 7 Column 11</td>
+					<td>Row 7 Column 12</td>
+					<td>Row 7 Column 13</td>
+					<td>Row 7 Column 14</td>
+					<td>Row 7 Column 15</td>
+					<td>Row 7 Column 16</td>
+					<td>Row 7 Column 17</td>
+					<td>Row 7 Column 18</td>
+					<td>Row 7 Column 19</td>
+					<td>Row 7 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 8 Column 1</th>
+					<td>Row 8 Column 2</td>
+					<td>Row 8 Column 3</td>
+					<td>Row 8 Column 4</td>
+					<td>Row 8 Column 5</td>
+					<td>Row 8 Column 6</td>
+					<td>Row 8 Column 7</td>
+					<td>Row 8 Column 8</td>
+					<td>Row 8 Column 9</td>
+					<td>Row 8 Column 10</td>
+					<td>Row 8 Column 11</td>
+					<td>Row 8 Column 12</td>
+					<td>Row 8 Column 13</td>
+					<td>Row 8 Column 14</td>
+					<td>Row 8 Column 15</td>
+					<td>Row 8 Column 16</td>
+					<td>Row 8 Column 17</td>
+					<td>Row 8 Column 18</td>
+					<td>Row 8 Column 19</td>
+					<td>Row 8 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 9 Column 1</th>
+					<td>Row 9 Column 2</td>
+					<td>Row 9 Column 3</td>
+					<td>Row 9 Column 4</td>
+					<td>Row 9 Column 5</td>
+					<td>Row 9 Column 6</td>
+					<td>Row 9 Column 7</td>
+					<td>Row 9 Column 8</td>
+					<td>Row 9 Column 9</td>
+					<td>Row 9 Column 10</td>
+					<td>Row 9 Column 11</td>
+					<td>Row 9 Column 12</td>
+					<td>Row 9 Column 13</td>
+					<td>Row 9 Column 14</td>
+					<td>Row 9 Column 15</td>
+					<td>Row 9 Column 16</td>
+					<td>Row 9 Column 17</td>
+					<td>Row 9 Column 18</td>
+					<td>Row 9 Column 19</td>
+					<td>Row 9 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 10 Column 1</th>
+					<td>Row 10 Column 2</td>
+					<td>Row 10 Column 3</td>
+					<td>Row 10 Column 4</td>
+					<td>Row 10 Column 5</td>
+					<td>Row 10 Column 6</td>
+					<td>Row 10 Column 7</td>
+					<td>Row 10 Column 8</td>
+					<td>Row 10 Column 9</td>
+					<td>Row 10 Column 10</td>
+					<td>Row 10 Column 11</td>
+					<td>Row 10 Column 12</td>
+					<td>Row 10 Column 13</td>
+					<td>Row 10 Column 14</td>
+					<td>Row 10 Column 15</td>
+					<td>Row 10 Column 16</td>
+					<td>Row 10 Column 17</td>
+					<td>Row 10 Column 18</td>
+					<td>Row 10 Column 19</td>
+					<td>Row 10 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 11 Column 1</th>
+					<td>Row 11 Column 2</td>
+					<td>Row 11 Column 3</td>
+					<td>Row 11 Column 4</td>
+					<td>Row 11 Column 5</td>
+					<td>Row 11 Column 6</td>
+					<td>Row 11 Column 7</td>
+					<td>Row 11 Column 8</td>
+					<td>Row 11 Column 9</td>
+					<td>Row 11 Column 10</td>
+					<td>Row 11 Column 11</td>
+					<td>Row 11 Column 12</td>
+					<td>Row 11 Column 13</td>
+					<td>Row 11 Column 14</td>
+					<td>Row 11 Column 15</td>
+					<td>Row 11 Column 16</td>
+					<td>Row 11 Column 17</td>
+					<td>Row 11 Column 18</td>
+					<td>Row 11 Column 19</td>
+					<td>Row 11 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 12 Column 1</th>
+					<td>Row 12 Column 2</td>
+					<td>Row 12 Column 3</td>
+					<td>Row 12 Column 4</td>
+					<td>Row 12 Column 5</td>
+					<td>Row 12 Column 6</td>
+					<td>Row 12 Column 7</td>
+					<td>Row 12 Column 8</td>
+					<td>Row 12 Column 9</td>
+					<td>Row 12 Column 10</td>
+					<td>Row 12 Column 11</td>
+					<td>Row 12 Column 12</td>
+					<td>Row 12 Column 13</td>
+					<td>Row 12 Column 14</td>
+					<td>Row 12 Column 15</td>
+					<td>Row 12 Column 16</td>
+					<td>Row 12 Column 17</td>
+					<td>Row 12 Column 18</td>
+					<td>Row 12 Column 19</td>
+					<td>Row 12 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 13 Column 1</th>
+					<td>Row 13 Column 2</td>
+					<td>Row 13 Column 3</td>
+					<td>Row 13 Column 4</td>
+					<td>Row 13 Column 5</td>
+					<td>Row 13 Column 6</td>
+					<td>Row 13 Column 7</td>
+					<td>Row 13 Column 8</td>
+					<td>Row 13 Column 9</td>
+					<td>Row 13 Column 10</td>
+					<td>Row 13 Column 11</td>
+					<td>Row 13 Column 12</td>
+					<td>Row 13 Column 13</td>
+					<td>Row 13 Column 14</td>
+					<td>Row 13 Column 15</td>
+					<td>Row 13 Column 16</td>
+					<td>Row 13 Column 17</td>
+					<td>Row 13 Column 18</td>
+					<td>Row 13 Column 19</td>
+					<td>Row 13 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 14 Column 1</th>
+					<td>Row 14 Column 2</td>
+					<td>Row 14 Column 3</td>
+					<td>Row 14 Column 4</td>
+					<td>Row 14 Column 5</td>
+					<td>Row 14 Column 6</td>
+					<td>Row 14 Column 7</td>
+					<td>Row 14 Column 8</td>
+					<td>Row 14 Column 9</td>
+					<td>Row 14 Column 10</td>
+					<td>Row 14 Column 11</td>
+					<td>Row 14 Column 12</td>
+					<td>Row 14 Column 13</td>
+					<td>Row 14 Column 14</td>
+					<td>Row 14 Column 15</td>
+					<td>Row 14 Column 16</td>
+					<td>Row 14 Column 17</td>
+					<td>Row 14 Column 18</td>
+					<td>Row 14 Column 19</td>
+					<td>Row 14 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 15 Column 1</th>
+					<td>Row 15 Column 2</td>
+					<td>Row 15 Column 3</td>
+					<td>Row 15 Column 4</td>
+					<td>Row 15 Column 5</td>
+					<td>Row 15 Column 6</td>
+					<td>Row 15 Column 7</td>
+					<td>Row 15 Column 8</td>
+					<td>Row 15 Column 9</td>
+					<td>Row 15 Column 10</td>
+					<td>Row 15 Column 11</td>
+					<td>Row 15 Column 12</td>
+					<td>Row 15 Column 13</td>
+					<td>Row 15 Column 14</td>
+					<td>Row 15 Column 15</td>
+					<td>Row 15 Column 16</td>
+					<td>Row 15 Column 17</td>
+					<td>Row 15 Column 18</td>
+					<td>Row 15 Column 19</td>
+					<td>Row 15 Column 20</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p>Simple table setup</p>
+		<table>
+			<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Independent Assignments</th>
+					<th>Quizzes</th>
+					<th>Final Calculated Grade</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th>footer th</th>
+					<td colspan="4"> footer </td>
+				</tr>
+			</tfoot>
+			<tbody>
+				<tr>
+					<th>Aarons</th>
+					<td>Meghan</td>
+					<td>of 10</td>
+					<td>of 10</td>
+					<td>-%</td>
+				</tr>
+				<tr>
+					<th>Lourdes</th>
+					<td>Beadle</td>
+					<td>of 10</td>
+					<td>of 10</td>
+					<td>-%</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

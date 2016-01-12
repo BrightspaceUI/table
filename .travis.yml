@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+- 4.1.1
+before_script:
+- gem install percy-cli
+after_success:
+- '[ "$TRAVIS_SECURE_ENV_VARS" = "true" ] && npm run perceptual-diff'
+sudo: false
+deploy:
+  provider: npm
+  email: d2ltravisdeploy@d2l.com
+  api_key:
+    secure:
+  on:
+    tags: true
+    repo: Brightspace/valence-ui-table
+env:
+  global:
+    secure:
