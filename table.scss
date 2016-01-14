@@ -1,5 +1,5 @@
 @import 'bower_components/vui-colors/colors.scss';
-@import 'bower_components/vui-typography/typography.scss';
+@import 'bower_components/vui-typography/small-text.scss';
 @import 'bower_components/vui-typography/px-to-base-rem.scss';
 
 @mixin vui-table() {
@@ -15,7 +15,7 @@
 		display: table-header-group;
 
 		& th {
-			@include _vui-table-header-cell();
+			@include vui-table-header-cell();
 		}
 	}
 
@@ -40,7 +40,7 @@
 	& td,
 	  tbody th,
 	  tfoot th {
-		@include _vui-table-cell();
+		@include vui-table-cell();
 	}
 
 	& tr>:last-child {
@@ -123,13 +123,13 @@
 	}
 }
 
-@mixin _vui-table-header-cell() {
-	@include _vui-table-cell();
+@mixin vui-table-header-cell() {
+	@include vui-table-cell();
 	@include vui-typography-small-text();
 	background-color: $vui-color-regolith;
 }
 
-@mixin _vui-table-cell() {
+@mixin vui-table-cell() {
 	border-bottom: 1px solid $vui-color-titanius;
 	border-right: 1px solid $vui-color-titanius;
 	display: table-cell;
@@ -141,4 +141,9 @@
 	[dir='rtl'] & {
 		text-align: right;
 	}
+}
+
+@mixin vui-table-row-selected() {
+	outline: 1px solid $vui-color-celestine;
+	background-color: $vui-color-celestine-light-1;
 }
