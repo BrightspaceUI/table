@@ -3,3 +3,7 @@
 .vui-table {
 	@include vui-table;
 }
+
+.vui-table-row-selected {
+	@include vui-table-row-selected;
+}

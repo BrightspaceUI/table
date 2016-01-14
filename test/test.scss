@@ -1,4 +1,6 @@
 @import '../table.css.scss';
+@import 'bower_components/vui-typography/typography.scss';
+
 
 body {
 	@include vui-typography;
