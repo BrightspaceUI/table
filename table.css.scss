@@ -7,3 +7,11 @@
 .vui-table-row-selected {
 	@include vui-table-row-selected;
 }
+
+.vui-table-col-sort-asc {
+	@include vui-table-column-sort();
+}
+
+.vui-table-col-sort-desc {
+	@include vui-table-column-sort('desc');
+}
