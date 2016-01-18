@@ -1,6 +1,7 @@
 @import 'bower_components/vui-colors/colors.scss';
 @import 'bower_components/vui-typography/small-text.scss';
 @import 'bower_components/vui-typography/px-to-base-rem.scss';
+@import 'table-icons.scss';
 
 @mixin vui-table() {
 	background-color: #ffffff;
@@ -146,4 +147,17 @@
 @mixin vui-table-row-selected() {
 	outline: 1px solid $vui-color-celestine;
 	background-color: $vui-color-celestine-light-1;
+}
+
+@mixin vui-table-column-sort( $direction:'asc') {
+	white-space: nowrap;
+
+	&::after {
+		display: inline-block;
+		@if $direction == 'desc' {
+			content: $vui-table-sort-desc;
+		} @else {
+			content: $vui-table-sort-asc;
+		}
+	}
 }
