@@ -65,12 +65,7 @@
 	  caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > :first-child,
 	  colgroup:first-child + tbody:last-child > tr:first-child > :first-child,
 	  colgroup:first-child + tfoot + tbody:last-child > tr:first-child > :first-child {
-		border-top-left-radius: px-to-base-rem(6);
-
-		[dir='rtl'] & {
-			border-top-left-radius: 0;
-			border-top-right-radius: px-to-base-rem(6);
-		}
+		@include vui-table-top-border-radius('left');
 	}
 	& thead > tr:first-child > :last-child,
 	  tbody:only-child > tr:first-child > :last-child,
@@ -81,36 +76,21 @@
 	  caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > :last-child,
 	  colgroup:first-child + tbody:last-child > tr:first-child > :last-child,
 	  colgroup:first-child + tfoot + tbody:last-child > tr:first-child > :last-child {
-		border-top-right-radius: 6px;
-
-		[dir='rtl'] & {
-			border-top-right-radius: 0;
-			border-top-left-radius: px-to-base-rem(6);
-		}
+		@include vui-table-top-border-radius('right');
 	}
 	& tfoot > tr:last-child > :first-child,
 	  tbody:only-child > tr:last-child > :first-child,
 	  thead + tbody:last-child > tr:last-child > :first-child,
 	  caption + tbody:last-child > tr:last-child > :first-child,
 	  colgroup + tbody:last-child > tr:last-child > :first-child {
-		border-bottom-left-radius: px-to-base-rem(6);
-
-		[dir='rtl'] & {
-			border-bottom-left-radius: 0;
-			border-bottom-right-radius: px-to-base-rem(6);
-		}
+		@include vui-table-bottom-border-radius('left');
 	}
 	& tfoot > tr:last-child > :last-child,
 	  tbody:only-child > tr:last-child > :last-child,
 	  thead + tbody:last-child > tr:last-child > :last-child,
 	  caption + tbody:last-child > tr:last-child > :last-child,
 	  colgroup + tbody:last-child > tr:last-child > :last-child {
-		border-bottom-right-radius: px-to-base-rem(6);
-
-		[dir='rtl'] & {
-			border-bottom-right-radius: 0;
-			border-bottom-left-radius: px-to-base-rem(6);
-		}
+		@include vui-table-bottom-border-radius('right');
 	}
 
 	& tfoot tr:last-child th,
@@ -119,8 +99,7 @@
 	}
 
 	& > tbody > tr:hover {
-		outline: 1px solid $vui-color-celestine;
-		background-color: $vui-color-celestine-light-1;
+		@include vui-table-row-selected();
 	}
 }
 
@@ -160,4 +139,41 @@
 			content: $vui-table-sort-asc;
 		}
 	}
+}
+
+@mixin vui-table-bottom-border-radius($side){
+	@if $side == 'left' {
+		border-bottom-left-radius: px-to-base-rem(6);
+		[dir='rtl'] & {
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: px-to-base-rem(6);
+		}
+	} @else {
+		border-bottom-right-radius: px-to-base-rem(6);
+		[dir='rtl'] & {
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: px-to-base-rem(6);
+		}
+	}
+}
+
+@mixin vui-table-top-border-radius($side){
+	@if $side == 'left' {
+		border-top-left-radius: px-to-base-rem(6);
+		[dir='rtl'] & {
+			border-top-left-radius: 0;
+			border-top-right-radius: px-to-base-rem(6);
+		}
+	} @else {
+		border-top-right-radius: px-to-base-rem(6);
+		[dir='rtl'] & {
+			border-top-right-radius: 0;
+			border-top-left-radius: px-to-base-rem(6);
+		}
+	}
+}
+
+@mixin vui-table-row-selected($important:false){
+  	background-color: if($important, $vui-color-celestine-light-1 !important, $vui-color-celestine-light-1);
+	outline: 1px solid $vui-color-celestine;
 }
