@@ -78,14 +78,16 @@
 	  colgroup:first-child + tfoot + tbody:last-child > tr:first-child > :last-child {
 		@include vui-table-top-border-radius('right');
 	}
-	& tfoot > tr:last-child > :first-child,
+	& thead:only-child > tr:last-child > :first-child,
+	  tfoot > tr:last-child > :first-child,
 	  tbody:only-child > tr:last-child > :first-child,
 	  thead + tbody:last-child > tr:last-child > :first-child,
 	  caption + tbody:last-child > tr:last-child > :first-child,
 	  colgroup + tbody:last-child > tr:last-child > :first-child {
 		@include vui-table-bottom-border-radius('left');
 	}
-	& tfoot > tr:last-child > :last-child,
+	& thead:only-child > tr:last-child > :last-child,
+	  tfoot > tr:last-child > :last-child,
 	  tbody:only-child > tr:last-child > :last-child,
 	  thead + tbody:last-child > tr:last-child > :last-child,
 	  caption + tbody:last-child > tr:last-child > :last-child,
@@ -93,8 +95,9 @@
 		@include vui-table-bottom-border-radius('right');
 	}
 
-	& tfoot tr:last-child th,
-	  tbody:last-child>tr:last-child>th {
+	& thead:only-child > tr:last-child th,
+	  tfoot tr:last-child th,
+	  tbody:last-child > tr:last-child > th {
 			border-bottom: none;
 	}
 
