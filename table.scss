@@ -126,11 +126,6 @@
 	}
 }
 
-@mixin vui-table-row-selected() {
-	outline: 1px solid $vui-color-celestine;
-	background-color: $vui-color-celestine-light-1;
-}
-
 @mixin vui-table-column-sort( $direction:'asc') {
 	white-space: nowrap;
 
@@ -177,6 +172,7 @@
 }
 
 @mixin vui-table-row-selected($important:false){
-  	background-color: if($important, $vui-color-celestine-light-1 !important, $vui-color-celestine-light-1);
-	outline: 1px solid $vui-color-celestine;
+	background-color: if($important, $vui-color-celestine-light-1 !important, $vui-color-celestine-light-1);
+	outline: 2px solid $vui-color-celestine-light-2;
+	outline-offset: -1px;
 }
