@@ -225,6 +225,7 @@ $vui-table-row-background-color-selected: $vui-color-celestine-light-1;
 	[dir='rtl'] & tr:last-child {
 		border-left-color: $border-color !important;
 		border-right-color: $vui-table-border-color;
+		border-left-color: $vui-color-celestine-light-2 !important;
 	}
 	& td, th {
 		border-top-color: $border-color !important;
