@@ -3,6 +3,18 @@
 @import 'bower_components/vui-typography/px-to-base-rem.scss';
 @import 'table-icons.scss';
 
+$vui-table-border-color: $vui-color-titanius;
+$vui-table-border: 1px solid $vui-table-border-color;
+$vui-table-border-radius: px-to-base-rem(6);
+$vui-table-header-background-color: $vui-color-regolith;
+
+$vui-table-row-border-color-active: $vui-color-celestine-light-2;
+$vui-table-row-background-color-active: $vui-color-celestine-light-1;
+$vui-table-row-border-color-active-selected: $vui-color-celestine-light-2;
+$vui-table-row-background-color-active-selected: $vui-color-celestine-light-1;
+$vui-table-row-border-color-selected: $vui-color-celestine-light-2;
+$vui-table-row-background-color-selected: $vui-color-celestine-light-1;
+
 @mixin vui-table() {
 	background-color: #ffffff;
 	border-collapse: separate;
@@ -33,7 +45,7 @@
 	}
 
 	& tr > :first-child {
-		border-left: 1px solid $vui-color-titanius;
+		border-left: $vui-table-border;
 
 		[dir='rtl'] & {
 			border-left: 0;
@@ -41,7 +53,7 @@
 	}
 
 	[dir='rtl'] & tr > :last-child {
-		border-left: 1px solid $vui-color-titanius;
+		border-left: $vui-table-border;
 	}
 
 	//Correct for corners bleeding outside the rounded corners
@@ -79,7 +91,7 @@
 	  caption + tbody:last-child > tr:last-child > th,
 	  colgroup + tbody:last-child > tr:last-child > th,
 	  colgroup + tbody:last-child > tr:last-child > td {
-		border-bottom: 1px solid $vui-color-titanius;
+		border-bottom: $vui-table-border;
 	}
 
 	& thead:only-child > tr:last-child > :first-child,
@@ -106,35 +118,28 @@
 
 	& > tbody:last-child > tr:last-child > td,
 	  > tbody:last-child > tr:last-child > th, {
-		border-bottom: 1px solid $vui-color-titanius;
+		border-bottom: $vui-table-border;
 	}
 
-	& > tbody > tr:hover  {
-		@include vui-table-row-selected();
-	}
-
-	& > tbody > tr:last-child:hover td,
-	  > tbody > tr:last-child:hover th,
-	  > tbody > tr:last-child.vui-table-row-selected td,
-	  > tbody > tr:last-child.vui-table-row-selected th, {
-		border-bottom-color: $vui-color-celestine-light-2 !important;
-	}
-
-	& > tbody > tr:hover + tr > td,
-	& > tbody > tr:hover + tr > th {
-		border-top-color: $vui-color-celestine-light-2;
+	& > tbody > tr:last-child.vui-selected td,
+	  > tbody > tr:last-child.vui-selected th,
+	  > tbody > tr:last-child.vui-active td,
+	  > tbody > tr:last-child.vui-active th,
+	  > tbody > tr:last-child.vui-active.vui-selected td,
+	  > tbody > tr:last-child.vui-active.vui-selected th, {
+		border-bottom-color: $vui-table-row-border-color-active !important;
 	}
 }
 
 @mixin vui-table-header-cell() {
 	@include vui-table-cell();
 	@include vui-typography-small-text();
-	background-color: $vui-color-regolith;
+	background-color: $vui-table-header-background-color;
 }
 
 @mixin vui-table-cell() {
-	border-top: 1px solid $vui-color-titanius;
-	border-right: 1px solid $vui-color-titanius;
+	border-top: $vui-table-border;
+	border-right: $vui-table-border;
 	display: table-cell;
 	font-weight: 300;
 	padding: px-to-base-rem(10) px-to-base-rem(30);
@@ -163,59 +168,70 @@
 
 @mixin vui-table-bottom-border-radius($side){
 	@if $side == 'left' {
-		border-bottom-left-radius: px-to-base-rem(6);
+		border-bottom-left-radius: $vui-table-border-radius;
 		[dir='rtl'] & {
 			border-bottom-left-radius: 0;
-			border-bottom-right-radius: px-to-base-rem(6);
+			border-bottom-right-radius: $vui-table-border-radius;
 		}
 	} @else {
-		border-bottom-right-radius: px-to-base-rem(6);
+		border-bottom-right-radius: $vui-table-border-radius;
 		[dir='rtl'] & {
 			border-bottom-right-radius: 0;
-			border-bottom-left-radius: px-to-base-rem(6);
+			border-bottom-left-radius: $vui-table-border-radius;
 		}
 	}
 }
 
 @mixin vui-table-top-border-radius($side){
 	@if $side == 'left' {
-		border-top-left-radius: px-to-base-rem(6);
+		border-top-left-radius: $vui-table-border-radius;
 		[dir='rtl'] & {
 			border-top-left-radius: 0;
-			border-top-right-radius: px-to-base-rem(6);
+			border-top-right-radius: $vui-table-border-radius;
 		}
 	} @else {
-		border-top-right-radius: px-to-base-rem(6);
+		border-top-right-radius: $vui-table-border-radius;
 		[dir='rtl'] & {
 			border-top-right-radius: 0;
-			border-top-left-radius: px-to-base-rem(6);
+			border-top-left-radius: $vui-table-border-radius;
 		}
 	}
 }
 
-@mixin vui-table-row-selected($important:false){
-	background-color: if($important, $vui-color-celestine-light-1 !important, $vui-color-celestine-light-1);
+@mixin vui-table-row-selected($important:false, $state:'active'){
+	$border-color: $vui-table-row-border-color-active;
+	$background-color: $vui-table-row-background-color-active;
 
-	& :first-child {
-		border-left-color: $vui-color-celestine-light-2 !important;
+	@if $state == 'selected' {
+		$border-color: $vui-table-row-border-color-selected;
+		$background-color: $vui-table-row-background-color-selected;
+	} @else if $state == 'active-selected' {
+		$border-color: $vui-table-row-border-color-active-selected;
+		$background-color: $vui-table-row-background-color-active-selected;
 	}
-	[dir='rtl'] & :first-child {
-		border-right-color: $vui-color-celestine-light-2;
-		border-left-color: $vui-color-titanius;
+
+	background-color: if($important,$background-color !important, $background-color);
+
+	& tr:first-child {
+		border-left-color: $border-color !important;
 	}
-	& :last-child {
-		border-right-color: $vui-color-celestine-light-2;
+	[dir='rtl'] & tr:first-child {
+		border-right-color: $border-color;
+		border-left-color: $vui-table-border-color;
 	}
-	[dir='rtl'] & :last-child {
-		border-left-color: $vui-color-celestine-light-2 !important;
-		border-right-color: $vui-color-titanius;
+	& tr:last-child {
+		border-right-color: $border-color;
+	}
+	[dir='rtl'] & tr:last-child {
+		border-left-color: $border-color !important;
+		border-right-color: $vui-table-border-color;
 	}
 	& td, th {
-		border-top-color: $vui-color-celestine-light-2 !important;
+		border-top-color: $border-color !important;
 	}
 
 	& + tr > td,
 	& + tr > th {
-		border-top-color: $vui-color-celestine-light-2 !important;
+		border-top-color: $border-color !important;
 	}
 }

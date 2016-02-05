@@ -4,8 +4,16 @@
 	@include vui-table;
 }
 
-.vui-table-row-selected {
-	@include vui-table-row-selected;
+.vui-table tr.vui-selected {
+	@include vui-table-row-selected($state:'selected');
+}
+
+.vui-table tr.vui-active {
+	@include vui-table-row-selected($state:'active');
+}
+
+.vui-table tr.vui-active-selected {
+	@include vui-table-row-selected($state:'active-selected');
 }
 
 .vui-table-col-sort-asc {
