@@ -196,17 +196,17 @@
 @mixin vui-table-row-selected($important:false){
 	background-color: if($important, $vui-color-celestine-light-1 !important, $vui-color-celestine-light-1);
 
-	& :first-child {
+	& tr:first-child {
 		border-left-color: $vui-color-celestine-light-2 !important;
 	}
-	[dir='rtl'] & :first-child {
+	[dir='rtl'] & tr:first-child {
 		border-right-color: $vui-color-celestine-light-2;
 		border-left-color: $vui-color-titanius;
 	}
-	& :last-child {
+	& tr:last-child {
 		border-right-color: $vui-color-celestine-light-2;
 	}
-	[dir='rtl'] & :last-child {
+	[dir='rtl'] & tr:last-child {
 		border-left-color: $vui-color-celestine-light-2 !important;
 		border-right-color: $vui-color-titanius;
 	}
