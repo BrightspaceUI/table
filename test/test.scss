@@ -8,6 +8,18 @@ body {
 
 .on {
 	table {
-		@include vui-table();
+		@include vui-table;
+
+		& tr.vui-selected {
+			@include vui-table-row-selected($state:'selected');
+		}
+
+		& tr.vui-active {
+			@include vui-table-row-selected($state:'active');
+		}
+
+		& tr.vui-active-selected {
+			@include vui-table-row-selected($state:'active-selected');
+		}
 	}
 }

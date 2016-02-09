@@ -6,7 +6,9 @@
 $vui-table-border-color: $vui-color-titanius;
 $vui-table-border: 1px solid $vui-table-border-color;
 $vui-table-border-radius: px-to-base-rem(6);
+
 $vui-table-header-background-color: $vui-color-regolith;
+$vui-table-body-background-color: #ffffff;
 
 $vui-table-row-border-color-active: $vui-color-celestine-light-2;
 $vui-table-row-background-color-active: $vui-color-celestine-light-1;
@@ -16,7 +18,7 @@ $vui-table-row-border-color-selected: $vui-color-celestine-light-2;
 $vui-table-row-background-color-selected: $vui-color-celestine-light-1;
 
 @mixin vui-table() {
-	background-color: #ffffff;
+	background-color: transparent;
 	border-collapse: separate;
 	border-spacing: 0;
 	display: table;
@@ -32,6 +34,10 @@ $vui-table-row-background-color-selected: $vui-color-celestine-light-1;
 
 	& tfoot {
 		display: table-footer-group;
+	}
+
+	& tbody {
+		background-color: $vui-table-body-background-color;
 	}
 
 	& tr {
@@ -212,17 +218,17 @@ $vui-table-row-background-color-selected: $vui-color-celestine-light-1;
 
 	background-color: if($important,$background-color !important, $background-color);
 
-	& tr:first-child {
+	& >:first-child {
 		border-left-color: $border-color !important;
 	}
-	[dir='rtl'] & tr:first-child {
+	[dir='rtl'] & >:first-child {
 		border-right-color: $border-color;
 		border-left-color: $vui-table-border-color;
 	}
-	& tr:last-child {
+	& >:last-child {
 		border-right-color: $border-color;
 	}
-	[dir='rtl'] & tr:last-child {
+	[dir='rtl'] & >:last-child {
 		border-left-color: $border-color !important;
 		border-right-color: $vui-table-border-color;
 	}
