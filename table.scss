@@ -10,10 +10,11 @@ $vui-table-border-radius: px-to-base-rem(6);
 $vui-table-header-background-color: $vui-color-regolith;
 $vui-table-body-background-color: #ffffff;
 
-$vui-table-row-border-color-active: $vui-color-celestine-light-2;
 $vui-table-row-background-color-active: $vui-color-celestine-light-1;
+
 $vui-table-row-border-color-active-selected: $vui-color-celestine-light-2;
-$vui-table-row-background-color-active-selected: $vui-color-celestine-light-1;
+$vui-table-row-background-color-active-selected: #EBF5FC;
+
 $vui-table-row-border-color-selected: $vui-color-celestine-light-2;
 $vui-table-row-background-color-selected: $vui-color-celestine-light-1;
 
@@ -128,12 +129,13 @@ $vui-table-row-background-color-selected: $vui-color-celestine-light-1;
 	}
 
 	& > tbody > tr:last-child.vui-selected td,
-	  > tbody > tr:last-child.vui-selected th,
-	  > tbody > tr:last-child.vui-active td,
-	  > tbody > tr:last-child.vui-active th,
-	  > tbody > tr:last-child.vui-active.vui-selected td,
-	  > tbody > tr:last-child.vui-active.vui-selected th, {
-		border-bottom-color: $vui-table-row-border-color-active !important;
+	  > tbody > tr:last-child.vui-selected th {
+		border-bottom-color: $vui-table-row-border-color-selected !important;
+	}
+
+	& > tbody > tr:last-child.vui-active.vui-selected td,
+	  > tbody > tr:last-child.vui-active.vui-selected th {
+		border-bottom-color: $vui-table-row-border-color-active-selected !important;
 	}
 }
 
@@ -205,28 +207,30 @@ $vui-table-row-background-color-selected: $vui-color-celestine-light-1;
 }
 
 @mixin vui-table-row-selected($important:false, $state:'active'){
-	$border-color: $vui-table-row-border-color-active;
 	$background-color: $vui-table-row-background-color-active;
 
 	@if $state == 'selected' {
-		$border-color: $vui-table-row-border-color-selected;
+		@include _applyBorderColorToRow($border-color: $vui-table-row-border-color-selected);
 		$background-color: $vui-table-row-background-color-selected;
 	} @else if $state == 'active-selected' {
-		$border-color: $vui-table-row-border-color-active-selected;
+		@include _applyBorderColorToRow($border-color: $vui-table-row-border-color-active-selected);
+		$important: true;
 		$background-color: $vui-table-row-background-color-active-selected;
 	}
 
 	background-color: if($important,$background-color !important, $background-color);
+}
 
+@mixin _applyBorderColorToRow($border-color) {
 	& >:first-child {
 		border-left-color: $border-color !important;
 	}
 	[dir='rtl'] & >:first-child {
-		border-right-color: $border-color;
+		border-right-color: $border-color !important;
 		border-left-color: $vui-table-border-color;
 	}
 	& >:last-child {
-		border-right-color: $border-color;
+		border-right-color: $border-color !important;
 	}
 	[dir='rtl'] & >:last-child {
 		border-left-color: $border-color !important;
@@ -239,5 +243,14 @@ $vui-table-row-background-color-selected: $vui-color-celestine-light-1;
 	& + tr > td,
 	& + tr > th {
 		border-top-color: $border-color !important;
+	}
+}
+
+@mixin vui-table-rows-selectable() {
+	& > tbody > tr:not(.vui-selected):hover {
+		@include vui-table-row-selected($state:'active');
+	}
+	& > tbody > tr.vui-selected:hover {
+		@include vui-table-row-selected($state:'active-selected');
 	}
 }

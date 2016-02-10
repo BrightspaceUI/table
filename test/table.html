@@ -19,7 +19,7 @@
 <body>
 	<div class="container">
 		<h2>Class name</h2>
-		<p>Table setup - caption, colgroup, thead, tfoot, tbody</p>
+		<p>Table setup - caption, colgroup, thead, tfoot, tbody, row selected</p>
 		<table class="vui-table">
 			<caption>Caption</caption>
 			<colgroup></colgroup>
@@ -55,7 +55,7 @@
 			</tbody>
 		</table>
 
-		<p>Table setup - thead, tfoot, tbody</p>
+		<p>Table setup - thead, tfoot, tbody, row active</p>
 		<table class="vui-table">
 			<thead>
 				<tr>
@@ -89,7 +89,7 @@
 			</tbody>
 		</table>
 
-		<p>Multi-row header and footer table setup</p>
+		<p>Multi-row header and footer table setup row active and selected</p>
 		<table class="vui-table">
 			<thead>
 				<tr>
@@ -116,7 +116,7 @@
 				</tr>
 			</tfoot>
 			<tbody>
-				<tr>
+				<tr class="vui-selected vui-active">
 					<td>Aarons</td>
 					<td>Meghan</td>
 					<td>of 10</td>
@@ -149,8 +149,8 @@
 	</div>
 	<div class="container on">
 		<h2>Mixins</h2>
-		<p>Large table setup</p>
-		<table>
+		<p>Large table setup - with table rows selectable</p>
+		<table class="vui-table-rows-selectable">
 			<caption>Table Caption</caption>
 			<colgroup></colgroup>
 			<colgroup></colgroup>
@@ -267,7 +267,7 @@
 					<td>Row 4 Column 19</td>
 					<td>Row 4 Column 20</td>
 				</tr>
-				<tr class="vui-active">
+				<tr>
 					<th>Row 5 Column 1</th>
 					<td>Row 5 Column 2</td>
 					<td>Row 5 Column 3</td>
@@ -311,7 +311,7 @@
 					<td>Row 6 Column 19</td>
 					<td>Row 6 Column 20</td>
 				</tr>
-				<tr class="vui-selected vui-active">
+				<tr>
 					<th>Row 7 Column 1</th>
 					<td>Row 7 Column 2</td>
 					<td>Row 7 Column 3</td>
@@ -530,17 +530,24 @@
 				</tr>
 			</tfoot>
 			<tbody>
-				<tr>
-					<th>Aarons</th>
-					<td>Meghan</td>
+				<tr class="vui-active">
+					<th>row</th>
+					<td>active</td>
 					<td>of 10</td>
 					<td>of 10</td>
 					<td>-%</td>
 				</tr>
-				<tr>
-					<th>Lourdes</th>
-					<td>Beadle</td>
+				<tr class="vui-selected">
+					<th>row</th>
+					<td>selected</td>
 					<td>of 10</td>
+					<td>of 10</td>
+					<td>-%</td>
+				</tr>
+				<tr class="vui-active vui-selected">
+					<th>row</th>
+					<td>active</td>
+					<td>selected</td>
 					<td>of 10</td>
 					<td>-%</td>
 				</tr>

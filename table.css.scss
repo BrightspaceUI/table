@@ -12,7 +12,7 @@
 	@include vui-table-row-selected($state:'active');
 }
 
-.vui-table tr.vui-active-selected {
+.vui-table tr.vui-active.vui-selected {
 	@include vui-table-row-selected($state:'active-selected');
 }
 
@@ -22,4 +22,8 @@
 
 .vui-table-col-sort-desc {
 	@include vui-table-column-sort('desc');
+}
+
+.vui-table-rows-selectable {
+	@include vui-table-rows-selectable;
 }

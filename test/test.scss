@@ -18,7 +18,7 @@ body {
 			@include vui-table-row-selected($state:'active');
 		}
 
-		& tr.vui-active-selected {
+		& tr.vui-active.vui-selected {
 			@include vui-table-row-selected($state:'active-selected');
 		}
 	}
