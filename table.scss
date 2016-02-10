@@ -11,10 +11,8 @@ $vui-table-header-background-color: $vui-color-regolith;
 $vui-table-body-background-color: #ffffff;
 
 $vui-table-row-background-color-active: $vui-color-celestine-light-1;
-
 $vui-table-row-border-color-active-selected: $vui-color-celestine-light-2;
 $vui-table-row-background-color-active-selected: #EBF5FC;
-
 $vui-table-row-border-color-selected: $vui-color-celestine-light-2;
 $vui-table-row-background-color-selected: $vui-color-celestine-light-1;
 
@@ -221,6 +219,15 @@ $vui-table-row-background-color-selected: $vui-color-celestine-light-1;
 	background-color: if($important,$background-color !important, $background-color);
 }
 
+@mixin vui-table-rows-selectable() {
+	& > tbody > tr:not(.vui-selected):hover {
+		@include vui-table-row-selected($state:'active');
+	}
+	& > tbody > tr.vui-selected:hover {
+		@include vui-table-row-selected($state:'active-selected');
+	}
+}
+
 @mixin _applyBorderColorToRow($border-color) {
 	& >:first-child {
 		border-left-color: $border-color !important;
@@ -243,14 +250,5 @@ $vui-table-row-background-color-selected: $vui-color-celestine-light-1;
 	& + tr > td,
 	& + tr > th {
 		border-top-color: $border-color !important;
-	}
-}
-
-@mixin vui-table-rows-selectable() {
-	& > tbody > tr:not(.vui-selected):hover {
-		@include vui-table-row-selected($state:'active');
-	}
-	& > tbody > tr.vui-selected:hover {
-		@include vui-table-row-selected($state:'active-selected');
 	}
 }
