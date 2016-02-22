@@ -4,20 +4,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Table Sample</title>
-	<link rel="stylesheet" type="text/css" href="test.css" />
-	<style>
-		html {
-			font-size: 20px;
-		}
-
-		.container {
-			width: 800px;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="table.css" />
 </head>
 
 <body dir="rtl">
-		<div class="container">
+	<div>
 		<h2>Class name</h2>
 		<p>Table setup - caption, colgroup, thead, tfoot, tbody, row selected</p>
 		<table class="vui-table">
@@ -146,11 +137,8 @@
 			</thead>
 		</table>
 
-	</div>
-	<div class="container on">
-		<h2>Mixins</h2>
 		<p>Large table setup - with table rows selectable</p>
-		<table class="vui-table-rows-selectable">
+		<table class="vui-table vui-table-rows-selectable">
 			<caption>Table Caption</caption>
 			<colgroup></colgroup>
 			<colgroup></colgroup>
@@ -513,7 +501,7 @@
 		</table>
 
 		<p>Simple table setup</p>
-		<table>
+		<table class="vui-table">
 			<thead>
 				<tr>
 					<th>First Name</th>
