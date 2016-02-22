@@ -78,13 +78,13 @@ To style an individual table row as active, selected, or both, add the appropria
 HTML:
 ```html
 <table>
-	<tr>
+	<tr class="vui-selected">
 		<td>active</td>
 	</tr>
-	<tr>
+	<tr class="vui-active">
 		<td>selected</td>
 	</tr>
-	<tr>
+	<tr class="vui-active-selected">
 		<td>active and selected</td>
 	</tr>
 </table>
@@ -92,13 +92,13 @@ HTML:
 
 SCSS:
 ```scss
-tr:nth-child(1) {
+.vui-selected {
 	@include vui-table-row-selected($state:'selected');
 }
-tr:nth-child(2) {
+.vui-active {
 	@include vui-table-row-selected($state:'active');
 }
-tr:nth-child(3) {
+.vui-active-selected {
 	@include vui-table-row-selected($state:'active-selected');
 }
 ```
@@ -113,10 +113,10 @@ HTML:
 ```html
 <table class="vui-table">
 	<thead>
-		<th>
+		<th class="vui-ascending">
 			Ascending
 		</th>
-		<th>
+		<th class="vui-descending">
 			Descending
 		</th>
 	</thead>
@@ -135,10 +135,10 @@ HTML:
 
 SCSS:
 ```scss
-th:nth-child(1) {
+.vui-ascending {
 	@include vui-table-column-sort();
 }
-th:nth-child(2) {
+.vui-descending {
 	@include vui-table-column-sort('desc');
 }
 ```
