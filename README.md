@@ -69,7 +69,11 @@ table {
 }
 ```
 
+#### Row Styles
+
 To style an individual table row as active, selected, or both, add the appropriate mixin to `<tr>`.
+
+![screenshot of table with styled rows](/screenshots/rows.png)
 
 HTML:
 ```html
@@ -99,26 +103,32 @@ tr:nth-child(3) {
 }
 ```
 
+#### Header Icons
+
 To include ascending or descending sort icons, include the appropriate mixin.
+
+![screenshot of table with sort icons](/screenshots/sort.png)
 
 HTML:
 ```html
 <table class="vui-table">
 	<thead>
-		<tr>
-			<th>Ascending Column</th>
-			<th>Descending Column</th>
-		</tr>
+		<th>
+			Ascending
+		</th>
+		<th>
+			Descending
+		</th>
 	</thead>
 	<tbody>
-		<tr>
-			<td>100</td>
-			<td>200</td>
-		</tr>
-		<tr>
-			<td>200</td>
-			<td>100</td>
-		</tr>
+	<tr>
+		<td>123</td>
+		<td>321</td>
+	</tr>
+	<tr>
+		<td>456</td>
+		<td>654</td>
+	</tr>
 	</tbody>
 </table>
 ```
