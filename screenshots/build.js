@@ -19,4 +19,8 @@ function capture(url, name, callback) {
 	});
 }
 
-capture('./test/table.html', 'small', phantom.exit);
+capture('./test/table.html', 'small', function() {
+	capture('./test/table.html', 'sort', function() {
+		capture('./test/table.html', 'rows', phantom.exit );
+	});
+});
