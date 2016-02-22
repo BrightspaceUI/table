@@ -1,3 +1,10 @@
+@import '../bower_components/vui-typography/typography.scss';
+
 :root {
 	font-size: 20px;
+}
+
+.screenshots {
+	@include vui-typography;
+	display: inline-block;
 }

@@ -8,10 +8,11 @@
     "prebuild": "npm run clean && imgtoscss -p vui- -o table-icons.scss *.svg",
     "build": "npm run build:sass && npm run build:docs",
     "build:sass": "node-sass --output-style expanded table.css.scss table.css && cp ./table.css ./test",
-    "build:docs": "node-sass --output-style expanded ./screenshots/screenshots.scss ./test/screenshots.css",
+    "build:docs": "node-sass --output-style expanded ./screenshots/screenshots.scss ./test/screenshots.css && npm run screenshot",
     "postbuild:sass": "npm run autoprefix",
     "postinstall": "bower install",
     "perceptual-diff": "percy snapshot test/",
+    "screenshot": "phantomjs ./screenshots/build.js",
     "pretest": "npm run build",
     "test": "csslint table.css"
   },
@@ -35,6 +36,7 @@
     "csslint": "^0.10.0",
     "images-to-variables": "^0.3.0",
     "node-sass": "^3.4.2",
+    "phantomjs-prebuilt": "^2.1.4",
     "postcss-cli": "^2.5.1",
     "rimraf": "^2.5.2"
   }
