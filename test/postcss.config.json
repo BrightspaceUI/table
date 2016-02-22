@@ -1,7 +1,7 @@
 {
 	"use": ["autoprefixer"],
-	"input": "./test/test.css",
-	"output": "./test/test.css",
+	"input": "./test/table.css",
+	"output": "./test/table.css",
 	"autoprefixer": {
 		"browsers": "Last 4 versions, Firefox ESR, IE >= 9, Safari >= 6"
 	}
