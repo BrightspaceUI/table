@@ -1,11 +1,10 @@
 @import 'bower_components/vui-colors/colors.scss';
 @import 'bower_components/vui-typography/small-text.scss';
-@import 'bower_components/vui-typography/px-to-base-rem.scss';
 @import 'table-icons.scss';
 
 $vui-table-border-color: $vui-color-titanius;
 $vui-table-border: 1px solid $vui-table-border-color;
-$vui-table-border-radius: px-to-base-rem(6);
+$vui-table-border-radius: 0.3rem;
 
 $vui-table-header-background-color: $vui-color-regolith;
 $vui-table-body-background-color: #ffffff;
@@ -148,7 +147,7 @@ $vui-table-row-background-color-selected: $vui-color-celestine-light-1;
 	border-right: $vui-table-border;
 	display: table-cell;
 	font-weight: 300;
-	padding: px-to-base-rem(10) px-to-base-rem(30);
+	padding: 0.5rem 1.5rem;
 	text-align: left;
 	vertical-align: middle;
 
