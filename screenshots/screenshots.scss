@@ -1,10 +1,18 @@
-@import '../bower_components/vui-typography/typography.scss';
+@import url(https://s.brightspace.com/lib/fonts/0.3.0/fonts.css);
+
+html {
+	font-size: 20px;
+}
+body {
+	font-family: 'Lato', sans-serif;
+	line-height: 1.5;
+	margin: 1rem;
+}
 
 :root {
 	font-size: 20px;
 }
 
 .screenshots {
-	@include vui-typography;
 	display: inline-block;
 }
