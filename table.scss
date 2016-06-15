@@ -1,19 +1,18 @@
-@import 'bower_components/vui-colors/colors.scss';
-@import 'bower_components/vui-typography/small-text.scss';
+@import 'bower_components/d2l-colors/d2l-colors.scss';
 @import 'table-icons.scss';
 
-$vui-table-border-color: $vui-color-titanius;
+$vui-table-border-color: $d2l-color-titanius;
 $vui-table-border: 1px solid $vui-table-border-color;
 $vui-table-border-radius: 0.3rem;
 
-$vui-table-header-background-color: $vui-color-regolith;
+$vui-table-header-background-color: $d2l-color-regolith;
 $vui-table-body-background-color: #ffffff;
 
-$vui-table-row-background-color-active: $vui-color-celestine-light-1;
-$vui-table-row-border-color-active-selected: $vui-color-celestine-light-2;
+$vui-table-row-background-color-active: $d2l-color-celestine-light-1;
+$vui-table-row-border-color-active-selected: $d2l-color-celestine-light-2;
 $vui-table-row-background-color-active-selected: #EBF5FC;
-$vui-table-row-border-color-selected: $vui-color-celestine-light-2;
-$vui-table-row-background-color-selected: $vui-color-celestine-light-1;
+$vui-table-row-border-color-selected: $d2l-color-celestine-light-2;
+$vui-table-row-background-color-selected: $d2l-color-celestine-light-1;
 
 @mixin vui-table() {
 	background-color: transparent;
@@ -138,7 +137,13 @@ $vui-table-row-background-color-selected: $vui-color-celestine-light-1;
 
 @mixin vui-table-header-cell() {
 	@include vui-table-cell();
-	@include vui-typography-small-text();
+	color: $d2l-color-ferrite;
+	font-family: inherit;
+	font-size: 0.7rem;
+	font-weight: 400;
+	line-height: 1rem;
+	letter-spacing: 0.02rem;
+	margin: 1rem 0 1rem 0;
 	background-color: $vui-table-header-background-color;
 }
 
