@@ -1,19 +1,25 @@
 {
-  "name": "vui-table",
+  "name": "d2l-table",
   "main": "table.scss",
   "license": "Apache-2.0",
   "ignore": [
     "node_modules",
     "bower_components",
     "test",
-    ".csslintrc",
-    ".editorconfig",
-    ".gitignore",
-    ".npmignore",
-    ".travis.yml",
+    "demo",
+    "/.*",
     "package.json"
   ],
   "dependencies": {
-    "d2l-colors": "^2.1.0"
+    "d2l-colors": "^2.1.0",
+    "polymer": "^1.6.1",
+    "iron-icon": "^1.0.10",
+    "iron-iconset-svg": "^1.0.9",
+    "iron-media-query": "^1.0.8"
+  },
+  "devDependencies": {
+    "iron-component-page": "^1.1.7",
+    "promise-polyfill": "polymerlabs/promise-polyfill#^1.0.0",
+    "web-component-tester": "^4.3.3"
   }
 }

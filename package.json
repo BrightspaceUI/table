@@ -1,5 +1,5 @@
 {
-  "name": "vui-table",
+  "name": "d2l-table",
   "version": "0.1.0",
   "description": "Mixins and CSS for applying table styles",
   "scripts": {
@@ -8,13 +8,24 @@
     "prebuild": "npm run clean && imgtoscss -p vui- -o table-icons.scss *.svg",
     "build": "npm run build:sass && npm run build:docs",
     "build:sass": "node-sass --output-style expanded table.css.scss table.css && cp ./table.css ./test",
-    "build:docs": "node-sass --output-style expanded ./screenshots/screenshots.scss ./test/screenshots.css && npm run screenshot",
+    "build:docs": "node-sass --output-style expanded ./screenshots/screenshots.scss ./test/screenshots.css",
     "postbuild:sass": "npm run autoprefix",
     "postinstall": "bower install",
-    "perceptual-diff": "percy snapshot test/",
-    "screenshot": "phantomjs ./screenshots/build.js",
-    "pretest": "npm run build",
-    "test": "csslint table.css"
+    "test": "npm run test:lint:js && npm run test:lint:wc && wct --skip-plugin sauce && npm run test:galen && npm run test:galen:rtl",
+    "test:lint:js": "eslint .",
+    "test:lint:wc": "polylint",
+    "galen:polymer": "galen check table.gspec --size 2700x768 --url http://localhost:8080/components/d2l-table/demo/ --htmlreport reports/d2l-table -Dgalen.default.browser=phantomjs",
+    "galen:sass": "galen dump table.gspec --size 2700x768 --url http://localhost:8000/table.html --export dumps/vui-table -Dgalen.default.browser=phantomjs",
+    "galen:polymer:rtl": "galen check table.rtl.gspec --size 2700x768 --url http://localhost:8080/components/d2l-table/demo/index.rtl.html --htmlreport reports/d2l-table-rtl -Dgalen.default.browser=phantomjs",
+    "galen:sass:rtl": "galen dump table.rtl.gspec --size 2700x768 --url http://localhost:8000/table.rtl.html --export dumps/vui-table-rtl -Dgalen.default.browser=phantomjs",
+    "dump:galen:sass": "concurrently -s first -k \"static-server -p 8000 -f test/\" \"npm run galen:sass\"",
+    "test:galen:polymer": "concurrently -s first -k \"polymer serve\" \"npm run galen:polymer\"",
+    "dump:galen:rtl:sass": "concurrently -s first -k \"static-server -p 8000 -f test/\" \"npm run galen:sass:rtl\"",
+    "test:galen:rtl:polymer": "concurrently -s first -k \"polymer serve\" \"npm run galen:polymer:rtl\"",
+    "pretest:galen:rtl": "npm run build",
+    "test:galen:rtl": "npm run dump:galen:rtl:sass && npm run test:galen:rtl:polymer",
+    "pretest:galen": "npm run build",
+    "test:galen": "npm run dump:galen:sass && npm run test:galen:polymer"
   },
   "repository": {
     "type": "git",
@@ -32,12 +43,21 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.3.3",
+    "concurrently": "^2.2.0",
     "cpy": "^4.0.0",
     "csslint": "^0.10.0",
+    "eslint": "^3.3.1",
+    "eslint-config-brightspace": "^0.2.1",
+    "eslint-plugin-html": "^1.5.2",
+    "galenframework": "^2.3.0",
     "images-to-variables": "^0.3.0",
     "node-sass": "^3.4.2",
     "phantomjs-prebuilt": "^2.1.4",
+    "polylint": "^2.10.1",
+    "polymer-cli": "^0.16.0",
     "postcss-cli": "^2.5.1",
-    "rimraf": "^2.5.2"
+    "rimraf": "^2.5.2",
+    "static-server": "^2.0.3",
+    "web-component-tester": "^4.3.3"
   }
 }
