@@ -15,11 +15,10 @@
     "polymer": "^1.6.1",
     "iron-icon": "^1.0.10",
     "iron-iconset-svg": "^1.0.9",
-    "iron-media-query": "^1.0.8"
+    "iron-media-query": "^1.0.8",
+    "d2l-icons": "^2.7.0"
   },
   "devDependencies": {
-    "iron-component-page": "^1.1.7",
-    "promise-polyfill": "polymerlabs/promise-polyfill#^1.0.0",
-    "web-component-tester": "^4.3.3"
+    "iron-component-page": "^1.1.7"
   }
 }

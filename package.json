@@ -12,7 +12,7 @@
     "postbuild:sass": "npm run autoprefix",
     "postinstall": "bower install",
     "pretest": "npm run build",
-    "test": "concurrently -p name -n lint:js,lint:wc,wct,galen,galen:rtl \"npm run test:lint:js\" \"npm run test:lint:wc\" \"wct --skip-plugin sauce\" \"npm run test:galen\" \"npm run test:galen:rtl\"",
+    "test": "concurrently -p name -n lint:js,lint:wc,galen,galen:rtl \"npm run test:lint:js\" \"npm run test:lint:wc\" \"npm run test:galen\" \"npm run test:galen:rtl\"",
     "test:lint:js": "eslint .",
     "test:lint:wc": "polylint",
     "galen:polymer": "galen check table.gspec --size 2700x768 --url http://localhost:8080/components/d2l-table/demo/ --htmlreport reports/d2l-table -Dgalen.default.browser=phantomjs",
@@ -56,7 +56,6 @@
     "polymer-cli": "^0.16.0",
     "postcss-cli": "^2.5.1",
     "rimraf": "^2.5.2",
-    "static-server": "^2.0.3",
-    "web-component-tester": "^4.3.3"
+    "static-server": "^2.0.3"
   }
 }
