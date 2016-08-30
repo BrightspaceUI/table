@@ -12,7 +12,7 @@
     "postbuild:sass": "npm run autoprefix",
     "postinstall": "bower install",
     "pretest": "npm run build",
-    "test": "concurrently -p name -n lint:js,lint:wc,galen,galen:rtl \"npm run test:lint:js\" \"npm run test:lint:wc\" \"npm run test:galen\" \"npm run test:galen:rtl\"",
+    "test": "concurrently -p name -n lint:js,lint:wc,galen \"npm run test:lint:js\" \"npm run test:lint:wc\" \"npm run test:galen:all\"",
     "test:lint:js": "eslint .",
     "test:lint:wc": "polylint",
     "galen:polymer": "galen check table.gspec --size 2700x768 --url http://localhost:8080/components/d2l-table/demo/ --htmlreport reports/d2l-table -Dgalen.default.browser=phantomjs",
@@ -24,7 +24,8 @@
     "dump:galen:rtl:sass": "concurrently -p name -n serve,galen -s first -k \"static-server -p 8001 -f test/\" \"npm run galen:sass:rtl\"",
     "test:galen:rtl:polymer": "concurrently -p name -n serve,galen -s first -k \"polymer serve -p 8002\" \"npm run galen:polymer:rtl\"",
     "test:galen:rtl": "npm run dump:galen:rtl:sass && npm run test:galen:rtl:polymer",
-    "test:galen": "npm run dump:galen:sass && npm run test:galen:polymer"
+    "test:galen": "npm run dump:galen:sass && npm run test:galen:polymer",
+    "test:galen:all": "npm run test:galen && npm run test:galen:rtl"
   },
   "repository": {
     "type": "git",
