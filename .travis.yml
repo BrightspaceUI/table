@@ -1,19 +1,11 @@
 language: node_js
 node_js:
 - 5.6
-before_script:
-- gem install percy-cli
-after_success:
-- '[ "$TRAVIS_SECURE_ENV_VARS" = "true" ] && npm run perceptual-diff'
+addons:
+  apt:
+    packages:
+    - oracle-java8-installer
+before_install:
+- export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+- export PATH=$JAVA_HOME/bin:$PATH
 sudo: false
-deploy:
-  provider: npm
-  email: d2ltravisdeploy@d2l.com
-  api_key:
-    secure: m0obbJl7P1zZUS/Lbdwxzy5O2AJirAJgqtsT6epYmkfep0woQ1wCIGCPIJ6uW6ZXiA8nThfcphDAu1YPwjFH8Y2tU7S9gKPcgXzHsoZI0f8ZwQKo3p5aKSq0ocF5edyZHRtLbkFwdn9tbID4+3hphW2OgYoJV63VOVjDp0sun3h6GiE5eeMdmtWYNDePLGhNzShcXVROSb8GnMpTRAli0SQqZB2Z33pAdbkXHhlCiXFxOWt0zGtA0eoNUg6d8Z8668WLY8nuBEnEjr+UPuljIr+o1sq5eDNjlkPdYsTo1UrwUUtPlayh2pD5/ceqyIpge45DLPT6uiuSLqfgrtgrFcOi/be41XMCbyorMI5nbsji20tRp4I8xMtuI28F3t+cKnbEPgh28K6JcFUU2EfyJCaM7CNdDoMwahjuvpT1aUxF8+BRSw1CfLte8pJKMUtmz40Smorekjo1HBkt8krTfeDikKXrT9RasgMSMrKRxO4cGx3JmywkzbbsLQ6s0d7EnkJIKUYVco7LygIDTTVQ5biaHSnCJVksToCzC2mgypSIiheAhdyRHZ/eHtg/ODa/93nYYywUuy+vf2E/RIvm5ylRZwRFy/oy1kp+5byf24DUAPdBa+r4p2wQnziWTZ/BG7zpyuuE4uv4ATEvktHrVyQ/9X/i+Bn+p+8aS0tAzQ0=
-  on:
-    tags: true
-    repo: Brightspace/valence-ui-table
-env:
-  global:
-    secure: CYJwXU45ipkfR/sorNhCKyCX9TJP7h45+P0CfG+niyvb7SqyOXgZUCXrWTjRZmsl0aBWRkuBsUBxrV6jPcB2J8yGfFfgSWro649CO5r+aFTmNEerr5MUnbAwiqdwrZnsItkV2oxZCOx5zzaYzVMeq9EBgF6ung6sFZMojTBYRvmaoCLKjeQ+2Ou+Pqg3a8jEAixHzBRTjsjJqJoZaf5ukN2LpN44ZO2LCAnzf08zAB7I05dgIyhU2MQs0JDheCDfrgiFrx5B1QOBmnOdU3Hp5VBWhofyi9SqiJk0E2sEw7anBqnCfemfr+BShYvM2NIbWep5j4UE9WiU4z3QA/j58iqfYhKZjWfaAeoDwUOVsa0KP0hRoUasciWJyODbVOtXAdELv6Nnl3/+pe4nlSHf3FyN3pm+bHzxPuHnod3nFNPseB1F0z6GEA2AKVyofYB1jg5M/s9G3jU5y6mLM+8UO6iD25OXVUJwMaZGz6wSzgEomvY/CXIGCbd7FUvx/c9a/yY3rsimd6DlOToQZYf1T2Zr4nS3VDshAIIMTQqfjl3SD0ozoLsvBXa1Ke4OgE30gWNBzDUUkfS8opfWcvZ4ej2K9wt4pR8fW1NegHT3N1wKkYogU98WYYknU3gsRrH4WPtHVbUYV+LqjhE7vpd6p11Fb5cp3io2e3IRR2r7u4A=
