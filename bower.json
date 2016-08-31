@@ -1,10 +1,8 @@
 {
   "name": "d2l-table",
-  "main": "table.scss",
+  "main": "d2l-table.html",
   "license": "Apache-2.0",
   "ignore": [
-    "node_modules",
-    "bower_components",
     "test",
     "demo",
     "/.*",

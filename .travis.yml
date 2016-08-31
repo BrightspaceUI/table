@@ -8,13 +8,4 @@ addons:
 before_install:
 - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 - export PATH=$JAVA_HOME/bin:$PATH
-after_success:
 sudo: false
-deploy:
-  provider: npm
-  email: d2ltravisdeploy@d2l.com
-  api_key:
-    secure: m0obbJl7P1zZUS/Lbdwxzy5O2AJirAJgqtsT6epYmkfep0woQ1wCIGCPIJ6uW6ZXiA8nThfcphDAu1YPwjFH8Y2tU7S9gKPcgXzHsoZI0f8ZwQKo3p5aKSq0ocF5edyZHRtLbkFwdn9tbID4+3hphW2OgYoJV63VOVjDp0sun3h6GiE5eeMdmtWYNDePLGhNzShcXVROSb8GnMpTRAli0SQqZB2Z33pAdbkXHhlCiXFxOWt0zGtA0eoNUg6d8Z8668WLY8nuBEnEjr+UPuljIr+o1sq5eDNjlkPdYsTo1UrwUUtPlayh2pD5/ceqyIpge45DLPT6uiuSLqfgrtgrFcOi/be41XMCbyorMI5nbsji20tRp4I8xMtuI28F3t+cKnbEPgh28K6JcFUU2EfyJCaM7CNdDoMwahjuvpT1aUxF8+BRSw1CfLte8pJKMUtmz40Smorekjo1HBkt8krTfeDikKXrT9RasgMSMrKRxO4cGx3JmywkzbbsLQ6s0d7EnkJIKUYVco7LygIDTTVQ5biaHSnCJVksToCzC2mgypSIiheAhdyRHZ/eHtg/ODa/93nYYywUuy+vf2E/RIvm5ylRZwRFy/oy1kp+5byf24DUAPdBa+r4p2wQnziWTZ/BG7zpyuuE4uv4ATEvktHrVyQ/9X/i+Bn+p+8aS0tAzQ0=
-  on:
-    tags: true
-    repo: Brightspace/valence-ui-table

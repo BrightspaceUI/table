@@ -1,7 +1,7 @@
 {
   "name": "d2l-table",
-  "version": "0.1.0",
   "description": "Mixins and CSS for applying table styles",
+  "private": true,
   "scripts": {
     "autoprefix": "postcss -c postcss.config.json && postcss -c ./test/postcss.config.json",
     "clean": "rimraf *.css ./test/*.css dumps/ reports/",
@@ -34,8 +34,8 @@
   },
   "keywords": [
     "d2l",
-    "valence-ui",
-    "vui"
+    "polymer",
+    "table"
   ],
   "author": "D2L Corporation",
   "license": "Apache-2.0",
