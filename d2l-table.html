@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="d2l-table-style.html">
+<link rel="import" href="d2l-table-wrapper.html">
 <link rel="import" href="../d2l-colors/d2l-colors.html">
 
 <!--
@@ -60,24 +61,30 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 				--d2l-table-row-background-color-active-selected: #EBF5FC;
 				--d2l-table-row-border-color-selected: var(--d2l-color-celestine-light-2);
 				--d2l-table-row-background-color-selected: var(--d2l-color-celestine-light-1);
-				background-color: transparent;
-				display: block;
-				overflow: auto;
-				width: 100%;
 			}
 		</style>
-		<!--
-			The neat thing about tables is that they push out non-table elements (tbody, tr, td, etc).
-			So, this needs to be a div, which most browsers (IE10+, Edge, Firefox, Chrome) accept.
-		-->
-		<div class="d2l-table">
-			<content></content>
-		</div>
+		<content></content>
 	</template>
 	<script>
 		Polymer({
 			is: 'd2l-table',
-			extends: 'table'
+			extends: 'table',
+			wrapMe: function() {
+				if (this.parentNode && !this.wrapper) {
+					var wrapper = document.createElement('d2l-table-wrapper');
+					this.parentNode.replaceChild(wrapper, this);
+					this.wrapper = wrapper;
+					Polymer.dom(wrapper).appendChild(this);
+					Polymer.dom.flush();
+				}
+			},
+			attached: function() {
+				this.wrapMe();
+			},
+			detached: function() {
+				this.wrapper && this.wrapper.remove();
+				this.wrapper = null;
+			}
 		});
 	</script>
 </dom-module>
