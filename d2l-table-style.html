@@ -95,7 +95,10 @@ TODO: When ShadowDOM v1 is available, use <slot> and ::slotted
 			:host-context([dir="rtl"]) .d2l-table > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child >:first-child,
 			:host-context([dir="rtl"]) .d2l-table > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child >:first-child,
 			:host-context([dir="rtl"]) .d2l-table > ::content > colgroup:first-child + tbody:last-child > tr:first-child >:first-child,
-			:host-context([dir="rtl"]) .d2l-table > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child >:first-child,
+			:host-context([dir="rtl"]) .d2l-table > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child >:first-child {
+				border-top-left-radius: 0;
+				border-top-right-radius: var(--d2l-table-border-radius);
+			}
 			:host .d2l-table > ::content > thead > tr:first-child >:last-child,
 			:host .d2l-table > ::content > tbody:only-child > tr:first-child >:last-child,
 			:host .d2l-table > ::content > tfoot:first-child + tbody:last-child > tr:first-child >:last-child,
@@ -105,7 +108,6 @@ TODO: When ShadowDOM v1 is available, use <slot> and ::slotted
 			:host .d2l-table > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child >:last-child,
 			:host .d2l-table > ::content > colgroup:first-child + tbody:last-child > tr:first-child >:last-child,
 			:host .d2l-table > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child >:last-child {
-				border-top-left-radius: 0;
 				border-top-right-radius: var(--d2l-table-border-radius);
 			}
 
@@ -117,7 +119,10 @@ TODO: When ShadowDOM v1 is available, use <slot> and ::slotted
 			:host-context([dir="rtl"]) .d2l-table > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child >:last-child,
 			:host-context([dir="rtl"]) .d2l-table > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child >:last-child,
 			:host-context([dir="rtl"]) .d2l-table > ::content > colgroup:first-child + tbody:last-child > tr:first-child >:last-child,
-			:host-context([dir="rtl"]) .d2l-table > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child >:last-child,
+			:host-context([dir="rtl"]) .d2l-table > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child >:last-child {
+				border-top-right-radius: 0;
+				border-top-left-radius: var(--d2l-table-border-radius);
+			}
 			:host .d2l-table > ::content > thead > tr:first-child >:first-child,
 			:host .d2l-table > ::content > tbody:only-child > tr:first-child >:first-child,
 			:host .d2l-table > ::content > tfoot:first-child + tbody:last-child > tr:first-child >:first-child,
@@ -127,7 +132,20 @@ TODO: When ShadowDOM v1 is available, use <slot> and ::slotted
 			:host .d2l-table > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child >:first-child,
 			:host .d2l-table > ::content > colgroup:first-child + tbody:last-child > tr:first-child >:first-child,
 			:host .d2l-table > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child >:first-child {
-				border-top-right-radius: 0;
+				border-top-left-radius: var(--d2l-table-border-radius);
+			}
+
+			/* This is needed for the rtl case when the there is only one td/th in a row. Doesn't affect all browsers */
+			:host-context([dir="rtl"]) .d2l-table > ::content > thead > tr:first-child >:only-child,
+			:host-context([dir="rtl"]) .d2l-table > ::content > tbody:only-child > tr:first-child >:only-child,
+			:host-context([dir="rtl"]) .d2l-table > ::content > tfoot:first-child + tbody:last-child > tr:first-child >:only-child,
+			:host-context([dir="rtl"]) .d2l-table > ::content > caption:first-child + tbody:last-child > tr:first-child >:only-child,
+			:host-context([dir="rtl"]) .d2l-table > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child >:only-child,
+			:host-context([dir="rtl"]) .d2l-table > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child >:only-child,
+			:host-context([dir="rtl"]) .d2l-table > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child >:only-child,
+			:host-context([dir="rtl"]) .d2l-table > ::content > colgroup:first-child + tbody:last-child > tr:first-child >:only-child,
+			:host-context([dir="rtl"]) .d2l-table > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child >:only-child {
+				border-top-right-radius: var(--d2l-table-border-radius);
 				border-top-left-radius: var(--d2l-table-border-radius);
 			}
 
@@ -152,14 +170,16 @@ TODO: When ShadowDOM v1 is available, use <slot> and ::slotted
 			:host-context([dir="rtl"]) .d2l-table > ::content > tbody:only-child > tr:last-child >:first-child,
 			:host-context([dir="rtl"]) .d2l-table > ::content > thead + tbody:last-child > tr:last-child >:first-child,
 			:host-context([dir="rtl"]) .d2l-table > ::content > caption + tbody:last-child > tr:last-child >:first-child,
-			:host-context([dir="rtl"]) .d2l-table > ::content > colgroup + tbody:last-child > tr:last-child >:first-child,
+			:host-context([dir="rtl"]) .d2l-table > ::content > colgroup + tbody:last-child > tr:last-child >:first-child {
+				border-bottom-left-radius: 0;
+				border-bottom-right-radius: var(--d2l-table-border-radius);
+			}
 			:host .d2l-table > ::content > thead:only-child > tr:last-child >:last-child,
 			:host .d2l-table > ::content > tfoot > tr:last-child >:last-child,
 			:host .d2l-table > ::content > tbody:only-child > tr:last-child >:last-child,
 			:host .d2l-table > ::content > thead + tbody:last-child > tr:last-child >:last-child,
 			:host .d2l-table > ::content > caption + tbody:last-child > tr:last-child >:last-child,
 			:host .d2l-table > ::content > colgroup + tbody:last-child > tr:last-child >:last-child {
-				border-bottom-left-radius: 0;
 				border-bottom-right-radius: var(--d2l-table-border-radius);
 			}
 
@@ -168,15 +188,27 @@ TODO: When ShadowDOM v1 is available, use <slot> and ::slotted
 			:host-context([dir="rtl"]) .d2l-table > ::content > tbody:only-child > tr:last-child >:last-child,
 			:host-context([dir="rtl"]) .d2l-table > ::content > thead + tbody:last-child > tr:last-child >:last-child,
 			:host-context([dir="rtl"]) .d2l-table > ::content > caption + tbody:last-child > tr:last-child >:last-child,
-			:host-context([dir="rtl"]) .d2l-table > ::content > colgroup + tbody:last-child > tr:last-child >:last-child,
+			:host-context([dir="rtl"]) .d2l-table > ::content > colgroup + tbody:last-child > tr:last-child >:last-child {
+				border-bottom-right-radius: 0;
+				border-bottom-left-radius: var(--d2l-table-border-radius);
+			}
 			:host .d2l-table > ::content > thead:only-child > tr:last-child >:first-child,
 			:host .d2l-table > ::content > tfoot > tr:last-child >:first-child,
 			:host .d2l-table > ::content > tbody:only-child > tr:last-child >:first-child,
 			:host .d2l-table > ::content > thead + tbody:last-child > tr:last-child >:first-child,
 			:host .d2l-table > ::content > caption + tbody:last-child > tr:last-child >:first-child,
 			:host .d2l-table > ::content > colgroup + tbody:last-child > tr:last-child >:first-child {
-				border-bottom-right-radius: 0;
 				border-bottom-left-radius: var(--d2l-table-border-radius);
+			}
+
+			:host-context([dir="rtl"]) .d2l-table > ::content > thead:only-child > tr:last-child >:only-child,
+			:host-context([dir="rtl"]) .d2l-table > ::content > tfoot > tr:last-child >:only-child,
+			:host-context([dir="rtl"]) .d2l-table > ::content > tbody:only-child > tr:last-child >:only-child,
+			:host-context([dir="rtl"]) .d2l-table > ::content > thead + tbody:last-child > tr:last-child >:only-child,
+			:host-context([dir="rtl"]) .d2l-table > ::content > caption + tbody:last-child > tr:last-child >:only-child,
+			:host-context([dir="rtl"]) .d2l-table > ::content > colgroup + tbody:last-child > tr:last-child >:only-child {
+				border-bottom-left-radius: var(--d2l-table-border-radius);
+				border-bottom-right-radius: var(--d2l-table-border-radius);
 			}
 
 			:host .d2l-table > ::content > tfoot > tr:first-child> td,
