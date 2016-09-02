@@ -10,7 +10,28 @@
 -->
 <dom-module id="d2l-table">
 	<template>
-		<style include="d2l-table-style"></style>
+		<style include="d2l-table-style">
+			:host {
+				--d2l-table-border-color: var(--d2l-color-titanius);
+				--d2l-table-border: 1px solid var(--d2l-table-border-color);
+				--d2l-table-border-radius: 0.3rem;
+				--d2l-table-header-background-color: var(--d2l-color-regolith);
+				--d2l-table-body-background-color: #fff;
+				--d2l-table-row-background-color-active: var(--d2l-color-celestine-light-1);
+				--d2l-table-row-border-color-active-selected: var(--d2l-color-celestine-light-2);
+				--d2l-table-row-background-color-active-selected: #EBF5FC;
+				--d2l-table-row-border-color-selected: var(--d2l-color-celestine-light-2);
+				--d2l-table-row-background-color-selected: var(--d2l-color-celestine-light-1);
+				background-color: transparent;
+				display: block;
+				overflow: auto;
+				width: 100%;
+			}
+		</style>
+		<!--
+			The neat thing about tables is that they push out non-table elements (tbody, tr, td, etc).
+			So, this needs to be a div, which most browsers (IE10+, Edge, Firefox, Chrome) accept.
+		-->
 		<div class="d2l-table">
 			<content></content>
 		</div>
