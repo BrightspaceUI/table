@@ -1,4 +1,4 @@
-**Looking for SASS-based `d2l-table`?** It's [over here](https://github.com/Brightspace/valence-ui-table/tree/sass).
+**Looking for SASS-based `d2l-table`?** It's [over here](https://github.com/Brightspace/d2l-table-ui/tree/sass).
 
 # d2l-table
 [![Bower version][bower-image]][bower-url]
