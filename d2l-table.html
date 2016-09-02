@@ -3,7 +3,44 @@
 <link rel="import" href="../d2l-colors/d2l-colors.html">
 
 <!--
-`<table is="d2l-table">`
+# D2L Table
+
+## Usage
+```
+	<link rel="import" href="d2l-table.html">
+	<table is="d2l-table">
+		<thead>
+			<tr>
+				<th>Table header cell</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<th>Table header cell</th>
+			</tr>
+		</tfoot>
+		<tbody>
+			<tr>
+				<td>Table cell</td>
+			</tr>
+		</tbody>
+	</table>
+```
+### Table Styles
+```
+	<link rel="import" href="d2l-table-style.html">
+	<style include="d2l-table-style"></style>
+	<table class="d2l-table">
+		<template>
+			<content></content>
+		</template>
+	</table>
+	<div class="d2l-table"><content></content></div>
+```
+
+## TODO
+
+When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect the interface
 
 @demo demo/index.html      Table demo
 @demo demo/index.rtl.html  RTL Table demo
