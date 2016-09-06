@@ -70,13 +70,13 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 			is: 'd2l-table',
 			extends: 'table',
 			wrapMe: function() {
-				if (!this.parentNode) {
+				if (!this.parentNode) { // Shouldn't ever happen, but safety first
 					return;
 				}
-				if (this.parentNode.tagName === 'D2L-TABLE-WRAPPER') {
+				if (this.parentNode.tagName === 'D2L-TABLE-WRAPPER') { // The table already is in a wrapper
 					this.wrapper = this.parentNode;
 					this.wrapper.shouldCleanup = false;
-				} else if (!this.wrapper) {
+				} else if (!this.wrapper) { // The table is mounted but doesn't have a wrapper. Create it
 					var wrapper = document.createElement('d2l-table-wrapper');
 					this.parentNode.replaceChild(wrapper, this);
 					this.wrapper = wrapper;
@@ -89,8 +89,11 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 				this.wrapMe();
 			},
 			detached: function() {
-				this.wrapper && this.wrapper.shouldCleanup && this.wrapper.remove();
-				this.wrapper = null;
+				if (this.wrapper) {
+					this.wrapper.shouldCleanup && this.wrapper.remove();
+					this.wrapper.table = null;
+					this.wrapper = null;
+				}
 			}
 		});
 	</script>

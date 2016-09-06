@@ -74,6 +74,7 @@
 					var wrappedTable = wrapper.table;
 					wrappedTable.remove();
 					expect(wrapper.parentNode).to.be.defined;
+					expect(wrapper.table).to.not.be.defined;
 				});
 			});
 		</script>
