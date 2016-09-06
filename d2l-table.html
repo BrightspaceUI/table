@@ -80,7 +80,7 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 				if (!this.parentNode) { // Shouldn't ever happen, but safety first
 					return;
 				}
-				if (this.parentNode.tagName.toUpperCase() === 'D2L-TABLE-WRAPPER') { // The table already is in a wrapper
+				if (this.parentNode.tagName && this.parentNode.tagName.toUpperCase() === 'D2L-TABLE-WRAPPER') { // The table already is in a wrapper
 					this._setWrapper(this.parentNode);
 				} else if (!this.wrapper) { // The table is mounted but doesn't have a wrapper. Create it
 					var wrapper = document.createElement('d2l-table-wrapper');
