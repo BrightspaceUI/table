@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>wrapper tests</title>
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
+		<link rel="import" href="../d2l-table.html">
+	</head>
+	<body>
+
+		<test-fixture id="no-wrapper">
+			<template>
+				<table is="d2l-table"></table>
+			</template>
+		</test-fixture>
+
+		<test-fixture id="with-wrapper">
+			<template>
+				<d2l-table-wrapper><table is="d2l-table"></table></d2l-table-wrapper>
+			</template>
+		</test-fixture>
+
+		<test-fixture id="empty-div">
+			<template>
+				<div></div>
+			</template>
+		</test-fixture>
+
+		<script>
+			describe('no wrapper', function() {
+				var table;
+				beforeEach(function() {
+					table = fixture('no-wrapper');
+				});
+
+				it('should create a wrapper', function() {
+					expect(table.wrapper).to.be.defined;
+					expect(table.wrapper.table).to.equal(table);
+					expect(table.wrapper.firstChild).to.equal(table);
+				});
+
+				it('should destroy the wrapper', function() {
+					var wrapper = table.wrapper;
+					table.remove();
+					expect(wrapper.parentNode).to.not.be.defined;
+				});
+
+				it('should recreate the wrapper', function() {
+					var div = fixture('empty-div');
+					table.remove();
+					div.appendChild(table);
+
+					expect(table.wrapper).to.be.defined;
+					expect(table.wrapper.table).to.equal(table);
+					expect(table.wrapper.firstChild).to.equal(table);
+					expect(table.wrapper.parentNode).to.equal(div);
+				});
+			});
+			describe('with wrapper', function() {
+				var wrapper;
+				beforeEach(function() {
+					wrapper = fixture('with-wrapper');
+				});
+
+				it('should have a wrapper', function() {
+					expect(wrapper.table).to.be.defined;
+					expect(wrapper.table.wrapper).to.equal(wrapper);
+					expect(wrapper.firstChild).to.equal(wrapper.table);
+				});
+
+				it('should not destroy the wrapper', function() {
+					var wrappedTable = wrapper.table;
+					wrappedTable.remove();
+					expect(wrapper.parentNode).to.be.defined;
+				});
+			});
+		</script>
+	</body>
+</html>

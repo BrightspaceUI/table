@@ -1,0 +1,12 @@
+{
+  "env": {
+    "es6": true,
+    "mocha": true
+  },
+  "globals": {
+    "fixture": true,
+    "expect": true,
+    "sinon": true,
+    "WCT": true
+  }
+}

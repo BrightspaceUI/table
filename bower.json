@@ -17,6 +17,7 @@
     "d2l-icons": "^2.7.0"
   },
   "devDependencies": {
-    "iron-component-page": "^1.1.7"
+    "iron-component-page": "^1.1.7",
+    "web-component-tester": "^4.3.5"
   }
 }
