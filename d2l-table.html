@@ -69,30 +69,33 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 		Polymer({
 			is: 'd2l-table',
 			extends: 'table',
+			properties: {
+				wrapper: {
+					type: Object,
+					readOnly: true,
+					value: null
+				}
+			},
 			wrapMe: function() {
 				if (!this.parentNode) { // Shouldn't ever happen, but safety first
 					return;
 				}
 				if (this.parentNode.tagName.toUpperCase() === 'D2L-TABLE-WRAPPER') { // The table already is in a wrapper
-					this.wrapper = this.parentNode;
-					this.wrapper.shouldCleanup = false;
+					this._setWrapper(this.parentNode);
 				} else if (!this.wrapper) { // The table is mounted but doesn't have a wrapper. Create it
 					var wrapper = document.createElement('d2l-table-wrapper');
 					this.parentNode.replaceChild(wrapper, this);
-					this.wrapper = wrapper;
-					this.wrapper.shouldCleanup = true;
+					this._setWrapper(wrapper);
 					this.wrapper.appendChild(this);
 				}
-				this.wrapper.table = this;
 			},
 			attached: function() {
 				this.wrapMe();
 			},
 			detached: function() {
 				if (this.wrapper) {
-					this.wrapper.shouldCleanup && this.wrapper.remove();
-					this.wrapper.table = null;
-					this.wrapper = null;
+					this.wrapper.remove();
+					this._setWrapper(null);
 				}
 			}
 		});
