@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 
 <dom-module id="d2l-table-wrapper">
 	<template strip-whitespace>
@@ -8,13 +9,72 @@
 				display: block;
 				overflow: auto;
 				width: 100%;
+				position: relative;
+				box-sizing: border-box;
+
+				--d2l-table-border-overflow: dashed 1px #d3d9e3;
+				border-left: var(--d2l-table-border-overflow);
+				border-right: var(--d2l-table-border-overflow);
+			}
+
+			:host([scrollbar-left]) {
+				border-left: none;
+			}
+
+			:host([scrollbar-right]) {
+				border-right: none;
 			}
 		</style>
 		<content></content>
 	</template>
 	<script>
 		Polymer({
-			is: 'd2l-table-wrapper'
+			is: 'd2l-table-wrapper',
+			behaviors: [Polymer.IronResizableBehavior],
+
+			properties: {
+				/** Whether this element has a scrollbar */
+				scrollbar: {
+					type: Boolean,
+					reflectToAttribute: true,
+					value: false,
+					readOnly: true
+				},
+				/** Whether this element is scrolled to the left */
+				scrollbarLeft: {
+					type: Boolean,
+					reflectToAttribute: true,
+					value: false,
+					readOnly: true
+				},
+				/** Whether this element is scrolled to the right */
+				scrollbarRight: {
+					type: Boolean,
+					reflectToAttribute: true,
+					value: false,
+					readOnly: true
+				}
+			},
+
+			listeners: {
+				'iron-resize': 'checkScrollbar',
+				'scroll': 'checkScrollThresholds'
+			},
+
+			attached: function() {
+				this.async(this.checkScrollbar);
+			},
+
+			checkScrollbar: function() {
+				this._setScrollbar(this.offsetWidth !== this.scrollWidth);
+				this.checkScrollThresholds();
+			},
+
+			checkScrollThresholds: function() {
+				var lowerScrollValue = this.scrollWidth - this.offsetWidth - this.scrollLeft;
+				this._setScrollbarLeft(this.scrollLeft === 0);
+				this._setScrollbarRight(lowerScrollValue <= 0);
+			}
 		});
 	</script>
 </dom-module>

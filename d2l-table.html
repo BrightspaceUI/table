@@ -86,7 +86,8 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 					var wrapper = document.createElement('d2l-table-wrapper');
 					this.parentNode.replaceChild(wrapper, this);
 					this._setWrapper(wrapper);
-					this.wrapper.appendChild(this);
+					Polymer.dom(this.wrapper).appendChild(this);
+					Polymer.dom.flush();
 				}
 			},
 			attached: function() {
