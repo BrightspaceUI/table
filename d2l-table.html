@@ -81,8 +81,7 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 					this.parentNode.replaceChild(wrapper, this);
 					this.wrapper = wrapper;
 					this.wrapper.shouldCleanup = true;
-					Polymer.dom(wrapper).appendChild(this);
-					Polymer.dom.flush();
+					this.wrapper.appendChild(this);
 				}
 				this.wrapper.table = this;
 			},
