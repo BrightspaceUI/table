@@ -1,80 +1,43 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
+<link rel="import" href="d2l-scroll-wrapper.html">
 
+<!--
+# D2L Table Wrapper
+
+Not meant to be used directly. Automatically created when using `<table is="d2l-table">`
+-->
 <dom-module id="d2l-table-wrapper">
 	<template strip-whitespace>
 		<style>
 			:host {
 				background-color: transparent;
 				display: block;
-				overflow: auto;
 				width: 100%;
 				position: relative;
-				box-sizing: border-box;
 
 				--d2l-table-border-overflow: dashed 1px #d3d9e3;
+			}
+
+			d2l-scroll-wrapper {
 				border-left: var(--d2l-table-border-overflow);
 				border-right: var(--d2l-table-border-overflow);
 			}
 
-			:host([scrollbar-left]) {
+			d2l-scroll-wrapper[scrollbar-left] {
 				border-left: none;
 			}
 
-			:host([scrollbar-right]) {
+			d2l-scroll-wrapper[scrollbar-right] {
 				border-right: none;
 			}
 		</style>
-		<content></content>
+		<d2l-scroll-wrapper>
+			<content></content>
+		</d2l-scroll-wrapper>
 	</template>
 	<script>
 		Polymer({
-			is: 'd2l-table-wrapper',
-			behaviors: [Polymer.IronResizableBehavior],
-
-			properties: {
-				/** Whether this element has a scrollbar */
-				scrollbar: {
-					type: Boolean,
-					reflectToAttribute: true,
-					value: false,
-					readOnly: true
-				},
-				/** Whether this element is scrolled to the left */
-				scrollbarLeft: {
-					type: Boolean,
-					reflectToAttribute: true,
-					value: false,
-					readOnly: true
-				},
-				/** Whether this element is scrolled to the right */
-				scrollbarRight: {
-					type: Boolean,
-					reflectToAttribute: true,
-					value: false,
-					readOnly: true
-				}
-			},
-
-			listeners: {
-				'iron-resize': 'checkScrollbar',
-				'scroll': 'checkScrollThresholds'
-			},
-
-			attached: function() {
-				this.async(this.checkScrollbar);
-			},
-
-			checkScrollbar: function() {
-				this._setScrollbar(this.offsetWidth !== this.scrollWidth);
-				this.checkScrollThresholds();
-			},
-
-			checkScrollThresholds: function() {
-				var lowerScrollValue = this.scrollWidth - this.offsetWidth - this.scrollLeft;
-				this._setScrollbarLeft(this.scrollLeft === 0);
-				this._setScrollbarRight(lowerScrollValue <= 0);
-			}
+			is: 'd2l-table-wrapper'
 		});
 	</script>
 </dom-module>

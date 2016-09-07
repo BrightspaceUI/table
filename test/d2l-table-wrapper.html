@@ -28,34 +28,6 @@
 			</template>
 		</test-fixture>
 
-		<test-fixture id="no-scrollbar">
-			<template>
-				<div style="width: 300px">
-					<table is="d2l-table">
-						<tbody>
-							<tr>
-								<td><div style="width: 20px">H</div></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</template>
-		</test-fixture>
-
-		<test-fixture id="with-scrollbar">
-			<template>
-				<div style="width: 300px">
-					<table is="d2l-table">
-						<tbody>
-							<tr>
-								<td><div style="width: 300px">H</div></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</template>
-		</test-fixture>
-
 		<script>
 			describe('no wrapper', function() {
 				var table;
@@ -65,7 +37,7 @@
 
 				it('should create a wrapper', function() {
 					expect(table.wrapper).not.to.be.null;
-					expect(table.wrapper.firstChild).to.equal(table);
+					expect(Polymer.dom(table.wrapper).firstChild).to.equal(table);
 				});
 
 				it('should destroy the wrapper', function() {
@@ -76,11 +48,12 @@
 
 				it('should recreate the wrapper', function() {
 					var div = fixture('empty-div');
-					table.remove();
-					div.appendChild(table);
+					Polymer.dom(Polymer.dom(table).parentNode).removeChild(table);
+					Polymer.dom(div).appendChild(table);
+					Polymer.dom.flush();
 
-					expect(table.wrapper).not.to.be.null;
-					expect(table.wrapper.firstChild).to.equal(table);
+					expect(Polymer.dom(table.wrapper)).not.to.be.null;
+					expect(Polymer.dom(table.wrapper).firstChild).to.equal(table);
 					expect(table.wrapper.parentNode).to.equal(div);
 				});
 			});
@@ -91,66 +64,18 @@
 					wrapper = fixture('with-wrapper');
 				});
 
-				it('should have a wrapper', function() {
-					expect(wrapper.firstChild).not.to.be.null;
-					expect(wrapper.firstChild.wrapper).to.equal(wrapper);
-				});
-
-				it('should destroy the wrapper', function() {
-					wrapper.firstChild.remove();
-					expect(wrapper.parentNode).to.be.null;
-				});
-			});
-
-			describe('no scrollbar', function() {
-				var wrapper;
-				beforeEach(function() {
-					wrapper = fixture('no-scrollbar').querySelector('d2l-table-wrapper');
-				});
-
-				it('should not have scrollbar attribute', function(done) {
+				it('should have a wrapper', function(done) {
 					flush(function() {
-						expect(wrapper.scrollbar).to.equal(false);
+						expect(Polymer.dom(wrapper).firstChild).not.to.be.null;
+						expect(Polymer.dom(wrapper).firstChild.wrapper).to.equal(wrapper);
 						done();
 					});
 				});
 
-				it('should have scrollbar-left and scrollbar-right attributes', function(done) {
+				it('should destroy the wrapper', function(done) {
 					flush(function() {
-						expect(wrapper.scrollbarLeft).to.equal(true);
-						expect(wrapper.scrollbarRight).to.equal(true);
-						done();
-					});
-				});
-			});
-
-			describe('scrollbar', function() {
-				var wrapper;
-				beforeEach(function() {
-					wrapper = fixture('with-scrollbar').querySelector('d2l-table-wrapper');
-				});
-
-				it('should have scrollbar attribute', function(done) {
-					flush(function() {
-						expect(wrapper.scrollbar).to.equal(true);
-						done();
-					});
-				});
-
-				it('should have scrollbar-left attribute', function(done) {
-					wrapper.scrollLeft = 0;
-					flush(function() {
-						expect(wrapper.scrollbarLeft).to.equal(true);
-						expect(wrapper.scrollbarRight).to.equal(false);
-						done();
-					});
-				});
-
-				it('should have scrollbar-right attribute', function(done) {
-					wrapper.scrollLeft = wrapper.scrollWidth;
-					flush(function() {
-						expect(wrapper.scrollbarLeft).to.equal(false);
-						expect(wrapper.scrollbarRight).to.equal(true);
+						Polymer.dom(wrapper).firstChild.remove();
+						expect(wrapper.parentNode).to.be.null;
 						done();
 					});
 				});
