@@ -37,7 +37,7 @@
 
 				it('should create a wrapper', function() {
 					expect(table.wrapper).not.to.be.null;
-					expect(table.wrapper.firstChild).to.equal(table);
+					expect(Polymer.dom(table.wrapper).firstChild).to.equal(table);
 				});
 
 				it('should destroy the wrapper', function() {
@@ -48,28 +48,36 @@
 
 				it('should recreate the wrapper', function() {
 					var div = fixture('empty-div');
-					table.remove();
-					div.appendChild(table);
+					Polymer.dom(Polymer.dom(table).parentNode).removeChild(table);
+					Polymer.dom(div).appendChild(table);
+					Polymer.dom.flush();
 
-					expect(table.wrapper).not.to.be.null;
-					expect(table.wrapper.firstChild).to.equal(table);
+					expect(Polymer.dom(table.wrapper)).not.to.be.null;
+					expect(Polymer.dom(table.wrapper).firstChild).to.equal(table);
 					expect(table.wrapper.parentNode).to.equal(div);
 				});
 			});
+
 			describe('with wrapper', function() {
 				var wrapper;
 				beforeEach(function() {
 					wrapper = fixture('with-wrapper');
 				});
 
-				it('should have a wrapper', function() {
-					expect(wrapper.firstChild).not.to.be.null;
-					expect(wrapper.firstChild.wrapper).to.equal(wrapper);
+				it('should have a wrapper', function(done) {
+					flush(function() {
+						expect(Polymer.dom(wrapper).firstChild).not.to.be.null;
+						expect(Polymer.dom(wrapper).firstChild.wrapper).to.equal(wrapper);
+						done();
+					});
 				});
 
-				it('should destroy the wrapper', function() {
-					wrapper.firstChild.remove();
-					expect(wrapper.parentNode).to.be.null;
+				it('should destroy the wrapper', function(done) {
+					flush(function() {
+						Polymer.dom(wrapper).firstChild.remove();
+						expect(wrapper.parentNode).to.be.null;
+						done();
+					});
 				});
 			});
 		</script>

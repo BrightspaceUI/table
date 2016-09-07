@@ -2,6 +2,7 @@
 <html>
 
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     	<script>
             window.Polymer = window.Polymer || {};
@@ -25,28 +26,28 @@
             }
 
 			.fixed-mobile-width {
-				width: 375px
+                max-width: 375px;
+                width: 100%;
 			}
 
 			.fixed-tablet-width {
-				width: 768px
+                max-width: 768px;
+                width: 100%;
 			}
 
 			.full-page-width {
-				width: 100%;
+                width: 100%;
 			}
     	</style>
     </head>
 
     <body unresolved>
-		<div class="full-page-width">
-			<responsive-demo></responsive-demo>
-		</div>
-		<div class="fixed-mobile-width">
-			<responsive-demo></responsive-demo>
-		</div>
-		<div class="fixed-tablet-width">
-			<responsive-demo></responsive-demo>
-		</div>
+        <h1>Responsive table demo</h1>
+        <h2>100%</h2>
+		<responsive-demo class="full-page-width"></responsive-demo>
+        <h2>Tablet</h2>
+		<responsive-demo class="fixed-tablet-width"></responsive-demo>
+        <h2>Mobile</h2>
+		<responsive-demo class="fixed-mobile-width"></responsive-demo>
 	</body>
 </html>

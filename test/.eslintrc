@@ -5,6 +5,7 @@
   },
   "globals": {
     "fixture": true,
+    "flush": true,
     "expect": true,
     "sinon": true,
     "WCT": true

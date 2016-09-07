@@ -1,16 +1,39 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="d2l-scroll-wrapper.html">
 
+<!--
+# D2L Table Wrapper
+
+Not meant to be used directly. Automatically created when using `<table is="d2l-table">`
+-->
 <dom-module id="d2l-table-wrapper">
 	<template strip-whitespace>
 		<style>
 			:host {
 				background-color: transparent;
 				display: block;
-				overflow: auto;
 				width: 100%;
+				position: relative;
+
+				--d2l-table-border-overflow: dashed 1px #d3d9e3;
+			}
+
+			d2l-scroll-wrapper {
+				border-left: var(--d2l-table-border-overflow);
+				border-right: var(--d2l-table-border-overflow);
+			}
+
+			d2l-scroll-wrapper[scrollbar-left] {
+				border-left: none;
+			}
+
+			d2l-scroll-wrapper[scrollbar-right] {
+				border-right: none;
 			}
 		</style>
-		<content></content>
+		<d2l-scroll-wrapper>
+			<content></content>
+		</d2l-scroll-wrapper>
 	</template>
 	<script>
 		Polymer({
