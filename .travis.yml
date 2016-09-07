@@ -8,4 +8,7 @@ addons:
 before_install:
 - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 - export PATH=$JAVA_HOME/bin:$PATH
-sudo: false
+script:
+- npm run test:lint:js
+- npm run test:lint:wc
+- npm run test:galen:all
