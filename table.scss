@@ -82,6 +82,17 @@ $vui-table-row-background-color-selected: $d2l-color-celestine-light-1;
 	  colgroup:first-child + tfoot + tbody:last-child > tr:first-child > :last-child {
 		@include vui-table-top-border-radius('right');
 	}
+	& thead > tr:first-child > :only-child,
+	  tbody:only-child > tr:first-child > :only-child,
+	  tfoot:first-child + tbody:last-child > tr:first-child > :only-child,
+	  caption:first-child + tbody:last-child > tr:first-child > :only-child,
+	  caption:first-child + tfoot + tbody:last-child > tr:first-child > :only-child,
+	  caption:first-child + colgroup + tbody:last-child > tr:first-child > :only-child,
+	  caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > :only-child,
+	  colgroup:first-child + tbody:last-child > tr:first-child > :only-child,
+	  colgroup:first-child + tfoot + tbody:last-child > tr:first-child > :only-child {
+		@include vui-table-top-border-radius('only');
+	}
 
 	& thead:only-child > tr:last-child > th,
 	  tfoot > tr:last-child > th,
@@ -112,6 +123,15 @@ $vui-table-row-background-color-selected: $d2l-color-celestine-light-1;
 	  caption + tbody:last-child > tr:last-child > :last-child,
 	  colgroup + tbody:last-child > tr:last-child > :last-child {
 		@include vui-table-bottom-border-radius('right');
+	}
+
+	& thead:only-child > tr:last-child > :only-child,
+	  tfoot > tr:last-child > :only-child,
+	  tbody:only-child > tr:last-child > :only-child,
+	  thead + tbody:last-child > tr:last-child > :only-child,
+	  caption + tbody:last-child > tr:last-child > :only-child,
+	  colgroup + tbody:last-child > tr:last-child > :only-child {
+		@include vui-table-bottom-border-radius('only');
 	}
 
 	& tfoot > tr:first-child> td,
@@ -183,11 +203,16 @@ $vui-table-row-background-color-selected: $d2l-color-celestine-light-1;
 			border-bottom-left-radius: 0;
 			border-bottom-right-radius: $vui-table-border-radius;
 		}
-	} @else {
+	} @else if $side == 'right' {
 		border-bottom-right-radius: $vui-table-border-radius;
 		[dir='rtl'] & {
 			border-bottom-right-radius: 0;
 			border-bottom-left-radius: $vui-table-border-radius;
+		}
+	} @else {
+		[dir='rtl'] & {
+			border-bottom-left-radius: $vui-table-border-radius;
+			border-bottom-right-radius: $vui-table-border-radius;
 		}
 	}
 }
@@ -199,10 +224,15 @@ $vui-table-row-background-color-selected: $d2l-color-celestine-light-1;
 			border-top-left-radius: 0;
 			border-top-right-radius: $vui-table-border-radius;
 		}
-	} @else {
+	} @else if $side == 'right' {
 		border-top-right-radius: $vui-table-border-radius;
 		[dir='rtl'] & {
 			border-top-right-radius: 0;
+			border-top-left-radius: $vui-table-border-radius;
+		}
+	} @else {
+		[dir='rtl'] & {
+			border-top-right-radius: $vui-table-border-radius;
 			border-top-left-radius: $vui-table-border-radius;
 		}
 	}
