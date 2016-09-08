@@ -1,35 +1,31 @@
 @objects
 
-	screenshot-small-*    .screenshot-small
-		table             table
-			head          thead
-				tr-*          tr
-			body          tbody
-				tr-*          tr
-			foot          tfoot
-				tr-*          tr
+	small-*               .screenshot-small
+		head              thead
+			tr-*              tr
+		body              tbody
+			tr-*              tr
+		foot              tfoot
+			tr-*              tr
 
-	screenshot-rows-*     .screenshot-rows
-		table             table
-			tr-*          tr
+	rows-*                .screenshot-rows
+		tr-*              tr
 
-	screenshot-sort-*     .screenshot-sort
-		table             table
-			tr-*          tr
+	sort-*                .screenshot-sort
+		tr-*              tr
 
-	screenshot-wide-*     .screenshot-wide
-		table             table
-			tr-*          tr
+	wide-*                .screenshot-wide
+		tr-*              tr
 
 @groups
-	screenshot-small screenshot-small-*.table.head,screenshot-small-*.table.body,screenshot-small-*.table.foot
-	screenshot-rows  screenshot-rows-*.table
-	screenshot-sort  screenshot-sort-*.table
-	screenshot-wide  screenshot-wide-*.table
+	small small-*.head,small-*.body,small-*.foot
+	rows  rows-1,rows-2
+	sort  sort-1,sort-2
+	wide  wide-1,wide-2
 
 == D2L Table ==
 
-	@forEach [&screenshot-small,&screenshot-rows,&screenshot-sort,&screenshot-wide] as part
+	@forEach [&small,&rows,&sort,&wide] as part
 		${part}:
 			image file dumps/d2l-table/objects/${part}.png
 
@@ -42,22 +38,22 @@
 				below ${prevTr} 0px
 				image file dumps/d2l-table/objects/${tr}.png
 
-	screenshot-small-1.table.head:
-		above screenshot-small-1.table.body 0px
-		aligned horizontally top screenshot-small-1.table
+	small-1.head:
+		above small-1.body 0px
+		aligned horizontally top small-1
 
-	screenshot-small-1.table.body:
-		above screenshot-small-1.table.foot 0px
+	small-1.body:
+		above small-1.foot 0px
 
-	screenshot-small-1.table.foot:
-		aligned horizontally bottom screenshot-small-1.table
+	small-1.foot:
+		aligned horizontally bottom small-1
 
-	screenshot-small-2.table.head:
-		above screenshot-small-2.table.body 0px
-		aligned horizontally top screenshot-small-2.table
+	small-2.head:
+		above small-2.body 0px
+		aligned horizontally top small-2
 
-	screenshot-small-2.table.body:
-		above screenshot-small-2.table.foot 0px
+	small-2.body:
+		above small-2.foot 0px
 
-	screenshot-small-2.table.foot:
-		aligned horizontally bottom screenshot-small-2.table
+	small-2.foot:
+		aligned horizontally bottom small-2

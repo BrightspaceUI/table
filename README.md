@@ -10,9 +10,9 @@ Tables are styled like this:
 
 A [Polymer](https://www.polymer-project.org/1.0/)-based web component for D2L tables, which includes styling for tables.
 
-![screenshot of table](/dumps/d2l-table/objects/screenshot-small-1.png)
+![screenshot of table](/dumps/d2l-table/objects/small-1.png)
 
-![screenshot of responsive table](/dumps/d2l-table/objects/screenshot-wide-1.png)
+![screenshot of responsive table](/dumps/d2l-table/objects/wide-1.png)
 
 For further information on this and other D2L UI components, see the docs at [ui.valence.d2l.com](http://ui.valence.d2l.com/).
 

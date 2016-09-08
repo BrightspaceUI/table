@@ -3,7 +3,7 @@
   "description": "Mixins and CSS for applying table styles",
   "private": true,
   "scripts": {
-    "clean": "rimraf dumps/ reports/",
+    "clean": "rimraf dumps/d2l-table reports/",
     "postinstall": "bower install",
     "predump": "npm run -s clean",
     "dump": "npm run -s dump:galen",
