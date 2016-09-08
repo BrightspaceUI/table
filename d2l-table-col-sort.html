@@ -1,18 +1,20 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../d2l-icons/tier1-icons.html">
+<link rel="import" href="../d2l-colors/d2l-colors.html">
 
 <!--
 # D2L Table Column Sort
 -->
 <dom-module id="d2l-table-col-sort">
 	<template>
-		<style>
+		<style include="d2l-colors">
 			:host {
 				display: inline-block;
 				vertical-align: middle;
 			}
 			iron-icon {
+				--iron-icon-fill-color: var(--d2l-color-tungsten);
 				--iron-icon-height: 18px;
 				--iron-icon-width: 18px;
 			}
