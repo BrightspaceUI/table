@@ -1,8 +1,0 @@
-{
-	"use": ["autoprefixer"],
-	"input": "table.css",
-	"output": "table.css",
-	"autoprefixer": {
-		"browsers": "Last 4 versions, Firefox ESR, IE >= 9, Safari >= 6"
-	}
-}

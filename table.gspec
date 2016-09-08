@@ -1,14 +1,63 @@
 @objects
 
-	table-*       table
-		head      thead
-		foot      tfoot
-		body      tbody
-		tr-*      tr
+	screenshot-small-*    .screenshot-small
+		table             table
+			head          thead
+				tr-*          tr
+			body          tbody
+				tr-*          tr
+			foot          tfoot
+				tr-*          tr
+
+	screenshot-rows-*     .screenshot-rows
+		table             table
+			tr-*          tr
+
+	screenshot-sort-*     .screenshot-sort
+		table             table
+			tr-*          tr
+
+	screenshot-wide-*     .screenshot-wide
+		table             table
+			tr-*          tr
+
+@groups
+	screenshot-small screenshot-small-*.table.head,screenshot-small-*.table.body,screenshot-small-*.table.foot
+	screenshot-rows  screenshot-rows-*.table
+	screenshot-sort  screenshot-sort-*.table
+	screenshot-wide  screenshot-wide-*.table
 
 == D2L Table ==
 
-	@forEach [table-*] as table
-		@forEach [${table}.tr-*] as tr
+	@forEach [&screenshot-small,&screenshot-rows,&screenshot-sort,&screenshot-wide] as part
+		${part}:
+			image file dumps/d2l-table/objects/${part}.png
+
+		${part}.tr-1:
+			aligned horizontally top ${part}
+			image file dumps/d2l-table/objects/${part}.tr-1.png
+
+		@forEach [${part}.tr-*] as tr, prev as prevTr
 			${tr}:
-				image file dumps/vui-table/objects/${tr}.png
+				below ${prevTr} 0px
+				image file dumps/d2l-table/objects/${tr}.png
+
+	screenshot-small-1.table.head:
+		above screenshot-small-1.table.body 0px
+		aligned horizontally top screenshot-small-1.table
+
+	screenshot-small-1.table.body:
+		above screenshot-small-1.table.foot 0px
+
+	screenshot-small-1.table.foot:
+		aligned horizontally bottom screenshot-small-1.table
+
+	screenshot-small-2.table.head:
+		above screenshot-small-2.table.body 0px
+		aligned horizontally top screenshot-small-2.table
+
+	screenshot-small-2.table.body:
+		above screenshot-small-2.table.foot 0px
+
+	screenshot-small-2.table.foot:
+		aligned horizontally bottom screenshot-small-2.table
