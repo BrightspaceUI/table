@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../d2l-icons/tier1-icons.html">
+
+<!--
+# D2L Table Column Sort
+-->
+<dom-module id="d2l-table-col-sort">
+	<template>
+		<style>
+			:host {
+				display: inline-block;
+				vertical-align: middle;
+			}
+			iron-icon {
+				--iron-icon-height: 18px;
+				--iron-icon-width: 18px;
+			}
+		</style>
+		<iron-icon icon="d2l-tier1:[[_icon(desc)]]"></iron-icon>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-table-col-sort',
+			properties: {
+				desc: {
+					type: Boolean,
+					value: false
+				}
+			},
+			_icon: function(desc) {
+				return desc ? 'arrow-toggle-down' : 'arrow-toggle-up';
+			}
+		});
+	</script>
+</dom-module>

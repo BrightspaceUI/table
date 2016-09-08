@@ -1,5 +1,6 @@
 <link rel="import" href="../../polymer/polymer.html">
 <link rel="import" href="../d2l-table.html">
+<link rel="import" href="../d2l-table-col-sort.html">
 
 <dom-module id="simple-demo">
 	<template>
@@ -95,11 +96,11 @@
 			<!-- active only -->
 			<table is="d2l-table">
 				<thead>
-					<th class="d2l-table-col-sort-asc">
-						Ascending
+					<th>
+						Ascending<d2l-table-col-sort></d2l-table-col-sort>
 					</th>
-					<th class="d2l-table-col-sort-desc">
-						Descending
+					<th>
+						Descending<d2l-table-col-sort desc></d2l-table-col-sort>
 					</th>
 				</thead>
 				<tbody>
