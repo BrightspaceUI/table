@@ -290,20 +290,6 @@ TODO: When ShadowDOM v1 is available, use <slot> and ::slotted
 			:host([selectable]) > ::content > tbody > tr:last-child[selected]:hover > th {
 				border-bottom-color: var(--d2l-table-row-border-color-active-selected) !important;
 			}
-
-			:host > ::content .d2l-table-col-sort-asc::after,
-			:host > ::content .d2l-table-col-sort-desc::after {
-				display: inline-block;
-				vertical-align: middle;
-			}
-
-			:host > ::content .d2l-table-col-sort-asc::after {
-				content: url('../d2l-icons/images/tier1/arrow-toggle-up.svg');
-			}
-
-			:host > ::content .d2l-table-col-sort-desc::after {
-				content: url('../d2l-icons/images/tier1/arrow-toggle-down.svg');
-			}
 		</style>
 	</template>
 </dom-module>

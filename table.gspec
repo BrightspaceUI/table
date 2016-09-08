@@ -13,6 +13,7 @@
 
 	sort-*                .screenshot-sort
 		tr-*              tr
+		sort-icon-*       thead d2l-table-col-sort
 
 	wide-*                .screenshot-wide
 		tr-*              tr
@@ -37,6 +38,11 @@
 			${tr}:
 				below ${prevTr} 0px
 				image file dumps/d2l-table/objects/${tr}.png
+
+	@forEach [&sort] as part
+		${part}.sort-icon-*:
+			# The 1px is to compensate for the border
+			aligned horizontally centered ${part}.tr-1 1px
 
 	small-1.head:
 		above small-1.body 0px
