@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+	<head>
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script>
+			/*
+			  window.Polymer = window.Polymer || {};
+			  window.Polymer.dom = 'shadow';
+			 */
+		</script>
+		<link rel="import" href="simple-demo.html">
+		<link rel="stylesheet" href="https://s.brightspace.com/lib/fonts/0.3.0/fonts.css">
+		<style is="custom-style">
+			html {
+				font-size: 20px;
+			}
+
+			body {
+				font-family: 'Lato', sans-serif;
+				line-height: 1.5;
+				margin: 1rem;
+			}
+
+			:root {
+				font-size: 20px;
+			}
+		</style>
+	</head>
+
+	<body unresolved>
+		<div class="ltr">
+			<simple-demo></simple-demo>
+		</div>
+		<div dir="rtl" class="rtl">
+			<simple-demo></simple-demo>
+		</div>
+	</body>
+</html>

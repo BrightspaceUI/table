@@ -1,14 +1,59 @@
 @objects
 
-	table-*       table
-		head      thead
-		foot      tfoot
-		body      tbody
-		tr-*      tr
+	small-*               .screenshot-small
+		head              thead
+			tr-*              tr
+		body              tbody
+			tr-*              tr
+		foot              tfoot
+			tr-*              tr
+
+	rows-*                .screenshot-rows
+		tr-*              tr
+
+	sort-*                .screenshot-sort
+		tr-*              tr
+
+	wide-*                .screenshot-wide
+		tr-*              tr
+
+@groups
+	small small-*.head,small-*.body,small-*.foot
+	rows  rows-1,rows-2
+	sort  sort-1,sort-2
+	wide  wide-1,wide-2
 
 == D2L Table ==
 
-	@forEach [table-*] as table
-		@forEach [${table}.tr-*] as tr
+	@forEach [&small,&rows,&sort,&wide] as part
+		${part}:
+			image file dumps/d2l-table/objects/${part}.png
+
+		${part}.tr-1:
+			aligned horizontally top ${part}
+			image file dumps/d2l-table/objects/${part}.tr-1.png
+
+		@forEach [${part}.tr-*] as tr, prev as prevTr
 			${tr}:
-				image file dumps/vui-table/objects/${tr}.png
+				below ${prevTr} 0px
+				image file dumps/d2l-table/objects/${tr}.png
+
+	small-1.head:
+		above small-1.body 0px
+		aligned horizontally top small-1
+
+	small-1.body:
+		above small-1.foot 0px
+
+	small-1.foot:
+		aligned horizontally bottom small-1
+
+	small-2.head:
+		above small-2.body 0px
+		aligned horizontally top small-2
+
+	small-2.body:
+		above small-2.foot 0px
+
+	small-2.foot:
+		aligned horizontally bottom small-2
