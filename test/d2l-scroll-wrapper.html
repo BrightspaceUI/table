@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>wrapper tests</title>
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
+		<link rel="import" href="../d2l-scroll-wrapper.html">
+	</head>
+	<body>
+
+		<test-fixture id="no-scrollbar">
+			<template>
+				<div style="width: 300px">
+					<d2l-scroll-wrapper>
+						<div style="width: 20px">H</div>
+					</d2l-scroll-wrapper>
+				</div>
+			</template>
+		</test-fixture>
+
+		<test-fixture id="with-scrollbar">
+			<template>
+				<div style="width: 300px">
+					<d2l-scroll-wrapper>
+						<div style="width: 350px">H</div>
+					</d2l-scroll-wrapper>
+				</div>
+			</template>
+		</test-fixture>
+
+		<script>
+			describe('no scrollbar', function() {
+				var wrapper;
+				beforeEach(function() {
+					wrapper = fixture('no-scrollbar').querySelector('d2l-scroll-wrapper');
+				});
+
+				it('should not have h-scrollbar attribute', function(done) {
+					flush(function() {
+						expect(wrapper.hScrollbar).to.equal(false);
+						done();
+					});
+				});
+
+				it('should have scrollbar-left and scrollbar-right attributes', function(done) {
+					flush(function() {
+						expect(wrapper.scrollbarLeft).to.equal(true);
+						expect(wrapper.scrollbarRight).to.equal(true);
+						done();
+					});
+				});
+			});
+
+			describe('scrollbar', function() {
+				var wrapper;
+				beforeEach(function() {
+					wrapper = fixture('with-scrollbar').querySelector('d2l-scroll-wrapper');
+				});
+
+				it('should have h-scrollbar attribute', function(done) {
+					flush(function() {
+						expect(wrapper.hScrollbar).to.equal(true);
+						done();
+					});
+				});
+
+				it('should have scrollbar-left attribute', function(done) {
+					wrapper.scrollLeft = 0;
+					flush(function() {
+						expect(wrapper.scrollbarLeft).to.equal(true);
+						expect(wrapper.scrollbarRight).to.equal(false);
+						done();
+					});
+				});
+
+				it('should have scrollbar-right attribute', function(done) {
+					wrapper.scrollLeft = wrapper.scrollWidth;
+					flush(function() {
+						expect(wrapper.scrollbarLeft).to.equal(false);
+						expect(wrapper.scrollbarRight).to.equal(true);
+						done();
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

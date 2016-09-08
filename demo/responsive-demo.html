@@ -3,8 +3,13 @@
 
 <dom-module id="responsive-demo">
 	<template>
+		<style>
+			:host {
+				display: block;
+			}
+		</style>
+		<h3>Small Table</h3>
 		<table is="d2l-table" selectable>
-			<caption>Small Table</caption>
 			<thead>
 			<tr>
 				<th>Column header 1</th>
@@ -24,8 +29,46 @@
 			</tr>
 			</tbody>
 		</table>
+		<h3>Simple Table</h3>
 		<table is="d2l-table" selectable>
-			<caption>Table Caption</caption>
+			<tr>
+				<th>Column header 1</th>
+				<th>Column header 2</th>
+			</tr>
+			<tr>
+				<th>Row 1 Column 1</th>
+				<td>Row 1 Column 2</td>
+			</tr>
+		</table>
+		<h3>Medium Table</h3>
+		<table is="d2l-table" selectable>
+			<thead>
+			<tr>
+				<th>Column header 1</th>
+				<th>Column header 2</th>
+				<th>Column header 3</th>
+				<th>Column header 4</th>
+			</tr>
+			</thead>
+			<tfoot>
+			<tr>
+				<th>Column footer 1</th>
+				<th>Column footer 2</th>
+				<th>Column footer 3</th>
+				<th>Column footer 4</th>
+			</tr>
+			</tfoot>
+			<tbody>
+			<tr>
+				<th>Row 1 Column 1</th>
+				<td>Row 1 Column 2</td>
+				<td>Row 1 Column 3</td>
+				<td>Row 1 Column 4</td>
+			</tr>
+			</tbody>
+		</table>
+		<h3>Large Table</h3>
+		<table is="d2l-table" selectable>
 			<thead>
 			<tr>
 				<th>Column header 1</th>
