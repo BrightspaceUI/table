@@ -11,4 +11,4 @@ before_install:
 script:
 - npm run test:lint:js
 - npm run test:lint:wc
-- npm run test:galen:all
+- npm run test:galen
