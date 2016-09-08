@@ -2,7 +2,6 @@
 
 # d2l-table
 [![Bower version][bower-image]][bower-url]
-[![NPM version][npm-image]][npm-url]
 [![Build status][ci-image]][ci-url]
 [![Dependency Status][dependencies-image]][dependencies-url]
 
@@ -58,7 +57,7 @@ HTML:
 
 #### Row Styles
 
-![screenshot of table with styled rows](/screenshots/rows.png)
+![screenshot of table with styled rows](/dumps/d2l-table/objects/rows-1.png)
 
 HTML:
 ```html
@@ -77,7 +76,7 @@ HTML:
 
 #### Header Icons
 
-![screenshot of table with sort icons](/screenshots/sort.png)
+![screenshot of table with sort icons](/dumps/d2l-table/objects/sort-1.png)
 
 HTML:
 ```html
@@ -113,8 +112,6 @@ See the [Best Practices & Style Guide](https://github.com/Brightspace/valence-ui
 
 [bower-url]: http://bower.io/search/?q=d2l-table
 [bower-image]: https://img.shields.io/bower/v/d2l-table.svg
-[npm-url]: https://www.npmjs.org/package/d2l-table
-[npm-image]: https://img.shields.io/npm/v/d2l-table.svg
 [ci-url]: https://travis-ci.org/Brightspace/d2l-table-ui
 [ci-image]: https://img.shields.io/travis-ci/Brightspace/d2l-table-ui.svg
 [dependencies-url]: https://david-dm.org/brightspace/d2l-table-ui
