@@ -17,7 +17,7 @@ TODO: When ShadowDOM v1 is available, use <slot> and ::slotted
 <dom-module id="d2l-table-style">
 	<template>
 		<style include="d2l-colors">
-			:host {
+			table {
 				background-color: transparent;
 				border-collapse: separate !important;
 				border-spacing: 0;
@@ -25,28 +25,28 @@ TODO: When ShadowDOM v1 is available, use <slot> and ::slotted
 				width: 100%;
 			}
 
-			:host > ::content > thead {
+			:host table > ::content > thead {
 				display: table-header-group;
 			}
 
-			:host > ::content > tfoot {
+			:host table > ::content > tfoot {
 				display: table-footer-group;
 			}
 
-			:host > ::content > tbody {
+			:host table > ::content > tbody {
 				background-color: var(--d2l-table-body-background-color);
 			}
 
-			:host > ::content > * > tr,
-			:host > ::content > tr {
+			:host table > ::content > * > tr,
+			:host table > ::content > tr {
 				display: table-row;
 			}
 
-			:host > ::content > thead > tr > th,
-			:host > ::content > * > tr > td,
-			:host > ::content > tr > td,
-			:host > ::content > tbody > tr > th,
-			:host > ::content > tfoot > tr > th {
+			:host table > ::content > thead > tr > th,
+			:host table > ::content > * > tr > td,
+			:host table > ::content > tr > td,
+			:host table > ::content > tbody > tr > th,
+			:host table > ::content > tfoot > tr > th {
 				border-top: var(--d2l-table-border);
 				border-right: var(--d2l-table-border);
 				display: table-cell;
@@ -56,15 +56,15 @@ TODO: When ShadowDOM v1 is available, use <slot> and ::slotted
 				vertical-align: middle;
 			}
 
-			:host-context([dir="rtl"]) > ::content > thead > tr > th,
-			:host-context([dir="rtl"]) > ::content > * > tr > td,
-			:host-context([dir="rtl"]) > ::content > tr > td,
-			:host-context([dir="rtl"]) > ::content > tbody > tr > th,
-			:host-context([dir="rtl"]) > ::content > tfoot > tr > th {
+			:host-context([dir="rtl"]) table > ::content > thead > tr > th,
+			:host-context([dir="rtl"]) table > ::content > * > tr > td,
+			:host-context([dir="rtl"]) table > ::content > tr > td,
+			:host-context([dir="rtl"]) table > ::content > tbody > tr > th,
+			:host-context([dir="rtl"]) table > ::content > tfoot > tr > th {
 				text-align: right;
 			}
 
-			:host > ::content > thead > tr > th {
+			:host table > ::content > thead > tr > th {
 				color: var(--d2l-color-ferrite);
 				font-family: inherit;
 				font-size: 0.7rem;
@@ -75,219 +75,219 @@ TODO: When ShadowDOM v1 is available, use <slot> and ::slotted
 				background-color: var(--d2l-table-header-background-color);
 			}
 
-			:host-context([dir="rtl"]) > ::content > * > tr >:first-child,
-			:host-context([dir="rtl"]) > ::content > tr >:first-child {
+			:host-context([dir="rtl"]) table > ::content > * > tr >:first-child,
+			:host-context([dir="rtl"]) table > ::content > tr >:first-child {
 				border-left: 0;
 			}
 
-			:host-context([dir="rtl"]) > ::content > * > tr >:last-child,
-			:host-context([dir="rtl"]) > ::content > tr >:last-child,
-			:host > ::content > * > tr >:first-child,
-			:host > ::content > tr >:first-child {
+			:host-context([dir="rtl"]) table > ::content > * > tr >:last-child,
+			:host-context([dir="rtl"]) table > ::content > tr >:last-child,
+			:host table > ::content > * > tr >:first-child,
+			:host table > ::content > tr >:first-child {
 				border-left: var(--d2l-table-border);
 			}
 
-			:host-context([dir="rtl"]) > ::content > thead > tr:first-child >:first-child,
-			:host-context([dir="rtl"]) > ::content > tbody:only-child > tr:first-child >:first-child,
-			:host-context([dir="rtl"]) > ::content > tfoot:first-child + tbody:last-child > tr:first-child >:first-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + tbody:last-child > tr:first-child >:first-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child >:first-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child >:first-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child >:first-child,
-			:host-context([dir="rtl"]) > ::content > colgroup:first-child + tbody:last-child > tr:first-child >:first-child,
-			:host-context([dir="rtl"]) > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child >:first-child {
+			:host-context([dir="rtl"]) table > ::content > thead > tr:first-child >:first-child,
+			:host-context([dir="rtl"]) table > ::content > tbody:only-child > tr:first-child >:first-child,
+			:host-context([dir="rtl"]) table > ::content > tfoot:first-child + tbody:last-child > tr:first-child >:first-child,
+			:host-context([dir="rtl"]) table > ::content > caption:first-child + tbody:last-child > tr:first-child >:first-child,
+			:host-context([dir="rtl"]) table > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child >:first-child,
+			:host-context([dir="rtl"]) table > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child >:first-child,
+			:host-context([dir="rtl"]) table > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child >:first-child,
+			:host-context([dir="rtl"]) table > ::content > colgroup:first-child + tbody:last-child > tr:first-child >:first-child,
+			:host-context([dir="rtl"]) table > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child >:first-child {
 				border-top-left-radius: 0;
 				border-top-right-radius: var(--d2l-table-border-radius);
 			}
-			:host > ::content > thead > tr:first-child >:last-child,
-			:host > ::content > tbody:only-child > tr:first-child >:last-child,
-			:host > ::content > tfoot:first-child + tbody:last-child > tr:first-child >:last-child,
-			:host > ::content > caption:first-child + tbody:last-child > tr:first-child >:last-child,
-			:host > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child >:last-child,
-			:host > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child >:last-child,
-			:host > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child >:last-child,
-			:host > ::content > colgroup:first-child + tbody:last-child > tr:first-child >:last-child,
-			:host > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child >:last-child {
+			:host table > ::content > thead > tr:first-child >:last-child,
+			:host table > ::content > tbody:only-child > tr:first-child >:last-child,
+			:host table > ::content > tfoot:first-child + tbody:last-child > tr:first-child >:last-child,
+			:host table > ::content > caption:first-child + tbody:last-child > tr:first-child >:last-child,
+			:host table > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child >:last-child,
+			:host table > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child >:last-child,
+			:host table > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child >:last-child,
+			:host table > ::content > colgroup:first-child + tbody:last-child > tr:first-child >:last-child,
+			:host table > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child >:last-child {
 				border-top-right-radius: var(--d2l-table-border-radius);
 			}
 
-			:host-context([dir="rtl"]) > ::content > thead > tr:first-child >:last-child,
-			:host-context([dir="rtl"]) > ::content > tbody:only-child > tr:first-child >:last-child,
-			:host-context([dir="rtl"]) > ::content > tfoot:first-child + tbody:last-child > tr:first-child >:last-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + tbody:last-child > tr:first-child >:last-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child >:last-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child >:last-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child >:last-child,
-			:host-context([dir="rtl"]) > ::content > colgroup:first-child + tbody:last-child > tr:first-child >:last-child,
-			:host-context([dir="rtl"]) > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child >:last-child {
+			:host-context([dir="rtl"]) table > ::content > thead > tr:first-child >:last-child,
+			:host-context([dir="rtl"]) table > ::content > tbody:only-child > tr:first-child >:last-child,
+			:host-context([dir="rtl"]) table > ::content > tfoot:first-child + tbody:last-child > tr:first-child >:last-child,
+			:host-context([dir="rtl"]) table > ::content > caption:first-child + tbody:last-child > tr:first-child >:last-child,
+			:host-context([dir="rtl"]) table > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child >:last-child,
+			:host-context([dir="rtl"]) table > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child >:last-child,
+			:host-context([dir="rtl"]) table > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child >:last-child,
+			:host-context([dir="rtl"]) table > ::content > colgroup:first-child + tbody:last-child > tr:first-child >:last-child,
+			:host-context([dir="rtl"]) table > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child >:last-child {
 				border-top-right-radius: 0;
 				border-top-left-radius: var(--d2l-table-border-radius);
 			}
-			:host > ::content > thead > tr:first-child >:first-child,
-			:host > ::content > tbody:only-child > tr:first-child >:first-child,
-			:host > ::content > tfoot:first-child + tbody:last-child > tr:first-child >:first-child,
-			:host > ::content > caption:first-child + tbody:last-child > tr:first-child >:first-child,
-			:host > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child >:first-child,
-			:host > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child >:first-child,
-			:host > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child >:first-child,
-			:host > ::content > colgroup:first-child + tbody:last-child > tr:first-child >:first-child,
-			:host > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child >:first-child {
+			:host table > ::content > thead > tr:first-child >:first-child,
+			:host table > ::content > tbody:only-child > tr:first-child >:first-child,
+			:host table > ::content > tfoot:first-child + tbody:last-child > tr:first-child >:first-child,
+			:host table > ::content > caption:first-child + tbody:last-child > tr:first-child >:first-child,
+			:host table > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child >:first-child,
+			:host table > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child >:first-child,
+			:host table > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child >:first-child,
+			:host table > ::content > colgroup:first-child + tbody:last-child > tr:first-child >:first-child,
+			:host table > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child >:first-child {
 				border-top-left-radius: var(--d2l-table-border-radius);
 			}
 
 			/* This is needed for the rtl case when the there is only one td/th in a row. Doesn't affect all browsers */
-			:host-context([dir="rtl"]) > ::content > thead > tr:first-child >:only-child,
-			:host-context([dir="rtl"]) > ::content > tbody:only-child > tr:first-child >:only-child,
-			:host-context([dir="rtl"]) > ::content > tfoot:first-child + tbody:last-child > tr:first-child >:only-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + tbody:last-child > tr:first-child >:only-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child >:only-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child >:only-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child >:only-child,
-			:host-context([dir="rtl"]) > ::content > colgroup:first-child + tbody:last-child > tr:first-child >:only-child,
-			:host-context([dir="rtl"]) > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child >:only-child {
+			:host-context([dir="rtl"]) table > ::content > thead > tr:first-child >:only-child,
+			:host-context([dir="rtl"]) table > ::content > tbody:only-child > tr:first-child >:only-child,
+			:host-context([dir="rtl"]) table > ::content > tfoot:first-child + tbody:last-child > tr:first-child >:only-child,
+			:host-context([dir="rtl"]) table > ::content > caption:first-child + tbody:last-child > tr:first-child >:only-child,
+			:host-context([dir="rtl"]) table > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child >:only-child,
+			:host-context([dir="rtl"]) table > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child >:only-child,
+			:host-context([dir="rtl"]) table > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child >:only-child,
+			:host-context([dir="rtl"]) table > ::content > colgroup:first-child + tbody:last-child > tr:first-child >:only-child,
+			:host-context([dir="rtl"]) table > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child >:only-child {
 				border-top-right-radius: var(--d2l-table-border-radius);
 				border-top-left-radius: var(--d2l-table-border-radius);
 			}
 
-			:host > ::content > thead:only-child > tr:last-child > th,
-			:host > ::content > tfoot > tr:last-child > th,
-			:host > ::content > tfoot > tr:last-child > td,
-			:host > ::content > tbody:only-child > tr:last-child > td,
-			:host > ::content > tbody:only-child > tr:last-child > th,
-			:host > ::content > thead + tbody:last-child > tr:last-child > td,
-			:host > ::content > thead + tbody:last-child > tr:last-child > th,
-			:host > ::content > caption + tbody:last-child > tr:last-child > td,
-			:host > ::content > caption + tbody:last-child > tr:last-child > th,
-			:host > ::content > colgroup + tbody:last-child > tr:last-child > th,
-			:host > ::content > colgroup + tbody:last-child > tr:last-child > td,
-			:host > ::content > tbody:last-child > tr:last-child > td,
-			:host > ::content > tbody:last-child > tr:last-child > th {
+			:host table > ::content > thead:only-child > tr:last-child > th,
+			:host table > ::content > tfoot > tr:last-child > th,
+			:host table > ::content > tfoot > tr:last-child > td,
+			:host table > ::content > tbody:only-child > tr:last-child > td,
+			:host table > ::content > tbody:only-child > tr:last-child > th,
+			:host table > ::content > thead + tbody:last-child > tr:last-child > td,
+			:host table > ::content > thead + tbody:last-child > tr:last-child > th,
+			:host table > ::content > caption + tbody:last-child > tr:last-child > td,
+			:host table > ::content > caption + tbody:last-child > tr:last-child > th,
+			:host table > ::content > colgroup + tbody:last-child > tr:last-child > th,
+			:host table > ::content > colgroup + tbody:last-child > tr:last-child > td,
+			:host table > ::content > tbody:last-child > tr:last-child > td,
+			:host table > ::content > tbody:last-child > tr:last-child > th {
 				border-bottom: var(--d2l-table-border);
 			}
 
-			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child >:first-child,
-			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child >:first-child,
-			:host-context([dir="rtl"]) > ::content > tbody:only-child > tr:last-child >:first-child,
-			:host-context([dir="rtl"]) > ::content > thead + tbody:last-child > tr:last-child >:first-child,
-			:host-context([dir="rtl"]) > ::content > caption + tbody:last-child > tr:last-child >:first-child,
-			:host-context([dir="rtl"]) > ::content > colgroup + tbody:last-child > tr:last-child >:first-child {
+			:host-context([dir="rtl"]) table > ::content > thead:only-child > tr:last-child >:first-child,
+			:host-context([dir="rtl"]) table > ::content > tfoot > tr:last-child >:first-child,
+			:host-context([dir="rtl"]) table > ::content > tbody:only-child > tr:last-child >:first-child,
+			:host-context([dir="rtl"]) table > ::content > thead + tbody:last-child > tr:last-child >:first-child,
+			:host-context([dir="rtl"]) table > ::content > caption + tbody:last-child > tr:last-child >:first-child,
+			:host-context([dir="rtl"]) table > ::content > colgroup + tbody:last-child > tr:last-child >:first-child {
 				border-bottom-left-radius: 0;
 				border-bottom-right-radius: var(--d2l-table-border-radius);
 			}
-			:host > ::content > thead:only-child > tr:last-child >:last-child,
-			:host > ::content > tfoot > tr:last-child >:last-child,
-			:host > ::content > tbody:only-child > tr:last-child >:last-child,
-			:host > ::content > thead + tbody:last-child > tr:last-child >:last-child,
-			:host > ::content > caption + tbody:last-child > tr:last-child >:last-child,
-			:host > ::content > colgroup + tbody:last-child > tr:last-child >:last-child {
+			:host table > ::content > thead:only-child > tr:last-child >:last-child,
+			:host table > ::content > tfoot > tr:last-child >:last-child,
+			:host table > ::content > tbody:only-child > tr:last-child >:last-child,
+			:host table > ::content > thead + tbody:last-child > tr:last-child >:last-child,
+			:host table > ::content > caption + tbody:last-child > tr:last-child >:last-child,
+			:host table > ::content > colgroup + tbody:last-child > tr:last-child >:last-child {
 				border-bottom-right-radius: var(--d2l-table-border-radius);
 			}
 
-			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child >:last-child,
-			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child >:last-child,
-			:host-context([dir="rtl"]) > ::content > tbody:only-child > tr:last-child >:last-child,
-			:host-context([dir="rtl"]) > ::content > thead + tbody:last-child > tr:last-child >:last-child,
-			:host-context([dir="rtl"]) > ::content > caption + tbody:last-child > tr:last-child >:last-child,
-			:host-context([dir="rtl"]) > ::content > colgroup + tbody:last-child > tr:last-child >:last-child {
+			:host-context([dir="rtl"]) table > ::content > thead:only-child > tr:last-child >:last-child,
+			:host-context([dir="rtl"]) table > ::content > tfoot > tr:last-child >:last-child,
+			:host-context([dir="rtl"]) table > ::content > tbody:only-child > tr:last-child >:last-child,
+			:host-context([dir="rtl"]) table > ::content > thead + tbody:last-child > tr:last-child >:last-child,
+			:host-context([dir="rtl"]) table > ::content > caption + tbody:last-child > tr:last-child >:last-child,
+			:host-context([dir="rtl"]) table > ::content > colgroup + tbody:last-child > tr:last-child >:last-child {
 				border-bottom-right-radius: 0;
 				border-bottom-left-radius: var(--d2l-table-border-radius);
 			}
-			:host > ::content > thead:only-child > tr:last-child >:first-child,
-			:host > ::content > tfoot > tr:last-child >:first-child,
-			:host > ::content > tbody:only-child > tr:last-child >:first-child,
-			:host > ::content > thead + tbody:last-child > tr:last-child >:first-child,
-			:host > ::content > caption + tbody:last-child > tr:last-child >:first-child,
-			:host > ::content > colgroup + tbody:last-child > tr:last-child >:first-child {
+			:host table > ::content > thead:only-child > tr:last-child >:first-child,
+			:host table > ::content > tfoot > tr:last-child >:first-child,
+			:host table > ::content > tbody:only-child > tr:last-child >:first-child,
+			:host table > ::content > thead + tbody:last-child > tr:last-child >:first-child,
+			:host table > ::content > caption + tbody:last-child > tr:last-child >:first-child,
+			:host table > ::content > colgroup + tbody:last-child > tr:last-child >:first-child {
 				border-bottom-left-radius: var(--d2l-table-border-radius);
 			}
 
-			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child >:only-child,
-			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child >:only-child,
-			:host-context([dir="rtl"]) > ::content > tbody:only-child > tr:last-child >:only-child,
-			:host-context([dir="rtl"]) > ::content > thead + tbody:last-child > tr:last-child >:only-child,
-			:host-context([dir="rtl"]) > ::content > caption + tbody:last-child > tr:last-child >:only-child,
-			:host-context([dir="rtl"]) > ::content > colgroup + tbody:last-child > tr:last-child >:only-child {
+			:host-context([dir="rtl"]) table > ::content > thead:only-child > tr:last-child >:only-child,
+			:host-context([dir="rtl"]) table > ::content > tfoot > tr:last-child >:only-child,
+			:host-context([dir="rtl"]) table > ::content > tbody:only-child > tr:last-child >:only-child,
+			:host-context([dir="rtl"]) table > ::content > thead + tbody:last-child > tr:last-child >:only-child,
+			:host-context([dir="rtl"]) table > ::content > caption + tbody:last-child > tr:last-child >:only-child,
+			:host-context([dir="rtl"]) table > ::content > colgroup + tbody:last-child > tr:last-child >:only-child {
 				border-bottom-left-radius: var(--d2l-table-border-radius);
 				border-bottom-right-radius: var(--d2l-table-border-radius);
 			}
 
-			:host > ::content > tfoot > tr:first-child> td,
-			:host > ::content > tfoot > tr:first-child> th {
+			:host table > ::content > tfoot > tr:first-child> td,
+			:host table > ::content > tfoot > tr:first-child> th {
 				border-top: none;
 			}
 
-			:host > ::content > tbody > tr[active],
-			:host([selectable]) > ::content > tbody > tr:not([selected]):hover {
+			:host table > ::content > tbody > tr[active],
+			:host([selectable]) table > ::content > tbody > tr:not([selected]):hover {
 				background-color: var(--d2l-table-row-background-color-active);
 			}
 
-			:host > ::content > tbody > tr[selected] {
+			:host table > ::content > tbody > tr[selected] {
 				background-color: var(--d2l-table-row-background-color-selected);
 			}
 
-			:host-context([dir="rtl"]) > ::content > tbody > tr[selected] >:first-child,
-			:host > ::content > tbody > tr[selected] >:last-child {
+			:host-context([dir="rtl"]) table > ::content > tbody > tr[selected] >:first-child,
+			:host table > ::content > tbody > tr[selected] >:last-child {
 				border-right-color: var(--d2l-table-row-border-color-selected) !important;
 				border-left-color: var(--d2l-table-border-color);
 			}
 
-			:host-context([dir="rtl"]) > ::content > tbody > tr[selected] >:last-child,
-			:host > ::content > tbody > tr[selected] >:first-child {
+			:host-context([dir="rtl"]) table > ::content > tbody > tr[selected] >:last-child,
+			:host table > ::content > tbody > tr[selected] >:first-child {
 				border-left-color: var(--d2l-table-row-border-color-selected) !important;
 				border-right-color: var(--d2l-table-border-color);
 			}
 
-			:host > ::content > tbody > tr[selected] > td,
-			:host > ::content > tbody > tr[selected] > th {
+			:host table > ::content > tbody > tr[selected] > td,
+			:host table > ::content > tbody > tr[selected] > th {
 				border-top-color: var(--d2l-table-row-border-color-selected) !important;
 			}
 
-			:host > ::content > tbody > tr[selected] + tr > td,
-			:host > ::content > tbody > tr[selected] + tr > th {
+			:host table > ::content > tbody > tr[selected] + tr > td,
+			:host table > ::content > tbody > tr[selected] + tr > th {
 				border-top-color: var(--d2l-table-row-border-color-selected) !important;
 			}
 
-			:host > ::content > tbody > tr[active][selected],
-			:host([selectable]) > ::content > tbody > tr[selected]:hover {
+			:host table > ::content > tbody > tr[active][selected],
+			:host([selectable]) table > ::content > tbody > tr[selected]:hover {
 				background-color: var(--d2l-table-row-background-color-active-selected);
 			}
 
-			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected] >:first-child,
-			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover >:first-child,
-			:host > ::content > tbody > tr[active][selected] >:last-child,
-			:host([selectable]) > ::content > tbody > tr[selected]:hover >:last-child {
+			:host-context([dir="rtl"]) table > ::content > tbody > tr[active][selected] >:first-child,
+			:host-context([dir="rtl"])[selectable] table > ::content > tbody > tr[selected]:hover >:first-child,
+			:host table > ::content > tbody > tr[active][selected] >:last-child,
+			:host([selectable]) table > ::content > tbody > tr[selected]:hover >:last-child {
 				border-right-color: var(--d2l-table-row-border-color-active-selected) !important;
 				border-left-color: var(--d2l-table-border-color);
 			}
 
-			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected] >:last-child,
-			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover >:last-child,
-			:host > ::content > tbody > tr[active][selected] >:first-child,
-			:host([selectable]) > ::content > tbody > tr[selected]:hover >:first-child {
+			:host-context([dir="rtl"]) table > ::content > tbody > tr[active][selected] >:last-child,
+			:host-context([dir="rtl"])[selectable] table > ::content > tbody > tr[selected]:hover >:last-child,
+			:host table > ::content > tbody > tr[active][selected] >:first-child,
+			:host([selectable]) table > ::content > tbody > tr[selected]:hover >:first-child {
 				border-left-color: var(--d2l-table-row-border-color-active-selected) !important;
 				border-right-color: var(--d2l-table-border-color);
 			}
 
-			:host > ::content > tbody > tr[active][selected] > td,
-			:host > ::content > tbody > tr[active][selected] > th,
-			:host([selectable]) > ::content > tbody > tr[selected]:hover > td,
-			:host([selectable]) > ::content > tbody > tr[selected]:hover > th,
-			:host > ::content > tbody > tr[active][selected] + tr > td,
-			:host > ::content > tbody > tr[active][selected] + tr > th,
-			:host([selectable]) > ::content > tbody > tr[selected]:hover + tr > td,
-			:host([selectable]) > ::content > tbody > tr[selected]:hover + tr > th {
+			:host table > ::content > tbody > tr[active][selected] > td,
+			:host table > ::content > tbody > tr[active][selected] > th,
+			:host([selectable]) table > ::content > tbody > tr[selected]:hover > td,
+			:host([selectable]) table > ::content > tbody > tr[selected]:hover > th,
+			:host table > ::content > tbody > tr[active][selected] + tr > td,
+			:host table > ::content > tbody > tr[active][selected] + tr > th,
+			:host([selectable]) table > ::content > tbody > tr[selected]:hover + tr > td,
+			:host([selectable]) table > ::content > tbody > tr[selected]:hover + tr > th {
 				border-top-color: var(--d2l-table-row-border-color-active-selected) !important;
 			}
 
-			:host > ::content > tbody > tr:last-child[selected] > td,
-			:host > ::content > tbody > tr:last-child[selected] > th {
+			:host table > ::content > tbody > tr:last-child[selected] > td,
+			:host table > ::content > tbody > tr:last-child[selected] > th {
 				border-bottom-color: var(--d2l-table-row-border-color-selected) !important;
 			}
 
-			:host > ::content > tbody > tr:last-child[active][selected] > td,
-			:host > ::content > tbody > tr:last-child[active][selected] > th,
-			:host([selectable]) > ::content > tbody > tr:last-child[selected]:hover > td,
-			:host([selectable]) > ::content > tbody > tr:last-child[selected]:hover > th {
+			:host table > ::content > tbody > tr:last-child[active][selected] > td,
+			:host table > ::content > tbody > tr:last-child[active][selected] > th,
+			:host([selectable]) table > ::content > tbody > tr:last-child[selected]:hover > td,
+			:host([selectable]) table > ::content > tbody > tr:last-child[selected]:hover > th {
 				border-bottom-color: var(--d2l-table-row-border-color-active-selected) !important;
 			}
 		</style>
