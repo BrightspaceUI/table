@@ -18,11 +18,18 @@
 	wide-*                .screenshot-wide
 		tr-*              tr
 
+	no-column-border-*    .screenshot-no-column-border
+		head              thead
+			tr-*              tr
+		body              tbody
+			tr-*              tr
+
 @groups
-	small small-*.head,small-*.body,small-*.foot
-	rows  rows-1,rows-2
-	sort  sort-1,sort-2
-	wide  wide-1,wide-2
+	small            small-*.head,small-*.body,small-*.foot
+	rows             rows-1,rows-2
+	sort             sort-1,sort-2
+	wide             wide-1,wide-2
+	no-column-border no-column-border-*.head,no-column-border-*.body
 
 == D2L Table ==
 
