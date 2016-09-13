@@ -1,6 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="d2l-table-style.html">
-<link rel="import" href="d2l-table-wrapper.html">
+<link rel="import" href="d2l-scroll-wrapper.html">
 <link rel="import" href="d2l-table-col-sort.html">
 <link rel="import" href="../d2l-colors/d2l-colors.html">
 
@@ -28,18 +28,59 @@
 		</tbody>
 	</table>
 ```
-### Table Styles
+
+## Wrapped Table
+
+Since only tr,tbody,thead,tfoot,caption,colgroup,etc can be found in a table,
+templating the wrapper is tricky. We need to trick the browser into allowing
+a content element inside the table (which Polymer's shady DOM will replace with
+the valid table content, and the shadow DOM will be valid)
+
+To keep the final markup valid, the content is wrapped in a `<tr><td></td></tr>`.
+
+Markup
 ```
-	<link rel="import" href="d2l-table-style.html">
-	<style include="d2l-table-style"></style>
-	<table class="d2l-table">
-		<template>
-			<content></content>
-		</template>
+	<table is="d2l-table">
+		<thead>
+			<tr>
+				<th>Table header cell</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<th>Table header cell</th>
+			</tr>
+		</tfoot>
+		<tbody>
+			<tr>
+				<td>Table cell</td>
+			</tr>
+		</tbody>
 	</table>
-	<div class="d2l-table"><content></content></div>
 ```
 
+Composed DOM looks something like this:
+```
+	<table is="d2l-table" role="presentation">
+		<tr role="presentation"><td role="presentation"><div class="wrapper-stuff"><table id="wrapped">
+			<thead>
+				<tr>
+					<th>Table header cell</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th>Table header cell</th>
+				</tr>
+			</tfoot>
+			<tbody>
+				<tr>
+					<td>Table cell</td>
+				</tr>
+			</tbody>
+		</table></div></td></tr>
+	</table>
+```
 ## TODO
 
 When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect the interface
@@ -62,41 +103,66 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 				--d2l-table-row-background-color-active-selected: #EBF5FC;
 				--d2l-table-row-border-color-selected: var(--d2l-color-celestine-light-2);
 				--d2l-table-row-background-color-selected: var(--d2l-color-celestine-light-1);
+				--d2l-table-border-overflow: dashed 1px #d3d9e3;
+			}
+
+			tr, td, :host {
+				display: block;
+				margin: 0;
+				padding: 0;
+			}
+
+			d2l-scroll-wrapper {
+				border-left: var(--d2l-table-border-overflow);
+				border-right: var(--d2l-table-border-overflow);
+			}
+
+			d2l-scroll-wrapper[scrollbar-left] {
+				border-left: none;
+			}
+
+			d2l-scroll-wrapper[scrollbar-right] {
+				border-right: none;
 			}
 		</style>
-		<content></content>
+		<!--
+			The ready method will put everything in this template into a
+		    <tr><td></td></tr>, so the template content is free of table restrictions
+		 -->
+		<template id="wrapperTemplate">
+			<d2l-scroll-wrapper>
+				<!--
+					<content> can't be placed inside a <table> in the markup,
+					so the ready method does this for us
+				-->
+				<table id="wrapped"></table>
+			</d2l-scroll-wrapper>
+		</template>
 	</template>
 	<script>
 		Polymer({
 			is: 'd2l-table',
 			extends: 'table',
-			properties: {
-				wrapper: {
-					type: Object,
-					readOnly: true,
-					value: null
-				}
+			created: function() {
+				// So that screenreaders only read the wrapped table
+				this.setAttribute('role', 'presentation');
 			},
-			wrapMe: function() {
-				var parentNode = Polymer.dom(this).parentNode;
-				if (parentNode && parentNode.tagName && parentNode.tagName.toUpperCase() === 'D2L-TABLE-WRAPPER') { // The table already is in a wrapper
-					this._setWrapper(parentNode);
-				} else if (parentNode && !this.wrapper) { // The table is mounted but doesn't have a wrapper. Create it
-					var wrapper = document.createElement('d2l-table-wrapper');
-					Polymer.dom(parentNode).replaceChild(wrapper, this);
-					Polymer.dom(wrapper).appendChild(this);
-					Polymer.dom.flush();
-				}
-			},
-			attached: function() {
-				this.wrapMe();
-			},
-			detached: function() {
-				if (this.wrapper && Polymer.dom(this.wrapper).parentNode) {
-					Polymer.dom(Polymer.dom(this.wrapper).parentNode).removeChild(this.wrapper);
-					Polymer.dom.flush();
-					this._setWrapper(null);
-				}
+			// Wrap #wrapperTemplate in a presentational <tr><td></td></tr> and put <content> in #wrapped
+			ready: function() {
+				var content = document.createElement('content');
+				var wrapperTemplate = document.importNode(this.$.wrapperTemplate._content, true);
+				var wrapped = wrapperTemplate.querySelector('#wrapped');
+				var tr = document.createElement('tr');
+				var td = document.createElement('td');
+
+				tr.setAttribute('role', 'presentation');
+				td.setAttribute('role', 'presentation');
+
+				Polymer.dom(this.root).appendChild(tr);
+				Polymer.dom(tr).appendChild(td);
+				Polymer.dom(td).appendChild(wrapperTemplate);
+				Polymer.dom(wrapped).appendChild(content);
+				Polymer.dom.flush();
 			}
 		});
 	</script>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>wrapper tests</title>
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
+		<link rel="import" href="../d2l-table.html">
+	</head>
+	<body>
+
+		<test-fixture id="table">
+			<template>
+				<table is="d2l-table"><tr><td></td></tr></table>
+			</template>
+		</test-fixture>
+
+		<script>
+			describe('table', function() {
+				var table;
+				beforeEach(function() {
+					table = fixture('table');
+				});
+
+				it('should wrap content in table', function() {
+					var wrapped = table.$$('#wrapped');
+					expect(wrapped).not.to.be.null;
+					expect(wrapped.tagName).to.equal('TABLE');
+					expect(wrapped).not.to.equal(table);
+					expect(Polymer.dom(wrapped).firstChild.tagName).to.equal('CONTENT');
+				});
+			});
+		</script>
+	</body>
+</html>

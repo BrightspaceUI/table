@@ -1,22 +1,22 @@
 @objects
 
 	small-*               .screenshot-small
-		head              thead
+		head              table > tr thead
 			tr-*              tr
-		body              tbody
+		body              table > tr tbody
 			tr-*              tr
-		foot              tfoot
+		foot              table > tr tfoot
 			tr-*              tr
 
 	rows-*                .screenshot-rows
-		tr-*              tr
+		tr-*              table > tr tr
 
 	sort-*                .screenshot-sort
-		tr-*              tr
-		sort-icon-*       thead d2l-table-col-sort
+		tr-*              table > tr tr
+		sort-icon-*       table > tr thead d2l-table-col-sort
 
 	wide-*                .screenshot-wide
-		tr-*              tr
+		tr-*              table > tr tr
 
 @groups
 	small small-*.head,small-*.body,small-*.foot
