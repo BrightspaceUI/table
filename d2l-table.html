@@ -1,8 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="d2l-table-style.html">
 <link rel="import" href="d2l-table-wrapper.html">
 <link rel="import" href="d2l-table-col-sort.html">
-<link rel="import" href="../d2l-colors/d2l-colors.html">
 
 <!--
 # D2L Table
@@ -28,17 +26,6 @@
 		</tbody>
 	</table>
 ```
-### Table Styles
-```
-	<link rel="import" href="d2l-table-style.html">
-	<style include="d2l-table-style"></style>
-	<table class="d2l-table">
-		<template>
-			<content></content>
-		</template>
-	</table>
-	<div class="d2l-table"><content></content></div>
-```
 
 ## TODO
 
@@ -50,20 +37,6 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 -->
 <dom-module id="d2l-table">
 	<template>
-		<style include="d2l-table-style d2l-colors">
-			:host {
-				--d2l-table-border-color: var(--d2l-color-titanius);
-				--d2l-table-border: 1px solid var(--d2l-table-border-color);
-				--d2l-table-border-radius: 0.3rem;
-				--d2l-table-header-background-color: var(--d2l-color-regolith);
-				--d2l-table-body-background-color: #fff;
-				--d2l-table-row-background-color-active: var(--d2l-color-celestine-light-1);
-				--d2l-table-row-border-color-active-selected: var(--d2l-color-celestine-light-2);
-				--d2l-table-row-background-color-active-selected: #EBF5FC;
-				--d2l-table-row-border-color-selected: var(--d2l-color-celestine-light-2);
-				--d2l-table-row-background-color-selected: var(--d2l-color-celestine-light-1);
-			}
-		</style>
 		<content></content>
 	</template>
 	<script>
