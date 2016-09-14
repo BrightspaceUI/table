@@ -27,6 +27,53 @@
 	</table>
 ```
 
+## Styling
+```
+	<link rel="import" href="d2l-table.html">
+	<style is="custom-style">
+		/* In order to target an individual table to style, the d2l-table-wrapper
+		   element is required */
+		.ugly-table {
+			--d2l-table-border-color: purple
+			--d2l-table-border-radius: 0;
+			--d2l-table-header-background-color: grey;
+			--d2l-table-body-background-color: blue;
+			--d2l-table-row-background-color-active: black;
+			--d2l-table-row-border-color-active-selected: red;
+			--d2l-table-row-background-color-active-selected: red;
+			--d2l-table-row-border-color-selected: black;
+			--d2l-table-row-background-color-selected: black;
+			--d2l-table-border-overflow: none;
+		}
+
+		/* tweak default border radius for all tables on the page. No d2l-table-wrapper
+		   element is required */
+		:root {
+			--d2l-table-border-radius: 0.4rem;
+		}
+	</style>
+	<d2l-table-wrapper class="ugly-table">
+		<table is="d2l-table">
+			<thead>
+				<tr>
+					<th>Table header cell</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th>Table header cell</th>
+				</tr>
+			</tfoot>
+			<tbody>
+				<tr>
+					<td>Table cell</td>
+				</tr>
+			</tbody>
+		</table>
+	</d2l-table-wrapper>
+```
+
+
 ## TODO
 
 When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect the interface
