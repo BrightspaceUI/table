@@ -5,6 +5,10 @@ addons:
   apt:
     packages:
     - oracle-java8-installer
+  sauce_connect:
+    username: Desire2Learn
+    access_key:
+      secure: lEtsyP83zMPtHRkC/M9I3KITQengi6V9TyU5TBF8APxpW30nV96Nv0M/+gxtqDM8CwFa9cRBHKCTzIOaM0/hFdXIVN+Lj/o2Aw7JelfAExX1+K5rVm7wLDZ9sIHRV/O7dTChwvx1o2M0IEDGOrFTi+O5cPoeqpHkdcnb0W3TFg9oZFKr1sOw0IsuoUy/qAlR0J19k4syShpUVI8daQHIw81DVgndQlI61kh/yyuPEC1juAPnGn/nscAGcpa6k89aygIch9stn/g2wWvUyRJCkNSiJXwqx3rVOBo44hVyjcmSvW9XusL0y8q22VunDIT5fFvzZ0UkxSZkoS/qbnKetzetgwwJbrSQdqEZUjTVADidyUlXoc6MiLHtQpDM9bInM5u6SnYvP8KseMsHwdWG85EOtxUIZrxipGGT0pzRtJnOsfyYbr+CS7t16Z+TC3v1sFUyYaJqBwrWTJLG6JHXia4gPzSzLV3l1yQ943ErK10l3SDKBHW2sfFVj7Ju3KmtAEeDDab6EW37ucdpB49wTA7qowz1xWzRF031n+2lmrgw4FdkEzV6OPtdaaTc4Za4dOUH8z4iUax0p4tS06AjRQXTXvZn1vkgyj0T+V2NAMRILXi0wwvXJf/UbLhJdfy4BW5iVmTcqtSaqzMxO1D6DXE1wM5fnzZY1siuamvVrdo=
 before_install:
 - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 - export PATH=$JAVA_HOME/bin:$PATH
@@ -12,3 +16,4 @@ script:
 - npm run test:lint:js
 - npm run test:lint:wc
 - npm run test:galen
+- wct --skip-plugin local
