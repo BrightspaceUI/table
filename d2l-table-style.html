@@ -278,36 +278,36 @@
 				border-bottom-color: var(--d2l-table-row-border-color-active-selected) !important;
 			}
 
-			:host([no-column-border]) > ::content > tbody > tr > td,
-			:host([no-column-border]) > ::content > tbody > tr > th {
+			:host .table-container > ::content > table[no-column-border] > tbody > tr > td,
+			:host .table-container > ::content > table[no-column-border] > tbody > tr > th {
 				border-left: none;
 				border-right: none;
 			}
 
-			:host([no-column-border]) > ::content > tbody > tr > td:first-child,
-			:host([no-column-border]) > ::content > tbody > tr > th:first-child {
+			:host .table-container > ::content > table[no-column-border] > tbody > tr > td:first-child,
+			:host .table-container > ::content > table[no-column-border] > tbody > tr > th:first-child {
 				border-left: var(--d2l-table-border);
 			}
 
-			:host([no-column-border]) > ::content > tbody > tr > td:last-child,
-			:host([no-column-border]) > ::content > tbody > tr > th:last-child {
+			:host .table-container > ::content > table[no-column-border] > tbody > tr > td:last-child,
+			:host .table-container > ::content > table[no-column-border] > tbody > tr > th:last-child {
 				border-right: var(--d2l-table-border);
 			}
 
-			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > td:first-child,
-			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > th:first-child {
+			:host-context([dir="rtl"]) .table-container > ::content > table[no-column-border] > tbody > tr > td:first-child,
+			:host-context([dir="rtl"]) .table-container > ::content > table[no-column-border] > tbody > tr > th:first-child {
 				border-left: none;
 				border-right: var(--d2l-table-border);
 			}
 
-			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > td:last-child,
-			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > th:last-child {
+			:host-context([dir="rtl"]) .table-container > ::content > table[no-column-border] > tbody > tr > td:last-child,
+			:host-context([dir="rtl"]) .table-container > ::content > table[no-column-border] > tbody > tr > th:last-child {
 				border-right: none;
 				border-left: var(--d2l-table-border);
 			}
 
-			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > td:only-child,
-			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > th:only-child {
+			:host-context([dir="rtl"]) .table-container > ::content > table[no-column-border] > tbody > tr > td:only-child,
+			:host-context([dir="rtl"]) .table-container > ::content > table[no-column-border] > tbody > tr > th:only-child {
 				border-right: var(--d2l-table-border);
 				border-left: var(--d2l-table-border);
 			}
