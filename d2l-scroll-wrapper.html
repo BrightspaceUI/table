@@ -55,23 +55,30 @@
 		<content></content>
 	</template>
 	<script>
-		function getScrollType() {
-			var type = 'reverse';
-			var div = document.createElement('div');
-			div.innerHTML = '<div dir="rtl" style="font-size: 14px; width: 1px; height: 1px; position: absolute; top: -1000px; overflow: scroll">A</div>';
-			var definer = div.firstChild;
-			document.body.appendChild(div);
-			if (definer.scrollLeft > 0) {
-				type = 'default';
-			} else {
-				definer.scrollLeft = 1;
-				if (definer.scrollLeft === 0) {
-					type = 'negative';
+		var getScrollType = (function() {
+			var type;
+
+			return function getScrollType() {
+				if (type) {
+					return type;
 				}
-			}
-			document.body.removeChild(div);
-			return type;
-		}
+				type = 'reverse';
+				var div = document.createElement('div');
+				div.innerHTML = '<div dir="rtl" style="font-size: 14px; width: 1px; height: 1px; position: absolute; top: -1000px; overflow: scroll">A</div>';
+				var definer = div.firstChild;
+				document.body.appendChild(div);
+				if (definer.scrollLeft > 0) {
+					type = 'default';
+				} else {
+					definer.scrollLeft = 1;
+					if (definer.scrollLeft === 0) {
+						type = 'negative';
+					}
+				}
+				document.body.removeChild(div);
+				return type;
+			};
+		})();
 		var type;
 		Polymer({
 			is: 'd2l-scroll-wrapper',
@@ -113,10 +120,7 @@
 			},
 
 			ready: function() {
-				if (!type) {
-					type = getScrollType();
-				}
-				this._setScrollRtlReverse(type !== 'default');
+				this._setScrollRtlReverse(getScrollType() !== 'default');
 			},
 
 			attached: function() {
