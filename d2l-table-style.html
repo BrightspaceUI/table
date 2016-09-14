@@ -292,9 +292,7 @@ TODO: When ShadowDOM v1 is available, use <slot> and ::slotted
 			}
 
 			:host([no-column-border]) > ::content > tbody > tr > td,
-			:host([no-column-border]) > ::content > tbody > tr > th,
-			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > td,
-			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > th {
+			:host([no-column-border]) > ::content > tbody > tr > th {
 				border-left: none;
 				border-right: none;
 			}

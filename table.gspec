@@ -33,7 +33,7 @@
 
 == D2L Table ==
 
-	@forEach [&small,&rows,&sort,&wide] as part
+	@forEach [&small,&rows,&sort,&wide,&no-column-border] as part
 		${part}:
 			image file dumps/d2l-table/objects/${part}.png
 
