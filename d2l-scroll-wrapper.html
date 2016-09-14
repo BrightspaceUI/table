@@ -8,14 +8,18 @@
 ```
 	<link rel="import" href="d2l-scroll-wrapper.html">
 	<style>
-		#scroll-wrapper[h-scrollbar] {
-			/* styles to apply when horizontal scrollbar appears */
-		}
-		#scroll-wrapper[scrollbar-left] {
-			/* styles to apply when scrolled to the left */
-		}
-		#scroll-wrapper[scrollbar-right] {
-			/* styles to apply when scrolled to the right */
+		#scroll-wrapper {
+			--d2l-scroll-wrapper-h-scroll: {
+				/* styles to apply when horizontal scrollbar appears */
+			}
+
+			/* Note that the left/right styles are applied at the same time if there is no scrollbar */
+			--d2l-scroll-wrapper-left: {
+				/* styles to apply when scrolled to the left */
+			}
+			--d2l-scroll-wrapper-right: {
+				/* styles to apply when scrolled to the right */
+			}
 		}
 	</style>
 	<d2l-scroll-wrapper id="scroll-wrapper">
@@ -32,10 +36,50 @@
 				width: 100%;
 				box-sizing: border-box;
 			}
+
+			:host([h-scrollbar]),
+			:host-context([dir="rtl"])[scroll-rtl-reverse] {
+				@apply(--d2l-scroll-wrapper-h-scroll);
+			}
+
+			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-right],
+			:host([scrollbar-left]) {
+				@apply(--d2l-scroll-wrapper-left);
+			}
+
+			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-left],
+			:host([scrollbar-right]) {
+				@apply(--d2l-scroll-wrapper-right);
+			}
 		</style>
 		<content></content>
 	</template>
 	<script>
+		var getScrollType = (function() {
+			var type;
+
+			return function getScrollType() {
+				if (type) {
+					return type;
+				}
+				type = 'reverse';
+				var div = document.createElement('div');
+				div.innerHTML = '<div dir="rtl" style="font-size: 14px; width: 1px; height: 1px; position: absolute; top: -1000px; overflow: scroll">A</div>';
+				var definer = div.firstChild;
+				document.body.appendChild(div);
+				if (definer.scrollLeft > 0) {
+					type = 'default';
+				} else {
+					definer.scrollLeft = 1;
+					if (definer.scrollLeft === 0) {
+						type = 'negative';
+					}
+				}
+				document.body.removeChild(div);
+				return type;
+			};
+		})();
+		var type;
 		Polymer({
 			is: 'd2l-scroll-wrapper',
 			behaviors: [Polymer.IronResizableBehavior],
@@ -61,12 +105,22 @@
 					reflectToAttribute: true,
 					value: false,
 					readOnly: true
+				},
+				scrollRtlReverse: {
+					type: Boolean,
+					reflectToAttribute: true,
+					value: false,
+					readOnly: true
 				}
 			},
 
 			listeners: {
 				'iron-resize': 'checkScrollbar',
 				'scroll': 'checkScrollThresholds'
+			},
+
+			ready: function() {
+				this._setScrollRtlReverse(getScrollType() !== 'default');
 			},
 
 			attached: function() {
@@ -79,7 +133,7 @@
 			},
 
 			checkScrollThresholds: function() {
-				var lowerScrollValue = this.scrollWidth - this.offsetWidth - this.scrollLeft;
+				var lowerScrollValue = this.scrollWidth - this.offsetWidth - Math.abs(this.scrollLeft);
 				this._setScrollbarLeft(this.scrollLeft === 0);
 				this._setScrollbarRight(lowerScrollValue <= 0);
 			}
