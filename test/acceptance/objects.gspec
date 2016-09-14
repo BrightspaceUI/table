@@ -1,0 +1,25 @@
+@objects
+
+	small-*               .screenshot-small
+		head              thead
+			tr-*              tr
+		body              tbody
+			tr-*              tr
+		foot              tfoot
+			tr-*              tr
+
+	rows-*                .screenshot-rows
+		tr-*              tr
+
+	sort-*                .screenshot-sort
+		tr-*              tr
+		sort-icon-*       thead d2l-table-col-sort
+
+	wide-*                .screenshot-wide
+		tr-*              tr
+
+	no-column-border-*    .screenshot-no-column-border
+		head              thead
+			tr-*              tr
+		body              tbody
+			tr-*              tr

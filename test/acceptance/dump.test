@@ -1,0 +1,5 @@
+@@ Parameterized using browsers
+Open simple.html in ${browserName}
+	${browserFactory} ${endpoint} ${browserArgs}
+		wait 1m until gone 'css: body[unresolved]'
+		dump test/acceptance/objects.gspec --name "${browserName}" --export test/acceptance/dumps/${browserName} --max-width 200 --max-height 200

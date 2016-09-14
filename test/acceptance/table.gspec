@@ -1,28 +1,4 @@
-@objects
-
-	small-*               .screenshot-small
-		head              thead
-			tr-*              tr
-		body              tbody
-			tr-*              tr
-		foot              tfoot
-			tr-*              tr
-
-	rows-*                .screenshot-rows
-		tr-*              tr
-
-	sort-*                .screenshot-sort
-		tr-*              tr
-		sort-icon-*       thead d2l-table-col-sort
-
-	wide-*                .screenshot-wide
-		tr-*              tr
-
-	no-column-border-*    .screenshot-no-column-border
-		head              thead
-			tr-*              tr
-		body              tbody
-			tr-*              tr
+@import objects.gspec
 
 @groups
 	small            small-*.head,small-*.body,small-*.foot
@@ -35,16 +11,16 @@
 
 	@forEach [&small,&rows,&sort,&wide,&no-column-border] as part
 		${part}:
-			image file dumps/d2l-table/objects/${part}.png
+			image file dumps/${browserName}/objects/${part}.png
 
 		${part}.tr-1:
 			aligned horizontally top ${part}
-			image file dumps/d2l-table/objects/${part}.tr-1.png
+			image file dumps/${browserName}/objects/${part}.tr-1.png
 
 		@forEach [${part}.tr-*] as tr, prev as prevTr
 			${tr}:
 				below ${prevTr} 0px
-				image file dumps/d2l-table/objects/${tr}.png
+				image file dumps/${browserName}/objects/${tr}.png
 
 	@forEach [&sort] as part
 		${part}.sort-icon-*:
