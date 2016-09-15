@@ -1,5 +1,32 @@
 @import objects.gspec
 
+@objects
+
+	small-*               .screenshot-small
+		head              thead
+			content-*     span
+		body              tbody
+			content-*     span
+		foot              tfoot
+			content-*     span
+
+	rows-*                .screenshot-rows
+		content-*         span
+
+	sort-*                .screenshot-sort
+		content-*         span
+
+	wide-*                .screenshot-wide
+		content-*         span
+		d2l-scroll-wrapper d2l-scroll-wrapper
+
+	no-column-border-*    .screenshot-no-column-border
+		head              thead
+			content-*     span
+		body              tbody
+			content-*     span
+
+
 @groups
 	small            small-*.head,small-*.body,small-*.foot
 	rows             rows-1,rows-2
@@ -10,17 +37,32 @@
 == D2L Table ==
 
 	@forEach [&small,&rows,&sort,&wide,&no-column-border] as part
-		${part}:
-			image file dumps/${browserName}/objects/${part}.png
-
 		${part}.tr-1:
 			aligned horizontally top ${part}
-			image file dumps/${browserName}/objects/${part}.tr-1.png
 
 		@forEach [${part}.tr-*] as tr, prev as prevTr
 			${tr}:
 				below ${prevTr} 0px
-				image file dumps/${browserName}/objects/${tr}.png
+
+	@forEach [&small,&rows,&no-column-border] as part
+		@forEach [${part}.tr-*] as tr
+			${tr}:
+				image file dumps/${browserName}/objects/${tr}.png, ignore-objects [${part}.content-*], error 8px
+
+	@forEach [&wide] as part
+		@forEach [${part}.tr-*] as tr
+			${tr}:
+				image file dumps/${browserName}/objects/${tr}.png, ignore-objects [${part}.content-*], error 14px
+
+	wide-1.d2l-scroll-wrapper:
+		css border-right-style is "dashed"
+		css border-right-width is "1px"
+		css border-left-width is "0px"
+
+	wide-2.d2l-scroll-wrapper:
+		css border-left-style is "dashed"
+		css border-left-width is "1px"
+		css border-right-width is "0px"
 
 	@forEach [&sort] as part
 		${part}.sort-icon-*:

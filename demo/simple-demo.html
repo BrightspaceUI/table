@@ -3,38 +3,49 @@
 <link rel="import" href="reset.html">
 
 <dom-module id="simple-demo">
-	<template>
+	<template strip-whitespace>
 		<style include="reset">
 			:host {
-				display: block;
+				display: inline-block;
+				vertical-align: top;
 			}
 			.screenshots {
 				display: inline-block;
+				vertical-align: top;
+			}
+			.screenshots span {
+				display: inline-block;
+				padding: 1px;
+				width: 8em;
 			}
 			.screenshot-wide {
+				margin-right: auto;
 				display: block;
 				width: 300px;
+			}
+			:host-context([dir="rtl"]) .screenshot-wide {
+				margin-left: 370px;
 			}
 		</style>
 		<div class="screenshots screenshot-wide">
 			<table is="d2l-table">
 				<thead>
 				<tr>
-					<th>First Name</th>
-					<th>Middle Name</th>
-					<th>Last Name</th>
+					<th><span>First Name</span></th>
+					<th><span>Middle Name</span></th>
+					<th><span>Last Name</span></th>
 				</tr>
 				</thead>
 				<tbody>
 				<tr>
-					<td>Darlene</td>
-					<td>Bridget</td>
-					<td>Waters</td>
+					<td><span>Darlene</span></td>
+					<td><span>Bridget</span></td>
+					<td><span>Waters</span></td>
 				</tr>
 				<tr>
-					<td>David</td>
-					<td>Robert</td>
-					<td>Sandoval</td>
+					<td><span>David</span></td>
+					<td><span>Robert</span></td>
+					<td><span>Sandoval</span></td>
 				</tr>
 				</tbody>
 			</table>
@@ -43,28 +54,28 @@
 			<table is="d2l-table">
 				<thead>
 				<tr>
-					<th>First Name</th>
-					<th>Middle Name</th>
-					<th>Last Name</th>
+					<th><span>First Name</span></th>
+					<th><span>Middle Name</span></th>
+					<th><span>Last Name</span></th>
 				</tr>
 				</thead>
 				<tfoot>
 				<tr>
-					<th>First Name</th>
-					<th>Middle Name</th>
-					<th>Last Name</th>
+					<th><span>First Name</span></th>
+					<th><span>Middle Name</span></th>
+					<th><span>Last Name</span></th>
 				</tr>
 				</tfoot>
 				<tbody>
 				<tr>
-					<td>Darlene</td>
-					<td>Bridget</td>
-					<td>Waters</td>
+					<td><span>Darlene</span></td>
+					<td><span>Bridget</span></td>
+					<td><span>Waters</span></td>
 				</tr>
 				<tr>
-					<td>David</td>
-					<td>Robert</td>
-					<td>Sandoval</td>
+					<td><span>David</span></td>
+					<td><span>Robert</span></td>
+					<td><span>Sandoval</span></td>
 				</tr>
 				</tbody>
 			</table>
@@ -73,43 +84,41 @@
 			<table is="d2l-table">
 				<tbody>
 				<tr>
-					<td>Darlene</td>
-					<td>Bridget</td>
-					<td>Waters</td>
+					<td><span>Darlene</span></td>
+					<td><span>Bridget</span></td>
+					<td><span>Waters</span></td>
 				</tr>
 				<tr active selected>
-					<td>Paula</td>
-					<td>Rose</td>
-					<td>Baldwin</td>
+					<td><span>Paula</span></td>
+					<td><span>Rose</span></td>
+					<td><span>Baldwin</span></td>
 				</tr>
 				<tr>
-					<td>David</td>
-					<td>Robert</td>
-					<td>Sandoval</td>
+					<td><span>David</span></td>
+					<td><span>Robert</span></td>
+					<td><span>Sandoval</span></td>
 				</tr>
 				</tbody>
 			</table>
 		</div>
-		<!-- Sorting icons -->
 		<div class="screenshots screenshot-sort">
-			<!-- active only -->
 			<table is="d2l-table">
 				<thead>
 					<th>
-						Ascending<d2l-table-col-sort></d2l-table-col-sort>
+						<span>Ascending</span><d2l-table-col-sort></d2l-table-col-sort>
 					</th>
 					<th>
-						Descending<d2l-table-col-sort desc></d2l-table-col-sort>
+						<span>Descending</span><d2l-table-col-sort desc></d2l-table-col-sort>
 					</th>
 				</thead>
 				<tbody>
 				<tr>
-					<td>123</td>
-					<td>654</td>
+					<td><span>123</span></td>
+					<td><span>654</span></td>
 				</tr>
 				<tr>
-					<td>456</td>
-					<td>321</td>
+					<td><span>456</span></td>
+					<td><span>321</span></td>
 				</tr>
 				</tbody>
 			</table>
@@ -118,21 +127,21 @@
 			<table is="d2l-table" no-column-border>
 				<thead>
 				<tr>
-					<th>First Name</th>
-					<th>Middle Name</th>
-					<th>Last Name</th>
+					<th><span>First Name</span></th>
+					<th><span>Middle Name</span></th>
+					<th><span>Last Name</span></th>
 				</tr>
 				</thead>
 				<tbody>
 				<tr>
-					<td>Darlene</td>
-					<td>Bridget</td>
-					<td>Waters</td>
+					<td><span>Darlene</span></td>
+					<td><span>Bridget</span></td>
+					<td><span>Waters</span></td>
 				</tr>
 				<tr>
-					<td>David</td>
-					<td>Robert</td>
-					<td>Sandoval</td>
+					<td><span>David</span></td>
+					<td><span>Robert</span></td>
+					<td><span>Sandoval</span></td>
 				</tr>
 				</tbody>
 			</table>

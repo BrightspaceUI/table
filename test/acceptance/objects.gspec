@@ -2,11 +2,11 @@
 
 	small-*               .screenshot-small
 		head              thead
-			tr-*              tr
+			tr-*          tr
 		body              tbody
-			tr-*              tr
+			tr-*          tr
 		foot              tfoot
-			tr-*              tr
+			tr-*          tr
 
 	rows-*                .screenshot-rows
 		tr-*              tr
@@ -20,6 +20,6 @@
 
 	no-column-border-*    .screenshot-no-column-border
 		head              thead
-			tr-*              tr
+			tr-*          tr
 		body              tbody
-			tr-*              tr
+			tr-*          tr
