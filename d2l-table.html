@@ -84,6 +84,12 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 -->
 <dom-module id="d2l-table">
 	<template>
+		<style>
+			:host {
+				/* prevent the browser from displaying the table before the wrapper is in place */
+				visibility: hidden;
+			}
+		</style>
 		<content></content>
 	</template>
 	<script>
