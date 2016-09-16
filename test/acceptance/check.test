@@ -1,5 +1,6 @@
 @@ Parameterized using browsers
 Open simple.html in ${browserName}
 	${browserFactory} ${endpoint} ${browserArgs}
+		wait 1m until exist 'css: body'
 		wait 1m until gone 'css: body[unresolved]'
 		check test/acceptance/table.gspec --VbrowserName phantomjs
