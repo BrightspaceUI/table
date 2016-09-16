@@ -2,24 +2,33 @@
 
 	small-*               .screenshot-small
 		head              thead
-			tr-*          tr
+			tr-*-         tr
+				content-* td > span, th > span
 		body              tbody
-			tr-*          tr
+			tr-*-         tr
+				content-* td > span, th > span
 		foot              tfoot
-			tr-*          tr
+			tr-*-         tr
+				content-* td > span, th > span
 
 	rows-*                .screenshot-rows
-		tr-*              tr
+		tr-*-             tr
+			content-*     td > span, th > span
 
 	sort-*                .screenshot-sort
-		tr-*              tr
+		tr-*-             tr
+			content-*     td > span, th > span
 		sort-icon-*       thead d2l-table-col-sort
 
 	wide-*                .screenshot-wide
-		tr-*              tr
+		d2l-scroll-wrapper d2l-scroll-wrapper
+		tr-*-             tr
+			content-*     td > span, th > span
 
 	no-column-border-*    .screenshot-no-column-border
 		head              thead
-			tr-*          tr
+			tr-*-         tr
+				content-* td > span, th > span
 		body              tbody
-			tr-*          tr
+			tr-*-         tr
+				content-* td > span, th > span
