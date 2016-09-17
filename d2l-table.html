@@ -118,7 +118,7 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 				this.wrapMe();
 			},
 			detached: function() {
-				if (this.wrapper && Polymer.dom(this.wrapper).parentNode) {
+				if (Polymer.dom(this).parentNode !== this.wrapper && this.wrapper && Polymer.dom(this.wrapper).parentNode) {
 					Polymer.dom(Polymer.dom(this.wrapper).parentNode).removeChild(this.wrapper);
 					Polymer.dom.flush();
 					this._setWrapper(null);
