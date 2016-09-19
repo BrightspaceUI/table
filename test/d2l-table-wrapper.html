@@ -37,26 +37,26 @@
 					expect(wrapper.parentNode).to.be.null;
 				});
 
-				it('should recreate the wrapper', function() {
+				it('should not recreate the wrapper when table is moved', function() {
 					var div = fixture('empty-div');
 					var wrapper = this.table.wrapper;
 					Polymer.dom(div).appendChild(this.table);
 					Polymer.dom.flush();
 
 					expect(Polymer.dom(this.table.wrapper)).not.to.be.null;
-					expect(this.table.wrapper).not.to.equal(wrapper);
+					expect(this.table.wrapper).to.equal(wrapper);
 					expect(Polymer.dom(this.table.wrapper).firstChild).to.equal(this.table);
 					expect(this.table.wrapper.parentNode).to.equal(div);
 				});
 
-				it('should not recreate the wrapper', function() {
+				it('should not recreate the wrapper when wrapper is moved', function() {
 					var div = fixture('empty-div');
 					var wrapper = this.table.wrapper;
 					Polymer.dom(div).appendChild(wrapper);
 					Polymer.dom.flush();
 
 					expect(Polymer.dom(this.table.wrapper)).not.to.be.null;
-					expect(this.table.wrapper).to.equal(wrapper)
+					expect(this.table.wrapper).to.equal(wrapper);
 					expect(Polymer.dom(this.table.wrapper).firstChild).to.equal(this.table);
 					expect(this.table.wrapper.parentNode).to.equal(div);
 				});

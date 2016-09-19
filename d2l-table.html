@@ -105,6 +105,7 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 			},
 			wrapMe: function() {
 				var parentNode = Polymer.dom(this).parentNode;
+				this._isWrapping = true;
 				if (parentNode && parentNode.tagName && parentNode.tagName.toUpperCase() === 'D2L-TABLE-WRAPPER') { // The table already is in a wrapper
 					this._setWrapper(parentNode);
 				} else if (parentNode && !this.wrapper) { // The table is mounted but doesn't have a wrapper. Create it
@@ -112,16 +113,20 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 					Polymer.dom(parentNode).replaceChild(wrapper, this);
 					Polymer.dom(wrapper).appendChild(this);
 					Polymer.dom.flush();
+				} else if (parentNode && this.wrapper) {
+					Polymer.dom(parentNode).replaceChild(this.wrapper, this);
+					Polymer.dom(this.wrapper).appendChild(this);
+					Polymer.dom.flush();
 				}
+				this._isWrapping = false;
 			},
 			attached: function() {
 				this.wrapMe();
 			},
 			detached: function() {
-				if (Polymer.dom(this).parentNode !== this.wrapper && this.wrapper && Polymer.dom(this.wrapper).parentNode) {
+				if (!this._isWrapping && Polymer.dom(this).parentNode !== this.wrapper && this.wrapper && Polymer.dom(this.wrapper).parentNode) {
 					Polymer.dom(Polymer.dom(this.wrapper).parentNode).removeChild(this.wrapper);
 					Polymer.dom.flush();
-					this._setWrapper(null);
 				}
 			}
 		});
