@@ -242,7 +242,7 @@
 						var now = Date.now();
 						var elapsedTime = now - startTime;
 						if (elapsedTime > duration) {
-							this.scroller.scrollLeft = left;
+							this.scrollLeft = left;
 						} else if (this._currentAnimationId === animationId) {
 							this.scrollLeft = easingFn(elapsedTime, currentScrollLeft, deltaScrollLeft, duration);
 							requestAnimationFrame(updateFrame.bind(this));
