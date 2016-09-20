@@ -11,18 +11,45 @@
 		#scroll-wrapper {
 			--d2l-scroll-wrapper-h-scroll: {
 				/* styles to apply when horizontal scrollbar appears */
-			}
+			};
 
 			/* Note that the left/right styles are applied at the same time if there is no scrollbar */
 			--d2l-scroll-wrapper-left: {
 				/* styles to apply when scrolled to the left */
-			}
+			};
 			--d2l-scroll-wrapper-right: {
 				/* styles to apply when scrolled to the right */
-			}
+			};
+
+			--d2l-scroll-wrapper-action: {
+				/* styles for the left/right action buttons */
+			};
+
+			--d2l-scroll-wrapper-action-hidden: {
+				/* css to hide an action button */
+			};
+
+			--d2l-scroll-wrapper-action-visible: {
+				/* css to show an action button */
+			};
+
+			--d2l-scroll-wrapper-action-start: {
+				/* styles for the action button on the left (scrolls toward start) */
+			};
+
+			--d2l-scroll-wrapper-action-end: {
+				/* styles for the action button on the right (scrolls toward end) */
+			};
 		}
 	</style>
-	<d2l-scroll-wrapper id="scroll-wrapper">
+	The attributes are optional
+	<d2l-scroll-wrapper
+		id="scroll-wrapper"
+		scroll-duration="500"
+		scroll-amount="0.8"
+		start-icon="d2l-tier1:chevron-left"
+		end-icon="d2l-tier1:chevron-right"
+	>
 		<div>Stuff</div>
 	</d2l-scroll-wrapper>
 ```
@@ -132,12 +159,12 @@
 				@apply(--d2l-scroll-wrapper-action-hidden);
 			}
 		</style>
-		<button class="default start action" is="d2l-image-action" icon="d2l-tier1:chevron-left" on-tap="handleTapBack"></button>
-		<button class="default end action" is="d2l-image-action" icon="d2l-tier1:chevron-right" on-tap="handleTapForward"></button>
-		<button class="reverse end action" is="d2l-image-action" icon="d2l-tier1:chevron-left" on-tap="handleTapBack"></button>
-		<button class="reverse start action" is="d2l-image-action" icon="d2l-tier1:chevron-right" on-tap="handleTapForward"></button>
-		<button class="negative end action" is="d2l-image-action" icon="d2l-tier1:chevron-left" on-tap="handleTapForward"></button>
-		<button class="negative start action" is="d2l-image-action" icon="d2l-tier1:chevron-right" on-tap="handleTapBack"></button>
+		<button class="default start action" is="d2l-image-action" icon="[[startIcon]]" on-tap="handleTapBack"></button>
+		<button class="default end action" is="d2l-image-action" icon="[[endIcon]]" on-tap="handleTapForward"></button>
+		<button class="reverse end action" is="d2l-image-action" icon="[[startIcon]]" on-tap="handleTapBack"></button>
+		<button class="reverse start action" is="d2l-image-action" icon="[[endIcon]]" on-tap="handleTapForward"></button>
+		<button class="negative end action" is="d2l-image-action" icon="[[startIcon]]" on-tap="handleTapForward"></button>
+		<button class="negative start action" is="d2l-image-action" icon="[[endIcon]]" on-tap="handleTapBack"></button>
 		<content></content>
 	</template>
 	<script>
@@ -208,6 +235,24 @@
 					reflectToAttribute: true,
 					value: false,
 					readOnly: true
+				},
+				scrollDuration: {
+					type: Number,
+					value: 500
+				},
+				scrollAmount: {
+					type: Number,
+					value: 0.8
+				},
+				startIcon: {
+					type: String,
+					value: 'd2l-tier1:chevron-left',
+					notify: true
+				},
+				endIcon: {
+					type: String,
+					value: 'd2l-tier1:chevron-right',
+					notify: true
 				}
 			},
 
@@ -217,12 +262,12 @@
 			},
 
 			handleTapBack: function() {
-				var scrollDistance = this.offsetWidth * 0.8;
+				var scrollDistance = this.clientWidth * this.scrollAmount;
 				this.scroll(this.scrollLeft - scrollDistance, true);
 			},
 
 			handleTapForward: function() {
-				var scrollDistance = this.offsetWidth * 0.8;
+				var scrollDistance = this.clientWidth * this.scrollAmount;
 				this.scroll(this.scrollLeft + scrollDistance, true);
 			},
 
@@ -233,7 +278,7 @@
 						return -c * t * (t - 2) + b;
 					};
 					var animationId = Math.random();
-					var duration = 500;
+					var duration = this.scrollDuration;
 					var startTime = Date.now();
 					var currentScrollLeft = this.scrollLeft;
 					var deltaScrollLeft = left - currentScrollLeft;

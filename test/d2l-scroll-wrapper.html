@@ -65,6 +65,65 @@
 					});
 
 					common(false);
+
+					describe('scroll', function() {
+						it('should set scrollLeft', function() {
+							this.wrapper.scrollLeft = 0;
+							this.wrapper.scroll(50);
+							expect(this.wrapper.scrollLeft).to.equal(50);
+						});
+
+						it('should scroll smoothly', function(done) {
+							this.wrapper.scrollLeft = 0;
+							this.wrapper.scrollDuration = 100;
+							this.wrapper.scroll(50, true);
+
+							var wrapper = this.wrapper;
+							setTimeout(function() {
+								requestAnimationFrame(function() {
+									expect(wrapper.scrollLeft).to.be.above(0);
+									expect(wrapper.scrollLeft).to.be.below(50);
+								});
+							}, 10);
+
+							setTimeout(function() {
+								requestAnimationFrame(function() {
+									expect(wrapper.scrollLeft).to.equal(50);
+									done();
+								});
+							}, 100);
+						});
+
+						it('should scroll smoothly after being called twice', function(done) {
+							this.wrapper.scrollLeft = 0;
+							this.wrapper.scrollDuration = 100;
+							this.wrapper.scroll(50, true);
+							var wrapper = this.wrapper;
+
+							setTimeout(function() {
+								requestAnimationFrame(function() {
+									expect(wrapper.scrollLeft).to.be.above(0);
+									expect(wrapper.scrollLeft).to.be.below(50);
+
+									wrapper.scroll(0, true);
+
+									setTimeout(function() {
+										requestAnimationFrame(function() {
+											expect(wrapper.scrollLeft).to.be.above(0);
+											expect(wrapper.scrollLeft).to.be.below(50);
+										});
+									}, 10);
+
+									setTimeout(function() {
+										requestAnimationFrame(function() {
+											expect(wrapper.scrollLeft).to.equal(0);
+											done();
+										});
+									}, 100);
+								});
+							}, 10);
+						});
+					});
 				});
 
 				describe('rtl', function() {
@@ -81,6 +140,25 @@
 					it('should have h-scrollbar attribute', function() {
 						expect(this.wrapper.hScrollbar).to.equal(true);
 					});
+
+					describe('handleTapBack', function() {
+						it('should scroll back 80% of clientWidth', function() {
+							this.wrapper.scrollLeft = 0;
+							sinon.stub(this.wrapper, 'scroll');
+							this.wrapper.handleTapBack();
+							expect(this.wrapper.scroll).to.have.been.calledWith(-0.8 * 300);
+						});
+					});
+
+					describe('handleTapForward', function() {
+						it('should scroll forward 80% of clientWidth', function() {
+							this.wrapper.scrollLeft = 0;
+							sinon.stub(this.wrapper, 'scroll');
+							this.wrapper.handleTapForward();
+							expect(this.wrapper.scroll).to.have.been.calledWith(0.8 * 300);
+						});
+					});
+
 					describe('left', function() {
 						beforeEach(function(done) {
 							if (rtl) {
@@ -94,7 +172,9 @@
 							} else {
 								this.wrapper.scrollLeft = 0;
 							}
-							flush(done);
+							this.wrapper.async(function() {
+								flush(done);
+							});
 						});
 
 						it('should apply --d2l-scroll-wrapper-left', function() {
@@ -122,7 +202,9 @@
 							} else {
 								this.wrapper.scrollLeft = this.wrapper.scrollWidth;
 							}
-							flush(done);
+							this.wrapper.async(function() {
+								flush(done);
+							});
 						});
 
 						it('should apply --d2l-scroll-wrapper-right', function() {
