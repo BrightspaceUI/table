@@ -14,7 +14,7 @@
     "iron-icon": "^1.0.10",
     "iron-iconset-svg": "^1.0.9",
     "iron-resizable-behavior": "^1.0.5",
-    "d2l-icons": "^2.7.0",
+    "d2l-icons": "^2.8.1",
     "d2l-image-action": "^0.5.0"
   },
   "devDependencies": {
