@@ -209,6 +209,7 @@
 					hScrollbar: {
 						type: Boolean,
 						reflectToAttribute: true,
+						notify: true,
 						value: false,
 						readOnly: true
 					},
@@ -216,6 +217,7 @@
 					scrollbarLeft: {
 						type: Boolean,
 						reflectToAttribute: true,
+						notify: true,
 						value: false,
 						readOnly: true
 					},
@@ -223,44 +225,53 @@
 					scrollbarRight: {
 						type: Boolean,
 						reflectToAttribute: true,
+						notify: true,
 						value: false,
 						readOnly: true
 					},
+					/** The browser doesn't change scroll behavior on RTL. Use for styling buttons and applying mixins on RTL. See scrollRtlReverse and scrollRtlNegative */
 					scrollRtlDefault: {
 						type: Boolean,
 						reflectToAttribute: true,
+						notify: true,
 						value: false,
 						readOnly: true
 					},
+					/** The browser reverses the scrollLeft value on RTL */
 					scrollRtlReverse: {
 						type: Boolean,
 						reflectToAttribute: true,
+						notify: true,
 						value: false,
 						readOnly: true
 					},
+					/** The browser negates the scrollLeft value on RTL */
 					scrollRtlNegative: {
 						type: Boolean,
 						reflectToAttribute: true,
+						notify: true,
 						value: false,
 						readOnly: true
 					},
+					/** The duration for smooth scroll. 0 disables smooth scroll */
 					scrollDuration: {
 						type: Number,
 						value: 500
 					},
+					/** The percentage of clientWidth to scroll by on clicking the action buttons */
 					scrollAmount: {
 						type: Number,
 						value: 0.8
 					},
+					/** The icon to use for the start action button (left) */
 					startIcon: {
 						type: String,
-						value: 'd2l-tier1:chevron-left',
-						notify: true
+						value: 'd2l-tier1:chevron-left'
 					},
+					/** The icon to use for the end action button (right) */
 					endIcon: {
 						type: String,
-						value: 'd2l-tier1:chevron-right',
-						notify: true
+						value: 'd2l-tier1:chevron-right'
 					}
 				},
 
