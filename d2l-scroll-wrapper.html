@@ -1,8 +1,25 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../d2l-icons/tier1-icons.html">
+<link rel="import" href="../d2l-colors/d2l-colors.html">
+<link rel="import" href="../d2l-image-action/d2l-image-action.html">
 <link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 
 <!--
 # D2L Scroll Wrapper
+
+<link rel="import" href="d2l-scroll-wrapper.html">
+<div>
+	<d2l-scroll-wrapper
+		id="scroll-wrapper"
+		style="width: 300px"
+		scroll-duration="500"
+		scroll-amount="0.8"
+		start-icon="d2l-tier1:chevron-left"
+		end-icon="d2l-tier1:chevron-right"
+	>
+		<div style="width: 350px">Stuff</div>
+	</d2l-scroll-wrapper>
+</div>
 
 ## Usage
 ```
@@ -45,12 +62,13 @@
 	The attributes are optional
 	<d2l-scroll-wrapper
 		id="scroll-wrapper"
+		style="width: 300px"
 		scroll-duration="500"
 		scroll-amount="0.8"
 		start-icon="d2l-tier1:chevron-left"
 		end-icon="d2l-tier1:chevron-right"
 	>
-		<div>Stuff</div>
+		<div style="width: 350px">Stuff</div>
 	</d2l-scroll-wrapper>
 ```
 -->
@@ -272,7 +290,7 @@
 			},
 
 			scroll: function(left, smooth) {
-				if (smooth) {
+				if (smooth && this.scrollDuration > 0) {
 					var easingFn = function easeOutQuad(t, b, c, d) {
 						t /= d;
 						return -c * t * (t - 2) + b;
