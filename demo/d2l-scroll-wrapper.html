@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+	<head>
+
+		<link rel="import" href="../d2l-scroll-wrapper.html">
+		<style is="custom-style">
+			:root {
+				--d2l-scroll-wrapper-background-color: red;
+				--d2l-scroll-wrapper-border-color: black;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="position: relative; width: 300px">
+			<d2l-scroll-wrapper
+				id="scroll-wrapper"
+				style="width: 300px"
+				scroll-duration="500"
+				scroll-amount="0.8"
+				start-icon="d2l-tier1:chevron-left"
+				end-icon="d2l-tier1:chevron-right"
+			 >
+				 <div style="width: 350px">Stuff</div>
+			</d2l-scroll-wrapper>
+		</div>
+	</body>
+</html>

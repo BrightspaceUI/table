@@ -7,26 +7,6 @@
 <!--
 # D2L Scroll Wrapper
 
-<link rel="import" href="d2l-scroll-wrapper.html">
-<style is="custom-style">
-	:root {
-		--d2l-scroll-wrapper-background-color: red;
-		--d2l-scroll-wrapper-border-color: black;
-	}
-</style>
-<div style="position: relative; width: 300px">
-	<d2l-scroll-wrapper
-		id="scroll-wrapper"
-		style="width: 300px"
-		scroll-duration="500"
-		scroll-amount="0.8"
-		start-icon="d2l-tier1:chevron-left"
-		end-icon="d2l-tier1:chevron-right"
-	>
-		<div style="width: 350px">Stuff</div>
-	</d2l-scroll-wrapper>
-</div>
-
 ## Usage
 ```
 	<link rel="import" href="d2l-scroll-wrapper.html">
@@ -79,6 +59,7 @@
 		</d2l-scroll-wrapper>
 	</div>
 ```
+@demo ./demo/d2l-scroll-wrapper.html Scroll Wrapper Demo
 -->
 <dom-module id="d2l-scroll-wrapper">
 	<template strip-whitespace>
@@ -194,159 +175,161 @@
 		<content></content>
 	</template>
 	<script>
-		var getScrollType = (function() {
-			var type;
+		(function() {
+			var getScrollType = (function() {
+				var type;
 
-			return function getScrollType() {
-				if (type) {
-					return type;
-				}
-				type = 'reverse';
-				var div = document.createElement('div');
-				div.innerHTML = '<div dir="rtl" style="font-size: 14px; width: 1px; height: 1px; position: absolute; top: -1000px; overflow: scroll">A</div>';
-				var definer = div.firstChild;
-				document.body.appendChild(div);
-				if (definer.scrollLeft > 0) {
-					type = 'default';
-				} else {
-					definer.scrollLeft = 1;
-					if (definer.scrollLeft === 0) {
-						type = 'negative';
+				return function getScrollType() {
+					if (type) {
+						return type;
 					}
-				}
-				document.body.removeChild(div);
-				return type;
-			};
-		})();
-		Polymer({
-			is: 'd2l-scroll-wrapper',
-			behaviors: [Polymer.IronResizableBehavior],
-
-			properties: {
-				/** Whether this element has a horizontal scrollbar */
-				hScrollbar: {
-					type: Boolean,
-					reflectToAttribute: true,
-					value: false,
-					readOnly: true
-				},
-				/** Whether this element is scrolled to the left */
-				scrollbarLeft: {
-					type: Boolean,
-					reflectToAttribute: true,
-					value: false,
-					readOnly: true
-				},
-				/** Whether this element is scrolled to the right */
-				scrollbarRight: {
-					type: Boolean,
-					reflectToAttribute: true,
-					value: false,
-					readOnly: true
-				},
-				scrollRtlDefault: {
-					type: Boolean,
-					reflectToAttribute: true,
-					value: false,
-					readOnly: true
-				},
-				scrollRtlReverse: {
-					type: Boolean,
-					reflectToAttribute: true,
-					value: false,
-					readOnly: true
-				},
-				scrollRtlNegative: {
-					type: Boolean,
-					reflectToAttribute: true,
-					value: false,
-					readOnly: true
-				},
-				scrollDuration: {
-					type: Number,
-					value: 500
-				},
-				scrollAmount: {
-					type: Number,
-					value: 0.8
-				},
-				startIcon: {
-					type: String,
-					value: 'd2l-tier1:chevron-left',
-					notify: true
-				},
-				endIcon: {
-					type: String,
-					value: 'd2l-tier1:chevron-right',
-					notify: true
-				}
-			},
-
-			listeners: {
-				'iron-resize': 'checkScrollbar',
-				'scroll': 'checkScrollThresholds'
-			},
-
-			handleTapBack: function() {
-				var scrollDistance = this.clientWidth * this.scrollAmount;
-				this.scroll(this.scrollLeft - scrollDistance, true);
-			},
-
-			handleTapForward: function() {
-				var scrollDistance = this.clientWidth * this.scrollAmount;
-				this.scroll(this.scrollLeft + scrollDistance, true);
-			},
-
-			scroll: function(left, smooth) {
-				if (smooth && this.scrollDuration > 0) {
-					var easingFn = function easeOutQuad(t, b, c, d) {
-						t /= d;
-						return -c * t * (t - 2) + b;
-					};
-					var animationId = Math.random();
-					var duration = this.scrollDuration;
-					var startTime = Date.now();
-					var currentScrollLeft = this.scrollLeft;
-					var deltaScrollLeft = left - currentScrollLeft;
-					this._currentAnimationId = animationId;
-					(function updateFrame() {
-						var now = Date.now();
-						var elapsedTime = now - startTime;
-						if (elapsedTime > duration) {
-							this.scrollLeft = left;
-						} else if (this._currentAnimationId === animationId) {
-							this.scrollLeft = easingFn(elapsedTime, currentScrollLeft, deltaScrollLeft, duration);
-							requestAnimationFrame(updateFrame.bind(this));
+					type = 'reverse';
+					var div = document.createElement('div');
+					div.innerHTML = '<div dir="rtl" style="font-size: 14px; width: 1px; height: 1px; position: absolute; top: -1000px; overflow: scroll">A</div>';
+					var definer = div.firstChild;
+					document.body.appendChild(div);
+					if (definer.scrollLeft > 0) {
+						type = 'default';
+					} else {
+						definer.scrollLeft = 1;
+						if (definer.scrollLeft === 0) {
+							type = 'negative';
 						}
-					}).call(this);
-				} else {
-					this.scrollLeft = left;
+					}
+					document.body.removeChild(div);
+					return type;
+				};
+			})();
+			Polymer({
+				is: 'd2l-scroll-wrapper',
+				behaviors: [Polymer.IronResizableBehavior],
+
+				properties: {
+					/** Whether this element has a horizontal scrollbar */
+					hScrollbar: {
+						type: Boolean,
+						reflectToAttribute: true,
+						value: false,
+						readOnly: true
+					},
+					/** Whether this element is scrolled to the left */
+					scrollbarLeft: {
+						type: Boolean,
+						reflectToAttribute: true,
+						value: false,
+						readOnly: true
+					},
+					/** Whether this element is scrolled to the right */
+					scrollbarRight: {
+						type: Boolean,
+						reflectToAttribute: true,
+						value: false,
+						readOnly: true
+					},
+					scrollRtlDefault: {
+						type: Boolean,
+						reflectToAttribute: true,
+						value: false,
+						readOnly: true
+					},
+					scrollRtlReverse: {
+						type: Boolean,
+						reflectToAttribute: true,
+						value: false,
+						readOnly: true
+					},
+					scrollRtlNegative: {
+						type: Boolean,
+						reflectToAttribute: true,
+						value: false,
+						readOnly: true
+					},
+					scrollDuration: {
+						type: Number,
+						value: 500
+					},
+					scrollAmount: {
+						type: Number,
+						value: 0.8
+					},
+					startIcon: {
+						type: String,
+						value: 'd2l-tier1:chevron-left',
+						notify: true
+					},
+					endIcon: {
+						type: String,
+						value: 'd2l-tier1:chevron-right',
+						notify: true
+					}
+				},
+
+				listeners: {
+					'iron-resize': 'checkScrollbar',
+					'scroll': 'checkScrollThresholds'
+				},
+
+				handleTapBack: function() {
+					var scrollDistance = this.clientWidth * this.scrollAmount;
+					this.scroll(this.scrollLeft - scrollDistance, true);
+				},
+
+				handleTapForward: function() {
+					var scrollDistance = this.clientWidth * this.scrollAmount;
+					this.scroll(this.scrollLeft + scrollDistance, true);
+				},
+
+				scroll: function(left, smooth) {
+					if (smooth && this.scrollDuration > 0) {
+						var easingFn = function easeOutQuad(t, b, c, d) {
+							t /= d;
+							return -c * t * (t - 2) + b;
+						};
+						var animationId = Math.random();
+						var duration = this.scrollDuration;
+						var startTime = Date.now();
+						var currentScrollLeft = this.scrollLeft;
+						var deltaScrollLeft = left - currentScrollLeft;
+						this._currentAnimationId = animationId;
+						(function updateFrame() {
+							var now = Date.now();
+							var elapsedTime = now - startTime;
+							if (elapsedTime > duration) {
+								this.scrollLeft = left;
+							} else if (this._currentAnimationId === animationId) {
+								this.scrollLeft = easingFn(elapsedTime, currentScrollLeft, deltaScrollLeft, duration);
+								requestAnimationFrame(updateFrame.bind(this));
+							}
+						}).call(this);
+					} else {
+						this.scrollLeft = left;
+					}
+				},
+
+				ready: function() {
+					this._setScrollRtlDefault(getScrollType() === 'default');
+					this._setScrollRtlReverse(getScrollType() === 'reverse');
+					this._setScrollRtlNegative(getScrollType() === 'negative');
+				},
+
+				attached: function() {
+					// HACK. Edge doesn't update the offsetWidth/scrollWidth correctly
+					// until after checkScrollThresholds has run. So run this twice
+					this.async(this.checkScrollbar);
+					this.async(this.checkScrollbar);
+				},
+
+				checkScrollbar: function() {
+					this._setHScrollbar(this.offsetWidth !== this.scrollWidth);
+					this.checkScrollThresholds();
+				},
+
+				checkScrollThresholds: function() {
+					var lowerScrollValue = this.scrollWidth - this.offsetWidth - Math.abs(this.scrollLeft);
+					this._setScrollbarLeft(this.scrollLeft === 0);
+					this._setScrollbarRight(lowerScrollValue <= 0);
 				}
-			},
-
-			ready: function() {
-				this._setScrollRtlDefault(getScrollType() === 'default');
-				this._setScrollRtlReverse(getScrollType() === 'reverse');
-				this._setScrollRtlNegative(getScrollType() === 'negative');
-			},
-
-			attached: function() {
-				// HACK. Edge doesn't update the offsetWidth/scrollWidth correctly
-				// until after checkScrollThresholds has run. So run this twice
-				this.async(this.checkScrollbar);
-				this.async(this.checkScrollbar);
-			},
-
-			checkScrollbar: function() {
-				this._setHScrollbar(this.offsetWidth !== this.scrollWidth);
-				this.checkScrollThresholds();
-			},
-
-			checkScrollThresholds: function() {
-				var lowerScrollValue = this.scrollWidth - this.offsetWidth - Math.abs(this.scrollLeft);
-				this._setScrollbarLeft(this.scrollLeft === 0);
-				this._setScrollbarRight(lowerScrollValue <= 0);
-			}
-		});
+			});
+		})();
 	</script>
 </dom-module>
