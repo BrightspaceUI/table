@@ -109,6 +109,7 @@
 				@apply(--d2l-scroll-wrapper-h-scroll);
 			}
 
+			/* So, shady DOM doesn't like this syntax, but ShadowDOM needs it */
 			:host-context([dir="rtl"]):host([scroll-rtl-reverse][h-scrollbar]),
 			:host-context([dir="rtl"]):host([scroll-rtl-negative][h-scrollbar]) {
 				@apply(--d2l-scroll-wrapper-h-scroll);
@@ -151,7 +152,6 @@
 				@apply(--d2l-scroll-wrapper-action-start);
 			}
 
-			/* So, shady DOM doesn't like this syntax, but ShadowDOM needs it */
 			:host-context([dir="rtl"])[h-scrollbar] .action,
 			:host([h-scrollbar]) .action {
 				@apply(--d2l-scroll-wrapper-action-visible);
