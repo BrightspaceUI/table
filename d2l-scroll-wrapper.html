@@ -7,6 +7,22 @@
 <!--
 # D2L Scroll Wrapper
 
+<link rel="import" href="d2l-scroll-wrapper.html">
+<div style="position: relative; width: 300px">
+	<d2l-scroll-wrapper
+		id="scroll-wrapper"
+		style="width: 300px"
+		scroll-duration="500"
+		scroll-amount="0.8"
+		start-icon="d2l-tier1:chevron-left"
+		end-icon="d2l-tier1:chevron-right"
+	 >
+		 <div style="width: 350px; height: 100px">
+			Stuff
+		 </div>
+	</d2l-scroll-wrapper>
+</div>
+
 ## Usage
 ```
 	<link rel="import" href="d2l-scroll-wrapper.html">
@@ -70,6 +86,8 @@
 				width: 100%;
 				box-sizing: border-box;
 
+				--d2l-scroll-wrapper-action-offset: -15px;
+
 				--d2l-scroll-wrapper-action: {
 					position: absolute;
 					top: 10px;
@@ -92,11 +110,11 @@
 
 				--d2l-scroll-wrapper-action-start: {
 					right: auto;
-					left: -20px;
+					left: var(--d2l-scroll-wrapper-action-offset);
 				};
 
 				--d2l-scroll-wrapper-action-end: {
-					right: -20px;
+					right: var(--d2l-scroll-wrapper-action-offset);
 					left: auto;
 				};
 			}
@@ -107,9 +125,20 @@
 				@apply(--d2l-scroll-wrapper-h-scroll);
 			}
 
+			/* So, shady DOM doesn't like this syntax, but ShadowDOM needs it */
+			:host-context([dir="rtl"]):host([scroll-rtl-reverse][h-scrollbar]),
+			:host-context([dir="rtl"]):host([scroll-rtl-negative][h-scrollbar]) {
+				@apply(--d2l-scroll-wrapper-h-scroll);
+			}
+
 			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-right],
 			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-right],
 			:host([scrollbar-left]) {
+				@apply(--d2l-scroll-wrapper-left);
+			}
+
+			:host-context([dir="rtl"]):host([scroll-rtl-reverse][scrollbar-right]),
+			:host-context([dir="rtl"]):host([scroll-rtl-negative][scrollbar-right]) {
 				@apply(--d2l-scroll-wrapper-left);
 			}
 
@@ -119,59 +148,59 @@
 				@apply(--d2l-scroll-wrapper-right);
 			}
 
+			:host-context([dir="rtl"]):host([scroll-rtl-reverse][scrollbar-left]),
+			:host-context([dir="rtl"]):host([scroll-rtl-negative][scrollbar-left]) {
+				@apply(--d2l-scroll-wrapper-right);
+			}
+
 			.action {
 				@apply(--d2l-scroll-wrapper-action);
 				@apply(--d2l-scroll-wrapper-action-hidden);
 			}
 
-			.end {
+			:host-context([dir="rtl"]) .left,
+			.right {
 				@apply(--d2l-scroll-wrapper-action-end);
 			}
 
-			.start {
+			:host-context([dir="rtl"]) .right,
+			.left {
 				@apply(--d2l-scroll-wrapper-action-start);
 			}
 
-			/*
-			 * So, this is where things get interesting
-			 * On Chrome, the scrolling logic is the same when direction is RTL
-			 * On Firefox, the scrolling becomes negative when direction is RTL
-			 * On IE, the scrolling is reversed when direction is RTL
-			 * When direction is RTL, the SVG icons are reversed
-			 *
-			 * I address these cases by having 3 groups of buttons. The group is displayed given the correct case
-			 * .default is displayed when the scrollbar is visible for all browsers in LTR. It is the sane case
-			 * .reverse is the same as default, except the buttons are swapped. Only displayed when scrolling is reversed (IE)
-			 * .negative is the inverse of default. Displayed when the scrolling direction is the same as in the LTR case (Firefox, Chrome)
-			 */
-			:host([h-scrollbar]) .default,
-			:host-context([dir="rtl"])[h-scrollbar][scroll-rtl-negative] .negative,
-			:host-context([dir="rtl"])[h-scrollbar][scroll-rtl-default] .negative,
-			:host-context([dir="rtl"])[h-scrollbar][scroll-rtl-reverse] .reverse {
+			:host-context([dir="rtl"])[h-scrollbar] .action,
+			:host([h-scrollbar]) .action {
+				@apply(--d2l-scroll-wrapper-action-visible);
+			}
+
+			:host-context([dir="rtl"]):host([h-scrollbar]) .action {
 				@apply(--d2l-scroll-wrapper-action-visible);
 			}
 
 			/* Hide the start/end buttons depending on the state */
-			:host([scrollbar-right]) .end,
-			:host([scrollbar-left]) .start,
-			/* This is needed to hide the LTR case when direction is RTL */
-			:host-context([dir="rtl"])[h-scrollbar] .default,
-			/* needed for the increased selector specificity */
-			:host-context([dir="rtl"])[scroll-rtl-default][scrollbar-right] .end,
-			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-right] .start,
-			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-right] .start,
-			:host-context([dir="rtl"])[scroll-rtl-default][scrollbar-left] .start,
-			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-left] .end,
-			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-left] .end {
+			:host-context([dir="rtl"])[scroll-rtl-default][scrollbar-right] .left,
+			:host-context([dir="rtl"])[scroll-rtl-default][scrollbar-left] .right,
+			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-right] .right,
+			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-right] .right,
+			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-left] .left,
+			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-left] .left,
+			:host-context([dir="rtl"]) .action,
+			:host([scrollbar-right]) .right,
+			:host([scrollbar-left]) .left {
+				@apply(--d2l-scroll-wrapper-action-hidden);
+			}
+
+			:host-context([dir="rtl"]):host([scroll-rtl-default][scrollbar-right]) .left,
+			:host-context([dir="rtl"]):host([scroll-rtl-default][scrollbar-left]) .right,
+			:host-context([dir="rtl"]):host([scroll-rtl-reverse][scrollbar-right]) .right,
+			:host-context([dir="rtl"]):host([scroll-rtl-negative][scrollbar-right]) .right,
+			:host-context([dir="rtl"]):host([scroll-rtl-reverse][scrollbar-left]) .left,
+			:host-context([dir="rtl"]):host([scroll-rtl-negative][scrollbar-left]) .left {
 				@apply(--d2l-scroll-wrapper-action-hidden);
 			}
 		</style>
-		<button class="default start action" is="d2l-image-action" icon="[[startIcon]]" on-tap="handleTapBack"></button>
-		<button class="default end action" is="d2l-image-action" icon="[[endIcon]]" on-tap="handleTapForward"></button>
-		<button class="reverse end action" is="d2l-image-action" icon="[[startIcon]]" on-tap="handleTapBack"></button>
-		<button class="reverse start action" is="d2l-image-action" icon="[[endIcon]]" on-tap="handleTapForward"></button>
-		<button class="negative end action" is="d2l-image-action" icon="[[startIcon]]" on-tap="handleTapForward"></button>
-		<button class="negative start action" is="d2l-image-action" icon="[[endIcon]]" on-tap="handleTapBack"></button>
+		<button class="left action" is="d2l-image-action" icon="[[startIcon]]" on-tap="handleTapLeft"></button>
+		<button class="right action" is="d2l-image-action" icon="[[endIcon]]" on-tap="handleTapRight"></button>
 		<content></content>
 	</template>
 	<script>
@@ -272,6 +301,12 @@
 					endIcon: {
 						type: String,
 						value: 'd2l-tier1:chevron-right'
+					},
+
+					isRTL: {
+						type: Boolean,
+						value: false,
+						readOnly: true
 					}
 				},
 
@@ -280,16 +315,43 @@
 					'scroll': 'checkScrollThresholds'
 				},
 
-				handleTapBack: function() {
-					var scrollDistance = this.clientWidth * this.scrollAmount;
-					this.scroll(this.scrollLeft - scrollDistance, true);
+				calculateRTL: function() {
+					if (this.$$('[dir="rtl"] *')) {
+						return true;
+					}
+					try {
+						return !!this.$$(':host-context([dir="rtl"]) *');
+					} catch (e) {
+						return false;
+					}
 				},
 
-				handleTapForward: function() {
+				/* Scrolls to the left. Right when dir=rtl */
+				handleTapLeft: function() {
 					var scrollDistance = this.clientWidth * this.scrollAmount;
-					this.scroll(this.scrollLeft + scrollDistance, true);
+					this.scrollDistance(-scrollDistance, true);
 				},
 
+				/* Scrolls to the right. Left when dir=rtl */
+				handleTapRight: function() {
+					var scrollDistance = this.clientWidth * this.scrollAmount;
+					this.scrollDistance(scrollDistance, true);
+				},
+
+				/* Scrolls the set distance. positive === right, negative === left. Reversed when dir=rtl */
+				scrollDistance: function(distance, smooth) {
+					if (this.isRTL) {
+						if (this.scrollRtlReverse) {
+							this.scroll(this.scrollLeft + distance, smooth);
+						} else {
+							this.scroll(this.scrollLeft - distance, smooth);
+						}
+					} else {
+						this.scroll(this.scrollLeft + distance, smooth);
+					}
+				},
+
+				/* Sets scrollLeft to the argument. Optionally scroll smoothly. Behavior depends when dir=rtl */
 				scroll: function(left, smooth) {
 					if (smooth && this.scrollDuration > 0) {
 						var easingFn = function easeOutQuad(t, b, c, d) {
@@ -318,16 +380,16 @@
 				},
 
 				ready: function() {
-					this._setScrollRtlDefault(getScrollType() === 'default');
-					this._setScrollRtlReverse(getScrollType() === 'reverse');
-					this._setScrollRtlNegative(getScrollType() === 'negative');
+					this.async(function() {
+						this._setScrollRtlDefault(getScrollType() === 'default');
+						this._setScrollRtlReverse(getScrollType() === 'reverse');
+						this._setScrollRtlNegative(getScrollType() === 'negative');
+					}, 1);
 				},
 
 				attached: function() {
-					// HACK. Edge doesn't update the offsetWidth/scrollWidth correctly
-					// until after checkScrollThresholds has run. So run this twice
-					this.async(this.checkScrollbar);
-					this.async(this.checkScrollbar);
+					this.async(this.checkScrollbar, 1);
+					this._setIsRTL(this.calculateRTL());
 				},
 
 				checkScrollbar: function() {

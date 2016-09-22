@@ -60,13 +60,13 @@
 		@forEach [${part}.start-action-*] as start
 			@if ${isVisible(start)}
 				${start}:
-					inside partly ${part} 10px top, -20px left
+					inside partly ${part} 10px top, -15px left
 					image file dumps/d2l-table/objects/${part}.start-action-*.png, error 12px
 
 		@forEach [${part}.end-action-*] as end
 			@if ${isVisible(end)}
 				${end}:
-					inside partly ${part} 10px top, -20px right
+					inside partly ${part} 10px top, -15px right
 					image file dumps/d2l-table/objects/${part}.end-action-*.png, error 12px
 
 	small-1.head:

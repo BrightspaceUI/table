@@ -41,6 +41,27 @@
 			</template>
 		</test-fixture>
 
+		<test-fixture id="with-scrollbar-rtl">
+			<template>
+				<div style="width: 300px" dir="rtl">
+					<style is="custom-style">
+						:root {
+							--d2l-scroll-wrapper-left: {
+								color: rgb(1, 1, 1);
+							};
+
+							--d2l-scroll-wrapper-right: {
+								color: rgb(2, 2, 2);
+							};
+						}
+					</style>
+					<d2l-scroll-wrapper>
+						<div style="width: 350px">H</div>
+					</d2l-scroll-wrapper>
+				</div>
+			</template>
+		</test-fixture>
+
 		<script>
 			describe('no scrollbar', function() {
 				var wrapper;
@@ -65,6 +86,20 @@
 					});
 
 					common(false);
+
+					describe('isRTL', function() {
+						it('should return false', function() {
+							expect(this.wrapper.isRTL).to.equal(false);
+						});
+					});
+
+					describe('scrollDistance', function() {
+						it('should scroll the set distance', function() {
+							this.wrapper.scrollLeft = 0;
+							this.wrapper.scrollDistance(50);
+							expect(this.wrapper.scrollLeft).to.equal(50);
+						});
+					});
 
 					describe('scroll', function() {
 						it('should set scrollLeft', function() {
@@ -119,9 +154,38 @@
 
 				describe('rtl', function() {
 					beforeEach(function() {
-						var template = fixture('with-scrollbar');
-						template.setAttribute('dir', 'rtl');
-						this.wrapper = template.querySelector('d2l-scroll-wrapper');
+						this.wrapper = fixture('with-scrollbar-rtl').querySelector('d2l-scroll-wrapper');
+					});
+
+					describe('isRTL', function() {
+						it('should return true', function() {
+							expect(this.wrapper.isRTL).to.equal(true);
+						});
+					});
+
+					describe('scrollDistance', function() {
+						it('should scroll the set distance', function() {
+							this.wrapper.scrollLeft = 0;
+							sinon.stub(this.wrapper, 'scroll');
+							this.wrapper._setScrollRtlDefault(true);
+							this.wrapper._setScrollRtlReverse(false);
+							this.wrapper._setScrollRtlNegative(false);
+							this.wrapper.scrollDistance(50);
+							expect(this.wrapper.scroll).to.have.been.calledWith(-50);
+
+							this.wrapper._setScrollRtlDefault(false);
+							this.wrapper._setScrollRtlReverse(true);
+							this.wrapper._setScrollRtlNegative(false);
+							this.wrapper.scrollDistance(50);
+							expect(this.wrapper.scroll).to.have.been.calledWith(50);
+
+							this.wrapper.scrollLeft = 0;
+							this.wrapper._setScrollRtlDefault(false);
+							this.wrapper._setScrollRtlReverse(false);
+							this.wrapper._setScrollRtlNegative(true);
+							this.wrapper.scrollDistance(50);
+							expect(this.wrapper.scroll).to.have.been.calledWith(-50);
+						});
 					});
 
 					common(true);
@@ -132,21 +196,19 @@
 						expect(this.wrapper.hScrollbar).to.equal(true);
 					});
 
-					describe('handleTapBack', function() {
-						it('should scroll back 80% of clientWidth', function() {
-							this.wrapper.scrollLeft = 0;
-							sinon.stub(this.wrapper, 'scroll');
-							this.wrapper.handleTapBack();
-							expect(this.wrapper.scroll).to.have.been.calledWith(-0.8 * 300);
+					describe('handleTapLeft', function() {
+						it('should scroll left 80% of clientWidth', function() {
+							sinon.stub(this.wrapper, 'scrollDistance');
+							this.wrapper.handleTapLeft();
+							expect(this.wrapper.scrollDistance).to.have.been.calledWith(-0.8 * 300);
 						});
 					});
 
-					describe('handleTapForward', function() {
-						it('should scroll forward 80% of clientWidth', function() {
-							this.wrapper.scrollLeft = 0;
-							sinon.stub(this.wrapper, 'scroll');
-							this.wrapper.handleTapForward();
-							expect(this.wrapper.scroll).to.have.been.calledWith(0.8 * 300);
+					describe('handleTapRight', function() {
+						it('should scroll right 80% of clientWidth', function() {
+							sinon.stub(this.wrapper, 'scrollDistance');
+							this.wrapper.handleTapRight();
+							expect(this.wrapper.scrollDistance).to.have.been.calledWith(0.8 * 300);
 						});
 					});
 
@@ -160,20 +222,22 @@
 							}
 							this.wrapper.addEventListener('scroll', doFlush);
 							var scrollLeft = this.wrapper.scrollLeft;
-							if (rtl) {
-								if (this.wrapper.scrollRtlDefault) {
-									this.wrapper.scrollLeft = 0;
-								} else if (this.wrapper.scrollRtlReverse) {
-									this.wrapper.scrollLeft = this.wrapper.scrollWidth;
-								} else if (this.wrapper.scrollRtlNegative) {
-									this.wrapper.scrollLeft = -this.wrapper.scrollWidth;
+							this.wrapper.async(function() {
+								if (rtl) {
+									if (this.scrollRtlDefault) {
+										this.scrollLeft = 0;
+									} else if (this.scrollRtlReverse) {
+										this.scrollLeft = this.scrollWidth;
+									} else if (this.scrollRtlNegative) {
+										this.scrollLeft = -this.scrollWidth;
+									}
+								} else {
+									this.scrollLeft = 0;
 								}
-							} else {
-								this.wrapper.scrollLeft = 0;
-							}
-							if (this.wrapper.scrollLeft === scrollLeft) {
-								doFlush();
-							}
+								if (this.scrollLeft === scrollLeft) {
+									doFlush();
+								}
+							}, 1);
 						});
 
 						it('should apply --d2l-scroll-wrapper-left', function() {
@@ -181,12 +245,13 @@
 						});
 
 						it('should have only one visible action button pointing right', function() {
-							var actions = Polymer.dom(this.wrapper.root).querySelectorAll('button.action');
+							var actions = Polymer.dom(this.wrapper.root).querySelectorAll('button');
 							actions = actions.filter(function(action) {
 								return getComputedStyle(action).display !== 'none';
 							});
 							expect(actions).to.have.lengthOf(1);
-							expect(actions[0].className).to.contain('end');
+							var style = getComputedStyle(actions[0]);
+							expect(style.right).to.equal('-15px');
 						});
 					});
 
@@ -196,22 +261,24 @@
 							function doFlush() {
 								wrapper.async(function() {
 									flush(done);
-								});
+								}, 1);
 							}
 							this.wrapper.addEventListener('scroll', doFlush);
 							var scrollLeft = this.wrapper.scrollLeft;
-							if (rtl) {
-								if (this.wrapper.scrollRtlDefault) {
-									this.wrapper.scrollLeft = this.wrapper.scrollWidth;
-								} else if (this.wrapper.scrollRtlReverse || this.wrapper.scrollRtlNegative) {
-									this.wrapper.scrollLeft = 0;
+							this.wrapper.async(function() {
+								if (rtl) {
+									if (this.scrollRtlDefault) {
+										this.scrollLeft = this.scrollWidth;
+									} else if (this.scrollRtlReverse || this.scrollRtlNegative) {
+										this.scrollLeft = 0;
+									}
+								} else {
+									this.scrollLeft = this.scrollWidth;
 								}
-							} else {
-								this.wrapper.scrollLeft = this.wrapper.scrollWidth;
-							}
-							if (this.wrapper.scrollLeft === scrollLeft) {
-								doFlush();
-							}
+								if (this.scrollLeft === scrollLeft) {
+									doFlush();
+								}
+							}, 0);
 						});
 
 						it('should apply --d2l-scroll-wrapper-right', function() {
@@ -219,12 +286,13 @@
 						});
 
 						it('should have only one visible action button pointing left', function() {
-							var actions = Polymer.dom(this.wrapper.root).querySelectorAll('button.action');
+							var actions = Polymer.dom(this.wrapper.root).querySelectorAll('button');
 							actions = actions.filter(function(action) {
 								return getComputedStyle(action).display !== 'none';
 							});
 							expect(actions).to.have.lengthOf(1);
-							expect(actions[0].className).to.contain('start');
+							var style = getComputedStyle(actions[0]);
+							expect(style.left).to.equal('-15px');
 						});
 					});
 				}
