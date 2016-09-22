@@ -285,6 +285,12 @@
 					endIcon: {
 						type: String,
 						value: 'd2l-tier1:chevron-right'
+					},
+
+					isRTL: {
+						type: Boolean,
+						value: false,
+						readOnly: true
 					}
 				},
 
@@ -293,7 +299,7 @@
 					'scroll': 'checkScrollThresholds'
 				},
 
-				isRTL: function() {
+				calculateRTL: function() {
 					if (this.$$('[dir="rtl"] *')) {
 						return true;
 					}
@@ -318,7 +324,7 @@
 
 				/* Scrolls the set distance. positive === right, negative === left. Reversed when dir=rtl */
 				scrollDistance: function(distance, smooth) {
-					if (this.isRTL()) {
+					if (this.isRTL) {
 						if (this.scrollRtlReverse) {
 							this.scroll(this.scrollLeft + distance, smooth);
 						} else {
@@ -368,6 +374,7 @@
 					// until after checkScrollThresholds has run. So run this twice
 					this.async(this.checkScrollbar);
 					this.async(this.checkScrollbar);
+					this._setIsRTL(this.calculateRTL());
 				},
 
 				checkScrollbar: function() {

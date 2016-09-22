@@ -41,6 +41,27 @@
 			</template>
 		</test-fixture>
 
+		<test-fixture id="with-scrollbar-rtl">
+			<template>
+				<div style="width: 300px" dir="rtl">
+					<style is="custom-style">
+						:root {
+							--d2l-scroll-wrapper-left: {
+								color: rgb(1, 1, 1);
+							};
+
+							--d2l-scroll-wrapper-right: {
+								color: rgb(2, 2, 2);
+							};
+						}
+					</style>
+					<d2l-scroll-wrapper>
+						<div style="width: 350px">H</div>
+					</d2l-scroll-wrapper>
+				</div>
+			</template>
+		</test-fixture>
+
 		<script>
 			describe('no scrollbar', function() {
 				var wrapper;
@@ -68,7 +89,7 @@
 
 					describe('isRTL', function() {
 						it('should return false', function() {
-							expect(this.wrapper.isRTL()).to.equal(false);
+							expect(this.wrapper.isRTL).to.equal(false);
 						});
 					});
 
@@ -132,16 +153,13 @@
 				});
 
 				describe('rtl', function() {
-					beforeEach(function(done) {
-						var template = fixture('with-scrollbar');
-						template.setAttribute('dir', 'rtl');
-						this.wrapper = template.querySelector('d2l-scroll-wrapper');
-						flush(done);
+					beforeEach(function() {
+						this.wrapper = fixture('with-scrollbar-rtl').querySelector('d2l-scroll-wrapper');
 					});
 
 					describe('isRTL', function() {
 						it('should return true', function() {
-							expect(this.wrapper.isRTL()).to.equal(true);
+							expect(this.wrapper.isRTL).to.equal(true);
 						});
 					});
 
