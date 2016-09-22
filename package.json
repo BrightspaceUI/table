@@ -10,7 +10,7 @@
     "test": "concurrently -p name -n lint:js,lint:wc,galen,wct \"npm run test:lint:js\" \"npm run test:lint:wc\" \"npm run test:galen:local\" \"wct --skip-plugin sauce\"",
     "test:lint:js": "eslint .",
     "test:lint:wc": "polylint",
-    "dump:galen:local:run": "galen test test/acceptance/dump-local.test",
+    "dump:galen:local:run": "galen test test/acceptance/dump.test",
     "dump:galen:local": "concurrently -p name -n serve,galen -s first -k \"polymer serve\" \"npm run dump:galen:local:run\"",
     "galen:local:run": "galen test test/acceptance/check-local.test --htmlreport reports/d2l-table",
     "galen:sauce:run": "galen test test/acceptance/check-sauce.test --htmlreport reports/d2l-table -p4 -DUSERNAME=$SAUCE_USERNAME -DACCESS_KEY=$SAUCE_ACCESS_KEY",

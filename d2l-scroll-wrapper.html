@@ -1,4 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../d2l-icons/tier1-icons.html">
+<link rel="import" href="../d2l-colors/d2l-colors.html">
+<link rel="import" href="../d2l-image-action/d2l-image-action.html">
 <link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 
 <!--
@@ -11,132 +14,333 @@
 		#scroll-wrapper {
 			--d2l-scroll-wrapper-h-scroll: {
 				/* styles to apply when horizontal scrollbar appears */
-			}
+			};
 
 			/* Note that the left/right styles are applied at the same time if there is no scrollbar */
 			--d2l-scroll-wrapper-left: {
 				/* styles to apply when scrolled to the left */
-			}
+			};
 			--d2l-scroll-wrapper-right: {
 				/* styles to apply when scrolled to the right */
-			}
+			};
+
+			--d2l-scroll-wrapper-action: {
+				/* styles for the left/right action buttons */
+			};
+
+			--d2l-scroll-wrapper-action-hidden: {
+				/* css to hide an action button */
+			};
+
+			--d2l-scroll-wrapper-action-visible: {
+				/* css to show an action button */
+			};
+
+			--d2l-scroll-wrapper-action-start: {
+				/* styles for the action button on the left (scrolls toward start) */
+			};
+
+			--d2l-scroll-wrapper-action-end: {
+				/* styles for the action button on the right (scrolls toward end) */
+			};
 		}
 	</style>
-	<d2l-scroll-wrapper id="scroll-wrapper">
-		<div>Stuff</div>
-	</d2l-scroll-wrapper>
+	The attributes are optional
+	<div style="position: relative; width: 300px">
+		<d2l-scroll-wrapper
+			id="scroll-wrapper"
+			style="width: 300px"
+			scroll-duration="500"
+			scroll-amount="0.8"
+			start-icon="d2l-tier1:chevron-left"
+			end-icon="d2l-tier1:chevron-right"
+		>
+			<div style="width: 350px">Stuff</div>
+		</d2l-scroll-wrapper>
+	</div>
 ```
+@demo ./demo/d2l-scroll-wrapper.html Scroll Wrapper Demo
 -->
 <dom-module id="d2l-scroll-wrapper">
 	<template strip-whitespace>
 		<style>
 			:host {
 				display: block;
-				overflow: auto;
+				overflow-x: auto;
 				width: 100%;
 				box-sizing: border-box;
+
+				--d2l-scroll-wrapper-action: {
+					position: absolute;
+					top: 10px;
+					border-radius: 50%;
+					border: 1px solid var(--d2l-scroll-wrapper-border-color);
+					background-color: var(--d2l-scroll-wrapper-background-color);
+					height: 18px;
+					width: 18px;
+					padding: 10px;
+					box-sizing: content-box;
+				};
+
+				--d2l-scroll-wrapper-action-hidden: {
+					display: none;
+				};
+
+				--d2l-scroll-wrapper-action-visible: {
+					display: inline-block;
+				};
+
+				--d2l-scroll-wrapper-action-start: {
+					right: auto;
+					left: -20px;
+				};
+
+				--d2l-scroll-wrapper-action-end: {
+					right: -20px;
+					left: auto;
+				};
 			}
 
 			:host([h-scrollbar]),
-			:host-context([dir="rtl"])[scroll-rtl-reverse] {
+			:host-context([dir="rtl"])[scroll-rtl-reverse][h-scrollbar],
+			:host-context([dir="rtl"])[scroll-rtl-negative][h-scrollbar] {
 				@apply(--d2l-scroll-wrapper-h-scroll);
 			}
 
 			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-right],
+			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-right],
 			:host([scrollbar-left]) {
 				@apply(--d2l-scroll-wrapper-left);
 			}
 
 			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-left],
+			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-left],
 			:host([scrollbar-right]) {
 				@apply(--d2l-scroll-wrapper-right);
 			}
+
+			.action {
+				@apply(--d2l-scroll-wrapper-action);
+				@apply(--d2l-scroll-wrapper-action-hidden);
+			}
+
+			.end {
+				@apply(--d2l-scroll-wrapper-action-end);
+			}
+
+			.start {
+				@apply(--d2l-scroll-wrapper-action-start);
+			}
+
+			/*
+			 * So, this is where things get interesting
+			 * On Chrome, the scrolling logic is the same when direction is RTL
+			 * On Firefox, the scrolling becomes negative when direction is RTL
+			 * On IE, the scrolling is reversed when direction is RTL
+			 * When direction is RTL, the SVG icons are reversed
+			 *
+			 * I address these cases by having 3 groups of buttons. The group is displayed given the correct case
+			 * .default is displayed when the scrollbar is visible for all browsers in LTR. It is the sane case
+			 * .reverse is the same as default, except the buttons are swapped. Only displayed when scrolling is reversed (IE)
+			 * .negative is the inverse of default. Displayed when the scrolling direction is the same as in the LTR case (Firefox, Chrome)
+			 */
+			:host([h-scrollbar]) .default,
+			:host-context([dir="rtl"])[h-scrollbar][scroll-rtl-negative] .negative,
+			:host-context([dir="rtl"])[h-scrollbar][scroll-rtl-default] .negative,
+			:host-context([dir="rtl"])[h-scrollbar][scroll-rtl-reverse] .reverse {
+				@apply(--d2l-scroll-wrapper-action-visible);
+			}
+
+			/* Hide the start/end buttons depending on the state */
+			:host([scrollbar-right]) .end,
+			:host([scrollbar-left]) .start,
+			/* This is needed to hide the LTR case when direction is RTL */
+			:host-context([dir="rtl"])[h-scrollbar] .default,
+			/* needed for the increased selector specificity */
+			:host-context([dir="rtl"])[scroll-rtl-default][scrollbar-right] .end,
+			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-right] .start,
+			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-right] .start,
+			:host-context([dir="rtl"])[scroll-rtl-default][scrollbar-left] .start,
+			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-left] .end,
+			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-left] .end {
+				@apply(--d2l-scroll-wrapper-action-hidden);
+			}
 		</style>
+		<button class="default start action" is="d2l-image-action" icon="[[startIcon]]" on-tap="handleTapBack"></button>
+		<button class="default end action" is="d2l-image-action" icon="[[endIcon]]" on-tap="handleTapForward"></button>
+		<button class="reverse end action" is="d2l-image-action" icon="[[startIcon]]" on-tap="handleTapBack"></button>
+		<button class="reverse start action" is="d2l-image-action" icon="[[endIcon]]" on-tap="handleTapForward"></button>
+		<button class="negative end action" is="d2l-image-action" icon="[[startIcon]]" on-tap="handleTapForward"></button>
+		<button class="negative start action" is="d2l-image-action" icon="[[endIcon]]" on-tap="handleTapBack"></button>
 		<content></content>
 	</template>
 	<script>
-		var getScrollType = (function() {
-			var type;
+		(function() {
+			var getScrollType = (function() {
+				var type;
 
-			return function getScrollType() {
-				if (type) {
-					return type;
-				}
-				type = 'reverse';
-				var div = document.createElement('div');
-				div.innerHTML = '<div dir="rtl" style="font-size: 14px; width: 1px; height: 1px; position: absolute; top: -1000px; overflow: scroll">A</div>';
-				var definer = div.firstChild;
-				document.body.appendChild(div);
-				if (definer.scrollLeft > 0) {
-					type = 'default';
-				} else {
-					definer.scrollLeft = 1;
-					if (definer.scrollLeft === 0) {
-						type = 'negative';
+				return function getScrollType() {
+					if (type) {
+						return type;
 					}
+					type = 'reverse';
+					var div = document.createElement('div');
+					div.innerHTML = '<div dir="rtl" style="font-size: 14px; width: 1px; height: 1px; position: absolute; top: -1000px; overflow: scroll">A</div>';
+					var definer = div.firstChild;
+					document.body.appendChild(div);
+					if (definer.scrollLeft > 0) {
+						type = 'default';
+					} else {
+						definer.scrollLeft = 1;
+						if (definer.scrollLeft === 0) {
+							type = 'negative';
+						}
+					}
+					document.body.removeChild(div);
+					return type;
+				};
+			})();
+			Polymer({
+				is: 'd2l-scroll-wrapper',
+				behaviors: [Polymer.IronResizableBehavior],
+
+				properties: {
+					/** Whether this element has a horizontal scrollbar */
+					hScrollbar: {
+						type: Boolean,
+						reflectToAttribute: true,
+						notify: true,
+						value: false,
+						readOnly: true
+					},
+					/** Whether this element is scrolled to the left */
+					scrollbarLeft: {
+						type: Boolean,
+						reflectToAttribute: true,
+						notify: true,
+						value: false,
+						readOnly: true
+					},
+					/** Whether this element is scrolled to the right */
+					scrollbarRight: {
+						type: Boolean,
+						reflectToAttribute: true,
+						notify: true,
+						value: false,
+						readOnly: true
+					},
+					/** The browser doesn't change scroll behavior on RTL. Use for styling buttons and applying mixins on RTL. See scrollRtlReverse and scrollRtlNegative */
+					scrollRtlDefault: {
+						type: Boolean,
+						reflectToAttribute: true,
+						notify: true,
+						value: false,
+						readOnly: true
+					},
+					/** The browser reverses the scrollLeft value on RTL */
+					scrollRtlReverse: {
+						type: Boolean,
+						reflectToAttribute: true,
+						notify: true,
+						value: false,
+						readOnly: true
+					},
+					/** The browser negates the scrollLeft value on RTL */
+					scrollRtlNegative: {
+						type: Boolean,
+						reflectToAttribute: true,
+						notify: true,
+						value: false,
+						readOnly: true
+					},
+					/** The duration for smooth scroll. 0 disables smooth scroll */
+					scrollDuration: {
+						type: Number,
+						value: 500
+					},
+					/** The percentage of clientWidth to scroll by on clicking the action buttons */
+					scrollAmount: {
+						type: Number,
+						value: 0.8
+					},
+					/** The icon to use for the start action button (left) */
+					startIcon: {
+						type: String,
+						value: 'd2l-tier1:chevron-left'
+					},
+					/** The icon to use for the end action button (right) */
+					endIcon: {
+						type: String,
+						value: 'd2l-tier1:chevron-right'
+					}
+				},
+
+				listeners: {
+					'iron-resize': 'checkScrollbar',
+					'scroll': 'checkScrollThresholds'
+				},
+
+				handleTapBack: function() {
+					var scrollDistance = this.clientWidth * this.scrollAmount;
+					this.scroll(this.scrollLeft - scrollDistance, true);
+				},
+
+				handleTapForward: function() {
+					var scrollDistance = this.clientWidth * this.scrollAmount;
+					this.scroll(this.scrollLeft + scrollDistance, true);
+				},
+
+				scroll: function(left, smooth) {
+					if (smooth && this.scrollDuration > 0) {
+						var easingFn = function easeOutQuad(t, b, c, d) {
+							t /= d;
+							return -c * t * (t - 2) + b;
+						};
+						var animationId = Math.random();
+						var duration = this.scrollDuration;
+						var startTime = Date.now();
+						var currentScrollLeft = this.scrollLeft;
+						var deltaScrollLeft = left - currentScrollLeft;
+						this._currentAnimationId = animationId;
+						(function updateFrame() {
+							var now = Date.now();
+							var elapsedTime = now - startTime;
+							if (elapsedTime > duration) {
+								this.scrollLeft = left;
+							} else if (this._currentAnimationId === animationId) {
+								this.scrollLeft = easingFn(elapsedTime, currentScrollLeft, deltaScrollLeft, duration);
+								requestAnimationFrame(updateFrame.bind(this));
+							}
+						}).call(this);
+					} else {
+						this.scrollLeft = left;
+					}
+				},
+
+				ready: function() {
+					this._setScrollRtlDefault(getScrollType() === 'default');
+					this._setScrollRtlReverse(getScrollType() === 'reverse');
+					this._setScrollRtlNegative(getScrollType() === 'negative');
+				},
+
+				attached: function() {
+					// HACK. Edge doesn't update the offsetWidth/scrollWidth correctly
+					// until after checkScrollThresholds has run. So run this twice
+					this.async(this.checkScrollbar);
+					this.async(this.checkScrollbar);
+				},
+
+				checkScrollbar: function() {
+					this._setHScrollbar(this.offsetWidth !== this.scrollWidth);
+					this.checkScrollThresholds();
+				},
+
+				checkScrollThresholds: function() {
+					var lowerScrollValue = this.scrollWidth - this.offsetWidth - Math.abs(this.scrollLeft);
+					this._setScrollbarLeft(this.scrollLeft === 0);
+					this._setScrollbarRight(lowerScrollValue <= 0);
 				}
-				document.body.removeChild(div);
-				return type;
-			};
+			});
 		})();
-		var type;
-		Polymer({
-			is: 'd2l-scroll-wrapper',
-			behaviors: [Polymer.IronResizableBehavior],
-
-			properties: {
-				/** Whether this element has a horizontal scrollbar */
-				hScrollbar: {
-					type: Boolean,
-					reflectToAttribute: true,
-					value: false,
-					readOnly: true
-				},
-				/** Whether this element is scrolled to the left */
-				scrollbarLeft: {
-					type: Boolean,
-					reflectToAttribute: true,
-					value: false,
-					readOnly: true
-				},
-				/** Whether this element is scrolled to the right */
-				scrollbarRight: {
-					type: Boolean,
-					reflectToAttribute: true,
-					value: false,
-					readOnly: true
-				},
-				scrollRtlReverse: {
-					type: Boolean,
-					reflectToAttribute: true,
-					value: false,
-					readOnly: true
-				}
-			},
-
-			listeners: {
-				'iron-resize': 'checkScrollbar',
-				'scroll': 'checkScrollThresholds'
-			},
-
-			ready: function() {
-				this._setScrollRtlReverse(getScrollType() !== 'default');
-			},
-
-			attached: function() {
-				this.async(this.checkScrollbar);
-			},
-
-			checkScrollbar: function() {
-				this._setHScrollbar(this.offsetWidth !== this.scrollWidth);
-				this.checkScrollThresholds();
-			},
-
-			checkScrollThresholds: function() {
-				var lowerScrollValue = this.scrollWidth - this.offsetWidth - Math.abs(this.scrollLeft);
-				this._setScrollbarLeft(this.scrollLeft === 0);
-				this._setScrollbarRight(lowerScrollValue <= 0);
-			}
-		});
 	</script>
 </dom-module>

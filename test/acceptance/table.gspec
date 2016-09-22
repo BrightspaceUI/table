@@ -1,4 +1,30 @@
-@import objects.gspec
+@objects
+
+	small-*               .screenshot-small
+		head              thead
+			tr-*              tr
+		body              tbody
+			tr-*              tr
+		foot              tfoot
+			tr-*              tr
+
+	rows-*                .screenshot-rows
+		tr-*              tr
+
+	sort-*                .screenshot-sort
+		tr-*              tr
+		sort-icon-*       thead d2l-table-col-sort
+
+	wide-*                .screenshot-wide
+		start-action-*    button[is="d2l-image-action"].start
+		end-action-*      button[is="d2l-image-action"].end
+		tr-*              tr
+
+	no-column-border-*    .screenshot-no-column-border
+		head              thead
+			tr-*              tr
+		body              tbody
+			tr-*              tr
 
 @groups
 	small            small-*.head,small-*.body,small-*.foot
@@ -10,37 +36,33 @@
 == D2L Table ==
 
 	@forEach [&small,&rows,&sort,&wide,&no-column-border] as part
-		${part}.tr-1-:
-			aligned horizontally top ${part}
+		${part}:
+			image file dumps/d2l-table/objects/${part}.png
 
-		@forEach [${part}.tr-*-] as tr, prev as prevTr
+		${part}.tr-1:
+			aligned horizontally top ${part}
+			image file dumps/d2l-table/objects/${part}.tr-1.png
+
+		@forEach [${part}.tr-*] as tr, prev as prevTr
 			${tr}:
 				below ${prevTr} 0px
-
-	@forEach [&small,&rows,&no-column-border] as part
-		@forEach [${part}.tr-*-] as tr
-			${tr}:
-				image file dumps/${browserName}/objects/${tr}.png, ignore-objects [${tr}.content-*], error 8px
-
-	@forEach [&wide] as part
-		@forEach [${part}.tr-*-] as tr
-			${tr}:
-				image file dumps/${browserName}/objects/${tr}.png, ignore-objects [${tr}.content-*], error 14px
-
-	wide-1.d2l-scroll-wrapper:
-		css border-right-style is "dashed"
-		css border-right-width is "1px"
-		css border-left-width is "0px"
-
-	wide-2.d2l-scroll-wrapper:
-		css border-left-style is "dashed"
-		css border-left-width is "1px"
-		css border-right-width is "0px"
+				image file dumps/d2l-table/objects/${tr}.png
 
 	@forEach [&sort] as part
 		${part}.sort-icon-*:
 			# The 1px is to compensate for the border
-			aligned horizontally centered ${part}.tr-1- 1px
+			aligned horizontally centered ${part}.tr-1 1px
+
+	@forEach [&wide] as part
+		@forEach [${part}.start-action-*] as start
+			@if ${isVisible(start)}
+				${start}:
+					inside partly ${part} 10px top, -20px left
+
+		@forEach [${part}.end-action-*] as end
+			@if ${isVisible(end)}
+				${end}:
+					inside partly ${part} 10px top, -20px right
 
 	small-1.head:
 		above small-1.body 0px

@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+
+		<link rel="import" href="../d2l-scroll-wrapper.html">
+		<style is="custom-style">
+			:root {
+				--d2l-scroll-wrapper-background-color: red;
+				--d2l-scroll-wrapper-border-color: black;
+				--d2l-scroll-wrapper-left: {
+					border-left: 1px solid purple;
+				};
+
+				--d2l-scroll-wrapper-right: {
+					border-right: 1px solid purple;
+				};
+			}
+		</style>
+	</head>
+	<body>
+		<div style="position: relative; width: 300px">
+			<d2l-scroll-wrapper
+				id="scroll-wrapper"
+				style="width: 300px"
+				scroll-duration="500"
+				scroll-amount="0.8"
+				start-icon="d2l-tier1:chevron-left"
+				end-icon="d2l-tier1:chevron-right"
+			 >
+				 <div style="width: 350px; height: 100px">
+					I have red action buttons that scroll this body. I will have purple lines that appear when I reach either end.
+				 </div>
+			</d2l-scroll-wrapper>
+		</div>
+	</body>
+</html>

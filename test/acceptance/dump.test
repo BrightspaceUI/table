@@ -1,6 +1,8 @@
+@@ import ../../galen.local.config.test
+
 @@ Parameterized using browsers
 Open simple.html in ${browserName}
 	${browserFactory} ${endpoint} ${browserArgs}
 		wait 1m until exist 'css: body'
 		wait 1m until gone 'css: body[unresolved]'
-		dump test/acceptance/objects.gspec --name "${browserName}" --export test/acceptance/dumps/${browserName} --max-height 100
+		dump test/acceptance/table.gspec --name "D2L Table" --export test/acceptance/dumps/d2l-table

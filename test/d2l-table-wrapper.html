@@ -29,58 +29,67 @@
 		</test-fixture>
 
 		<script>
-			describe('no wrapper', function() {
-				var table;
-				beforeEach(function() {
-					table = fixture('no-wrapper');
-				});
-
-				it('should create a wrapper', function() {
-					expect(table.wrapper).not.to.be.null;
-					expect(Polymer.dom(table.wrapper).firstChild).to.equal(table);
-				});
-
+			function common() {
 				it('should destroy the wrapper', function() {
-					var wrapper = table.wrapper;
-					Polymer.dom(Polymer.dom(table).parentNode).removeChild(table);
+					var wrapper = this.table.wrapper;
+					Polymer.dom(Polymer.dom(this.table).parentNode).removeChild(this.table);
 					Polymer.dom.flush();
 					expect(wrapper.parentNode).to.be.null;
 				});
 
-				it('should recreate the wrapper', function() {
+				it('should not recreate the wrapper when table is moved', function() {
 					var div = fixture('empty-div');
-					Polymer.dom(Polymer.dom(table).parentNode).removeChild(table);
-					Polymer.dom(div).appendChild(table);
+					var wrapper = this.table.wrapper;
+					Polymer.dom(div).appendChild(this.table);
 					Polymer.dom.flush();
 
-					expect(Polymer.dom(table.wrapper)).not.to.be.null;
-					expect(Polymer.dom(table.wrapper).firstChild).to.equal(table);
-					expect(table.wrapper.parentNode).to.equal(div);
+					expect(Polymer.dom(this.table.wrapper)).not.to.be.null;
+					expect(this.table.wrapper).to.equal(wrapper);
+					expect(Polymer.dom(this.table.wrapper).firstChild).to.equal(this.table);
+					expect(this.table.wrapper.parentNode).to.equal(div);
 				});
+
+				it('should not recreate the wrapper when wrapper is moved', function() {
+					var div = fixture('empty-div');
+					var wrapper = this.table.wrapper;
+					Polymer.dom(div).appendChild(wrapper);
+					Polymer.dom.flush();
+
+					expect(Polymer.dom(this.table.wrapper)).not.to.be.null;
+					expect(this.table.wrapper).to.equal(wrapper);
+					expect(Polymer.dom(this.table.wrapper).firstChild).to.equal(this.table);
+					expect(this.table.wrapper.parentNode).to.equal(div);
+				});
+			}
+			describe('no wrapper', function() {
+				beforeEach(function() {
+					this.table = fixture('no-wrapper');
+				});
+
+				it('should create a wrapper', function() {
+					expect(this.table.wrapper).not.to.be.null;
+					expect(Polymer.dom(this.table.wrapper).firstChild).to.equal(this.table);
+				});
+
+				common();
 			});
 
 			describe('with wrapper', function() {
-				var wrapper;
-				beforeEach(function() {
-					wrapper = fixture('with-wrapper');
-				});
-
-				it('should have a wrapper', function(done) {
+				beforeEach(function(done) {
+					var self = this;
+					self.wrapper = fixture('with-wrapper');
 					flush(function() {
-						expect(Polymer.dom(wrapper).firstChild).not.to.be.null;
-						expect(Polymer.dom(wrapper).firstChild.wrapper).to.equal(wrapper);
+						self.table = Polymer.dom(self.wrapper).firstChild;
 						done();
 					});
 				});
 
-				it('should destroy the wrapper', function(done) {
-					flush(function() {
-						Polymer.dom(wrapper).removeChild(Polymer.dom(wrapper).firstChild);
-						Polymer.dom.flush();
-						expect(wrapper.parentNode).to.be.null;
-						done();
-					});
+				it('should have a wrapper', function() {
+					expect(this.table).not.to.be.null;
+					expect(this.table.wrapper).to.equal(this.wrapper);
 				});
+
+				common();
 			});
 		</script>
 	</body>

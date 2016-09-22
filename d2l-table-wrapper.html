@@ -1,5 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="d2l-scroll-wrapper.html">
+<link rel="import" href="d2l-table-style.html">
+<link rel="import" href="../d2l-colors/d2l-colors.html">
 
 <!--
 # D2L Table Wrapper
@@ -8,13 +10,23 @@ Not meant to be used directly. Automatically created when using `<table is="d2l-
 -->
 <dom-module id="d2l-table-wrapper">
 	<template strip-whitespace>
-		<style>
+		<style include="d2l-table-style d2l-colors">
 			:host {
 				background-color: transparent;
 				display: block;
 				width: 100%;
 				position: relative;
 
+				--d2l-table-border-color: var(--d2l-color-titanius);
+				--d2l-table-border: 1px solid var(--d2l-table-border-color);
+				--d2l-table-border-radius: 0.3rem;
+				--d2l-table-header-background-color: var(--d2l-color-regolith);
+				--d2l-table-body-background-color: #fff;
+				--d2l-table-row-background-color-active: var(--d2l-color-celestine-light-1);
+				--d2l-table-row-border-color-active-selected: var(--d2l-color-celestine-light-2);
+				--d2l-table-row-background-color-active-selected: #EBF5FC;
+				--d2l-table-row-border-color-selected: var(--d2l-color-celestine-light-2);
+				--d2l-table-row-background-color-selected: var(--d2l-color-celestine-light-1);
 				--d2l-table-border-overflow: dashed 1px #d3d9e3;
 			}
 
@@ -22,18 +34,21 @@ Not meant to be used directly. Automatically created when using `<table is="d2l-
 				--d2l-scroll-wrapper-h-scroll: {
 					border-left: var(--d2l-table-border-overflow);
 					border-right: var(--d2l-table-border-overflow);
-				}
+				};
 
 				--d2l-scroll-wrapper-left: {
 					border-left: none;
-				}
+				};
 
 				--d2l-scroll-wrapper-right: {
 					border-right: none;
-				}
+				};
+
+				--d2l-scroll-wrapper-border-color: var(--d2l-table-border-color);
+				--d2l-scroll-wrapper-background-color: var(--d2l-table-header-background-color);
 			}
 		</style>
-		<d2l-scroll-wrapper>
+		<d2l-scroll-wrapper class="table-container">
 			<content></content>
 		</d2l-scroll-wrapper>
 	</template>

@@ -1,8 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="d2l-table-style.html">
 <link rel="import" href="d2l-table-wrapper.html">
 <link rel="import" href="d2l-table-col-sort.html">
-<link rel="import" href="../d2l-colors/d2l-colors.html">
 
 <!--
 # D2L Table
@@ -28,17 +26,53 @@
 		</tbody>
 	</table>
 ```
-### Table Styles
+
+## Styling
 ```
-	<link rel="import" href="d2l-table-style.html">
-	<style include="d2l-table-style"></style>
-	<table class="d2l-table">
-		<template>
-			<content></content>
-		</template>
-	</table>
-	<div class="d2l-table"><content></content></div>
+	<link rel="import" href="d2l-table.html">
+	<style is="custom-style">
+		/* In order to target an individual table to style, the d2l-table-wrapper
+		   element is required */
+		.ugly-table {
+			--d2l-table-border-color: purple
+			--d2l-table-border-radius: 0;
+			--d2l-table-header-background-color: grey;
+			--d2l-table-body-background-color: blue;
+			--d2l-table-row-background-color-active: black;
+			--d2l-table-row-border-color-active-selected: red;
+			--d2l-table-row-background-color-active-selected: red;
+			--d2l-table-row-border-color-selected: black;
+			--d2l-table-row-background-color-selected: black;
+			--d2l-table-border-overflow: none;
+		}
+
+		/* tweak default border radius for all tables on the page. No d2l-table-wrapper
+		   element is required */
+		:root {
+			--d2l-table-border-radius: 0.4rem;
+		}
+	</style>
+	<d2l-table-wrapper class="ugly-table">
+		<table is="d2l-table">
+			<thead>
+				<tr>
+					<th>Table header cell</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th>Table header cell</th>
+				</tr>
+			</tfoot>
+			<tbody>
+				<tr>
+					<td>Table cell</td>
+				</tr>
+			</tbody>
+		</table>
+	</d2l-table-wrapper>
 ```
+
 
 ## TODO
 
@@ -50,18 +84,10 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 -->
 <dom-module id="d2l-table">
 	<template>
-		<style include="d2l-table-style d2l-colors">
+		<style>
 			:host {
-				--d2l-table-border-color: var(--d2l-color-titanius);
-				--d2l-table-border: 1px solid var(--d2l-table-border-color);
-				--d2l-table-border-radius: 0.3rem;
-				--d2l-table-header-background-color: var(--d2l-color-regolith);
-				--d2l-table-body-background-color: #fff;
-				--d2l-table-row-background-color-active: var(--d2l-color-celestine-light-1);
-				--d2l-table-row-border-color-active-selected: var(--d2l-color-celestine-light-2);
-				--d2l-table-row-background-color-active-selected: #EBF5FC;
-				--d2l-table-row-border-color-selected: var(--d2l-color-celestine-light-2);
-				--d2l-table-row-background-color-selected: var(--d2l-color-celestine-light-1);
+				/* prevent the browser from displaying the table before the wrapper is in place */
+				visibility: hidden;
 			}
 		</style>
 		<content></content>
@@ -79,6 +105,7 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 			},
 			wrapMe: function() {
 				var parentNode = Polymer.dom(this).parentNode;
+				this._isWrapping = true;
 				if (parentNode && parentNode.tagName && parentNode.tagName.toUpperCase() === 'D2L-TABLE-WRAPPER') { // The table already is in a wrapper
 					this._setWrapper(parentNode);
 				} else if (parentNode && !this.wrapper) { // The table is mounted but doesn't have a wrapper. Create it
@@ -86,16 +113,20 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 					Polymer.dom(parentNode).replaceChild(wrapper, this);
 					Polymer.dom(wrapper).appendChild(this);
 					Polymer.dom.flush();
+				} else if (parentNode && this.wrapper) {
+					Polymer.dom(parentNode).replaceChild(this.wrapper, this);
+					Polymer.dom(this.wrapper).appendChild(this);
+					Polymer.dom.flush();
 				}
+				this._isWrapping = false;
 			},
 			attached: function() {
 				this.wrapMe();
 			},
 			detached: function() {
-				if (this.wrapper && Polymer.dom(this.wrapper).parentNode) {
+				if (!this._isWrapping && Polymer.dom(this).parentNode !== this.wrapper && this.wrapper && Polymer.dom(this.wrapper).parentNode) {
 					Polymer.dom(Polymer.dom(this.wrapper).parentNode).removeChild(this.wrapper);
 					Polymer.dom.flush();
-					this._setWrapper(null);
 				}
 			}
 		});

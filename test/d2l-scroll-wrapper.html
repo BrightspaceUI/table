@@ -23,6 +23,17 @@
 		<test-fixture id="with-scrollbar">
 			<template>
 				<div style="width: 300px">
+					<style is="custom-style">
+						:root {
+							--d2l-scroll-wrapper-left: {
+								color: rgb(1, 1, 1);
+							};
+
+							--d2l-scroll-wrapper-right: {
+								color: rgb(2, 2, 2);
+							};
+						}
+					</style>
 					<d2l-scroll-wrapper>
 						<div style="width: 350px">H</div>
 					</d2l-scroll-wrapper>
@@ -37,52 +48,186 @@
 					wrapper = fixture('no-scrollbar').querySelector('d2l-scroll-wrapper');
 				});
 
-				it('should not have h-scrollbar attribute', function(done) {
-					flush(function() {
-						expect(wrapper.hScrollbar).to.equal(false);
-						done();
-					});
+				it('should not have h-scrollbar attribute', function() {
+					expect(wrapper.hScrollbar).to.equal(false);
 				});
 
-				it('should have scrollbar-left and scrollbar-right attributes', function(done) {
-					flush(function() {
-						expect(wrapper.scrollbarLeft).to.equal(true);
-						expect(wrapper.scrollbarRight).to.equal(true);
-						done();
-					});
+				it('should have scrollbar-left and scrollbar-right attributes', function() {
+					expect(wrapper.scrollbarLeft).to.equal(true);
+					expect(wrapper.scrollbarRight).to.equal(true);
 				});
 			});
 
 			describe('scrollbar', function() {
-				var wrapper;
-				beforeEach(function() {
-					wrapper = fixture('with-scrollbar').querySelector('d2l-scroll-wrapper');
-				});
+				describe('ltr', function() {
+					beforeEach(function() {
+						this.wrapper = fixture('with-scrollbar').querySelector('d2l-scroll-wrapper');
+					});
 
-				it('should have h-scrollbar attribute', function(done) {
-					flush(function() {
-						expect(wrapper.hScrollbar).to.equal(true);
-						done();
+					common(false);
+
+					describe('scroll', function() {
+						it('should set scrollLeft', function() {
+							this.wrapper.scrollLeft = 0;
+							this.wrapper.scroll(50);
+							expect(this.wrapper.scrollLeft).to.equal(50);
+						});
+
+						/*it('should scroll smoothly', function(done) {
+							this.wrapper.scrollLeft = 0;
+							this.wrapper.scrollDuration = 100;
+							this.wrapper.scroll(50, true);
+
+							var wrapper = this.wrapper;
+							requestAnimationFrame(function() {
+								expect(wrapper.scrollLeft).to.be.above(0);
+								expect(wrapper.scrollLeft).to.be.below(50);
+							});
+
+							setTimeout(function() {
+								requestAnimationFrame(function() {
+									expect(wrapper.scrollLeft).to.equal(50);
+									done();
+								});
+							}, 100);
+						});
+
+						it('should scroll smoothly after being called twice', function(done) {
+							this.wrapper.scrollLeft = 0;
+							this.wrapper.scrollDuration = 100;
+							this.wrapper.scroll(50, true);
+							var wrapper = this.wrapper;
+
+							requestAnimationFrame(function() {
+								wrapper.scroll(0, true);
+
+								requestAnimationFrame(function() {
+									expect(wrapper.scrollLeft).to.be.above(0);
+									expect(wrapper.scrollLeft).to.be.below(50);
+								});
+
+								setTimeout(function() {
+									requestAnimationFrame(function() {
+										expect(wrapper.scrollLeft).to.equal(0);
+										done();
+									});
+								}, 100);
+							});
+						});*/
 					});
 				});
 
-				it('should have scrollbar-left attribute', function(done) {
-					wrapper.scrollLeft = 0;
-					flush(function() {
-						expect(wrapper.scrollbarLeft).to.equal(true);
-						expect(wrapper.scrollbarRight).to.equal(false);
-						done();
+				describe('rtl', function() {
+					beforeEach(function() {
+						var template = fixture('with-scrollbar');
+						template.setAttribute('dir', 'rtl');
+						this.wrapper = template.querySelector('d2l-scroll-wrapper');
 					});
+
+					common(true);
 				});
 
-				it('should have scrollbar-right attribute', function(done) {
-					wrapper.scrollLeft = wrapper.scrollWidth;
-					flush(function() {
-						expect(wrapper.scrollbarLeft).to.equal(false);
-						expect(wrapper.scrollbarRight).to.equal(true);
-						done();
+				function common(rtl) {
+					it('should have h-scrollbar attribute', function() {
+						expect(this.wrapper.hScrollbar).to.equal(true);
 					});
-				});
+
+					describe('handleTapBack', function() {
+						it('should scroll back 80% of clientWidth', function() {
+							this.wrapper.scrollLeft = 0;
+							sinon.stub(this.wrapper, 'scroll');
+							this.wrapper.handleTapBack();
+							expect(this.wrapper.scroll).to.have.been.calledWith(-0.8 * 300);
+						});
+					});
+
+					describe('handleTapForward', function() {
+						it('should scroll forward 80% of clientWidth', function() {
+							this.wrapper.scrollLeft = 0;
+							sinon.stub(this.wrapper, 'scroll');
+							this.wrapper.handleTapForward();
+							expect(this.wrapper.scroll).to.have.been.calledWith(0.8 * 300);
+						});
+					});
+
+					describe('left', function() {
+						beforeEach(function(done) {
+							var wrapper = this.wrapper;
+							function doFlush() {
+								wrapper.async(function() {
+									flush(done);
+								});
+							}
+							this.wrapper.addEventListener('scroll', doFlush);
+							var scrollLeft = this.wrapper.scrollLeft;
+							if (rtl) {
+								if (this.wrapper.scrollRtlDefault) {
+									this.wrapper.scrollLeft = 0;
+								} else if (this.wrapper.scrollRtlReverse) {
+									this.wrapper.scrollLeft = this.wrapper.scrollWidth;
+								} else if (this.wrapper.scrollRtlNegative) {
+									this.wrapper.scrollLeft = -this.wrapper.scrollWidth;
+								}
+							} else {
+								this.wrapper.scrollLeft = 0;
+							}
+							if (this.wrapper.scrollLeft === scrollLeft) {
+								doFlush();
+							}
+						});
+
+						it('should apply --d2l-scroll-wrapper-left', function() {
+							expect(getComputedStyle(this.wrapper).color).to.equal('rgb(1, 1, 1)');
+						});
+
+						it('should have only one visible action button pointing right', function() {
+							var actions = Polymer.dom(this.wrapper.root).querySelectorAll('button.action');
+							actions = actions.filter(function(action) {
+								return getComputedStyle(action).display !== 'none';
+							});
+							expect(actions).to.have.lengthOf(1);
+							expect(actions[0].className).to.contain('end');
+						});
+					});
+
+					describe('right', function() {
+						beforeEach(function(done) {
+							var wrapper = this.wrapper;
+							function doFlush() {
+								wrapper.async(function() {
+									flush(done);
+								});
+							}
+							this.wrapper.addEventListener('scroll', doFlush);
+							var scrollLeft = this.wrapper.scrollLeft;
+							if (rtl) {
+								if (this.wrapper.scrollRtlDefault) {
+									this.wrapper.scrollLeft = this.wrapper.scrollWidth;
+								} else if (this.wrapper.scrollRtlReverse || this.wrapper.scrollRtlNegative) {
+									this.wrapper.scrollLeft = 0;
+								}
+							} else {
+								this.wrapper.scrollLeft = this.wrapper.scrollWidth;
+							}
+							if (this.wrapper.scrollLeft === scrollLeft) {
+								doFlush();
+							}
+						});
+
+						it('should apply --d2l-scroll-wrapper-right', function() {
+							expect(getComputedStyle(this.wrapper).color).to.equal('rgb(2, 2, 2)');
+						});
+
+						it('should have only one visible action button pointing left', function() {
+							var actions = Polymer.dom(this.wrapper.root).querySelectorAll('button.action');
+							actions = actions.filter(function(action) {
+								return getComputedStyle(action).display !== 'none';
+							});
+							expect(actions).to.have.lengthOf(1);
+							expect(actions[0].className).to.contain('start');
+						});
+					});
+				}
 			});
 		</script>
 	</body>
