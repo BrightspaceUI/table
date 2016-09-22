@@ -136,58 +136,55 @@
 				@apply(--d2l-scroll-wrapper-right);
 			}
 
-			.action,
-			.rtl-action {
+			.action {
 				@apply(--d2l-scroll-wrapper-action);
 				@apply(--d2l-scroll-wrapper-action-hidden);
 			}
 
-			:host-context([dir="rtl"]) .rtl-end,
-			.end {
+			:host-context([dir="rtl"]) .left,
+			.right {
 				@apply(--d2l-scroll-wrapper-action-end);
 			}
 
-			:host-context([dir="rtl"]) .rtl-start,
-			.start {
+			:host-context([dir="rtl"]) .right,
+			.left {
 				@apply(--d2l-scroll-wrapper-action-start);
 			}
 
 			/* So, shady DOM doesn't like this syntax, but ShadowDOM needs it */
-			:host-context([dir="rtl"])[h-scrollbar] .rtl-action,
+			:host-context([dir="rtl"])[h-scrollbar] .action,
 			:host([h-scrollbar]) .action {
 				@apply(--d2l-scroll-wrapper-action-visible);
 			}
 
-			:host-context([dir="rtl"]):host([h-scrollbar]) .rtl-action {
+			:host-context([dir="rtl"]):host([h-scrollbar]) .action {
 				@apply(--d2l-scroll-wrapper-action-visible);
 			}
 
 			/* Hide the start/end buttons depending on the state */
-			:host-context([dir="rtl"])[scroll-rtl-default][scrollbar-right] .rtl-end,
-			:host-context([dir="rtl"])[scroll-rtl-default][scrollbar-left] .rtl-start,
-			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-right] .rtl-start,
-			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-right] .rtl-start,
-			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-left] .rtl-end,
-			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-left] .rtl-end,
+			:host-context([dir="rtl"])[scroll-rtl-default][scrollbar-right] .left,
+			:host-context([dir="rtl"])[scroll-rtl-default][scrollbar-left] .right,
+			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-right] .right,
+			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-right] .right,
+			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-left] .left,
+			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-left] .left,
 			:host-context([dir="rtl"]) .action,
-			:host([scrollbar-right]) .end,
-			:host([scrollbar-left]) .start {
+			:host([scrollbar-right]) .right,
+			:host([scrollbar-left]) .left {
 				@apply(--d2l-scroll-wrapper-action-hidden);
 			}
 
-			:host-context([dir="rtl"]):host([scroll-rtl-default][scrollbar-right]) .rtl-end,
-			:host-context([dir="rtl"]):host([scroll-rtl-default][scrollbar-left]) .rtl-start,
-			:host-context([dir="rtl"]):host([scroll-rtl-reverse][scrollbar-right]) .rtl-start,
-			:host-context([dir="rtl"]):host([scroll-rtl-negative][scrollbar-right]) .rtl-start,
-			:host-context([dir="rtl"]):host([scroll-rtl-reverse][scrollbar-left]) .rtl-end,
-			:host-context([dir="rtl"]):host([scroll-rtl-negative][scrollbar-left]) .rtl-end {
+			:host-context([dir="rtl"]):host([scroll-rtl-default][scrollbar-right]) .left,
+			:host-context([dir="rtl"]):host([scroll-rtl-default][scrollbar-left]) .right,
+			:host-context([dir="rtl"]):host([scroll-rtl-reverse][scrollbar-right]) .right,
+			:host-context([dir="rtl"]):host([scroll-rtl-negative][scrollbar-right]) .right,
+			:host-context([dir="rtl"]):host([scroll-rtl-reverse][scrollbar-left]) .left,
+			:host-context([dir="rtl"]):host([scroll-rtl-negative][scrollbar-left]) .left {
 				@apply(--d2l-scroll-wrapper-action-hidden);
 			}
 		</style>
-		<button class="start action" is="d2l-image-action" icon="[[startIcon]]" on-tap="handleTapBack"></button>
-		<button class="end action" is="d2l-image-action" icon="[[endIcon]]" on-tap="handleTapForward"></button>
-		<button class="rtl-end rtl-action" is="d2l-image-action" icon="[[startIcon]]" on-tap="handleTapForward"></button>
-		<button class="rtl-start rtl-action" is="d2l-image-action" icon="[[endIcon]]" on-tap="handleTapBack"></button>
+		<button class="left action" is="d2l-image-action" icon="[[startIcon]]" on-tap="handleTapLeft"></button>
+		<button class="right action" is="d2l-image-action" icon="[[endIcon]]" on-tap="handleTapRight"></button>
 		<content></content>
 	</template>
 	<script>
@@ -296,36 +293,43 @@
 					'scroll': 'checkScrollThresholds'
 				},
 
-				handleTapBack: function() {
-					var scrollDistance = this.clientWidth * this.scrollAmount;
-					var isRTL = !!this.$$('[dir="rtl"] *');
-					if (isRTL) {
-						if (this.scrollRtlReverse) {
-							this.scroll(scrollDistance - this.scrollLeft, true);
-							return;
-						} else if (this.scrollRtlNegative) {
-							this.scroll(this.scrollLeft - scrollDistance, true);
-							return;
-						}
+				isRTL: function() {
+					if (this.$$('[dir="rtl"] *')) {
+						return true;
 					}
-					this.scroll(this.scrollLeft - scrollDistance, true);
+					try {
+						return !!this.$$(':host-context([dir="rtl"]) *');
+					} catch (e) {
+						return false;
+					}
 				},
 
-				handleTapForward: function() {
+				/* Scrolls to the left. Right when dir=rtl */
+				handleTapLeft: function() {
 					var scrollDistance = this.clientWidth * this.scrollAmount;
-					var isRTL = !!this.$$('[dir="rtl"] *');
-					if (isRTL) {
-						if (this.scrollRtlReverse) {
-							this.scroll(this.scrollLeft - scrollDistance, true);
-							return;
-						} else if (this.scrollRtlNegative) {
-							this.scroll(this.scrollLeft + scrollDistance, true);
-							return;
-						}
-					}
-					this.scroll(this.scrollLeft + scrollDistance, true);
+					this.scrollDistance(-scrollDistance, true);
 				},
 
+				/* Scrolls to the right. Left when dir=rtl */
+				handleTapRight: function() {
+					var scrollDistance = this.clientWidth * this.scrollAmount;
+					this.scrollDistance(scrollDistance, true);
+				},
+
+				/* Scrolls the set distance. positive === right, negative === left. Reversed when dir=rtl */
+				scrollDistance: function(distance, smooth) {
+					if (this.isRTL()) {
+						if (this.scrollRtlReverse) {
+							this.scroll(this.scrollLeft + distance, smooth);
+						} else {
+							this.scroll(this.scrollLeft - distance, smooth);
+						}
+					} else {
+						this.scroll(this.scrollLeft + distance, smooth);
+					}
+				},
+
+				/* Sets scrollLeft to the argument. Optionally scroll smoothly. Behavior depends when dir=rtl */
 				scroll: function(left, smooth) {
 					if (smooth && this.scrollDuration > 0) {
 						var easingFn = function easeOutQuad(t, b, c, d) {

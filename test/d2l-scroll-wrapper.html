@@ -66,6 +66,20 @@
 
 					common(false);
 
+					describe('isRTL', function() {
+						it('should return false', function() {
+							expect(this.wrapper.isRTL()).to.equal(false);
+						});
+					});
+
+					describe('scrollDistance', function() {
+						it('should scroll the set distance', function() {
+							this.wrapper.scrollLeft = 0;
+							this.wrapper.scrollDistance(50);
+							expect(this.wrapper.scrollLeft).to.equal(50);
+						});
+					});
+
 					describe('scroll', function() {
 						it('should set scrollLeft', function() {
 							this.wrapper.scrollLeft = 0;
@@ -118,10 +132,42 @@
 				});
 
 				describe('rtl', function() {
-					beforeEach(function() {
+					beforeEach(function(done) {
 						var template = fixture('with-scrollbar');
 						template.setAttribute('dir', 'rtl');
 						this.wrapper = template.querySelector('d2l-scroll-wrapper');
+						flush(done);
+					});
+
+					describe('isRTL', function() {
+						it('should return true', function() {
+							expect(this.wrapper.isRTL()).to.equal(true);
+						});
+					});
+
+					describe('scrollDistance', function() {
+						it('should scroll the set distance', function() {
+							this.wrapper.scrollLeft = 0;
+							sinon.stub(this.wrapper, 'scroll');
+							this.wrapper._setScrollRtlDefault(true);
+							this.wrapper._setScrollRtlReverse(false);
+							this.wrapper._setScrollRtlNegative(false);
+							this.wrapper.scrollDistance(50);
+							expect(this.wrapper.scroll).to.have.been.calledWith(-50);
+
+							this.wrapper._setScrollRtlDefault(false);
+							this.wrapper._setScrollRtlReverse(true);
+							this.wrapper._setScrollRtlNegative(false);
+							this.wrapper.scrollDistance(50);
+							expect(this.wrapper.scroll).to.have.been.calledWith(50);
+
+							this.wrapper.scrollLeft = 0;
+							this.wrapper._setScrollRtlDefault(false);
+							this.wrapper._setScrollRtlReverse(false);
+							this.wrapper._setScrollRtlNegative(true);
+							this.wrapper.scrollDistance(50);
+							expect(this.wrapper.scroll).to.have.been.calledWith(-50);
+						});
 					});
 
 					common(true);
@@ -132,21 +178,19 @@
 						expect(this.wrapper.hScrollbar).to.equal(true);
 					});
 
-					describe('handleTapBack', function() {
-						it('should scroll back 80% of clientWidth', function() {
-							this.wrapper.scrollLeft = 0;
-							sinon.stub(this.wrapper, 'scroll');
-							this.wrapper.handleTapBack();
-							expect(this.wrapper.scroll).to.have.been.calledWith(-0.8 * 300);
+					describe('handleTapLeft', function() {
+						it('should scroll left 80% of clientWidth', function() {
+							sinon.stub(this.wrapper, 'scrollDistance');
+							this.wrapper.handleTapLeft();
+							expect(this.wrapper.scrollDistance).to.have.been.calledWith(-0.8 * 300);
 						});
 					});
 
-					describe('handleTapForward', function() {
-						it('should scroll forward 80% of clientWidth', function() {
-							this.wrapper.scrollLeft = 0;
-							sinon.stub(this.wrapper, 'scroll');
-							this.wrapper.handleTapForward();
-							expect(this.wrapper.scroll).to.have.been.calledWith(0.8 * 300);
+					describe('handleTapRight', function() {
+						it('should scroll right 80% of clientWidth', function() {
+							sinon.stub(this.wrapper, 'scrollDistance');
+							this.wrapper.handleTapRight();
+							expect(this.wrapper.scrollDistance).to.have.been.calledWith(0.8 * 300);
 						});
 					});
 
@@ -186,7 +230,8 @@
 								return getComputedStyle(action).display !== 'none';
 							});
 							expect(actions).to.have.lengthOf(1);
-							expect(actions[0].className).to.contain('end');
+							var style = getComputedStyle(actions[0]);
+							expect(style.right).to.equal('-15px');
 						});
 					});
 
@@ -224,7 +269,8 @@
 								return getComputedStyle(action).display !== 'none';
 							});
 							expect(actions).to.have.lengthOf(1);
-							expect(actions[0].className).to.contain('start');
+							var style = getComputedStyle(actions[0]);
+							expect(style.left).to.equal('-15px');
 						});
 					});
 				}
