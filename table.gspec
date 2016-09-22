@@ -16,6 +16,8 @@
 		sort-icon-*       thead d2l-table-col-sort
 
 	wide-*                .screenshot-wide
+		start-action-*    button[is="d2l-image-action"].start
+		end-action-*      button[is="d2l-image-action"].end
 		tr-*              tr
 
 	no-column-border-*    .screenshot-no-column-border
@@ -50,6 +52,17 @@
 		${part}.sort-icon-*:
 			# The 1px is to compensate for the border
 			aligned horizontally centered ${part}.tr-1 1px
+
+	@forEach [&wide] as part
+		@forEach [${part}.start-action-*] as start
+			@if ${isVisible(start)}
+				${start}:
+					inside partly ${part} 10px top, -15px left
+
+		@forEach [${part}.end-action-*] as end
+			@if ${isVisible(end)}
+				${end}:
+					inside partly ${part} 10px top, -15px right
 
 	small-1.head:
 		above small-1.body 0px
