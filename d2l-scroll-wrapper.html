@@ -388,6 +388,9 @@
 				},
 
 				attached: function() {
+					// HACK. Edge doesn't update the offsetWidth/scrollWidth correctly
+					// until after checkScrollThresholds has run. So run this twice
+					this.async(this.checkScrollbar, 1);
 					this.async(this.checkScrollbar, 1);
 					this._setIsRTL(this.calculateRTL());
 				},
