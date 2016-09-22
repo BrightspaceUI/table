@@ -57,12 +57,12 @@
 		@forEach [${part}.start-action-*] as start
 			@if ${isVisible(start)}
 				${start}:
-					inside partly ${part} 10px top, -20px left
+					inside partly ${part} 10px top, -15px left
 
 		@forEach [${part}.end-action-*] as end
 			@if ${isVisible(end)}
 				${end}:
-					inside partly ${part} 10px top, -20px right
+					inside partly ${part} 10px top, -15px right
 
 	small-1.head:
 		above small-1.body 0px
