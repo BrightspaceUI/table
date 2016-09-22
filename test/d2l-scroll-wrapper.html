@@ -181,7 +181,7 @@
 						});
 
 						it('should have only one visible action button pointing right', function() {
-							var actions = Polymer.dom(this.wrapper.root).querySelectorAll('button.action');
+							var actions = Polymer.dom(this.wrapper.root).querySelectorAll('button');
 							actions = actions.filter(function(action) {
 								return getComputedStyle(action).display !== 'none';
 							});
@@ -219,7 +219,7 @@
 						});
 
 						it('should have only one visible action button pointing left', function() {
-							var actions = Polymer.dom(this.wrapper.root).querySelectorAll('button.action');
+							var actions = Polymer.dom(this.wrapper.root).querySelectorAll('button');
 							actions = actions.filter(function(action) {
 								return getComputedStyle(action).display !== 'none';
 							});
