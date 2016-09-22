@@ -35,18 +35,21 @@
 
 == D2L Table ==
 
-	@forEach [&small,&rows,&sort,&wide,&no-column-border] as part
-		${part}:
-			image file dumps/d2l-table/objects/${part}.png
-
+	@forEach [&small,&rows,&wide,&sort,&no-column-border] as part
 		${part}.tr-1:
 			aligned horizontally top ${part}
-			image file dumps/d2l-table/objects/${part}.tr-1.png
 
 		@forEach [${part}.tr-*] as tr, prev as prevTr
 			${tr}:
 				below ${prevTr} 0px
-				image file dumps/d2l-table/objects/${tr}.png
+
+	@forEach [&small,&rows,&no-column-border] as part
+		${part}:
+			image file dumps/d2l-table/objects/${part}.png, error 12px
+
+		@forEach [${part}.tr-*] as tr
+			${tr}:
+				image file dumps/d2l-table/objects/${tr}.png, error 6px
 
 	@forEach [&sort] as part
 		${part}.sort-icon-*:
@@ -58,11 +61,13 @@
 			@if ${isVisible(start)}
 				${start}:
 					inside partly ${part} 10px top, -20px left
+					image file dumps/d2l-table/objects/${start}.png, error 12px
 
 		@forEach [${part}.end-action-*] as end
 			@if ${isVisible(end)}
 				${end}:
 					inside partly ${part} 10px top, -20px right
+					image file dumps/d2l-table/objects/${end}.png, error 12px
 
 	small-1.head:
 		above small-1.body 0px
