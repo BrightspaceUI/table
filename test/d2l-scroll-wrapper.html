@@ -222,20 +222,22 @@
 							}
 							this.wrapper.addEventListener('scroll', doFlush);
 							var scrollLeft = this.wrapper.scrollLeft;
-							if (rtl) {
-								if (this.wrapper.scrollRtlDefault) {
-									this.wrapper.scrollLeft = 0;
-								} else if (this.wrapper.scrollRtlReverse) {
-									this.wrapper.scrollLeft = this.wrapper.scrollWidth;
-								} else if (this.wrapper.scrollRtlNegative) {
-									this.wrapper.scrollLeft = -this.wrapper.scrollWidth;
+							this.wrapper.async(function() {
+								if (rtl) {
+									if (this.scrollRtlDefault) {
+										this.scrollLeft = 0;
+									} else if (this.scrollRtlReverse) {
+										this.scrollLeft = this.scrollWidth;
+									} else if (this.scrollRtlNegative) {
+										this.scrollLeft = -this.scrollWidth;
+									}
+								} else {
+									this.scrollLeft = 0;
 								}
-							} else {
-								this.wrapper.scrollLeft = 0;
-							}
-							if (this.wrapper.scrollLeft === scrollLeft) {
-								doFlush();
-							}
+								if (this.scrollLeft === scrollLeft) {
+									doFlush();
+								}
+							}, 1);
 						});
 
 						it('should apply --d2l-scroll-wrapper-left', function() {
@@ -259,22 +261,24 @@
 							function doFlush() {
 								wrapper.async(function() {
 									flush(done);
-								});
+								}, 1);
 							}
 							this.wrapper.addEventListener('scroll', doFlush);
 							var scrollLeft = this.wrapper.scrollLeft;
-							if (rtl) {
-								if (this.wrapper.scrollRtlDefault) {
-									this.wrapper.scrollLeft = this.wrapper.scrollWidth;
-								} else if (this.wrapper.scrollRtlReverse || this.wrapper.scrollRtlNegative) {
-									this.wrapper.scrollLeft = 0;
+							this.wrapper.async(function() {
+								if (rtl) {
+									if (this.scrollRtlDefault) {
+										this.scrollLeft = this.scrollWidth;
+									} else if (this.scrollRtlReverse || this.scrollRtlNegative) {
+										this.scrollLeft = 0;
+									}
+								} else {
+									this.scrollLeft = this.scrollWidth;
 								}
-							} else {
-								this.wrapper.scrollLeft = this.wrapper.scrollWidth;
-							}
-							if (this.wrapper.scrollLeft === scrollLeft) {
-								doFlush();
-							}
+								if (this.scrollLeft === scrollLeft) {
+									doFlush();
+								}
+							}, 0);
 						});
 
 						it('should apply --d2l-scroll-wrapper-right', function() {
