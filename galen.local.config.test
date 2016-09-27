@@ -1,5 +1,5 @@
 @@ set
-	endpoint http://localhost:2000/components/d2l-table/demo/simple.html
+	endpoint http://localhost:8080/components/d2l-table/demo/simple.html
 
 @@ table browsers
 	| browserName | browserFactory     | browserArgs |

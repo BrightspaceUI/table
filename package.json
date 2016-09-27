@@ -11,11 +11,11 @@
     "test:lint:js": "eslint .",
     "test:lint:wc": "polylint",
     "dump:galen:local:run": "galen test test/acceptance/dump.test",
-    "dump:galen:local": "concurrently -p name -n serve,galen -s first -k \"polymer serve -p 2000\" \"npm run dump:galen:local:run\"",
+    "dump:galen:local": "concurrently -p name -n serve,galen -s first -k \"polymer serve\" \"npm run dump:galen:local:run\"",
     "galen:local:run": "galen test test/acceptance/check-local.test --htmlreport reports/d2l-table",
     "galen:sauce:run": "galen test test/acceptance/check-sauce.test --htmlreport reports/d2l-table -p4 -DUSERNAME=$SAUCE_USERNAME -DACCESS_KEY=$SAUCE_ACCESS_KEY",
-    "test:galen:local": "concurrently -p name -n serve,galen -s first -k \"polymer serve -p 2000\" \"npm run galen:local:run\"",
-    "test:galen:sauce": "concurrently -p name -n serve,galen -s first -k \"polymer serve -p 2000\" \"npm run galen:sauce:run\""
+    "test:galen:local": "concurrently -p name -n serve,galen -s first -k \"polymer serve\" \"npm run galen:local:run\"",
+    "test:galen:sauce": "concurrently -p name -n serve,galen -s first -k \"polymer serve\" \"npm run galen:sauce:run\""
   },
   "repository": {
     "type": "git",
