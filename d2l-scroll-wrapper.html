@@ -1,7 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../d2l-icons/tier1-icons.html">
+<link rel="import" href="../d2l-icons/d2l-icon-button.html">
 <link rel="import" href="../d2l-colors/d2l-colors.html">
-<link rel="import" href="../d2l-image-action/d2l-image-action.html">
 <link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 
 <!--
@@ -199,8 +199,22 @@
 				@apply(--d2l-scroll-wrapper-action-hidden);
 			}
 		</style>
-		<button class="left action" is="d2l-image-action" icon="[[startIcon]]" on-tap="handleTapLeft"></button>
-		<button class="right action" is="d2l-image-action" icon="[[endIcon]]" on-tap="handleTapRight"></button>
+		<button
+			is="d2l-icon-button"
+			class="left action"
+			icon="[[startIcon]]"
+			on-tap="handleTapLeft"
+			tabindex="-1"
+			aria-hidden="true"
+		></button>
+		<button
+			is="d2l-icon-button"
+			class="right action"
+			icon="[[endIcon]]"
+			on-tap="handleTapRight"
+			tabindex="-1"
+			aria-hidden="true"
+		></button>
 		<content></content>
 	</template>
 	<script>
@@ -396,7 +410,9 @@
 				},
 
 				checkScrollbar: function() {
-					this._setHScrollbar(this.offsetWidth !== this.scrollWidth);
+					var hScrollbar = this.offsetWidth !== this.scrollWidth;
+					this._setHScrollbar(hScrollbar);
+					this.tabIndex = hScrollbar ? 0 : -1;
 					this.checkScrollThresholds();
 				},
 
