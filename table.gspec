@@ -15,9 +15,10 @@
 		tr-*              tr
 		sort-icon-*       thead d2l-table-col-sort
 
+
 	wide-*                .screenshot-wide
-		start-action-*    button[is="d2l-image-action"].start
-		end-action-*      button[is="d2l-image-action"].end
+		left-action       button[is="d2l-icon-button"].left
+		right-action      button[is="d2l-icon-button"].right
 		tr-*              tr
 
 	no-column-border-*    .screenshot-no-column-border
@@ -53,16 +54,13 @@
 			# The 1px is to compensate for the border
 			aligned horizontally centered ${part}.tr-1 1px
 
-	@forEach [&wide] as part
-		@forEach [${part}.start-action-*] as start
-			@if ${isVisible(start)}
-				${start}:
-					inside partly ${part} 10px top, -15px left
+	wide-1.right-action:
+		inside partly wide-1 10px top, -15px right
+		image file dumps/d2l-table/objects/wide-1.right-action.png, error 14px
 
-		@forEach [${part}.end-action-*] as end
-			@if ${isVisible(end)}
-				${end}:
-					inside partly ${part} 10px top, -15px right
+	wide-2.right-action:
+		inside partly wide-2 10px top, -15px left
+		image file dumps/d2l-table/objects/wide-2.right-action.png, error 14px
 
 	small-1.head:
 		above small-1.body 0px
