@@ -354,13 +354,13 @@
 
 				/* Scrolls to the left. Right when dir=rtl */
 				handleTapLeft: function() {
-					var scrollDistance = this.clientWidth * this.scrollAmount;
+					var scrollDistance = this.$.wrapper.clientWidth * this.scrollAmount;
 					this.scrollDistance(-scrollDistance, true);
 				},
 
 				/* Scrolls to the right. Left when dir=rtl */
 				handleTapRight: function() {
-					var scrollDistance = this.clientWidth * this.scrollAmount;
+					var scrollDistance = this.$.wrapper.clientWidth * this.scrollAmount;
 					this.scrollDistance(scrollDistance, true);
 				},
 
@@ -368,12 +368,12 @@
 				scrollDistance: function(distance, smooth) {
 					if (this.isRTL) {
 						if (this.scrollRtlReverse) {
-							this.scroll(this.scrollLeft + distance, smooth);
+							this.scroll(this.$.wrapper.scrollLeft + distance, smooth);
 						} else {
-							this.scroll(this.scrollLeft - distance, smooth);
+							this.scroll(this.$.wrapper.scrollLeft - distance, smooth);
 						}
 					} else {
-						this.scroll(this.scrollLeft + distance, smooth);
+						this.scroll(this.$.wrapper.scrollLeft + distance, smooth);
 					}
 				},
 
