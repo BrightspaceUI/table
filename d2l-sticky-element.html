@@ -1,0 +1,48 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+    Copied with modifications and fixes from https://github.com/seaneking/sticky-element/blob/master/sticky-element.html
+-->
+
+<script src="../Stickyfill/dist/stickyfill.min.js"></script>
+<dom-module id="d2l-sticky-element">
+	<template>
+		<style>
+			:host {
+				position: -webkit-sticky;
+				position: sticky;
+				top: 0.5em;
+			}
+		</style>
+		<content></content>
+	</template>
+	<script>
+		/* global Stickyfill */
+		document.addEventListener('DOMContentLoaded', Stickyfill.rebuild);
+		Polymer({
+			is: 'd2l-sticky-element',
+			properties: {
+				disabled: {
+					type: Boolean,
+					observer: '_disabledChanged'
+				}
+			},
+			_updateSticky: function(sticky) {
+				if (sticky) {
+					Stickyfill.add(this);
+				} else {
+					Stickyfill.remove(this);
+				}
+				Stickyfill.rebuild();
+			},
+			_disabledChanged: function(disabled) {
+				this._updateSticky(!disabled);
+			},
+			attached: function() {
+				if (!this.disabled) {
+					this._updateSticky(true);
+				}
+			}
+		});
+	</script>
+</dom-module>
