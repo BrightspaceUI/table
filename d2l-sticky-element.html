@@ -36,11 +36,13 @@
 				Stickyfill.rebuild();
 			},
 			_disabledChanged: function(disabled) {
-				this._updateSticky(!disabled);
+				if (this.isAttached) {
+					this.async(this._updateSticky.bind(this, !disabled), 1);
+				}
 			},
 			attached: function() {
 				if (!this.disabled) {
-					this._updateSticky(true);
+					this.async(this._updateSticky.bind(this, true), 1);
 				}
 			}
 		});
