@@ -82,6 +82,7 @@
 			:host {
 				display: block;
 				width: 100%;
+				position: relative;
 
 				--d2l-scroll-wrapper-action-offset: -15px;
 
@@ -102,15 +103,7 @@
 				};
 
 				--d2l-scroll-wrapper-action-visible: {
-					display: inline;
-				};
-
-				--d2l-scroll-wrapper-sticky-start: {
-					left: 0;
-				};
-
-				--d2l-scroll-wrapper-sticky-end: {
-					left: 100%;
+					display: block;
 				};
 
 				--d2l-scroll-wrapper-action-start: {
@@ -169,16 +162,6 @@
 			}
 			.sticky {
 				@apply(--d2l-scroll-wrapper-action-hidden);
-			}
-
-			:host-context([dir="rtl"]) .left,
-			.right {
-				@apply(--d2l-scroll-wrapper-sticky-end);
-			}
-
-			:host-context([dir="rtl"]) .right,
-			.left {
-				@apply(--d2l-scroll-wrapper-sticky-start);
 			}
 
 			:host-context([dir="rtl"]) .left .action,
