@@ -98,6 +98,11 @@
 					box-sizing: content-box;
 				};
 
+				--d2l-scroll-wrapper-sticky: {
+					/* height of button (40) + distance of button from top (10) + desired spacing (10) */
+					margin-bottom: 60px;
+				};
+
 				--d2l-scroll-wrapper-action-hidden: {
 					display: none;
 				};
@@ -162,6 +167,7 @@
 			}
 			.sticky {
 				@apply(--d2l-scroll-wrapper-action-hidden);
+				@apply(--d2l-scroll-wrapper-sticky);
 			}
 
 			:host-context([dir="rtl"]) .left .action,
