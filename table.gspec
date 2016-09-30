@@ -17,8 +17,8 @@
 
 
 	wide-*                .screenshot-wide
-		left-action       button[is="d2l-icon-button"].left
-		right-action      button[is="d2l-icon-button"].right
+		left-action       .left > button[is="d2l-icon-button"]
+		right-action      .right > button[is="d2l-icon-button"]
 		tr-*              tr
 
 	no-column-border-*    .screenshot-no-column-border

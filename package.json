@@ -9,7 +9,7 @@
     "dump": "npm run -s dump:galen",
     "test": "concurrently -p name -n lint:js,lint:wc,galen,wct \"npm run test:lint:js\" \"npm run test:lint:wc\" \"npm run test:galen\" \"wct --skip-plugin sauce\"",
     "test:lint:js": "eslint .",
-    "test:lint:wc": "polylint",
+    "test:lint:wc": "polylint --no-recursion --input *.html",
     "galen": "java -Xmx1g -cp node_modules/galenframework/lib/galen/galen.jar com.galenframework.GalenMain",
     "dump:galen:polymer": "npm run galen -- dump table.gspec --config galen.config --size 768x768 --url http://localhost:8080/components/d2l-table/demo/simple.html --export dumps/d2l-table",
     "dump:galen": "concurrently -p name -n serve,galen -s first -k \"polymer serve\" \"npm run dump:galen:polymer\"",

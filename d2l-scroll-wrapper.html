@@ -3,12 +3,13 @@
 <link rel="import" href="../d2l-icons/d2l-icon-button.html">
 <link rel="import" href="../d2l-colors/d2l-colors.html">
 <link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
+<link rel="import" href="d2l-sticky-element.html">
 
 <!--
 # D2L Scroll Wrapper
 
 <link rel="import" href="d2l-scroll-wrapper.html">
-<div style="position: relative; width: 300px">
+<div>
 	<d2l-scroll-wrapper
 		id="scroll-wrapper"
 		style="width: 300px"
@@ -62,18 +63,16 @@
 		}
 	</style>
 	The attributes are optional
-	<div style="position: relative; width: 300px">
-		<d2l-scroll-wrapper
-			id="scroll-wrapper"
-			style="width: 300px"
-			scroll-duration="500"
-			scroll-amount="0.8"
-			start-icon="d2l-tier1:chevron-left"
-			end-icon="d2l-tier1:chevron-right"
-		>
-			<div style="width: 350px">Stuff</div>
-		</d2l-scroll-wrapper>
-	</div>
+	<d2l-scroll-wrapper
+		id="scroll-wrapper"
+		style="width: 300px"
+		scroll-duration="500"
+		scroll-amount="0.8"
+		start-icon="d2l-tier1:chevron-left"
+		end-icon="d2l-tier1:chevron-right"
+	>
+		<div style="width: 350px">Stuff</div>
+	</d2l-scroll-wrapper>
 ```
 @demo ./demo/d2l-scroll-wrapper.html Scroll Wrapper Demo
 -->
@@ -82,9 +81,8 @@
 		<style>
 			:host {
 				display: block;
-				overflow-x: auto;
 				width: 100%;
-				box-sizing: border-box;
+				position: relative;
 
 				--d2l-scroll-wrapper-action-offset: -15px;
 
@@ -100,12 +98,17 @@
 					box-sizing: content-box;
 				};
 
+				--d2l-scroll-wrapper-sticky: {
+					/* height of button (40) + distance of button from top (10) + desired spacing (10) */
+					margin-bottom: 60px;
+				};
+
 				--d2l-scroll-wrapper-action-hidden: {
 					display: none;
 				};
 
 				--d2l-scroll-wrapper-action-visible: {
-					display: inline-block;
+					display: block;
 				};
 
 				--d2l-scroll-wrapper-action-start: {
@@ -119,61 +122,70 @@
 				};
 			}
 
-			:host([h-scrollbar]),
-			:host-context([dir="rtl"])[scroll-rtl-reverse][h-scrollbar],
-			:host-context([dir="rtl"])[scroll-rtl-negative][h-scrollbar] {
+			#wrapper {
+				overflow-x: auto;
+				width: 100%;
+				box-sizing: border-box;
+			}
+
+			:host([h-scrollbar]) #wrapper,
+			:host-context([dir="rtl"])[scroll-rtl-reverse][h-scrollbar] #wrapper,
+			:host-context([dir="rtl"])[scroll-rtl-negative][h-scrollbar] #wrapper {
 				@apply(--d2l-scroll-wrapper-h-scroll);
 			}
 
 			/* So, shady DOM doesn't like this syntax, but ShadowDOM needs it */
-			:host-context([dir="rtl"]):host([scroll-rtl-reverse][h-scrollbar]),
-			:host-context([dir="rtl"]):host([scroll-rtl-negative][h-scrollbar]) {
+			:host-context([dir="rtl"]):host([scroll-rtl-reverse][h-scrollbar]) #wrapper,
+			:host-context([dir="rtl"]):host([scroll-rtl-negative][h-scrollbar]) #wrapper {
 				@apply(--d2l-scroll-wrapper-h-scroll);
 			}
 
-			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-right],
-			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-right],
-			:host([scrollbar-left]) {
+			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-right] #wrapper,
+			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-right] #wrapper,
+			:host([scrollbar-left]) #wrapper {
 				@apply(--d2l-scroll-wrapper-left);
 			}
 
-			:host-context([dir="rtl"]):host([scroll-rtl-reverse][scrollbar-right]),
-			:host-context([dir="rtl"]):host([scroll-rtl-negative][scrollbar-right]) {
+			:host-context([dir="rtl"]):host([scroll-rtl-reverse][scrollbar-right]) #wrapper,
+			:host-context([dir="rtl"]):host([scroll-rtl-negative][scrollbar-right]) #wrapper {
 				@apply(--d2l-scroll-wrapper-left);
 			}
 
-			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-left],
-			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-left],
-			:host([scrollbar-right]) {
+			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-left] #wrapper,
+			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-left] #wrapper,
+			:host([scrollbar-right]) #wrapper {
 				@apply(--d2l-scroll-wrapper-right);
 			}
 
-			:host-context([dir="rtl"]):host([scroll-rtl-reverse][scrollbar-left]),
-			:host-context([dir="rtl"]):host([scroll-rtl-negative][scrollbar-left]) {
+			:host-context([dir="rtl"]):host([scroll-rtl-reverse][scrollbar-left]) #wrapper,
+			:host-context([dir="rtl"]):host([scroll-rtl-negative][scrollbar-left]) #wrapper {
 				@apply(--d2l-scroll-wrapper-right);
 			}
 
 			.action {
 				@apply(--d2l-scroll-wrapper-action);
+			}
+			.sticky {
 				@apply(--d2l-scroll-wrapper-action-hidden);
+				@apply(--d2l-scroll-wrapper-sticky);
 			}
 
-			:host-context([dir="rtl"]) .left,
-			.right {
+			:host-context([dir="rtl"]) .left .action,
+			.right .action {
 				@apply(--d2l-scroll-wrapper-action-end);
 			}
 
-			:host-context([dir="rtl"]) .right,
-			.left {
+			:host-context([dir="rtl"]) .right .action,
+			.left .action {
 				@apply(--d2l-scroll-wrapper-action-start);
 			}
 
-			:host-context([dir="rtl"])[h-scrollbar] .action,
-			:host([h-scrollbar]) .action {
+			:host-context([dir="rtl"])[h-scrollbar] .sticky,
+			:host([h-scrollbar]) .sticky {
 				@apply(--d2l-scroll-wrapper-action-visible);
 			}
 
-			:host-context([dir="rtl"]):host([h-scrollbar]) .action {
+			:host-context([dir="rtl"]):host([h-scrollbar]) .sticky {
 				@apply(--d2l-scroll-wrapper-action-visible);
 			}
 
@@ -184,7 +196,7 @@
 			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-right] .right,
 			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-left] .left,
 			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-left] .left,
-			:host-context([dir="rtl"]) .action,
+			:host-context([dir="rtl"]) .sticky,
 			:host([scrollbar-right]) .right,
 			:host([scrollbar-left]) .left {
 				@apply(--d2l-scroll-wrapper-action-hidden);
@@ -199,23 +211,29 @@
 				@apply(--d2l-scroll-wrapper-action-hidden);
 			}
 		</style>
-		<button
-			is="d2l-icon-button"
-			class="left action"
-			icon="[[startIcon]]"
-			on-tap="handleTapLeft"
-			tabindex="-1"
-			aria-hidden="true"
-		></button>
-		<button
-			is="d2l-icon-button"
-			class="right action"
-			icon="[[endIcon]]"
-			on-tap="handleTapRight"
-			tabindex="-1"
-			aria-hidden="true"
-		></button>
-		<content></content>
+		<d2l-sticky-element class="left sticky" disabled="[[scrollbarLeft]]">
+			<button
+				is="d2l-icon-button"
+				class="action"
+				icon="[[startIcon]]"
+				on-tap="handleTapLeft"
+				tabindex="-1"
+				aria-hidden="true"
+			></button>
+		</d2l-sticky-element>
+		<d2l-sticky-element class="right sticky" disabled="[[scrollbarRight]]">
+			<button
+				is="d2l-icon-button"
+				class="action"
+				icon="[[endIcon]]"
+				on-tap="handleTapRight"
+				tabindex="-1"
+				aria-hidden="true"
+			></button>
+		</d2l-sticky-element>
+		<div id="wrapper" class="wrapper">
+			<content></content>
+		</div>
 	</template>
 	<script>
 		(function() {
@@ -326,7 +344,7 @@
 
 				listeners: {
 					'iron-resize': 'checkScrollbar',
-					'scroll': 'checkScrollThresholds'
+					'wrapper.scroll': 'checkScrollThresholds'
 				},
 
 				calculateRTL: function() {
@@ -342,13 +360,13 @@
 
 				/* Scrolls to the left. Right when dir=rtl */
 				handleTapLeft: function() {
-					var scrollDistance = this.clientWidth * this.scrollAmount;
+					var scrollDistance = this.$.wrapper.clientWidth * this.scrollAmount;
 					this.scrollDistance(-scrollDistance, true);
 				},
 
 				/* Scrolls to the right. Left when dir=rtl */
 				handleTapRight: function() {
-					var scrollDistance = this.clientWidth * this.scrollAmount;
+					var scrollDistance = this.$.wrapper.clientWidth * this.scrollAmount;
 					this.scrollDistance(scrollDistance, true);
 				},
 
@@ -356,12 +374,12 @@
 				scrollDistance: function(distance, smooth) {
 					if (this.isRTL) {
 						if (this.scrollRtlReverse) {
-							this.scroll(this.scrollLeft + distance, smooth);
+							this.scroll(this.$.wrapper.scrollLeft + distance, smooth);
 						} else {
-							this.scroll(this.scrollLeft - distance, smooth);
+							this.scroll(this.$.wrapper.scrollLeft - distance, smooth);
 						}
 					} else {
-						this.scroll(this.scrollLeft + distance, smooth);
+						this.scroll(this.$.wrapper.scrollLeft + distance, smooth);
 					}
 				},
 
@@ -375,21 +393,21 @@
 						var animationId = Math.random();
 						var duration = this.scrollDuration;
 						var startTime = Date.now();
-						var currentScrollLeft = this.scrollLeft;
+						var currentScrollLeft = this.$.wrapper.scrollLeft;
 						var deltaScrollLeft = left - currentScrollLeft;
 						this._currentAnimationId = animationId;
 						(function updateFrame() {
 							var now = Date.now();
 							var elapsedTime = now - startTime;
 							if (elapsedTime > duration) {
-								this.scrollLeft = left;
+								this.$.wrapper.scrollLeft = left;
 							} else if (this._currentAnimationId === animationId) {
-								this.scrollLeft = easingFn(elapsedTime, currentScrollLeft, deltaScrollLeft, duration);
+								this.$.wrapper.scrollLeft = easingFn(elapsedTime, currentScrollLeft, deltaScrollLeft, duration);
 								requestAnimationFrame(updateFrame.bind(this));
 							}
 						}).call(this);
 					} else {
-						this.scrollLeft = left;
+						this.$.wrapper.scrollLeft = left;
 					}
 				},
 
@@ -410,15 +428,15 @@
 				},
 
 				checkScrollbar: function() {
-					var hScrollbar = this.offsetWidth !== this.scrollWidth;
+					var hScrollbar = this.$.wrapper.offsetWidth !== this.$.wrapper.scrollWidth;
 					this._setHScrollbar(hScrollbar);
-					this.tabIndex = hScrollbar ? 0 : -1;
+					this.$.wrapper.tabIndex = hScrollbar ? 0 : -1;
 					this.checkScrollThresholds();
 				},
 
 				checkScrollThresholds: function() {
-					var lowerScrollValue = this.scrollWidth - this.offsetWidth - Math.abs(this.scrollLeft);
-					this._setScrollbarLeft(this.scrollLeft === 0);
+					var lowerScrollValue = this.$.wrapper.scrollWidth - this.$.wrapper.offsetWidth - Math.abs(this.$.wrapper.scrollLeft);
+					this._setScrollbarLeft(this.$.wrapper.scrollLeft === 0);
 					this._setScrollbarRight(lowerScrollValue <= 0);
 				}
 			});
