@@ -9,7 +9,7 @@
     "dump": "npm run -s dump:galen:local",
     "test": "concurrently -p name -n lint:js,lint:wc,galen,wct \"npm run test:lint:js\" \"npm run test:lint:wc\" \"npm run test:galen:local\" \"wct --skip-plugin sauce\"",
     "test:lint:js": "eslint .",
-    "test:lint:wc": "polylint",
+    "test:lint:wc": "polylint --no-recursion --input *.html",
     "dump:galen:local:run": "galen test test/acceptance/dump.test",
     "dump:galen:local": "concurrently -p name -n serve,galen -s first -k \"polymer serve\" \"npm run dump:galen:local:run\"",
     "galen:local:run": "galen test test/acceptance/check-local.test --htmlreport reports/d2l-table",
