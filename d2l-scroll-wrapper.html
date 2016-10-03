@@ -82,7 +82,6 @@
 			:host {
 				display: block;
 				width: 100%;
-				position: relative;
 
 				--d2l-scroll-wrapper-action-offset: -15px;
 
@@ -108,7 +107,7 @@
 				};
 
 				--d2l-scroll-wrapper-action-visible: {
-					display: block;
+					display: inline;
 				};
 
 				--d2l-scroll-wrapper-action-start: {
@@ -178,6 +177,16 @@
 			:host-context([dir="rtl"]) .right .action,
 			.left .action {
 				@apply(--d2l-scroll-wrapper-action-start);
+			}
+
+			:host-context([dir="rtl"]) .left,
+			.right {
+				float: right;
+			}
+
+			:host-context([dir="rtl"]) .right,
+			.left {
+				float: left;
 			}
 
 			:host-context([dir="rtl"])[h-scrollbar] .sticky,
