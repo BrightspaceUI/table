@@ -8,6 +8,12 @@
 			  window.Polymer = window.Polymer || {};
 			  window.Polymer.dom = 'shadow';
 			 */
+
+			 if (window.location.search.indexOf('dir=rtl') !== -1) {
+				document.addEventListener('DOMContentLoaded', function() {
+					document.getElementsByClassName('container').item(0).setAttribute('dir', 'rtl');
+				});
+			 }
 		</script>
 		<link rel="import" href="simple-demo.html">
 		<style is="custom-style">
@@ -25,13 +31,13 @@
 				font-size: 20px;
 			}
 
-			.rtl {
+			.container {
 				text-align: left;
 			}
 		</style>
 	</head>
 
 	<body unresolved>
-		<div class="ltr"><simple-demo></simple-demo></div><div dir="rtl" class="rtl"><simple-demo></simple-demo></div>
+		<div class="container"><simple-demo></simple-demo></div>
 	</body>
 </html>

@@ -6,3 +6,8 @@ Open simple.html in ${browserName}
 		wait 1m until exist 'css: body'
 		wait 1m until gone 'css: body[unresolved]'
 		dump test/acceptance/table.gspec --name "D2L Table" --export test/acceptance/dumps/d2l-table
+
+		open ${endpoint}?dir=rtl
+		wait 1m until exist 'css: body'
+		wait 1m until gone 'css: body[unresolved]'
+		dump test/acceptance/table.rtl.gspec --name "D2L Table RTL" --export test/acceptance/dumps/d2l-table-rtl
