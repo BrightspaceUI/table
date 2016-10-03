@@ -1,0 +1,52 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="d2l-table-col-sort.html">
+
+<dom-module id="d2l-table-col-sort-button">
+	<template strip-whitespace>
+		<style>
+			:host {
+				--d2l-table-col-sort-button: {
+					background-color: transparent;
+					border: none;
+					cursor: pointer;
+					display: inline-block;
+					font-family: inherit;
+					font-size: inherit;
+					color: inherit;
+					letter-spacing: inherit;
+					margin: 0;
+					padding: 0;
+					text-decoration: none;
+				};
+				--d2l-table-col-sort-button-hover: {
+					outline-style: none;
+				};
+			}
+			:host(::-moz-focus-inner) {
+				border: 0;
+			}
+			:host {
+				@apply(--d2l-table-col-sort-button);
+			}
+			:host(:disabled) {
+				opacity: 0.5;
+			}
+			:host(:hover),
+			:host(:focus) {
+				@apply(--d2l-table-col-sort-button-hover);
+			}
+		</style>
+		<content></content>
+		<d2l-table-col-sort desc="[[desc]]"></d2l-table-col-sort>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-table-col-sort-button',
+			extends: 'button',
+
+			properties: {
+				desc: Boolean
+			}
+		});
+	</script>
+</dom-module>
