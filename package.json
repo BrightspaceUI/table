@@ -8,7 +8,7 @@
     "predump": "npm run -s clean",
     "dump": "npm run -s dump:galen",
     "test": "concurrently -p name -n lint:js,lint:wc,galen,wct \"npm run test:lint:js\" \"npm run test:lint:wc\" \"npm run test:galen\" \"wct --skip-plugin sauce\"",
-    "test:lint:js": "eslint .",
+    "test:lint:js": "eslint --ext html .",
     "test:lint:wc": "polylint --no-recursion --input *.html",
     "galen": "java -Xmx1g -cp node_modules/galenframework/lib/galen/galen.jar com.galenframework.GalenMain",
     "dump:galen:polymer": "npm run galen -- dump table.gspec --config galen.config --size 768x768 --url http://localhost:8080/components/d2l-table/demo/simple.html --export dumps/d2l-table",
@@ -31,15 +31,15 @@
     "bower": "^1.7.7"
   },
   "devDependencies": {
-    "concurrently": "^2.2.0",
-    "eslint": "^3.3.1",
-    "eslint-config-brightspace": "^0.2.1",
-    "eslint-plugin-html": "^1.5.2",
-    "galenframework": "^2.3.0",
-    "phantomjs-prebuilt": "^2.1.4",
+    "concurrently": "^3.1.0",
+    "eslint": "^3.7.1",
+    "eslint-config-brightspace": "^0.2.4",
+    "eslint-plugin-html": "^1.5.3",
+    "galenframework": "^2.3.1",
+    "phantomjs-prebuilt": "^2.1.13",
     "polylint": "^2.10.1",
     "polymer-cli": "^0.16.0",
-    "rimraf": "^2.5.2",
+    "rimraf": "^2.5.4",
     "static-server": "^2.0.3",
     "web-component-tester": "^4.3.4"
   }
