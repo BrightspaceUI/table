@@ -82,11 +82,11 @@ HTML:
 ```html
 <table is="d2l-table">
 	<thead>
-		<th class="d2l-table-col-sort-asc">
-			Ascending
+		<th>
+			<button is="d2l-table-col-sort-button">Ascending</button>
 		</th>
-		<th class="d2l-table-col-sort-desc">
-			Descending
+		<th>		
+			<button is="d2l-table-col-sort-button" desc>Descending</button>
 		</th>
 	</thead>
 	<tbody>
