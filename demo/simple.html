@@ -9,11 +9,11 @@
 			  window.Polymer.dom = 'shadow';
 			 */
 
-			 if (window.location.search.indexOf('dir=rtl') !== -1) {
+			if (window.location.search.indexOf('dir=rtl') !== -1) {
 				document.addEventListener('DOMContentLoaded', function() {
 					document.getElementsByClassName('container').item(0).setAttribute('dir', 'rtl');
 				});
-			 }
+			}
 		</script>
 		<link rel="import" href="simple-demo.html">
 		<style is="custom-style">
