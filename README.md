@@ -106,6 +106,10 @@ HTML:
 
 In production, it's recommended to use a build tool like [Vulcanize](https://github.com/Polymer/vulcanize) to combine all your web components into a single import file. [More from the Polymer Docs: Optimize for Production](https://www.polymer-project.org/1.0/tools/optimize-for-production.html)...
 
+```shell
+vulcanize --inline-scripts index.html
+```
+
 ## Tests
 
 Run
