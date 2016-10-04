@@ -127,6 +127,10 @@
 				box-sizing: border-box;
 			}
 
+			#wrapper:focus {
+				@apply(--d2l-scroll-wrapper-focus);
+			}
+
 			:host([h-scrollbar]) #wrapper,
 			:host-context([dir="rtl"])[scroll-rtl-reverse][h-scrollbar] #wrapper,
 			:host-context([dir="rtl"])[scroll-rtl-negative][h-scrollbar] #wrapper {
