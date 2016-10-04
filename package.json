@@ -13,7 +13,7 @@
     "galen": "java -Xmx2g -cp node_modules/galenframework/lib/galen/galen.jar com.galenframework.GalenMain",
     "dump:galen:local:run": "npm run galen -- test test/acceptance/dump.test",
     "galen:local:run": "npm run galen -- test test/acceptance/check-local.test --htmlreport reports/d2l-table",
-    "galen:sauce:run": "npm run galen -- test test/acceptance/check-sauce.test --htmlreport reports/d2l-table -p4 -DUSERNAME=$SAUCE_USERNAME -DACCESS_KEY=$SAUCE_ACCESS_KEY -DTUNNEL_IDENTIFIER=$TRAVIS_JOB_NUMBER",
+    "galen:sauce:run": "npm run galen -- test test/acceptance/check-sauce.test --htmlreport reports/d2l-table -p4 -DUSERNAME=$SAUCE_USERNAME -DACCESS_KEY=$SAUCE_ACCESS_KEY -DTUNNEL_IDENTIFIER=$TRAVIS_JOB_NUMBER -DNAME=$TRAVIS_REPO_SLUG -DBUILD=$TRAVIS_BUILD_NUMBER",
     "dump:galen:local": "concurrently -p name -n serve,galen -s first -k \"polymer serve\" \"npm run dump:galen:local:run\"",
     "test:galen:local": "concurrently -p name -n serve,galen -s first -k \"polymer serve\" \"npm run galen:local:run\"",
     "test:galen:sauce": "concurrently -p name -n serve,galen -s first -k \"polymer serve\" \"npm run galen:sauce:run\""

@@ -1,6 +1,19 @@
+# Config for galen tests to use
+# Usage
+#  @@ import galen.sauce.config.test
+#  @@ Parameterized using browsers
+#  Open simple.html in ${browserName}
+#    ${browserFactory} ${endpoint} ${browserArgs}
+# System Properties
+# USERNAME          sauce username
+# ACCESS_KEY        sauce access key
+# TUNNEL_IDENTIFIER sauce connect tunnel_identifier
+# NAME              sauce test name
+# BUILD             sauce build number
+
 @@ set
 	endpoint http://localhost:8080/components/d2l-table/demo/simple.html
-	factory  selenium grid http://${USERNAME}:${ACCESS_KEY}@ondemand.saucelabs.com:80/wd/hub --dc.tunnelIdentifier "${TUNNEL_IDENTIFIER}" --page
+	factory  selenium grid http://${USERNAME}:${ACCESS_KEY}@ondemand.saucelabs.com:80/wd/hub --dc.tunnelIdentifier "${TUNNEL_IDENTIFIER}" --dc.name "${NAME}" --dc.build "${BUILD}" --page
 
 # See https://github.com/SeleniumHQ/selenium/blob/master/java/client/src/org/openqa/selenium/Platform.java for mapping
 @@ table browsers
