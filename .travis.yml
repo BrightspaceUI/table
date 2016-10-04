@@ -3,18 +3,20 @@ node_js:
 - 5.6
 cache:
   directories:
-    - node_modules
-    - bower_components
+  - node_modules
+  - bower_components
+env:
+  SAUCE_USERNAME: Desire2Learn
 addons:
   apt:
     packages:
     - oracle-java8-installer
-  sauce_connect:
-    username: Desire2Learn
-    access_key:
-      secure: lEtsyP83zMPtHRkC/M9I3KITQengi6V9TyU5TBF8APxpW30nV96Nv0M/+gxtqDM8CwFa9cRBHKCTzIOaM0/hFdXIVN+Lj/o2Aw7JelfAExX1+K5rVm7wLDZ9sIHRV/O7dTChwvx1o2M0IEDGOrFTi+O5cPoeqpHkdcnb0W3TFg9oZFKr1sOw0IsuoUy/qAlR0J19k4syShpUVI8daQHIw81DVgndQlI61kh/yyuPEC1juAPnGn/nscAGcpa6k89aygIch9stn/g2wWvUyRJCkNSiJXwqx3rVOBo44hVyjcmSvW9XusL0y8q22VunDIT5fFvzZ0UkxSZkoS/qbnKetzetgwwJbrSQdqEZUjTVADidyUlXoc6MiLHtQpDM9bInM5u6SnYvP8KseMsHwdWG85EOtxUIZrxipGGT0pzRtJnOsfyYbr+CS7t16Z+TC3v1sFUyYaJqBwrWTJLG6JHXia4gPzSzLV3l1yQ943ErK10l3SDKBHW2sfFVj7Ju3KmtAEeDDab6EW37ucdpB49wTA7qowz1xWzRF031n+2lmrgw4FdkEzV6OPtdaaTc4Za4dOUH8z4iUax0p4tS06AjRQXTXvZn1vkgyj0T+V2NAMRILXi0wwvXJf/UbLhJdfy4BW5iVmTcqtSaqzMxO1D6DXE1wM5fnzZY1siuamvVrdo=
+  jwt:
+    secure: ckU25LXR0YXAyr5F+w3LwR3vZQuxH1dJ9vELw7pdK3YRvPTCgaxoclkoSroVJOlBUmnm3dD9KEcVGCNyMFQdFEGItNt9vTnI7GH6Sm4q7TPzbLyga64y5DCsQljZQn+w0GyViAMkFaN5LZrQsBr+t7pnHilIsin/ARO4u4+/WAdb1x5ktmeg9SKYXWMB8uQEYkRPW0Wqp+WE5Z4jQrRsw0/o4KFWxms8qyyXO0dAfEYSOXZkdmfk2jbI+bm8T9duxmwqyQV89L+xx03Cdyx06D7EEsN8b0logyg6HWD0bjGLdmYPatR4e7g+NV8lrUI9y8nYQCMwsE3GGNUf/G/yDFQ7ADdh8vF4OZczek1d4uhFDEHfeywLgURmaj5e6hiywCwOK5bZWXiBD3+5mCmFf7OAmFSHigeQuNfpIjMogcsm5vJ4IFC2psudAmOJqGSX+S3idsJO+A2C9AXkCcYKh2cI5NrzwzLDwbljFyPmt3Ls0d5YVcey0XMummUlsEeQEQb009aOoiEXZmp2tMGQZL/mvEM1kjbtzYlfFMrt/WxnMaYY8wDicyBqOndRdGtivEoEe2JzJiqJ9NmjZe/M3CVb9eorExEN+TPT+qAgRsGbTKp4u24WG9qmWAYpeSrC7f6QFT4ED4UfDDABRIrIa/urilDyyX89Ic6xhPBdVGI=
+  sauce_connect: true
 before_install:
 - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 - export PATH=$JAVA_HOME/bin:$PATH
 script:
-- concurrently -p name -n lint:js,lint:wc,galen,wct "npm run test:lint:js" "npm run test:lint:wc" "npm run test:galen" "wct --skip-plugin local"
+- concurrently -p name -n lint:js,lint:wc,galen,wct "npm run test:lint:js" "npm run
+  test:lint:wc" "npm run test:galen" "wct --skip-plugin local"
