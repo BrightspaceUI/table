@@ -3,4 +3,8 @@
 page.*
 screen.png
 viewport.png
-*content*.png
+wide.png
+wide.tr*.png
+sort*.png
+
+d2l-table-demo/objects/*tr*.png

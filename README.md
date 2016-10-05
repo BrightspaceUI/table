@@ -9,7 +9,7 @@ Tables are styled like this:
 
 A [Polymer](https://www.polymer-project.org/1.0/)-based web component for D2L tables, which includes styling for tables.
 
-![screenshot of table](test/acceptance/dumps/d2l-table/objects/small.png)
+![screenshot of table](test/acceptance/dumps/d2l-table-demo/objects/small.png)
 
 ![screenshot of responsive table](test/acceptance/dumps/d2l-table/objects/wide.png)
 
@@ -57,7 +57,7 @@ HTML:
 
 #### Row Styles
 
-![screenshot of table with styled rows](test/acceptance/dumps/d2l-table/objects/rows.png)
+![screenshot of table with styled rows](test/acceptance/dumps/d2l-table-demo/objects/rows.png)
 
 HTML:
 ```html
@@ -76,7 +76,7 @@ HTML:
 
 #### Header Icons
 
-![screenshot of table with sort icons](test/acceptance/dumps/d2l-table/objects/sort.png)
+![screenshot of table with sort icons](test/acceptance/dumps/d2l-table-demo/objects/sort.png)
 
 HTML:
 ```html
@@ -85,7 +85,7 @@ HTML:
 		<th>
 			<button is="d2l-table-col-sort-button">Ascending</button>
 		</th>
-		<th>		
+		<th>
 			<button is="d2l-table-col-sort-button" desc>Descending</button>
 		</th>
 	</thead>
