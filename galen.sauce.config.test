@@ -13,7 +13,7 @@
 
 @@ set
 	endpoint http://localhost:8080/components/d2l-table/demo/simple.html
-	factory  selenium grid http://${USERNAME}:${ACCESS_KEY}@ondemand.saucelabs.com:80/wd/hub --dc.tunnelIdentifier "${TUNNEL_IDENTIFIER}" --dc.name "${NAME}" --dc.build "${BUILD}" --page
+	factory  selenium grid http://${USERNAME}:${ACCESS_KEY}@ondemand.saucelabs.com:80/wd/hub --dc.tunnelIdentifier "${TUNNEL_IDENTIFIER}" --dc.name "${NAME}" --dc.build "${BUILD}" --dc.tags "galen" --page
 
 # See https://github.com/SeleniumHQ/selenium/blob/master/java/client/src/org/openqa/selenium/Platform.java for mapping
 @@ table browsers
