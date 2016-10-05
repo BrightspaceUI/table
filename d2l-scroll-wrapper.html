@@ -127,37 +127,30 @@
 				box-sizing: border-box;
 			}
 
-			:host([h-scrollbar]) #wrapper,
-			:host-context([dir="rtl"])[scroll-rtl-reverse][h-scrollbar] #wrapper,
-			:host-context([dir="rtl"])[scroll-rtl-negative][h-scrollbar] #wrapper {
+			:host-context([dir="rtl"])[h-scrollbar] #wrapper,
+			:host([h-scrollbar]) #wrapper {
 				@apply(--d2l-scroll-wrapper-h-scroll);
 			}
 
-			/* So, shady DOM doesn't like this syntax, but ShadowDOM needs it */
-			:host-context([dir="rtl"]):host([scroll-rtl-reverse][h-scrollbar]) #wrapper,
-			:host-context([dir="rtl"]):host([scroll-rtl-negative][h-scrollbar]) #wrapper {
+			:host-context([dir="rtl"]):host([h-scrollbar]) #wrapper {
 				@apply(--d2l-scroll-wrapper-h-scroll);
 			}
 
-			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-right] #wrapper,
-			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-right] #wrapper,
+			:host-context([dir="rtl"])[scrollbar-right] #wrapper,
 			:host([scrollbar-left]) #wrapper {
 				@apply(--d2l-scroll-wrapper-left);
 			}
 
-			:host-context([dir="rtl"]):host([scroll-rtl-reverse][scrollbar-right]) #wrapper,
-			:host-context([dir="rtl"]):host([scroll-rtl-negative][scrollbar-right]) #wrapper {
+			:host-context([dir="rtl"]):host([scrollbar-right]) #wrapper {
 				@apply(--d2l-scroll-wrapper-left);
 			}
 
-			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-left] #wrapper,
-			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-left] #wrapper,
+			:host-context([dir="rtl"])[scrollbar-left] #wrapper,
 			:host([scrollbar-right]) #wrapper {
 				@apply(--d2l-scroll-wrapper-right);
 			}
 
-			:host-context([dir="rtl"]):host([scroll-rtl-reverse][scrollbar-left]) #wrapper,
-			:host-context([dir="rtl"]):host([scroll-rtl-negative][scrollbar-left]) #wrapper {
+			:host-context([dir="rtl"]):host([scrollbar-left]) #wrapper {
 				@apply(--d2l-scroll-wrapper-right);
 			}
 
@@ -189,34 +182,13 @@
 				float: left;
 			}
 
-			:host-context([dir="rtl"])[h-scrollbar] .sticky,
 			:host([h-scrollbar]) .sticky {
 				@apply(--d2l-scroll-wrapper-action-visible);
 			}
 
-			:host-context([dir="rtl"]):host([h-scrollbar]) .sticky {
-				@apply(--d2l-scroll-wrapper-action-visible);
-			}
-
 			/* Hide the start/end buttons depending on the state */
-			:host-context([dir="rtl"])[scroll-rtl-default][scrollbar-right] .left,
-			:host-context([dir="rtl"])[scroll-rtl-default][scrollbar-left] .right,
-			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-right] .right,
-			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-right] .right,
-			:host-context([dir="rtl"])[scroll-rtl-reverse][scrollbar-left] .left,
-			:host-context([dir="rtl"])[scroll-rtl-negative][scrollbar-left] .left,
-			:host-context([dir="rtl"]) .sticky,
 			:host([scrollbar-right]) .right,
 			:host([scrollbar-left]) .left {
-				@apply(--d2l-scroll-wrapper-action-hidden);
-			}
-
-			:host-context([dir="rtl"]):host([scroll-rtl-default][scrollbar-right]) .left,
-			:host-context([dir="rtl"]):host([scroll-rtl-default][scrollbar-left]) .right,
-			:host-context([dir="rtl"]):host([scroll-rtl-reverse][scrollbar-right]) .right,
-			:host-context([dir="rtl"]):host([scroll-rtl-negative][scrollbar-right]) .right,
-			:host-context([dir="rtl"]):host([scroll-rtl-reverse][scrollbar-left]) .left,
-			:host-context([dir="rtl"]):host([scroll-rtl-negative][scrollbar-left]) .left {
 				@apply(--d2l-scroll-wrapper-action-hidden);
 			}
 		</style>
@@ -283,6 +255,7 @@
 						value: false,
 						readOnly: true
 					},
+
 					/** Whether this element is scrolled to the left */
 					scrollbarLeft: {
 						type: Boolean,
@@ -291,6 +264,7 @@
 						value: false,
 						readOnly: true
 					},
+
 					/** Whether this element is scrolled to the right */
 					scrollbarRight: {
 						type: Boolean,
@@ -299,10 +273,10 @@
 						value: false,
 						readOnly: true
 					},
+
 					/** The browser doesn't change scroll behavior on RTL. Use for styling buttons and applying mixins on RTL. See scrollRtlReverse and scrollRtlNegative */
 					scrollRtlDefault: {
 						type: Boolean,
-						reflectToAttribute: true,
 						notify: true,
 						value: false,
 						readOnly: true
@@ -310,7 +284,6 @@
 					/** The browser reverses the scrollLeft value on RTL */
 					scrollRtlReverse: {
 						type: Boolean,
-						reflectToAttribute: true,
 						notify: true,
 						value: false,
 						readOnly: true
@@ -318,7 +291,6 @@
 					/** The browser negates the scrollLeft value on RTL */
 					scrollRtlNegative: {
 						type: Boolean,
-						reflectToAttribute: true,
 						notify: true,
 						value: false,
 						readOnly: true
@@ -445,8 +417,14 @@
 
 				checkScrollThresholds: function() {
 					var lowerScrollValue = this.$.wrapper.scrollWidth - this.$.wrapper.offsetWidth - Math.abs(this.$.wrapper.scrollLeft);
-					this._setScrollbarLeft(this.$.wrapper.scrollLeft === 0);
-					this._setScrollbarRight(lowerScrollValue <= 0);
+
+					if (this.isRTL && this.scrollRtlDefault) {
+						this._setScrollbarRight(this.$.wrapper.scrollLeft === 0);
+						this._setScrollbarLeft(lowerScrollValue <= 0);
+					} else {
+						this._setScrollbarLeft(this.$.wrapper.scrollLeft === 0);
+						this._setScrollbarRight(lowerScrollValue <= 0);
+					}
 				}
 			});
 		})();
