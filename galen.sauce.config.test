@@ -17,12 +17,12 @@
 
 # See https://github.com/SeleniumHQ/selenium/blob/master/java/client/src/org/openqa/selenium/Platform.java for mapping
 @@ table browsers
-	| browserName     | browserFactory | browserArgs                                                     |
-	| chrome-windows  | ${factory}     | --browser Chrome --platform "WIN10"                             |
-	| firefox-windows | ${factory}     | --browser Firefox --platform "WIN10"                            |
-	| ie11-windows    | ${factory}     | --browser "internet explorer" --version "11" --platform "WIN10" |
-	| ie10-windows    | ${factory}     | --browser "internet explorer" --version "10" --platform "WIN8"  |
-	| edge-windows    | ${factory}     | --browser microsoftedge --platform "WIN10"                      |
-	| chrome-mac      | ${factory}     | --browser Chrome --platform "EL_CAPITAN"                        |
-	| safari-mac      | ${factory}     | --browser Safari --platform "EL_CAPITAN"                        |
-	| firefox-mac     | ${factory}     | --browser Firefox --platform "EL_CAPITAN"                       |
+	| browserName     | browserFactory | browserArgs                                                                     |
+	| chrome-windows  | ${factory}     | --browser Chrome --platform "WIN10" --size 1400x768                             |
+	| firefox-windows | ${factory}     | --browser Firefox --platform "WIN10" --size 1400x768                            |
+	| ie11-windows    | ${factory}     | --browser "internet explorer" --version "11" --platform "WIN10" --size 1400x768 |
+	| ie10-windows    | ${factory}     | --browser "internet explorer" --version "10" --platform "WIN8" --size 1400x768  |
+	| edge-windows    | ${factory}     | --browser microsoftedge --platform "WIN10" --size 1400x768                      |
+	| chrome-mac      | ${factory}     | --browser Chrome --platform "EL_CAPITAN" --size 1400x768                        |
+	| safari-mac      | ${factory}     | --browser Safari --platform "EL_CAPITAN" --size 1400x768                        |
+	| firefox-mac     | ${factory}     | --browser Firefox --platform "EL_CAPITAN" --size 1400x768                       |
