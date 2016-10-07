@@ -1,0 +1,65 @@
+@objects
+
+	small                 .screenshot-small
+		head              thead
+			tr-*              tr
+		body              tbody
+			tr-*              tr
+		foot              tfoot
+			tr-*              tr
+
+	rows                  .screenshot-rows
+		tr-*              tr
+
+	sort                  .screenshot-sort
+		tr-*              tr
+		sort-icon-*       thead d2l-table-col-sort
+
+
+	wide                  .screenshot-wide
+		left-action       .left > button[is="d2l-icon-button"]
+		right-action      .right > button[is="d2l-icon-button"]
+		tr-*              tr
+
+	no-column-border      .screenshot-no-column-border
+		head              thead
+			tr-*              tr
+		body              tbody
+			tr-*              tr
+
+@groups
+	imageCompare small.head,small.body,small.foot,rows,no-column-border.head,no-column-border.body
+	all          &imageCompare,wide,sort
+
+== D2L Table ==
+
+	@forEach [&all] as part
+		${part}.tr-1:
+			aligned horizontally top ${part}
+
+		@forEach [${part}.tr-*] as tr, prev as prevTr
+			${tr}:
+				below ${prevTr} 0px
+
+	@forEach [&imageCompare] as part
+		${part}:
+			image file dumps/${path}/objects/${part}.png, error 12px
+
+		@forEach [${part}.tr-*] as tr
+			${tr}:
+				image file dumps/${path}/objects/${tr}.png, error 6px
+
+	@forEach [sort] as part
+		${part}.sort-icon-*:
+			# The 1px is to compensate for the border
+			aligned horizontally centered ${part}.tr-1 1px
+
+	small.head:
+		above small.body 0px
+		aligned horizontally top small
+
+	small.body:
+		above small.foot 0px
+
+	small.foot:
+		aligned horizontally bottom small

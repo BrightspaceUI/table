@@ -3,18 +3,20 @@
   "description": "Mixins and CSS for applying table styles",
   "private": true,
   "scripts": {
-    "clean": "rimraf dumps/d2l-table reports/",
+    "clean": "rimraf test/acceptance/dumps/* reports/",
     "postinstall": "bower install",
     "predump": "npm run -s clean",
-    "dump": "npm run -s dump:galen",
-    "test": "concurrently -p name -n lint:js,lint:wc,galen,wct \"npm run test:lint:js\" \"npm run test:lint:wc\" \"npm run test:galen\" \"wct --skip-plugin sauce\"",
+    "dump": "npm run -s dump:galen:local",
+    "test": "concurrently -p name -n lint:js,lint:wc,galen,wct \"npm run test:lint:js\" \"npm run test:lint:wc\" \"npm run test:galen:local\" \"wct --skip-plugin sauce\"",
     "test:lint:js": "eslint --ext html .",
     "test:lint:wc": "polylint --no-recursion --input *.html",
-    "galen": "java -Xmx1g -cp node_modules/galenframework/lib/galen/galen.jar com.galenframework.GalenMain",
-    "dump:galen:polymer": "npm run galen -- dump table.gspec --config galen.config --size 768x768 --url http://localhost:8080/components/d2l-table/demo/simple.html --export dumps/d2l-table",
-    "dump:galen": "concurrently -p name -n serve,galen -s first -k \"polymer serve\" \"npm run dump:galen:polymer\"",
-    "galen:polymer": "npm run galen -- check table.gspec --config galen.config --size 768x768 --url http://localhost:8080/components/d2l-table/demo/simple.html --htmlreport reports/d2l-table",
-    "test:galen": "concurrently -p name -n serve,galen -s first -k \"polymer serve\" \"npm run galen:polymer\""
+    "galen": "java -Xmx2g -cp node_modules/galenframework/lib/galen/galen.jar com.galenframework.GalenMain",
+    "dump:galen:local:run": "npm run galen -- test test/acceptance/dump.test",
+    "galen:local:run": "npm run galen -- test test/acceptance/check-local.test --htmlreport reports/d2l-table",
+    "galen:sauce:run": "npm run galen -- test test/acceptance/check-sauce.test --htmlreport reports/d2l-table -p4 -DUSERNAME=$SAUCE_USERNAME -DACCESS_KEY=$SAUCE_ACCESS_KEY -DTUNNEL_IDENTIFIER=$TRAVIS_JOB_NUMBER -DNAME=$TRAVIS_REPO_SLUG -DBUILD=$TRAVIS_BUILD_NUMBER",
+    "dump:galen:local": "concurrently -p name -n serve,galen -s first -k \"polymer serve\" \"npm run dump:galen:local:run\"",
+    "test:galen:local": "concurrently -p name -n serve,galen -s first -k \"polymer serve\" \"npm run galen:local:run\"",
+    "test:galen:sauce": "concurrently -p name -n serve,galen -s first -k \"polymer serve\" \"npm run galen:sauce:run\""
   },
   "repository": {
     "type": "git",
