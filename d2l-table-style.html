@@ -4,31 +4,74 @@
 <dom-module id="d2l-table-style">
 	<template>
 		<style include="d2l-colors">
+			:host {
+				--d2l-table-cell: {
+					border-top: var(--d2l-table-border);
+					border-right: var(--d2l-table-border);
+					display: table-cell;
+					font-weight: 300;
+					padding: 1rem;
+					text-align: left;
+					vertical-align: middle;
+				};
+
+				--d2l-table-header: {
+					color: var(--d2l-color-ferrite);
+					font-family: inherit;
+					font-size: 0.7rem;
+					font-weight: 400;
+					line-height: 1rem;
+					letter-spacing: 0.02rem;
+					margin: 1rem 0 1rem 0;
+					background-color: var(--d2l-table-header-background-color);
+				};
+
+				--d2l-table: {
+					background-color: transparent;
+					border-collapse: separate;
+					border-spacing: 0;
+					display: table;
+					visibility: visible;
+					width: 100%;
+				};
+
+				--d2l-table-head: {
+					display: table-header-group;
+				};
+
+				--d2l-table-foot: {
+					display: table-footer-group;
+					background-color: var(--d2l-table-body-background-color);
+				};
+
+				--d2l-table-body: {
+					background-color: var(--d2l-table-body-background-color);
+				};
+
+				--d2l-table-row: {
+					display: table-row;
+				};
+			}
+
 			:host .table-container > ::content table[is="d2l-table"] {
-				background-color: transparent;
-				border-collapse: separate;
-				border-spacing: 0;
-				display: table;
-				visibility: visible;
-				width: 100%;
+				@apply(--d2l-table);
 			}
 
 			:host .table-container > ::content table[is="d2l-table"] > thead {
-				display: table-header-group;
+				@apply(--d2l-table-head);
 			}
 
 			:host .table-container > ::content table[is="d2l-table"] > tfoot {
-				display: table-footer-group;
-				background-color: var(--d2l-table-body-background-color);
+				@apply(--d2l-table-foot);
 			}
 
 			:host .table-container > ::content table[is="d2l-table"] > tbody {
-				background-color: var(--d2l-table-body-background-color);
+				@apply(--d2l-table-body);
 			}
 
 			:host .table-container > ::content table[is="d2l-table"] > * > tr,
 			:host .table-container > ::content table[is="d2l-table"] > tr {
-				display: table-row;
+				@apply(--d2l-table-row);
 			}
 
 			:host .table-container > ::content table[is="d2l-table"] > thead > tr > th,
@@ -36,13 +79,7 @@
 			:host .table-container > ::content table[is="d2l-table"] > tr > td,
 			:host .table-container > ::content table[is="d2l-table"] > tbody > tr > th,
 			:host .table-container > ::content table[is="d2l-table"] > tfoot > tr > th {
-				border-top: var(--d2l-table-border);
-				border-right: var(--d2l-table-border);
-				display: table-cell;
-				font-weight: 300;
-				padding: 1rem 1.5rem;
-				text-align: left;
-				vertical-align: middle;
+				@apply(--d2l-table-cell);
 			}
 
 			:host-context([dir="rtl"]) .table-container > ::content table[is="d2l-table"] > thead > tr > th,
@@ -54,14 +91,7 @@
 			}
 
 			:host .table-container > ::content table[is="d2l-table"] > thead > tr > th {
-				color: var(--d2l-color-ferrite);
-				font-family: inherit;
-				font-size: 0.7rem;
-				font-weight: 400;
-				line-height: 1rem;
-				letter-spacing: 0.02rem;
-				margin: 1rem 0 1rem 0;
-				background-color: var(--d2l-table-header-background-color);
+				@apply(--d2l-table-header);
 			}
 
 			:host-context([dir="rtl"]) .table-container > ::content table[is="d2l-table"] > * > tr >:first-child,
