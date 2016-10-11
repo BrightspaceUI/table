@@ -7,3 +7,4 @@ wide.tr*.png
 sort*.png
 
 d2l-table-demo/objects/*tr*.png
+!d2l-table-demo/objects/sort.png
