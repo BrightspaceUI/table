@@ -20,6 +20,7 @@ function factory(settings, url) {
 	settings = settings || {};
 	settings.desiredCapabilities = settings.desiredCapabilities || {};
 	settings.desiredCapabilities.tunnelIdentifier = System.getProperty('TUNNEL_IDENTIFIER');
+	settings.desiredCapabilities.name = System.getProperty('NAME');
 	settings.desiredCapabilities.build = System.getProperty('BUILD');
 	settings.desiredCapabilities.tags = 'galen';
 
