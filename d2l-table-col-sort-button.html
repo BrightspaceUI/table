@@ -37,7 +37,9 @@
 			}
 		</style>
 		<content></content>
-		<d2l-table-col-sort desc="[[desc]]"></d2l-table-col-sort>
+		<template is="dom-if" if="{{!nosort}}" strip-whitespace>
+			<d2l-table-col-sort desc="[[desc]]"></d2l-table-col-sort>
+		</template>
 	</template>
 	<script>
 		Polymer({
@@ -45,7 +47,11 @@
 			extends: 'button',
 
 			properties: {
-				desc: Boolean
+				desc: Boolean,
+				nosort: {
+					type: Boolean,
+					value: false
+				}
 			}
 		});
 	</script>
