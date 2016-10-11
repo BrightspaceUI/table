@@ -1,2 +1,0 @@
-export SAUCE_USERNAME=Desire2Learn
-export SAUCE_ACCESS_KEY=131f0103-3bc6-4c3b-8e8b-d34cb38b23dd

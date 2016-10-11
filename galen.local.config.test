@@ -1,7 +1,0 @@
-@@ set
-	endpoint     http://localhost:8080/components/d2l-table/demo/simple.html
-	demoEndpoint http://localhost:8080/components/d2l-table/demo/index.html
-
-@@ table browsers
-	| browserName | browserFactory     | browserArgs  |
-	| phantomjs   | selenium phantomjs | 1400x768     |
