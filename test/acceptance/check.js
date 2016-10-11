@@ -13,9 +13,9 @@ forAll(this.browsers, function() {
 			polymerPage.waitForIt();
 			checkLayout(driver, 'test/acceptance/table.gspec');
 
-			/*driver.get(endpoint + '?dir=rtl');
+			driver.get(endpoint + '?dir=rtl');
 			polymerPage.waitForIt();
-			checkLayout(driver, 'test/acceptance/table.rtl.gspec');*/
+			checkLayout(driver, 'test/acceptance/table.rtl.gspec');
 
 			passed = this.report.fetchStatistic().getErrors() === 0;
 		} catch (e) {
