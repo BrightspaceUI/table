@@ -13,7 +13,8 @@
 
 	sort                  .screenshot-sort
 		tr-*              tr
-		sort-icon-*       thead d2l-table-col-sort
+		sort-button-*     thead button[is="d2l-table-col-sort-button"]
+			sort-icon     d2l-table-col-sort
 
 
 	wide                  .screenshot-wide
@@ -50,9 +51,12 @@
 				image file dumps/${path}/objects/${tr}.png, error 6px
 
 	@forEach [sort] as part
-		${part}.sort-icon-*:
+		${part}.sort-button-1.sort-icon, ${part}.sort-button-2.sort-icon:
 			# The 1px is to compensate for the border
 			aligned horizontally centered ${part}.tr-1 1px
+
+		${part}.sort-button-3.sort-icon:
+			absent
 
 	small.head:
 		above small.body 0px
