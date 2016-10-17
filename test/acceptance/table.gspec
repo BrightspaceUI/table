@@ -1,5 +1,5 @@
 @set
-	path d2l-table
+	path ltr
 
 @import table-common.gspec
 

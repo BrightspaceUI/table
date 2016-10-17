@@ -6,17 +6,12 @@
     "clean": "rimraf test/acceptance/dumps/* reports/",
     "postinstall": "bower install",
     "predump": "npm run -s clean",
-    "dump": "npm run -s dump:galen:local",
+    "dump": "gulp dump:galen",
     "test": "concurrently -p name -n lint:js,lint:wc,galen,wct \"npm run test:lint:js\" \"npm run test:lint:wc\" \"npm run test:galen:local\" \"wct --skip-plugin sauce\"",
     "test:lint:js": "eslint --ext html .",
     "test:lint:wc": "polylint --no-recursion --input *.html",
-    "galen": "java -Xmx2g -cp node_modules/galenframework/lib/galen/galen.jar com.galenframework.GalenMain",
-    "dump:galen:local:run": "npm run galen -- test test/acceptance/dump.test.js",
-    "galen:local:run": "npm run galen -- test test/acceptance/check-local.test.js --htmlreport reports/d2l-table",
-    "galen:sauce:run": "npm run galen -- test test/acceptance/check-sauce.test.js --htmlreport reports/d2l-table -p4 -DUSERNAME=$SAUCE_USERNAME -DACCESS_KEY=$SAUCE_ACCESS_KEY -DTUNNEL_IDENTIFIER=$TRAVIS_JOB_NUMBER -DNAME=$TRAVIS_REPO_SLUG -DBUILD=$TRAVIS_BUILD_NUMBER",
-    "dump:galen:local": "concurrently -p name -n serve,galen -s first -k \"polymer serve\" \"npm run dump:galen:local:run\"",
-    "test:galen:local": "concurrently -p name -n serve,galen -s first -k \"polymer serve\" \"npm run galen:local:run\"",
-    "test:galen:sauce": "concurrently -p name -n serve,galen -s first -k \"polymer serve\" \"npm run galen:sauce:run\""
+    "test:galen:local": "gulp test:galen:local",
+    "test:galen:sauce": "gulp test:galen:sauce"
   },
   "repository": {
     "type": "git",
@@ -33,15 +28,18 @@
     "bower": "^1.7.7"
   },
   "devDependencies": {
+    "@d2l/gulp-d2l-galen": "0.0.3",
     "concurrently": "^3.1.0",
     "eslint": "^3.7.1",
     "eslint-config-brightspace": "^0.2.4",
     "eslint-plugin-html": "^1.5.3",
     "galenframework": "^2.3.1",
+    "gulp": "^3.9.1",
     "phantomjs-prebuilt": "^2.1.13",
     "polylint": "^2.10.1",
     "polymer-cli": "^0.16.0",
     "rimraf": "^2.5.4",
+    "sauce-connect-launcher": "^0.17.0",
     "static-server": "^2.0.3",
     "web-component-tester": "^4.3.4"
   }
