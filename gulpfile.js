@@ -27,6 +27,7 @@ gulp.task('test:galen:sauce', function() {
 	return gulp.src('./galen.config.js')
 		.pipe(D2LGalen({
 			sauce: true,
+			sauceConnect: !process.env.TRAVIS_JOB_NUMBER,
 			polyserve: true,
 			galen: {
 				htmlreport: 'reports',

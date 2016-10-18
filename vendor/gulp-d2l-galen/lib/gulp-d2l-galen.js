@@ -65,9 +65,9 @@ function GulpD2LGalen(options) {
 		}
 
 		let sauceConnectPromise = Promise.resolve();
-		if (opts.sauce) {
+		if (opts.sauceConnect) {
 			let sauceOpts = {};
-			if ('object' === typeof opts.polyserve) {
+			if ('object' === typeof opts.sauce) {
 				sauceOpts = opts.sauce;
 			}
 			sauceConnectPromise = new Promise(function(resolve, reject) {
