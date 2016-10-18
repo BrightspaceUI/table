@@ -31,6 +31,7 @@ gulp.task('test:galen:sauce', function() {
 			polyserve: true,
 			galen: {
 				htmlreport: 'reports',
+				'parallel-tests': 4,
 				properties: {
 					NAME: process.env.TRAVIS_REPO_SLUG,
 					TUNNEL_IDENTIFIER: process.env.TRAVIS_JOB_NUMBER,
