@@ -28,19 +28,21 @@
     "bower": "^1.7.7"
   },
   "devDependencies": {
-    "@d2l/gulp-d2l-galen": "0.0.3",
     "concurrently": "^3.1.0",
     "eslint": "^3.7.1",
     "eslint-config-brightspace": "^0.2.4",
     "eslint-plugin-html": "^1.5.3",
     "galenframework": "^2.3.1",
     "gulp": "^3.9.1",
+    "gulp-galen": "^1.1.1",
     "phantomjs-prebuilt": "^2.1.13",
     "polylint": "^2.10.1",
     "polymer-cli": "^0.16.0",
+    "polyserve": "^0.13.0",
     "rimraf": "^2.5.4",
     "sauce-connect-launcher": "^0.17.0",
     "static-server": "^2.0.3",
+    "through2": "^2.0.1",
     "web-component-tester": "^4.3.4"
   }
 }

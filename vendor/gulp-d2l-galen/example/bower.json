@@ -1,0 +1,16 @@
+{
+  "name": "d2l-galen-utils-example",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [],
+  "license": "NOLICENCE",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
