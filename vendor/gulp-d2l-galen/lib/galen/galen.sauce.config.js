@@ -43,7 +43,7 @@ this.browsers = {
 		browserFactory: factory.bind(this, {
 			browser: 'Chrome',
 			platform: 'WIN10',
-			size: '768x768'
+			size: '1400x900'
 		}),
 		hasShadow: true
 	},
@@ -52,7 +52,7 @@ this.browsers = {
 		browserFactory: factory.bind(this, {
 			browser: 'Firefox',
 			platform: 'WIN10',
-			size: '768x768'
+			size: '1400x900'
 		})
 	},
 	ie11Windows: {
@@ -61,7 +61,7 @@ this.browsers = {
 			browser: 'internet explorer',
 			version: '11',
 			platform: 'WIN10',
-			size: '768x768'
+			size: '1400x900'
 		})
 	},
 	ie10Windows: {
@@ -70,7 +70,7 @@ this.browsers = {
 			browser: 'internet explorer',
 			version: '10',
 			platform: 'WIN8',
-			size: '768x768'
+			size: '1400x900'
 		})
 	},
 	edgeWindows: {
@@ -78,7 +78,7 @@ this.browsers = {
 		browserFactory: factory.bind(this, {
 			browser: 'microsoftedge',
 			platform: 'WIN10',
-			size: '768x768'
+			size: '1400x900'
 		})
 	},
 	chromeMac: {
@@ -86,7 +86,7 @@ this.browsers = {
 		browserFactory: factory.bind(this, {
 			browser: 'Chrome',
 			platform: 'EL_CAPITAN',
-			size: '768x768'
+			size: '1400x900'
 		}),
 		hasShadow: true
 	},
@@ -95,7 +95,7 @@ this.browsers = {
 		browserFactory: factory.bind(this, {
 			browser: 'Safari',
 			platform: 'EL_CAPITAN',
-			size: '768x768'
+			size: '1400x900'
 		})
 	},
 	firefoxMac: {
@@ -103,7 +103,7 @@ this.browsers = {
 		browserFactory: factory.bind(this, {
 			browser: 'Firefox',
 			platform: 'EL_CAPITAN',
-			size: '768x768'
+			size: '1400x900'
 		})
 	}
 };
