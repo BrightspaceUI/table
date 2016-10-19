@@ -311,18 +311,21 @@
 
 						it('should set focused attribute when wrapper is focused', function() {
 							expect(this.scrollWrapper.focused).to.equal(false);
-							this.wrapper.focus();
+
+							this.scrollWrapper.wrapperFocus();
 							expect(this.scrollWrapper.focused).to.equal(true);
-							this.wrapper.blur();
+
+							this.scrollWrapper.wrapperBlur();
 							expect(this.scrollWrapper.focused).to.equal(false);
 						});
 
 						it('should call updateStyles when focus changes', function() {
 							sinon.stub(this.scrollWrapper, 'updateStyles');
-							this.wrapper.focus();
+							this.scrollWrapper.wrapperFocus();
 							expect(this.scrollWrapper.updateStyles).to.have.been.calledOnce;
 							this.scrollWrapper.updateStyles.reset();
-							this.wrapper.blur();
+
+							this.scrollWrapper.wrapperBlur();
 							expect(this.scrollWrapper.updateStyles).to.have.been.calledOnce;
 						});
 					});
