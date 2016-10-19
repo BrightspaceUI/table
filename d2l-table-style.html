@@ -105,6 +105,11 @@
 				border-left: var(--d2l-table-outer-border);
 			}
 
+			:host-context([dir="rtl"]) > ::content > * > tr >:last-child,
+			:host-context([dir="rtl"]) > ::content > tr >:last-child {
+				border-right: var(--d2l-table-border);
+			}
+
 			:host-context([dir="rtl"]) > ::content > * > tr >:first-child,
 			:host-context([dir="rtl"]) > ::content > tr >:first-child,
 			:host > ::content > * > tr >:last-child,
@@ -284,16 +289,22 @@
 				background-color: var(--d2l-table-row-background-color-selected);
 			}
 
+			:host-context([dir="rtl"]) > ::content > tbody > tr[selected] >:first-child {
+				border-left-color: var(--d2l-table-border-color);
+			}
+
 			:host-context([dir="rtl"]) > ::content > tbody > tr[selected] >:first-child,
 			:host > ::content > tbody > tr[selected] >:last-child {
-				border-right-color: var(--d2l-table-row-border-color-selected) !important;
-				border-left-color: var(--d2l-table-border-color);
+				border-right-color: var(--d2l-table-row-border-color-selected);
+			}
+
+			:host-context([dir="rtl"]) > ::content > tbody > tr[selected] >:last-child {
+				border-right-color: var(--d2l-table-border-color);
 			}
 
 			:host-context([dir="rtl"]) > ::content > tbody > tr[selected] >:last-child,
 			:host > ::content > tbody > tr[selected] >:first-child {
-				border-left-color: var(--d2l-table-row-border-color-selected) !important;
-				border-right-color: var(--d2l-table-border-color);
+				border-left-color: var(--d2l-table-row-border-color-selected);
 			}
 
 			:host > ::content > tbody > tr[selected] > td,
@@ -312,28 +323,34 @@
 			}
 
 			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected] >:first-child,
-			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover >:first-child,
-			:host > ::content > tbody > tr[active][selected] >:last-child,
-			:host([selectable]) > ::content > tbody > tr[selected]:hover >:last-child {
-				border-right-color: var(--d2l-table-row-border-color-active-selected) !important;
+			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover >:first-child {
 				border-left-color: var(--d2l-table-border-color);
 			}
 
+			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected] >:first-child,
+			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover >:first-child,
+			:host > ::content > tbody > tr[active][selected] >:last-child,
+			:host([selectable]) > ::content > tbody > tr[selected]:hover >:last-child {
+				border-right-color: var(--d2l-table-row-border-color-active-selected);
+			}
+
 			:host-context([dir="rtl"]):host([selectable]) > ::content > tbody > tr[selected]:hover >:first-child {
-				border-right-color: var(--d2l-table-row-border-color-active-selected) !important;
 				border-left-color: var(--d2l-table-border-color);
+			}
+
+			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected] >:last-child,
+			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover >:last-child {
+				border-right-color: var(--d2l-table-border-color);
 			}
 
 			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected] >:last-child,
 			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover >:last-child,
 			:host > ::content > tbody > tr[active][selected] >:first-child,
 			:host([selectable]) > ::content > tbody > tr[selected]:hover >:first-child {
-				border-left-color: var(--d2l-table-row-border-color-active-selected) !important;
-				border-right-color: var(--d2l-table-border-color);
+				border-left-color: var(--d2l-table-row-border-color-active-selected);
 			}
 
 			:host-context([dir="rtl"]):host([selectable]) > ::content > tbody > tr[selected]:hover >:last-child {
-				border-left-color: var(--d2l-table-row-border-color-active-selected) !important;
 				border-right-color: var(--d2l-table-border-color);
 			}
 
