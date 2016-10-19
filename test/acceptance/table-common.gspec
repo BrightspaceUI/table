@@ -11,6 +11,9 @@
 	rows                  .screenshot-rows
 		tr-*              tr
 
+	rows-styled           .screenshot-rows-styled
+		tr-*              tr
+
 	sort                  .screenshot-sort
 		tr-*              tr
 		sort-button-*     thead button[is="d2l-table-col-sort-button"]
@@ -29,7 +32,7 @@
 			tr-*              tr
 
 @groups
-	imageCompare small.head,small.body,small.foot,rows,no-column-border.head,no-column-border.body
+	imageCompare small.head,small.body,small.foot,rows,rows-styled,no-column-border.head,no-column-border.body
 	all          &imageCompare,wide,sort
 
 == D2L Table ==

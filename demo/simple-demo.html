@@ -18,6 +18,9 @@
 				padding: 1px;
 				width: 8em;
 			}
+			.screenshot-rows-styled > table {
+				--d2l-table-outer-border-color: red;
+			}
 			.screenshot-wide {
 				margin-right: auto;
 				display: block;
@@ -81,6 +84,27 @@
 			</table>
 		</div>
 		<div class="screenshots screenshot-rows">
+			<table is="d2l-table">
+				<tbody>
+				<tr>
+					<td><span> </span></td>
+					<td><span> </span></td>
+					<td><span> </span></td>
+				</tr>
+				<tr active selected>
+					<td><span> </span></td>
+					<td><span> </span></td>
+					<td><span> </span></td>
+				</tr>
+				<tr>
+					<td><span> </span></td>
+					<td><span> </span></td>
+					<td><span> </span></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="screenshots screenshot-rows-styled">
 			<table is="d2l-table">
 				<tbody>
 				<tr>

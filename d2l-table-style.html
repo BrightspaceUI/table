@@ -102,7 +102,14 @@
 			:host-context([dir="rtl"]) > ::content > tr >:last-child,
 			:host > ::content > * > tr >:first-child,
 			:host > ::content > tr >:first-child {
-				border-left: var(--d2l-table-border);
+				border-left: var(--d2l-table-outer-border);
+			}
+
+			:host-context([dir="rtl"]) > ::content > * > tr >:first-child,
+			:host-context([dir="rtl"]) > ::content > tr >:first-child,
+			:host > ::content > * > tr >:last-child,
+			:host > ::content > tr >:last-child {
+				border-right: var(--d2l-table-outer-border);
 			}
 
 			:host-context([dir="rtl"]) > ::content > thead > tr:first-child >:first-child,
@@ -127,6 +134,26 @@
 			:host > ::content > colgroup:first-child + tbody:last-child > tr:first-child >:last-child,
 			:host > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child >:last-child {
 				border-top-right-radius: var(--d2l-table-border-radius);
+			}
+
+			:host > ::content > thead > tr:first-child > th,
+			:host > ::content > tbody:only-child > tr:first-child > th,
+			:host > ::content > tfoot:first-child + tbody:last-child > tr:first-child > th,
+			:host > ::content > caption:first-child + tbody:last-child > tr:first-child > th,
+			:host > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child > th,
+			:host > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child > th,
+			:host > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > th,
+			:host > ::content > colgroup:first-child + tbody:last-child > tr:first-child > th,
+			:host > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child > th,
+			:host > ::content > tbody:only-child > tr:first-child > td,
+			:host > ::content > tfoot:first-child + tbody:last-child > tr:first-child > td,
+			:host > ::content > caption:first-child + tbody:last-child > tr:first-child > td,
+			:host > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child > td,
+			:host > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child > td,
+			:host > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > td,
+			:host > ::content > colgroup:first-child + tbody:last-child > tr:first-child > td,
+			:host > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child > td {
+				border-top: var(--d2l-table-outer-border);
 			}
 
 			:host-context([dir="rtl"]) > ::content > thead > tr:first-child >:last-child,
@@ -199,6 +226,20 @@
 			:host > ::content > caption + tbody:last-child > tr:last-child >:last-child,
 			:host > ::content > colgroup + tbody:last-child > tr:last-child >:last-child {
 				border-bottom-right-radius: var(--d2l-table-border-radius);
+			}
+
+			:host > ::content > thead:only-child > tr:last-child > th,
+			:host > ::content > tfoot > tr:last-child > th,
+			:host > ::content > tbody:only-child > tr:last-child > th,
+			:host > ::content > thead + tbody:last-child > tr:last-child > th,
+			:host > ::content > caption + tbody:last-child > tr:last-child > th,
+			:host > ::content > colgroup + tbody:last-child > tr:last-child > th,
+			:host > ::content > tfoot > tr:last-child > td,
+			:host > ::content > tbody:only-child > tr:last-child > td,
+			:host > ::content > thead + tbody:last-child > tr:last-child > td,
+			:host > ::content > caption + tbody:last-child > tr:last-child > td,
+			:host > ::content > colgroup + tbody:last-child > tr:last-child > td {
+				border-bottom: var(--d2l-table-outer-border);
 			}
 
 			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child >:last-child,
@@ -327,48 +368,48 @@
 
 			:host([no-column-border]) > ::content > tbody > tr > td:first-child,
 			:host([no-column-border]) > ::content > tbody > tr > th:first-child {
-				border-left: var(--d2l-table-border);
+				border-left: var(--d2l-table-outer-border);
 			}
 
 			:host([no-column-border]) > ::content > tbody > tr > td:last-child,
 			:host([no-column-border]) > ::content > tbody > tr > th:last-child {
-				border-right: var(--d2l-table-border);
+				border-right: var(--d2l-table-outer-border);
 			}
 
 			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > td:first-child,
 			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > th:first-child {
 				border-left: none;
-				border-right: var(--d2l-table-border);
+				border-right: var(--d2l-table-outer-border);
 			}
 
 			:host-context([dir="rtl"]):host([no-column-border]) > ::content > tbody > tr > td:first-child,
 			:host-context([dir="rtl"]):host([no-column-border]) > ::content > tbody > tr > th:first-child {
 				border-left: none;
-				border-right: var(--d2l-table-border);
+				border-right: var(--d2l-table-outer-border);
 			}
 
 			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > td:last-child,
 			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > th:last-child {
 				border-right: none;
-				border-left: var(--d2l-table-border);
+				border-left: var(--d2l-table-outer-border);
 			}
 
 			:host-context([dir="rtl"]):host([no-column-border]) > ::content > tbody > tr > td:last-child,
 			:host-context([dir="rtl"]):host([no-column-border]) > ::content > tbody > tr > th:last-child {
 				border-right: none;
-				border-left: var(--d2l-table-border);
+				border-left: var(--d2l-table-outer-border);
 			}
 
 			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > td:only-child,
 			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > th:only-child {
-				border-right: var(--d2l-table-border);
-				border-left: var(--d2l-table-border);
+				border-right: var(--d2l-table-outer-border);
+				border-left: var(--d2l-table-outer-border);
 			}
 
 			:host-context([dir="rtl"]):host([no-column-border]) > ::content > tbody > tr > td:only-child,
 			:host-context([dir="rtl"]):host([no-column-border]) > ::content > tbody > tr > th:only-child {
-				border-right: var(--d2l-table-border);
-				border-left: var(--d2l-table-border);
+				border-right: var(--d2l-table-outer-border);
+				border-left: var(--d2l-table-outer-border);
 			}
 		</style>
 	</template>

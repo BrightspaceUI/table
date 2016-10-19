@@ -121,36 +121,37 @@
 				};
 			}
 
-			#wrapper {
+			.wrapper {
+				outline: none;
 				overflow-x: auto;
 				width: 100%;
 				box-sizing: border-box;
 			}
 
-			:host-context([dir="rtl"])[h-scrollbar] #wrapper,
-			:host([h-scrollbar]) #wrapper {
+			:host-context([dir="rtl"])[h-scrollbar] .wrapper,
+			:host([h-scrollbar]) .wrapper {
 				@apply(--d2l-scroll-wrapper-h-scroll);
 			}
 
-			:host-context([dir="rtl"]):host([h-scrollbar]) #wrapper {
+			:host-context([dir="rtl"]):host([h-scrollbar]) .wrapper {
 				@apply(--d2l-scroll-wrapper-h-scroll);
 			}
 
-			:host-context([dir="rtl"])[scrollbar-right] #wrapper,
-			:host([scrollbar-left]) #wrapper {
+			:host-context([dir="rtl"])[scrollbar-right] .wrapper,
+			:host([scrollbar-left]) .wrapper {
 				@apply(--d2l-scroll-wrapper-left);
 			}
 
-			:host-context([dir="rtl"]):host([scrollbar-right]) #wrapper {
+			:host-context([dir="rtl"]):host([scrollbar-right]) .wrapper {
 				@apply(--d2l-scroll-wrapper-left);
 			}
 
-			:host-context([dir="rtl"])[scrollbar-left] #wrapper,
-			:host([scrollbar-right]) #wrapper {
+			:host-context([dir="rtl"])[scrollbar-left] .wrapper,
+			:host([scrollbar-right]) .wrapper {
 				@apply(--d2l-scroll-wrapper-right);
 			}
 
-			:host-context([dir="rtl"]):host([scrollbar-left]) #wrapper {
+			:host-context([dir="rtl"]):host([scrollbar-left]) .wrapper {
 				@apply(--d2l-scroll-wrapper-right);
 			}
 
@@ -213,7 +214,7 @@
 			></button>
 		</d2l-sticky-element>
 		<div id="wrapper" class="wrapper">
-			<content></content>
+			<content id="content"></content>
 		</div>
 	</template>
 	<script>
@@ -320,12 +321,35 @@
 						type: Boolean,
 						value: false,
 						readOnly: true
+					},
+
+					focused: {
+						type: Boolean,
+						value: false,
+						readOnly: true,
+						reflectToAttribute: true,
+						notify: true
 					}
 				},
 
 				listeners: {
 					'iron-resize': 'checkScrollbar',
-					'wrapper.scroll': 'checkScrollThresholds'
+					'wrapper.scroll': 'checkScrollThresholds',
+					'wrapper.focus': 'wrapperFocus',
+					'wrapper.blur': 'wrapperBlur'
+				},
+
+				wrapperFocus: function() {
+					this._updateFocusState(this.hScrollbar);
+				},
+
+				wrapperBlur: function() {
+					this._updateFocusState(false);
+				},
+
+				_updateFocusState: function(focused) {
+					this._setFocused(focused);
+					this.updateStyles();
 				},
 
 				calculateRTL: function() {
@@ -412,6 +436,9 @@
 					var hScrollbar = this.$.wrapper.offsetWidth !== this.$.wrapper.scrollWidth;
 					this._setHScrollbar(hScrollbar);
 					this.$.wrapper.tabIndex = hScrollbar ? 0 : -1;
+					if (!hScrollbar) {
+						this._updateFocusState(false);
+					}
 					this.checkScrollThresholds();
 				},
 

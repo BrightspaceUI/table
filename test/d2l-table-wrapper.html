@@ -60,6 +60,18 @@
 					expect(Polymer.dom(this.table.wrapper).firstChild).to.equal(this.table);
 					expect(this.table.wrapper.parentNode).to.equal(div);
 				});
+
+				it('should update child styles when focus changes', function() {
+					sinon.spy(this.table, 'updateStyles');
+					var wrapper = this.table.wrapper;
+					wrapper.updateStyles({
+						'--d2l-table-focus-outer-border': '1px solid red'
+					});
+					wrapper.focused = true;
+					expect(this.table.updateStyles).to.have.been.calledWithMatch({
+						'--d2l-table-outer-border': '1px solid red'
+					});
+				});
 			}
 			describe('no wrapper', function() {
 				beforeEach(function() {

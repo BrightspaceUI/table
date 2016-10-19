@@ -46,6 +46,10 @@
 			--d2l-table-row-border-color-selected: black;
 			--d2l-table-row-background-color-selected: black;
 			--d2l-table-border-overflow: none;
+
+			--d2l-table-focus-color: cyan;
+			--d2l-table-focus-border-overflow: dashed 1px var(--d2l-table-focus-color);
+			--d2l-table-focus-outer-border: 1px solid var(--d2l-table-focus-color) !important;
 		}
 
 		/* tweak default border radius for all tables on the page. No d2l-table-wrapper
@@ -89,7 +93,9 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 		<style include="d2l-table-style d2l-colors">
 			:host {
 				--d2l-table-border-color: var(--d2l-color-titanius);
+				--d2l-table-outer-border-color: var(--d2l-table-border-color);
 				--d2l-table-border: 1px solid var(--d2l-table-border-color);
+				--d2l-table-outer-border: 1px solid var(--d2l-table-outer-border-color);
 				--d2l-table-border-radius: 0.3rem;
 				--d2l-table-header-background-color: var(--d2l-color-regolith);
 				--d2l-table-body-background-color: #fff;
