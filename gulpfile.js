@@ -6,7 +6,7 @@ var
 	D2LGalen = require('./vendor/gulp-d2l-galen');
 
 gulp.task('test:galen:local', function() {
-	return gulp.src('./galen.config.js')
+	return gulp.src('./galen.local.config.js')
 		.pipe(D2LGalen({
 			polyserve: true,
 			galen: {
@@ -16,7 +16,7 @@ gulp.task('test:galen:local', function() {
 });
 
 gulp.task('dump:galen', function() {
-	return gulp.src('./galen.config.js')
+	return gulp.src('./galen.local.config.js')
 		.pipe(D2LGalen({
 			polyserve: true,
 			dump: true
@@ -24,10 +24,9 @@ gulp.task('dump:galen', function() {
 });
 
 gulp.task('test:galen:sauce', function() {
-	return gulp.src('./galen.config.js')
+	return gulp.src('./galen.sauce.config.js')
 		.pipe(D2LGalen({
-			sauce: true,
-			sauceConnect: !process.env.TRAVIS_JOB_NUMBER,
+			sauce: !process.env.TRAVIS_JOB_NUMBER,
 			polyserve: true,
 			galen: {
 				htmlreport: 'reports',

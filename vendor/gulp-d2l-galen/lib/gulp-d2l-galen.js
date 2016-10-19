@@ -7,6 +7,7 @@ const galen = require('gulp-galen'),
 	through = require('through2');
 
 function GulpD2LGalen(options) {
+	options = options || {};
 	let sauceConnectProcess, polyserveServer;
 
 	function cleanup(cb) {
@@ -34,19 +35,14 @@ function GulpD2LGalen(options) {
         /* eslint no-invalid-this: 0 */
 		const stream = this;
 		const opts = Object.assign({
-			sauceTest: __dirname + '/galen/check-sauce.test.js',
-			defaultTest: __dirname + '/galen/check-local.test.js',
-			dumpTest: __dirname + '/galen/dump.test.js',
-
-			sauceConfig: __dirname + '/galen/galen.sauce.config.js',
-			defaultConfig: __dirname + '/galen/galen.local.config.js',
-			commonConfig: file.path
+			entryPoint: __dirname + '/galen/entrypoint.test.js',
+			testPath: __dirname + '/galen/' + (options.dump ? 'dump.js' : 'check.js'),
+			config: file.path
 		}, options);
 		opts.galen = opts.galen || {};
 		opts.galen.properties = Object.assign({
-			CommonConfig: opts.commonConfig,
-			SauceConfig: opts.sauceConfig,
-			LocalConfig: opts.defaultConfig,
+			ConfigPath: opts.config,
+			TestPath: opts.testPath,
 			USERNAME: opts.sauce && opts.sauce.username && opts.sauce.username || process.env.SAUCE_USERNAME,
 			ACCESS_KEY: opts.sauce && opts.sauce.accessKey && opts.sauce.accessKey || process.env.SAUCE_ACCESS_KEY
 		}, opts.galen.properties);
@@ -65,7 +61,7 @@ function GulpD2LGalen(options) {
 		}
 
 		let sauceConnectPromise = Promise.resolve();
-		if (opts.sauceConnect) {
+		if (opts.sauce) {
 			let sauceOpts = {};
 			if ('object' === typeof opts.sauce) {
 				sauceOpts = opts.sauce;
@@ -85,11 +81,9 @@ function GulpD2LGalen(options) {
 			});
 		}
 
-		const src = opts.sauce && opts.sauceTest || opts.dump && opts.dumpTest || opts.defaultTest;
-
 		Promise.all([polyServerPromise, sauceConnectPromise])
 			.then(function() {
-				gulp.src(src)
+				gulp.src(opts.entryPoint)
 					.pipe(galen.test(opts.galen))
 					.on('data', function(data) {
 						stream.push(data);

@@ -1,11 +1,10 @@
 /* global browsers, spec, dumpsDir, PolymerPage, endpoint, demoEndpoint */
 'use strict';
 
-load(System.getProperty('LocalConfig') + '');
 load('polymer-page.js');
 forAll(browsers, function() {
 	test('Open simple.html in ${browserName}', function(browser) {
-		var driver = browser.browserFactory(endpoint);
+		var driver = browser.browserFactory(endpoint).driver;
 
 		try {
 			var polymerPage = new PolymerPage(driver);

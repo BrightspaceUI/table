@@ -1,4 +1,4 @@
-/* global browsers, PolymerPage, endpoint, reportStatus, spec */
+/* global browsers, PolymerPage, endpoint, spec */
 /* eslint no-invalid-this: 0 */
 'use strict';
 
@@ -6,7 +6,8 @@ load('polymer-page.js');
 
 forAll(browsers, function() {
 	test('Open in ${browserName}', function(browser) {
-		var driver = browser.browserFactory(endpoint);
+		var browserObj = browser.browserFactory(endpoint);
+		var driver = browserObj.driver;
 		try {
 			var polymerPage = new PolymerPage(driver);
 
@@ -36,9 +37,9 @@ forAll(browsers, function() {
 			}
 
 			var passed = this.report.fetchStatistic().getErrors() === 0;
-			reportStatus(driver, passed);
+			browserObj.reportStatus(driver, passed);
 		} catch (e) {
-			reportStatus(driver, false);
+			browserObj.reportStatus(driver, false);
 			throw e;
 		} finally {
 			driver.quit();

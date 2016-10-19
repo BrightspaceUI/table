@@ -25,6 +25,22 @@ this.spec = {
 		shadow: 'specs/test.shadow.rtl.gspec'
 	}
 };
+
+this.browsers = {
+	phantomjs: {
+		browserName: 'phantomjs',
+		browserFactory: localBrowserFactory.bind(this, ['768x768', 'phantomjs'])
+	},
+	chromeWindows: {
+		browserName: 'chrome-windows',
+		browserFactory: sauceBrowserFactory.bind(this, {
+			browser: 'Chrome',
+			platform: 'WIN10',
+			size: '1400x900'
+		}),
+		hasShadow: true
+	}
+};
 ```
 
 ```Javascript
