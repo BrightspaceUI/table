@@ -2,11 +2,11 @@
 
 	small                 .screenshot-small
 		head              thead
-			tr-*              tr
+			tr-*          tr
 		body              tbody
-			tr-*              tr
+			tr-*          tr
 		foot              tfoot
-			tr-*              tr
+			tr-*          tr
 
 	rows                  .screenshot-rows
 		tr-*              tr
@@ -27,12 +27,18 @@
 
 	no-column-border      .screenshot-no-column-border
 		head              thead
-			tr-*              tr
+			tr-*          tr
 		body              tbody
-			tr-*              tr
+			tr-*          tr
+
+	no-column-border-styled .screenshot-no-column-border-styled
+		head                thead
+			tr-*            tr
+		body                tbody
+			tr-*            tr
 
 @groups
-	imageCompare small.head,small.body,small.foot,no-column-border.head,no-column-border.body
+	imageCompare small.head,small.body,small.foot,no-column-border.head,no-column-border.body,no-column-border-styled.head,no-column-border-styled.body
 	all          &imageCompare,wide,sort,rows,rows-styled
 
 == D2L Table ==

@@ -18,8 +18,9 @@
 				padding: 1px;
 				width: 8em;
 			}
-			.screenshot-rows-styled > table {
-				--d2l-table-outer-border-color: red;
+			.screenshot-rows-styled > table,
+			.screenshot-no-column-border-styled > table {
+				--d2l-table-outer-border: 1px solid red;
 				--d2l-table-outer-row-border-color-selected: red;
 				--d2l-table-outer-row-border-color-active-selected: red;
 			}
@@ -124,6 +125,11 @@
 		<div class="screenshots screenshot-rows-styled">
 			<table is="d2l-table">
 				<tbody>
+				<tr active selected>
+					<td><span> </span></td>
+					<td><span> </span></td>
+					<td><span> </span></td>
+				</tr>
 				<tr>
 					<td><span> </span></td>
 					<td><span> </span></td>
@@ -135,6 +141,21 @@
 					<td><span> </span></td>
 				</tr>
 				<tr>
+					<td><span> </span></td>
+					<td><span> </span></td>
+					<td><span> </span></td>
+				</tr>
+				<tr active selected>
+					<td><span> </span></td>
+					<td><span> </span></td>
+					<td><span> </span></td>
+				</tr>
+				<tr active selected last-row>
+					<td><span> </span></td>
+					<td><span> </span></td>
+					<td><span> </span></td>
+				</tr>
+				<tr style="display: none">
 					<td><span> </span></td>
 					<td><span> </span></td>
 					<td><span> </span></td>
@@ -170,6 +191,29 @@
 			</table>
 		</div>
 		<div class="screenshots screenshot-no-column-border">
+			<table is="d2l-table" no-column-border>
+				<thead>
+				<tr>
+					<th><span> </span></th>
+					<th><span> </span></th>
+					<th><span> </span></th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td><span> </span></td>
+					<td><span> </span></td>
+					<td><span> </span></td>
+				</tr>
+				<tr>
+					<td><span> </span></td>
+					<td><span> </span></td>
+					<td><span> </span></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="screenshots screenshot-no-column-border-styled">
 			<table is="d2l-table" no-column-border>
 				<thead>
 				<tr>
