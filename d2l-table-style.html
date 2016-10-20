@@ -89,7 +89,8 @@
 				text-align: right;
 			}
 
-			:host > ::content > thead > tr > th {
+			:host > ::content > thead > tr > th,
+			:host > ::content > * > tr[header] > th {
 				@apply(--d2l-table-header);
 			}
 
