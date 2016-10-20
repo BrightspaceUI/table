@@ -72,8 +72,11 @@ Not meant to be used directly. Automatically created when using `<table is="d2l-
 			focusChanged: function(focused) {
 				var children = Polymer.dom(this).getEffectiveChildNodes();
 				var border = this.getComputedStyleValue('--d2l-table-focus-outer-border');
+				var color = this.getComputedStyleValue('--d2l-table-focus-color');
 				var customStyle = {
-					'--d2l-table-outer-border': focused ? border : ''
+					'--d2l-table-outer-border': focused ? border : '',
+					'--d2l-table-outer-row-border-color-selected': focused ? color : '',
+					'--d2l-table-outer-row-border-color-active-selected': focused ? color : ''
 				};
 
 				children.forEach(function(child) {
