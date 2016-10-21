@@ -335,12 +335,18 @@
 				listeners: {
 					'iron-resize': 'checkScrollbar',
 					'wrapper.scroll': 'checkScrollThresholds',
+					'wrapper.mousedown': 'wrapperMousedown',
 					'wrapper.focus': 'wrapperFocus',
 					'wrapper.blur': 'wrapperBlur'
 				},
 
+				wrapperMousedown: function() {
+					this._mouseDown = this.$.wrapper !== document.activeElement;
+				},
+
 				wrapperFocus: function() {
-					this._updateFocusState(this.hScrollbar);
+					this._mouseDown || this._updateFocusState(this.hScrollbar);
+					this._mouseDown = false;
 				},
 
 				wrapperBlur: function() {
