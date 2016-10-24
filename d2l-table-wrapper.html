@@ -18,12 +18,21 @@ Not meant to be used directly. Automatically created when using `<table is="d2l-
 				--d2l-table-border-color: var(--d2l-color-titanius);
 				--d2l-table-header-background-color: var(--d2l-color-regolith);
 				--d2l-table-border-overflow: dashed 1px #d3d9e3;
+
+				--d2l-table-focus-color: var(--d2l-color-celestuba);
+				--d2l-table-focus-border-overflow: dashed 1px var(--d2l-table-focus-color);
+				--d2l-table-focus-outer-border: 1px solid var(--d2l-table-focus-color);
 			}
 
 			d2l-scroll-wrapper {
 				--d2l-scroll-wrapper-h-scroll: {
 					border-left: var(--d2l-table-border-overflow);
 					border-right: var(--d2l-table-border-overflow);
+				};
+
+				--d2l-scroll-wrapper-h-scroll-focus: {
+					border-left: var(--d2l-table-border-overflow-focus);
+					border-right: var(--d2l-table-border-overflow-focus);
 				};
 
 				--d2l-scroll-wrapper-left: {
@@ -37,14 +46,43 @@ Not meant to be used directly. Automatically created when using `<table is="d2l-
 				--d2l-scroll-wrapper-border-color: var(--d2l-table-border-color);
 				--d2l-scroll-wrapper-background-color: var(--d2l-table-header-background-color);
 			}
+
+			d2l-scroll-wrapper[focused] {
+				--d2l-scroll-wrapper-h-scroll: {
+					border-left: var(--d2l-table-focus-border-overflow);
+					border-right: var(--d2l-table-focus-border-overflow);
+				};
+			}
 		</style>
-		<d2l-scroll-wrapper class="table-container">
-			<content></content>
+		<d2l-scroll-wrapper focused="{{focused}}">
+			<content id="content"></content>
 		</d2l-scroll-wrapper>
 	</template>
 	<script>
 		Polymer({
-			is: 'd2l-table-wrapper'
+			is: 'd2l-table-wrapper',
+
+			properties: {
+				focused: {
+					type: Boolean,
+					observer: 'focusChanged'
+				}
+			},
+
+			focusChanged: function(focused) {
+				var children = Polymer.dom(this).getEffectiveChildNodes();
+				var border = this.getComputedStyleValue('--d2l-table-focus-outer-border');
+				var color = this.getComputedStyleValue('--d2l-table-focus-color');
+				var customStyle = {
+					'--d2l-table-outer-border': focused ? border : '',
+					'--d2l-table-outer-row-border-color-selected': focused ? color : '',
+					'--d2l-table-outer-row-border-color-active-selected': focused ? color : ''
+				};
+
+				children.forEach(function(child) {
+					child.updateStyles && child.updateStyles(customStyle);
+				});
+			}
 		});
 	</script>
 </dom-module>
