@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "d2l-galen-utils-example",
+  "version": "0.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "phantomjs-prebuilt": "^2.1.13",
+    "polymer-cli": "^0.16.0",
+    "through2": "^2.0.1"
+  }
+}

@@ -1,11 +1,15 @@
-/* global createGridDriver, System */
+/* global sauceBrowserFactory, load */
+/* eslint no-invalid-this: 0 */
+'use strict';
 
 /* Config for galen tests to use
  * Usage
- *  @@ import galen.sauce.config.test
- *  @@ Parameterized using browsers
- *  Open simple.html in ${browserName}
- *    ${browserFactory} ${endpoint} ${browserArgs}
+ *  load('galen.sauce.config.js')
+ *  forAll(browsers, function() {
+ *    test('Open in ${browserName}', function(browser) {
+ * 	    var driver = browser.browserFactory(endpoint);
+ *    });
+ *  });
  * System Properties
  * USERNAME          sauce username
  * ACCESS_KEY        sauce access key
@@ -14,39 +18,21 @@
  * BUILD             sauce build number
  */
 
-this.endpoint = 'http://localhost:8080/components/d2l-table/demo/simple.html';
-
-function factory(settings, url) {
-	settings = settings || {};
-	settings.desiredCapabilities = settings.desiredCapabilities || {};
-	settings.desiredCapabilities.tunnelIdentifier = System.getProperty('TUNNEL_IDENTIFIER');
-	settings.desiredCapabilities.name = System.getProperty('NAME');
-	settings.desiredCapabilities.build = System.getProperty('BUILD');
-	settings.desiredCapabilities.tags = 'galen';
-
-	var USERNAME = System.getProperty('USERNAME');
-	var ACCESS_KEY = System.getProperty('ACCESS_KEY');
-	var driver = createGridDriver('http://' + USERNAME + ':' + ACCESS_KEY + '@ondemand.saucelabs.com:80/wd/hub', settings);
-	driver.get(url);
-	return driver;
-}
-
-this.reportStatus = function reportStatus(driver, status) {
-	driver.executeScript('sauce:job-result=' + (status ? 'passed' : 'failed'));
-};
+load('galen.config.js');
 
 this.browsers = {
 	chromeWindows: {
 		browserName: 'chrome-windows',
-		browserFactory: factory.bind(this, {
+		browserFactory: sauceBrowserFactory.bind(this, {
 			browser: 'Chrome',
 			platform: 'WIN10',
 			size: '1400x900'
-		})
+		}),
+		hasShadow: true
 	},
 	firefoxWindows: {
 		browserName: 'firefox-windows',
-		browserFactory: factory.bind(this, {
+		browserFactory: sauceBrowserFactory.bind(this, {
 			browser: 'Firefox',
 			platform: 'WIN10',
 			size: '1400x900'
@@ -54,7 +40,7 @@ this.browsers = {
 	},
 	ie11Windows: {
 		browserName: 'ie11-windows',
-		browserFactory: factory.bind(this, {
+		browserFactory: sauceBrowserFactory.bind(this, {
 			browser: 'internet explorer',
 			version: '11',
 			platform: 'WIN10',
@@ -63,7 +49,7 @@ this.browsers = {
 	},
 	ie10Windows: {
 		browserName: 'ie10-windows',
-		browserFactory: factory.bind(this, {
+		browserFactory: sauceBrowserFactory.bind(this, {
 			browser: 'internet explorer',
 			version: '10',
 			platform: 'WIN8',
@@ -72,7 +58,7 @@ this.browsers = {
 	},
 	edgeWindows: {
 		browserName: 'edge-windows',
-		browserFactory: factory.bind(this, {
+		browserFactory: sauceBrowserFactory.bind(this, {
 			browser: 'microsoftedge',
 			platform: 'WIN10',
 			size: '1400x900'
@@ -80,15 +66,16 @@ this.browsers = {
 	},
 	chromeMac: {
 		browserName: 'chrome-mac',
-		browserFactory: factory.bind(this, {
+		browserFactory: sauceBrowserFactory.bind(this, {
 			browser: 'Chrome',
 			platform: 'EL_CAPITAN',
 			size: '1400x900'
-		})
+		}),
+		hasShadow: true
 	},
 	safariMac: {
 		browserName: 'safari-mac',
-		browserFactory: factory.bind(this, {
+		browserFactory: sauceBrowserFactory.bind(this, {
 			browser: 'Safari',
 			platform: 'EL_CAPITAN',
 			size: '1400x900'
@@ -96,7 +83,7 @@ this.browsers = {
 	},
 	firefoxMac: {
 		browserName: 'firefox-mac',
-		browserFactory: factory.bind(this, {
+		browserFactory: sauceBrowserFactory.bind(this, {
 			browser: 'Firefox',
 			platform: 'EL_CAPITAN',
 			size: '1400x900'

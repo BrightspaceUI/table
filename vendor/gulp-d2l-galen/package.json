@@ -1,0 +1,86 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "@d2l/gulp-d2l-galen@0.0.2",
+        "scope": "@d2l",
+        "escapedName": "@d2l%2fgulp-d2l-galen",
+        "name": "@d2l/gulp-d2l-galen",
+        "rawSpec": "0.0.2",
+        "spec": "0.0.2",
+        "type": "version"
+      },
+      "/home/awikkerink/dev/d2l-table-ui"
+    ]
+  ],
+  "_from": "@d2l/gulp-d2l-galen@0.0.2",
+  "_id": "@d2l/gulp-d2l-galen@0.0.2",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/@d2l/gulp-d2l-galen",
+  "_phantomChildren": {
+    "@types/express": "4.0.33",
+    "@types/mime": "0.0.29",
+    "@types/node": "4.0.30",
+    "@types/opn": "3.0.28",
+    "@types/serve-static": "1.7.31",
+    "array-back": "1.0.3",
+    "core-js": "2.4.1",
+    "express": "4.14.0",
+    "feature-detect-es6": "1.3.1",
+    "find-port": "1.0.1",
+    "find-replace": "1.0.2",
+    "opn": "3.0.3",
+    "resolve": "1.1.7",
+    "send": "0.10.1",
+    "table-layout": "0.2.2",
+    "typical": "2.6.0"
+  },
+  "_requested": {
+    "raw": "@d2l/gulp-d2l-galen@0.0.2",
+    "scope": "@d2l",
+    "escapedName": "@d2l%2fgulp-d2l-galen",
+    "name": "@d2l/gulp-d2l-galen",
+    "rawSpec": "0.0.2",
+    "spec": "0.0.2",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://d2lartifacts.artifactoryonline.com/d2lartifacts/api/npm/npm-local/@d2l/gulp-d2l-galen/-/@d2l/gulp-d2l-galen-0.0.2.tgz",
+  "_shasum": "9362aebc1065f40d0e7abb98b850ec026d11c0d4",
+  "_shrinkwrap": null,
+  "_spec": "@d2l/gulp-d2l-galen@0.0.2",
+  "_where": "/home/awikkerink/dev/d2l-table-ui",
+  "author": "",
+  "dependencies": {
+    "gulp-galen": "^1.1.1",
+    "polyserve": "^0.13.0",
+    "sauce-connect-launcher": "^0.17.0"
+  },
+  "description": "Gulp plugin to help to test D2L Polymer components with Galen",
+  "devDependencies": {
+    "eslint": "^3.8.0",
+    "eslint-config-brightspace": "^0.2.4",
+    "galenframework": "^2.3.1",
+    "gulp": "^3.9.1"
+  },
+  "dist": {
+    "tarball": "https://d2lartifacts.artifactoryonline.com/d2lartifacts/api/npm/npm-local/@d2l/gulp-d2l-galen/-/@d2l/gulp-d2l-galen-0.0.2.tgz",
+    "shasum": "9362aebc1065f40d0e7abb98b850ec026d11c0d4"
+  },
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "name": "@d2l/gulp-d2l-galen",
+  "optionalDependencies": {},
+  "peerDependencies": {
+    "galenframework": "*",
+    "gulp": "3.x"
+  },
+  "readme": "ERROR: No README data found!",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.0.2"
+}

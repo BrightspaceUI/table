@@ -1,0 +1,17 @@
+{
+  "env": {
+    "es6": false,
+    "node": false
+  },
+  "globals": {
+    "load": true,
+    "$page": true,
+    "GalenPages": true,
+    "forAll": true,
+    "checkLayout": true,
+    "dumpPage": true,
+    "afterTest": true,
+    "System": true,
+    "test": true
+  }
+}
