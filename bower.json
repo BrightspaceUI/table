@@ -12,7 +12,7 @@
     "d2l-colors": "^2.1.0",
     "polymer": "^1.7.0",
     "iron-resizable-behavior": "^1.0.5",
-    "d2l-icons": "^2.9.7",
+    "d2l-icons": "^2.11.0",
     "Stickyfill": "seaneking/stickyfill#master"
   },
   "devDependencies": {
