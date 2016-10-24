@@ -336,12 +336,17 @@
 					'iron-resize': 'checkScrollbar',
 					'wrapper.scroll': 'checkScrollThresholds',
 					'wrapper.mousedown': 'wrapperMousedown',
+					'wrapper.mouseup': 'wrapperMouseup',
 					'wrapper.focus': 'wrapperFocus',
 					'wrapper.blur': 'wrapperBlur'
 				},
 
 				wrapperMousedown: function() {
-					this._mouseDown = this.$.wrapper !== document.activeElement;
+					this._mouseDown = true;
+				},
+
+				wrapperMouseup: function() {
+					this._mouseDown = false;
 				},
 
 				wrapperFocus: function() {
@@ -351,6 +356,7 @@
 
 				wrapperBlur: function() {
 					this._updateFocusState(false);
+					this._mouseDown = false;
 				},
 
 				_updateFocusState: function(focused) {
