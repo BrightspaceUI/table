@@ -1,0 +1,38 @@
+@objects
+
+	small                 .screenshot-small
+		head              thead
+			tr-*          tr
+		body              tbody
+			tr-*          tr
+		foot              tfoot
+			tr-*          tr
+
+	rows                  .screenshot-rows
+		tr-*              tr
+
+	rows-styled           .screenshot-rows-styled
+		tr-*              tr:not(:last-child)
+
+	sort                  .screenshot-sort
+		tr-*              tr
+		sort-button-*     thead button[is="d2l-table-col-sort-button"]
+			sort-icon     d2l-table-col-sort
+
+
+	wide                  .screenshot-wide
+		left-action       .left > button[is="d2l-icon-button"]
+		right-action      .right > button[is="d2l-icon-button"]
+		tr-*              tr
+
+	no-column-border      .screenshot-no-column-border
+		head              thead
+			tr-*          tr
+		body              tbody
+			tr-*          tr
+
+	no-column-border-styled .screenshot-no-column-border-styled
+		head                thead
+			tr-*            tr
+		body                tbody
+			tr-*            tr

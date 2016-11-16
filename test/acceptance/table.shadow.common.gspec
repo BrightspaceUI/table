@@ -1,0 +1,38 @@
+@objects
+
+	small                 body /deep/ .screenshot-small
+		head              thead
+			tr-*          tr
+		body              tbody
+			tr-*          tr
+		foot              tfoot
+			tr-*          tr
+
+	rows                  body /deep/ .screenshot-rows
+		tr-*              tr
+
+	rows-styled           body /deep/ .screenshot-rows-styled
+		tr-*              tr:not(:last-child)
+
+	sort                  body /deep/ .screenshot-sort
+		tr-*              tr
+		sort-button-*     thead button[is="d2l-table-col-sort-button"]
+			sort-icon     button[is="d2l-table-col-sort-button"] /deep/ d2l-table-col-sort
+
+
+	wide                  body /deep/ .screenshot-wide
+		left-action       .screenshot-wide /deep/ .left > button[is="d2l-icon-button"]
+		right-action      .screenshot-wide /deep/ .right > button[is="d2l-icon-button"]
+		tr-*              tr
+
+	no-column-border      body /deep/ .screenshot-no-column-border
+		head              thead
+			tr-*          tr
+		body              tbody
+			tr-*          tr
+
+	no-column-border-styled body /deep/ .screenshot-no-column-border-styled
+		head                thead
+			tr-*            tr
+		body                tbody
+			tr-*            tr
