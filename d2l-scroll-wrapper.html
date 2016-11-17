@@ -83,8 +83,6 @@
 				display: block;
 				width: 100%;
 
-				--d2l-scroll-wrapper-action-offset: -15px;
-
 				--d2l-scroll-wrapper-action: {
 					position: absolute;
 					top: 10px;
@@ -112,11 +110,11 @@
 
 				--d2l-scroll-wrapper-action-start: {
 					right: auto;
-					left: var(--d2l-scroll-wrapper-action-offset);
+					left: var(--d2l-scroll-wrapper-action-offset, -15px);
 				};
 
 				--d2l-scroll-wrapper-action-end: {
-					right: var(--d2l-scroll-wrapper-action-offset);
+					right: var(--d2l-scroll-wrapper-action-offset, -15px);
 					left: auto;
 				};
 			}
