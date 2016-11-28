@@ -17,6 +17,7 @@
 		scroll-amount="0.8"
 		start-icon="d2l-tier1:chevron-left"
 		end-icon="d2l-tier1:chevron-right"
+		show-actions
 	 >
 		 <div style="width: 350px; height: 100px">
 			Stuff
@@ -191,26 +192,28 @@
 				@apply(--d2l-scroll-wrapper-action-hidden);
 			}
 		</style>
-		<d2l-sticky-element class="left sticky" disabled="[[scrollbarLeft]]">
-			<button
-				is="d2l-icon-button"
-				class="action"
-				icon="[[startIcon]]"
-				on-tap="handleTapLeft"
-				tabindex="-1"
-				aria-hidden="true"
-			></button>
-		</d2l-sticky-element>
-		<d2l-sticky-element class="right sticky" disabled="[[scrollbarRight]]">
-			<button
-				is="d2l-icon-button"
-				class="action"
-				icon="[[endIcon]]"
-				on-tap="handleTapRight"
-				tabindex="-1"
-				aria-hidden="true"
-			></button>
-		</d2l-sticky-element>
+		<template is="dom-if" if="{{showActions}}">
+			<d2l-sticky-element class="left sticky" disabled="[[scrollbarLeft]]">
+				<button
+					is="d2l-icon-button"
+					class="action"
+					icon="[[startIcon]]"
+					on-tap="handleTapLeft"
+					tabindex="-1"
+					aria-hidden="true"
+				></button>
+			</d2l-sticky-element>
+			<d2l-sticky-element class="right sticky" disabled="[[scrollbarRight]]">
+				<button
+					is="d2l-icon-button"
+					class="action"
+					icon="[[endIcon]]"
+					on-tap="handleTapRight"
+					tabindex="-1"
+					aria-hidden="true"
+				></button>
+			</d2l-sticky-element>
+		</template>
 		<div id="wrapper" class="wrapper">
 			<content id="content"></content>
 		</div>
@@ -327,7 +330,9 @@
 						readOnly: true,
 						reflectToAttribute: true,
 						notify: true
-					}
+					},
+
+					showActions: Boolean
 				},
 
 				listeners: {
