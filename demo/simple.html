@@ -3,18 +3,6 @@
 
 	<head>
 		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-		<script>
-			/*
-			  window.Polymer = window.Polymer || {};
-			  window.Polymer.dom = 'shadow';
-			 */
-
-			if (window.location.search.indexOf('dir=rtl') !== -1) {
-				document.addEventListener('DOMContentLoaded', function() {
-					document.getElementsByClassName('container').item(0).setAttribute('dir', 'rtl');
-				});
-			}
-		</script>
 		<link rel="import" href="../../d2l-demo-template/d2l-demo-template.html">
 		<link rel="import" href="simple-demo.html">
 		<style is="custom-style">
@@ -24,8 +12,7 @@
 			}
 
 			body {
-				line-height: 1.5;
-				margin: 1rem;
+				margin: 0;
 			}
 
 			:root {
