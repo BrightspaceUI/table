@@ -193,7 +193,7 @@
 				@apply(--d2l-scroll-wrapper-action-hidden);
 			}
 		</style>
-		<template is="dom-if" if="{{showActions}}">
+		<template is="dom-if" if="{{showActions}}" strip-whitespace>
 			<d2l-sticky-element class="left sticky" disabled="[[scrollbarLeft]]">
 				<button
 					is="d2l-icon-button"
