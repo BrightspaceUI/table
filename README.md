@@ -1,4 +1,4 @@
-**Looking for SASS-based `d2l-table`?** It's [over here](https://github.com/Brightspace/d2l-table-ui/tree/sass).
+**Looking for SASS-based `d2l-table`?** It's [over here](https://github.com/BrightspaceUI/table/tree/sass).
 
 # d2l-table
 [![Bower version][bower-image]][bower-url]
@@ -141,10 +141,10 @@ See the [Best Practices & Style Guide](https://github.com/Brightspace/valence-ui
 
 [bower-url]: http://bower.io/search/?q=d2l-table
 [bower-image]: https://img.shields.io/bower/v/d2l-table.svg
-[ci-url]: https://travis-ci.org/Brightspace/d2l-table-ui
-[ci-image]: https://img.shields.io/travis-ci/Brightspace/d2l-table-ui.svg
-[dependencies-url]: https://david-dm.org/brightspace/d2l-table-ui
-[dependencies-image]: https://img.shields.io/david/Brightspace/d2l-table-ui.svg
+[ci-url]: https://travis-ci.org/BrightspaceUI/table
+[ci-image]: https://img.shields.io/travis-ci/BrightspaceUI/table.svg
+[dependencies-url]: https://david-dm.org/BrightspaceUI/table
+[dependencies-image]: https://img.shields.io/david/BrightspaceUI/table.svg
 [Galen]: http://galenframework.com/
 [GalenConfig]: http://galenframework.com/docs/getting-started-configuration/
 [GalenSpec]: http://galenframework.com/docs/reference-galen-spec-language-guide/
