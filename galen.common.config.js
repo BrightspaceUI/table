@@ -1,38 +1,35 @@
+/* global polymerTests */
 /* eslint no-invalid-this: 0 */
 'use strict';
 
 var endpoint = 'http://localhost:8080/components/d2l-table/demo/simple.html';
 var demoEndpoint = 'http://localhost:8080/components/d2l-table/demo/index.html';
 
-this.specs = {
-	'd2l-table': {
-		name: 'd2l-table',
+polymerTests(this.browsers, function(test) {
+	test('d2l-table', {
 		endpoint: endpoint,
-		file: 'test/acceptance/table.gspec'
-	},
-	'd2l-table-rtl': {
-		name: 'd2l-table-rtl',
+		spec: 'test/acceptance/table.gspec'
+	});
+
+	test('d2l-table-rtl', {
 		endpoint: endpoint + '?dir=rtl',
-		file: 'test/acceptance/table.rtl.gspec'
-	},
-	'd2l-table-shadow': {
-		shadow: true,
-		name: 'd2l-table-shadow',
+		spec: 'test/acceptance/table.rtl.gspec'
+	});
+
+	test.shadow('d2l-table-shadow', {
 		endpoint: endpoint + '?dom=shadow',
-		file: 'test/acceptance/table.shadow.gspec'
-	},
+		spec: 'test/acceptance/table.shadow.gspec'
+	});
+
 	/*
 	// This spec fails because the icon mirroring is broken in Chrome's ShadowDOM
-	'd2l-table-rtl-shadow': {
-		shadow: true,
-		name: 'd2l-table-rtl-shadow',
+	test.shadow('d2l-table-rtl-shadow', {
 		endpoint: endpoint + '?dir=rtl&dom=shadow',
-		file: 'test/acceptance/table.rtl.shadow.gspec'
-	},*/
-	'd2l-table-demo': {
-		name: 'd2l-table-demo',
+		spec: 'test/acceptance/table.rtl.shadow.gspec'
+	});*/
+
+	test.demo('d2l-table-demo', {
 		endpoint: demoEndpoint,
-		file: 'test/acceptance/table.gspec',
-		demo: true
-	}
-};
+		spec: 'test/acceptance/table.gspec'
+	});
+});
