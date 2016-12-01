@@ -61,15 +61,6 @@ this.browsers = {
 			size: '1400x900'
 		})
 	},
-	ie10Windows: {
-		browserName: 'ie10-windows',
-		browserFactory: factory.bind(this, {
-			browser: 'internet explorer',
-			version: '10',
-			platform: 'WIN8',
-			size: '1400x900'
-		})
-	},
 	edgeWindows: {
 		browserName: 'edge-windows',
 		browserFactory: factory.bind(this, {
