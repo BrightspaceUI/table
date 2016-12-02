@@ -1,7 +1,7 @@
 @set
 	path d2l-table
 
-@import table.polyfill.common.gspec
+@import table.shadow.common.gspec
 @import table-common.gspec
 
 == D2L Table LTR ==

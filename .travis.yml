@@ -9,10 +9,8 @@ addons:
   apt:
     packages:
     - oracle-java8-installer
-  sauce_connect:
-    username: Desire2Learn
-    access_key:
-      secure: tHJGSWQW7bBh614jdQhyIuJD1nbx/CtEQqZGDeeHE0EWgPGvZJNg2aDgSb89sVba/YGdodlubXqaKLtkFX1MravlMG7PjTbRgaHCRlLVAEZrkg7F9IUvdy5vTM4HEf+N6hHoHsiXc4abzu3I33dfe8iih3Us2qs3vhg+rdBVjbVk/Hx4UK1P/DUKhLGvC5lESj9xzZAOnHf5uIEdHtvgKubPmaJKCeFyM4VBbXhj1wM56FxQvGe8NJLlk/DvGbsaI1ekeg0r1W1C4rmCJjjycPMPC7bClho1VEQ+zQccG++YKGd26Ac7rsLwyzRXOxBlmMzA3yC84R1CRN7+w/wLseF9NXZj4GJZ2a/Ij8fdl7sYFJsA6lJXwMAI/JOMtL99ebipkaulYaVRIipEvZAfxOqRLlRpR9evrLHL7YnIVaMo1qrBOrP2ptUwZQnQJm6IMam3xsWIOliwaFvEBDm/2DW4BDSlZC0FVmO9VdYLQStLsYHswWV982ZvNcaB/+Xu6k47hL0yNofhDAcpgVr9tw5URxg3kEa3EClLSRXTX+CeDFQ1qRb3mCrTUzz9SKg0Z7i0nH+T0H/SQSdqmsk+6lORYkm/y8FgenNTeb6BAl9hLza2OjDmZjD+/P785nzJZbNGpsstdO1qQXIN3gNdSywNOiU4U9qkw7gr2wq334U=
+  jwt:
+    secure: ElX5yaWbl/KVwvMYWGluR5XRrhl5sX1pM2rautKxAjlTkq45vRVafnDscm4UcOfT4ygi0TyUqlJwyUU0UIzJjatUG/D2f9osekUSxVfhv9U3qh0SmhxSSbYbFmy5ZsUFeR1fJtR9/575FOzR8kj0qKeIBVsOHOT0cweQzgBWep3LRpAT/GRdB6bNWad92skTgxeeBu6QxEhuU/u2LOVaKC4m74J813qE1lhXc3t0gMro6fF23AyOH5vNUp2qpwPXJoZu+pYeTH4oMRJm3nu98TPm+zKluTq8fOb0XwneDOt1ZjSjTxrowgySWaRv0Bk9OWA+wEvcFZPHPKFm+2N2GzZMvnh85hGtxJjDI/l2fslv0Mj3nhwKvy+jbP4Xv1vTFVoDTMgwGGMpvKMFnkiCPB7FRxRaFuCyXC7jkmGimDerdSC21A4LlfPJuVf4hWnmyiVIY5YCQA/gXLujTDIvimDjTWMSnX+NGUHaA27wo1WFIwC8O+rAaPmsurRRrlh6xvMifStL+zm3vK5ETfInUxkpBLM37UW2hQqbzJTXqCXBjobnt0+WgaPjqdSuTTfAIFyNsxs7LlGA2p4c72h7JfuYqLQBnPYqG8rWvtES7JLawioaS5yyjiPTnnSFiRxwHomr9veE4dIZlS89Ts0g06yq7lLjQrHNK8jhj74UO8k=
   artifacts:
     key:
       secure: IWkqgI4Fm1T4hr+riIzL0j3Zg+Yl3znkv6q6EyHhRnIWbSKkLHcqrnhOUmqdv/6DyRfDsXJf8sJHqiwV2guvQsf1InkSbIFleM5/myl80G3Y91QthnRZKVuFvza0xbgoI+zyOvI5AVgNmFUP6y1h4xh0ho+aajPcL9DB4NBTMp6uk7ioaaUELVYNhngMdiXk9FQWpSD2y+zg94SIXSQKI5Dn+roCi+n0cmmpz12gyEUFsRCNAsidtOaDSP35heGPOLjihJuGTWahN1jO06kvE/kQ4r2K6omKK1ff1k2tFY+wtPttVYM/92fgURoMrpoLh6OzO4nko95WbbjCMQmdK9sjOUnbyZhSjeVLOAxVTj5oRz/X3GqSUcvARuj63q+fniphODkOgkifDFd5JeDqHLMBsOEJf6GSZW3Gy9bdfSW/JH+dWO5FJBuFDtj9qQlanOaUhUmIhj9z0Fx5xBH6D2FsmknNPWVuVNbtFcu32zBQ5pOJ7Mav1M6TyQtBbxc9eZmhFKN70E9R6PjjWUXaGzts5MNJCY4bQ5LTKaUdfiAoB9KYDIz9fa4ugvU91HTeG6136AKy9OjPbRATz2vV+i9cW0sTvMjYCGRUxRStCa4aHD7oBjs9HtEA1/RVo8US1GizPwe27z1GYQuKmVPQ44lKUDWJr/VTB6EMDHTF71U=
@@ -25,5 +23,8 @@ before_install:
 - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 - export PATH=$JAVA_HOME/bin:$PATH
 script:
-- concurrently -p name -n lint:js,lint:wc,galen,wct "npm run test:lint:js" "npm run test:lint:wc" "wct --skip-plugin local"
+- concurrently -p name -n lint:js,lint:wc,wct "npm run test:lint:js" "npm run test:lint:wc" "polymer test --skip-plugin local"
 - npm run test:galen:sauce
+env:
+  global:
+    SAUCE_USERNAME: Desire2Learn

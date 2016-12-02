@@ -1,6 +1,7 @@
 @set
 	path d2l-table-rtl
 
+@import table.polyfill.common.gspec
 @import table-common.gspec
 
 == D2L Table RTL ==
