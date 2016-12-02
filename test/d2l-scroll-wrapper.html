@@ -63,6 +63,11 @@
 		</test-fixture>
 
 		<script>
+			describe('a11y', function() {
+				a11ySuite('no-scrollbar');
+				a11ySuite('with-scrollbar');
+				a11ySuite('with-scrollbar-rtl');
+			});
 			describe('no scrollbar', function() {
 				var wrapper;
 				beforeEach(function() {
