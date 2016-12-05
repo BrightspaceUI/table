@@ -8,6 +8,7 @@
     "flush": true,
     "expect": true,
     "sinon": true,
-    "WCT": true
+    "WCT": true,
+    "a11ySuite": true
   }
 }

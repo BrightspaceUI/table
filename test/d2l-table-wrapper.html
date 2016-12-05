@@ -29,6 +29,10 @@
 		</test-fixture>
 
 		<script>
+			describe('a11y', function() {
+				a11ySuite('no-wrapper');
+				a11ySuite('with-wrapper');
+			});
 			function common() {
 				it('should destroy the wrapper', function() {
 					var wrapper = this.table.wrapper;
