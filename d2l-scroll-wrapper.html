@@ -256,7 +256,8 @@
 						reflectToAttribute: true,
 						notify: true,
 						value: false,
-						readOnly: true
+						readOnly: true,
+						observer: 'updateStyles'
 					},
 
 					/** Whether this element is scrolled to the left */
@@ -265,7 +266,8 @@
 						reflectToAttribute: true,
 						notify: true,
 						value: false,
-						readOnly: true
+						readOnly: true,
+						observer: 'updateStyles'
 					},
 
 					/** Whether this element is scrolled to the right */
@@ -274,7 +276,8 @@
 						reflectToAttribute: true,
 						notify: true,
 						value: false,
-						readOnly: true
+						readOnly: true,
+						observer: 'updateStyles'
 					},
 
 					/** The browser doesn't change scroll behavior on RTL. Use for styling buttons and applying mixins on RTL. See scrollRtlReverse and scrollRtlNegative */
@@ -330,7 +333,8 @@
 						value: false,
 						readOnly: true,
 						reflectToAttribute: true,
-						notify: true
+						notify: true,
+						observer: 'updateStyles'
 					},
 
 					showActions: Boolean
@@ -354,18 +358,13 @@
 				},
 
 				wrapperFocus: function() {
-					this._mouseDown || this._updateFocusState(this.hScrollbar);
+					this._mouseDown || this._setFocused(this.hScrollbar);
 					this._mouseDown = false;
 				},
 
 				wrapperBlur: function() {
-					this._updateFocusState(false);
+					this._setFocused(false);
 					this._mouseDown = false;
-				},
-
-				_updateFocusState: function(focused) {
-					this._setFocused(focused);
-					this.updateStyles();
 				},
 
 				calculateRTL: function() {
@@ -449,9 +448,9 @@
 					this._setHScrollbar(hScrollbar);
 					this.$.wrapper.tabIndex = hScrollbar ? 0 : -1;
 					if (!hScrollbar) {
-						this._updateFocusState(false);
+						this._setFocused(false);
 					}
-					this.checkScrollThresholds();
+					this.async(this.checkScrollThresholds, 1);
 				},
 
 				checkScrollThresholds: function() {
