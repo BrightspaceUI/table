@@ -166,10 +166,12 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 					Polymer.dom(parentNode).replaceChild(wrapper, this);
 					Polymer.dom(wrapper).appendChild(this);
 					Polymer.dom.flush();
+					this.async(wrapper.notifyResize.bind(wrapper), 1);
 				} else if (parentNode && this.wrapper) {
 					Polymer.dom(parentNode).replaceChild(this.wrapper, this);
 					Polymer.dom(this.wrapper).appendChild(this);
 					Polymer.dom.flush();
+					this.async(wrapper.notifyResize.bind(wrapper), 1);
 				}
 				this._isWrapping = false;
 			},
