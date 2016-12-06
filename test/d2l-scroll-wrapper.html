@@ -70,8 +70,9 @@
 			});
 			describe('no scrollbar', function() {
 				var wrapper;
-				beforeEach(function() {
+				beforeEach(function(done) {
 					wrapper = fixture('no-scrollbar').querySelector('d2l-scroll-wrapper');
+					flush(done);
 				});
 
 				it('should not have h-scrollbar attribute', function() {

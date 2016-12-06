@@ -82,6 +82,10 @@ Not meant to be used directly. Automatically created when using `<table is="d2l-
 				children.forEach(function(child) {
 					child.updateStyles && child.updateStyles(customStyle);
 				});
+			},
+
+			notifyResize: function() {
+				this.$$('d2l-scroll-wrapper').notifyResize();
 			}
 		});
 	</script>
