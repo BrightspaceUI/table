@@ -257,7 +257,7 @@
 						notify: true,
 						value: false,
 						readOnly: true,
-						observer: 'updateStyles'
+						observer: '_updateStyles'
 					},
 
 					/** Whether this element is scrolled to the left */
@@ -267,7 +267,7 @@
 						notify: true,
 						value: false,
 						readOnly: true,
-						observer: 'updateStyles'
+						observer: '_updateStyles'
 					},
 
 					/** Whether this element is scrolled to the right */
@@ -277,7 +277,7 @@
 						notify: true,
 						value: false,
 						readOnly: true,
-						observer: 'updateStyles'
+						observer: '_updateStyles'
 					},
 
 					/** The browser doesn't change scroll behavior on RTL. Use for styling buttons and applying mixins on RTL. See scrollRtlReverse and scrollRtlNegative */
@@ -334,7 +334,7 @@
 						readOnly: true,
 						reflectToAttribute: true,
 						notify: true,
-						observer: 'updateStyles'
+						observer: '_updateStyles'
 					},
 
 					showActions: Boolean
@@ -347,6 +347,10 @@
 					'wrapper.mouseup': 'wrapperMouseup',
 					'wrapper.focus': 'wrapperFocus',
 					'wrapper.blur': 'wrapperBlur'
+				},
+
+				_updateStyles: function() {
+					this.updateStyles();
 				},
 
 				wrapperMousedown: function() {
