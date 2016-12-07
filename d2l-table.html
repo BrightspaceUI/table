@@ -2,7 +2,6 @@
 <link rel="import" href="d2l-table-wrapper.html">
 <link rel="import" href="d2l-table-col-sort-button.html">
 <link rel="import" href="d2l-table-style.html">
-<link rel="import" href="../d2l-colors/d2l-colors.html">
 
 <!--
 # D2L Table
@@ -126,7 +125,7 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 -->
 <dom-module id="d2l-table">
 	<template>
-		<style include="d2l-table-style d2l-colors">
+		<style include="d2l-table-style">
 			:host {
 				--d2l-table-border-color: var(--d2l-color-titanius);
 				--d2l-table-border: 1px solid var(--d2l-table-border-color);
