@@ -27,29 +27,29 @@
 					observer: '_disabledChanged'
 				}
 			},
-			_updateSticky: function(sticky) {
-				if (sticky) {
-					Stickyfill.add(this);
-				} else {
-					Stickyfill.remove(this);
-				}
-				Stickyfill.rebuild();
-			},
-			_disabledChanged: function(disabled) {
+			_updateSticky: function() {
 				/**
-				 * updateSticky requires the component to be attached to the DOM
+				 * Stickyfill requires the component to be attached to the DOM
 				 * in order to work. If the component is not attached, the attached
 				 * method will handle initialization
 				 */
-				if (this.isAttached) {
-					this.async(this._updateSticky.bind(this, !disabled), 1);
+				if (!this.isAttached) {
+					return;
 				}
+				var sticky = !this.disabled;
+				if (sticky) {
+					Stickyfill.add(this);
+					this._added = true;
+				} else if (this._added) {
+					Stickyfill.remove(this);
+					this._added = false;
+				} else {
+					return;
+				}
+				Stickyfill.rebuild();
 			},
-			attached: function() {
-				if (!this.disabled) {
-					// Async is used to ensure the call occurs after paint
-					this.async(this._updateSticky.bind(this, true), 1);
-				}
+			_disabledChanged: function() {
+				this.async(this._updateSticky, 1);
 			}
 		});
 	</script>
