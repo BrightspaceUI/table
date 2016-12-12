@@ -324,7 +324,7 @@
 					isRTL: {
 						type: Boolean,
 						value: false,
-						readOnly: true
+						computed: '_calculateRTL(isAttached)'
 					},
 
 					focused: {
@@ -370,7 +370,10 @@
 					this._mouseDown = false;
 				},
 
-				calculateRTL: function() {
+				_calculateRTL: function(isAttached) {
+					if (!isAttached) {
+						return false;
+					}
 					if (this.$$('[dir="rtl"] *')) {
 						return true;
 					}
@@ -435,15 +438,9 @@
 				},
 
 				ready: function() {
-					this.async(function() {
-						this._setScrollRtlDefault(getScrollType() === 'default');
-						this._setScrollRtlReverse(getScrollType() === 'reverse');
-						this._setScrollRtlNegative(getScrollType() === 'negative');
-					}, 1);
-				},
-
-				attached: function() {
-					this._setIsRTL(this.calculateRTL());
+					this._setScrollRtlDefault(getScrollType() === 'default');
+					this._setScrollRtlReverse(getScrollType() === 'reverse');
+					this._setScrollRtlNegative(getScrollType() === 'negative');
 				},
 
 				checkScrollbar: function() {
@@ -453,7 +450,7 @@
 					if (!hScrollbar) {
 						this._setFocused(false);
 					}
-					this.async(this.checkScrollThresholds, 1);
+					this.checkScrollThresholds();
 				},
 
 				checkScrollThresholds: function() {

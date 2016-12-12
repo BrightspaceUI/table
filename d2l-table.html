@@ -166,12 +166,12 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 					Polymer.dom(parentNode).replaceChild(wrapper, this);
 					Polymer.dom(wrapper).appendChild(this);
 					Polymer.dom.flush();
-					this.async(wrapper.notifyResize.bind(wrapper), 1);
+					wrapper.notifyResize();
 				} else if (parentNode && this.wrapper) {
 					Polymer.dom(parentNode).replaceChild(this.wrapper, this);
 					Polymer.dom(this.wrapper).appendChild(this);
 					Polymer.dom.flush();
-					this.async(this.wrapper.notifyResize.bind(this.wrapper), 1);
+					this.wrapper.notifyResize();
 				}
 				this._isWrapping = false;
 			},
@@ -181,7 +181,6 @@ When ShadowDOM v1 is available, use `<slot>` and `::slotted`. This may affect th
 			detached: function() {
 				if (!this._isWrapping && Polymer.dom(this).parentNode !== this.wrapper && this.wrapper && Polymer.dom(this.wrapper).parentNode) {
 					Polymer.dom(Polymer.dom(this.wrapper).parentNode).removeChild(this.wrapper);
-					Polymer.dom.flush();
 				}
 			}
 		});
