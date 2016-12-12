@@ -29,17 +29,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <frame-tester runs="25" strategy="onedev"></frame-tester>
 
   <script>
-
-  addEventListener('WebComponentsReady', function() {
-    document.querySelector('frame-tester').tests = [
-      // Use this approach to run specific tests.
-      'table.html',
-      'd2l-table.html',
-	  'd2l-table-with-wrapper.html',
-	  'd2l-scroll-wrapper.html',
-	  'd2l-sticky-element.html'
-    ];
-  });
+	addEventListener('WebComponentsReady', function() {
+		document.querySelector('frame-tester').tests = [
+			// Use this approach to run specific tests.
+			'table.html',
+			'd2l-table.html',
+			'd2l-table-with-wrapper.html',
+			'd2l-scroll-wrapper.html',
+			'd2l-sticky-element.html'
+		];
+	});
   </script>
 
 </body>
