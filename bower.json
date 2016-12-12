@@ -18,6 +18,7 @@
   "devDependencies": {
     "iron-component-page": "^1.1.7",
     "web-component-tester": "^5.0.0",
-    "d2l-demo-template": "^0.0.8"
+    "d2l-demo-template": "^0.0.8",
+    "polyperf": "https://github.com/Brightspace/polyperf.git"
   }
 }

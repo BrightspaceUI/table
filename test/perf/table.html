@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <script src="../../../polyperf/perf-lib/perf.js"></script>
+  <script src="../../../webcomponentsjs/webcomponents-lite.min.js"></script>
+  <link rel="import" href="../../d2l-table.html">
+</head>
+
+<body>
+
+  <script>
+	console.perf();
+  </script>
+
+  <table>
+	  <thead>
+		  <tr>
+			  <th>
+				  Header
+			  </th>
+		  </tr>
+	  </thead>
+	  <tbody>
+		  <tr>
+			  <td>
+				  Body
+			  </td>
+		  </tr>
+	  </tbody>
+
+	  <tfoot>
+		  <tr>
+			  <td>
+				  Body
+			  </td>
+		  </tr>
+	  </tfoot>
+  </table>
+
+  <script>
+	console.perfEnd();
+  </script>
+
+</body>
+</html>
