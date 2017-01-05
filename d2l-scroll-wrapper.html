@@ -223,6 +223,20 @@
 			var getScrollType = (function() {
 				var type;
 
+				try {
+					type = sessionStorage.getItem('d2l-scroll-wrapper-rtl-scroll-type');
+
+					if (typeof type !== 'string'
+						|| (type !== 'default'
+							&& type !== 'reverse'
+							&& type !== 'negative'
+					)) {
+						type = null;
+					}
+				} catch (e) {
+					type = null;
+				}
+
 				return function getScrollType() {
 					if (type) {
 						return type;
@@ -241,6 +255,11 @@
 						}
 					}
 					document.body.removeChild(div);
+
+					try {
+						sessionStorage.setItem('d2l-scroll-wrapper-rtl-scroll-type', type);
+					} catch (e) { /* noop */ }
+
 					return type;
 				};
 			})();
