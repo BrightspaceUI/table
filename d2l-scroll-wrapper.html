@@ -223,6 +223,20 @@
 			var getScrollType = (function() {
 				var type;
 
+				try {
+					type = sessionStorage.getItem('d2l-scroll-wrapper-rtl-scroll-type');
+
+					if (typeof type !== 'string'
+						|| (type !== 'default'
+							&& type !== 'reverse'
+							&& type !== 'negative'
+					)) {
+						type = null;
+					}
+				} catch (e) {
+					type = null;
+				}
+
 				return function getScrollType() {
 					if (type) {
 						return type;
@@ -241,6 +255,11 @@
 						}
 					}
 					document.body.removeChild(div);
+
+					try {
+						sessionStorage.setItem('d2l-scroll-wrapper-rtl-scroll-type', type);
+					} catch (e) { /* noop */ }
+
 					return type;
 				};
 			})();
@@ -371,17 +390,33 @@
 				},
 
 				_calculateRTL: function(isAttached) {
-					if (!isAttached) {
-						return false;
+					var isRTL = false;
+
+					if (isAttached) {
+						if (this.$$('[dir="rtl"] *')) {
+							isRTL = true;
+						} else {
+							try {
+								isRTL = !!this.$$(':host-context([dir="rtl"]) *');
+							} catch (e) {
+								isRTL = false;
+							}
+						}
 					}
-					if (this.$$('[dir="rtl"] *')) {
-						return true;
+
+					if (isRTL) {
+						this._checkRTLScrollType();
 					}
-					try {
-						return !!this.$$(':host-context([dir="rtl"]) *');
-					} catch (e) {
-						return false;
-					}
+
+					return isRTL;
+				},
+
+				_checkRTLScrollType: function() {
+					var scrollType = getScrollType();
+
+					this._setScrollRtlDefault(scrollType === 'default');
+					this._setScrollRtlReverse(scrollType === 'reverse');
+					this._setScrollRtlNegative(scrollType === 'negative');
 				},
 
 				/* Scrolls to the left. Right when dir=rtl */
@@ -435,12 +470,6 @@
 					} else {
 						this.$.wrapper.scrollLeft = left;
 					}
-				},
-
-				ready: function() {
-					this._setScrollRtlDefault(getScrollType() === 'default');
-					this._setScrollRtlReverse(getScrollType() === 'reverse');
-					this._setScrollRtlNegative(getScrollType() === 'negative');
 				},
 
 				checkScrollbar: function() {
