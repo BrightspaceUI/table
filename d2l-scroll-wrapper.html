@@ -352,9 +352,11 @@
 				attached: function() {
 					// Defer the offsetWidth/scrollWidth calculations until after the page has rendered
 					Polymer.RenderStatus.afterNextRender(this, function() {
-						this.listen(this, 'iron-resize', 'checkScrollbar');
-						this.listen(this.$.wrapper, 'scroll', 'checkScrollThresholds');
-						this.checkScrollbar();
+						if (this.isAttached) {
+							this.listen(this, 'iron-resize', 'checkScrollbar');
+							this.listen(this.$.wrapper, 'scroll', 'checkScrollThresholds');
+							this.checkScrollbar();
+						}
 					}.bind(this));
 				},
 
