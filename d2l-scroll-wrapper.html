@@ -349,9 +349,18 @@
 					showActions: Boolean
 				},
 
-				listeners: {
-					'iron-resize': 'checkScrollbar',
-					'wrapper.scroll': 'checkScrollThresholds'
+				attached: function() {
+					// Defer the offsetWidth/scrollWidth calculations until after the page has rendered
+					Polymer.RenderStatus.afterNextRender(this, function() {
+						this.listen(this, 'iron-resize', 'checkScrollbar');
+						this.listen(this.$.wrapper, 'scroll', 'checkScrollThresholds');
+						this.checkScrollbar();
+					}.bind(this));
+				},
+
+				detached: function() {
+					this.unlisten(this, 'iron-resize', 'checkScrollbar');
+					this.unlisten(this.$.wrapper, 'scroll', 'checkScrollThresholds');
 				},
 
 				_updateStyles: function() {

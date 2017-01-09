@@ -87,9 +87,11 @@
 
 			describe('scrollbar', function() {
 				describe('ltr', function() {
-					beforeEach(function() {
+					beforeEach(function(done) {
 						this.scrollWrapper = fixture('with-scrollbar').querySelector('d2l-scroll-wrapper');
 						this.wrapper = this.scrollWrapper.$.wrapper;
+						Polymer.RenderStatus._flushNextRender();
+						flush(done);
 					});
 
 					common(false);
@@ -160,9 +162,11 @@
 				});
 
 				describe('rtl', function() {
-					beforeEach(function() {
+					beforeEach(function(done) {
 						this.scrollWrapper = fixture('with-scrollbar-rtl').querySelector('d2l-scroll-wrapper');
 						this.wrapper = this.scrollWrapper.$.wrapper;
+						Polymer.RenderStatus._flushNextRender();
+						flush(done);
 					});
 
 					describe('isRTL', function() {
