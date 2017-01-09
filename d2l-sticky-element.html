@@ -49,7 +49,8 @@
 				Stickyfill.rebuild();
 			},
 			_disabledChanged: function() {
-				this.async(this._updateSticky);
+				// Defer the getComputedStyle() calls until after the page has rendered
+				Polymer.RenderStatus.afterNextRender(this, this._updateSticky.bind(this));
 			}
 		});
 	</script>
