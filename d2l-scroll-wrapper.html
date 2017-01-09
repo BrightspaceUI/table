@@ -346,47 +346,16 @@
 						computed: '_calculateRTL(isAttached)'
 					},
 
-					focused: {
-						type: Boolean,
-						value: false,
-						readOnly: true,
-						reflectToAttribute: true,
-						notify: true,
-						observer: '_updateStyles'
-					},
-
 					showActions: Boolean
 				},
 
 				listeners: {
 					'iron-resize': 'checkScrollbar',
-					'wrapper.scroll': 'checkScrollThresholds',
-					'wrapper.mousedown': 'wrapperMousedown',
-					'wrapper.mouseup': 'wrapperMouseup',
-					'wrapper.focus': 'wrapperFocus',
-					'wrapper.blur': 'wrapperBlur'
+					'wrapper.scroll': 'checkScrollThresholds'
 				},
 
 				_updateStyles: function() {
 					this.updateStyles();
-				},
-
-				wrapperMousedown: function() {
-					this._mouseDown = true;
-				},
-
-				wrapperMouseup: function() {
-					this._mouseDown = false;
-				},
-
-				wrapperFocus: function() {
-					this._mouseDown || this._setFocused(this.hScrollbar);
-					this._mouseDown = false;
-				},
-
-				wrapperBlur: function() {
-					this._setFocused(false);
-					this._mouseDown = false;
 				},
 
 				_calculateRTL: function(isAttached) {
@@ -475,10 +444,6 @@
 				checkScrollbar: function() {
 					var hScrollbar = this.$.wrapper.offsetWidth !== this.$.wrapper.scrollWidth;
 					this._setHScrollbar(hScrollbar);
-					this.$.wrapper.tabIndex = hScrollbar ? 0 : -1;
-					if (!hScrollbar) {
-						this._setFocused(false);
-					}
 					this.checkScrollThresholds();
 				},
 

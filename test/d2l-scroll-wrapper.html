@@ -309,32 +309,6 @@
 							expect(style.left).to.equal('-15px');
 						});
 					});
-
-					describe('focus', function() {
-						it('should have tabIndex=0', function() {
-							expect(this.wrapper.tabIndex).to.equal(0);
-						});
-
-						it('should set focused attribute when wrapper is focused', function() {
-							expect(this.scrollWrapper.focused).to.equal(false);
-
-							this.scrollWrapper.wrapperFocus();
-							expect(this.scrollWrapper.focused).to.equal(true);
-
-							this.scrollWrapper.wrapperBlur();
-							expect(this.scrollWrapper.focused).to.equal(false);
-						});
-
-						it('should call updateStyles when focus changes', function() {
-							sinon.stub(this.scrollWrapper, 'updateStyles');
-							this.scrollWrapper.wrapperFocus();
-							expect(this.scrollWrapper.updateStyles).to.have.been.calledOnce;
-							this.scrollWrapper.updateStyles.reset();
-
-							this.scrollWrapper.wrapperBlur();
-							expect(this.scrollWrapper.updateStyles).to.have.been.calledOnce;
-						});
-					});
 				}
 			});
 		</script>
