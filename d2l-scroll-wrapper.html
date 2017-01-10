@@ -82,6 +82,9 @@
 			:host {
 				display: block;
 				width: 100%;
+				/* For sticky buttons. Prevents Stickyfill from forcing layout
+				   changes by setting position itself */
+				position: relative;
 
 				--d2l-scroll-wrapper-action: {
 					position: absolute;
