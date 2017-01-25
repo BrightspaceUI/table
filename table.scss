@@ -47,7 +47,8 @@ $vui-table-row-background-color-selected: $d2l-color-celestine-light-1;
 		@include vui-table-cell();
 	}
 
-	& tr > :first-child {
+	& tr > th:first-child,
+	& tr > td:first-child {
 		border-left: $vui-table-border;
 
 		[dir='rtl'] & {
@@ -55,42 +56,70 @@ $vui-table-row-background-color-selected: $d2l-color-celestine-light-1;
 		}
 	}
 
-	[dir='rtl'] & tr > :last-child {
+	[dir='rtl'] & tr > th:last-child,
+	[dir='rtl'] & tr > td:last-child {
 		border-left: $vui-table-border;
 	}
 
 	//Correct for corners bleeding outside the rounded corners
-	& thead > tr:first-child > :first-child,
-	  tbody:only-child > tr:first-child > :first-child,
-	  tfoot:first-child + tbody:last-child > tr:first-child > :first-child,
-	  caption:first-child + tbody:last-child > tr:first-child > :first-child,
-	  caption:first-child + tfoot + tbody:last-child > tr:first-child > :first-child,
-	  caption:first-child + colgroup + tbody:last-child > tr:first-child > :first-child,
-	  caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > :first-child,
-	  colgroup:first-child + tbody:last-child > tr:first-child > :first-child,
-	  colgroup:first-child + tfoot + tbody:last-child > tr:first-child > :first-child {
+	& thead > tr:first-child > th:first-child,
+	& thead > tr:first-child > td:first-child,
+	  tbody:only-child > tr:first-child > th:first-child,
+	  tbody:only-child > tr:first-child > td:first-child,
+	  tfoot:first-child + tbody:last-child > tr:first-child > th:first-child,
+	  tfoot:first-child + tbody:last-child > tr:first-child > td:first-child,
+	  caption:first-child + tbody:last-child > tr:first-child > th:first-child,
+	  caption:first-child + tbody:last-child > tr:first-child > td:first-child,
+	  caption:first-child + tfoot + tbody:last-child > tr:first-child > th:first-child,
+	  caption:first-child + tfoot + tbody:last-child > tr:first-child > td:first-child,
+	  caption:first-child + colgroup + tbody:last-child > tr:first-child > th:first-child,
+	  caption:first-child + colgroup + tbody:last-child > tr:first-child > td:first-child,
+	  caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > th:first-child,
+	  caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > td:first-child,
+	  colgroup:first-child + tbody:last-child > tr:first-child > th:first-child,
+	  colgroup:first-child + tbody:last-child > tr:first-child > td:first-child,
+	  colgroup:first-child + tfoot + tbody:last-child > tr:first-child > th:first-child,
+	  colgroup:first-child + tfoot + tbody:last-child > tr:first-child > td:first-child {
 		@include vui-table-top-border-radius('left');
 	}
-	& thead > tr:first-child > :last-child,
-	  tbody:only-child > tr:first-child > :last-child,
-	  tfoot:first-child + tbody:last-child > tr:first-child > :last-child,
-	  caption:first-child + tbody:last-child > tr:first-child > :last-child,
-	  caption:first-child + tfoot + tbody:last-child > tr:first-child > :last-child,
-	  caption:first-child + colgroup + tbody:last-child > tr:first-child > :last-child,
-	  caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > :last-child,
-	  colgroup:first-child + tbody:last-child > tr:first-child > :last-child,
-	  colgroup:first-child + tfoot + tbody:last-child > tr:first-child > :last-child {
+	& thead > tr:first-child > th:last-child,
+	& thead > tr:first-child > td:last-child,
+	  tbody:only-child > tr:first-child > th:last-child,
+	  tbody:only-child > tr:first-child > td:last-child,
+	  tfoot:first-child + tbody:last-child > tr:first-child > th:last-child,
+	  tfoot:first-child + tbody:last-child > tr:first-child > td:last-child,
+	  caption:first-child + tbody:last-child > tr:first-child > th:last-child,
+	  caption:first-child + tbody:last-child > tr:first-child > td:last-child,
+	  caption:first-child + tfoot + tbody:last-child > tr:first-child > th:last-child,
+	  caption:first-child + tfoot + tbody:last-child > tr:first-child > td:last-child,
+	  caption:first-child + colgroup + tbody:last-child > tr:first-child > th:last-child,
+	  caption:first-child + colgroup + tbody:last-child > tr:first-child > td:last-child,
+	  caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > th:last-child,
+	  caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > td:last-child,
+	  colgroup:first-child + tbody:last-child > tr:first-child > th:last-child,
+	  colgroup:first-child + tbody:last-child > tr:first-child > td:last-child,
+	  colgroup:first-child + tfoot + tbody:last-child > tr:first-child > th:last-child,
+	  colgroup:first-child + tfoot + tbody:last-child > tr:first-child > td:last-child {
 		@include vui-table-top-border-radius('right');
 	}
-	& thead > tr:first-child > :only-child,
-	  tbody:only-child > tr:first-child > :only-child,
-	  tfoot:first-child + tbody:last-child > tr:first-child > :only-child,
-	  caption:first-child + tbody:last-child > tr:first-child > :only-child,
-	  caption:first-child + tfoot + tbody:last-child > tr:first-child > :only-child,
-	  caption:first-child + colgroup + tbody:last-child > tr:first-child > :only-child,
-	  caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > :only-child,
-	  colgroup:first-child + tbody:last-child > tr:first-child > :only-child,
-	  colgroup:first-child + tfoot + tbody:last-child > tr:first-child > :only-child {
+	& thead > tr:first-child > th:only-child,
+	& thead > tr:first-child > td:only-child,
+	  tbody:only-child > tr:first-child > th:only-child,
+	  tbody:only-child > tr:first-child > td:only-child,
+	  tfoot:first-child + tbody:last-child > tr:first-child > th:only-child,
+	  tfoot:first-child + tbody:last-child > tr:first-child > td:only-child,
+	  caption:first-child + tbody:last-child > tr:first-child > th:only-child,
+	  caption:first-child + tbody:last-child > tr:first-child > td:only-child,
+	  caption:first-child + tfoot + tbody:last-child > tr:first-child > th:only-child,
+	  caption:first-child + tfoot + tbody:last-child > tr:first-child > td:only-child,
+	  caption:first-child + colgroup + tbody:last-child > tr:first-child > th:only-child,
+	  caption:first-child + colgroup + tbody:last-child > tr:first-child > td:only-child,
+	  caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > th:only-child,
+	  caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > td:only-child,
+	  colgroup:first-child + tbody:last-child > tr:first-child > th:only-child,
+	  colgroup:first-child + tbody:last-child > tr:first-child > td:only-child,
+	  colgroup:first-child + tfoot + tbody:last-child > tr:first-child > th:only-child,
+	  colgroup:first-child + tfoot + tbody:last-child > tr:first-child > td:only-child {
 		@include vui-table-top-border-radius('only');
 	}
 
@@ -108,29 +137,47 @@ $vui-table-row-background-color-selected: $d2l-color-celestine-light-1;
 		border-bottom: $vui-table-border;
 	}
 
-	& thead:only-child > tr:last-child > :first-child,
-	  tfoot > tr:last-child > :first-child,
-	  tbody:only-child > tr:last-child > :first-child,
-	  thead + tbody:last-child > tr:last-child > :first-child,
-	  caption + tbody:last-child > tr:last-child > :first-child,
-	  colgroup + tbody:last-child > tr:last-child > :first-child {
+	& thead:only-child > tr:last-child > th:first-child,
+	& thead:only-child > tr:last-child > td:first-child,
+	  tfoot > tr:last-child > th:first-child,
+	  tfoot > tr:last-child > td:first-child,
+	  tbody:only-child > tr:last-child > th:first-child,
+	  tbody:only-child > tr:last-child > td:first-child,
+	  thead + tbody:last-child > tr:last-child > th:first-child,
+	  thead + tbody:last-child > tr:last-child > td:first-child,
+	  caption + tbody:last-child > tr:last-child > th:first-child,
+	  caption + tbody:last-child > tr:last-child > td:first-child,
+	  colgroup + tbody:last-child > tr:last-child > th:first-child,
+	  colgroup + tbody:last-child > tr:last-child > td:first-child {
 		@include vui-table-bottom-border-radius('left');
 	}
-	& thead:only-child > tr:last-child > :last-child,
-	  tfoot > tr:last-child > :last-child,
-	  tbody:only-child > tr:last-child > :last-child,
-	  thead + tbody:last-child > tr:last-child > :last-child,
-	  caption + tbody:last-child > tr:last-child > :last-child,
-	  colgroup + tbody:last-child > tr:last-child > :last-child {
+	& thead:only-child > tr:last-child > th:last-child,
+	& thead:only-child > tr:last-child > td:last-child,
+	  tfoot > tr:last-child > th:last-child,
+	  tfoot > tr:last-child > td:last-child,
+	  tbody:only-child > tr:last-child > th:last-child,
+	  tbody:only-child > tr:last-child > td:last-child,
+	  thead + tbody:last-child > tr:last-child > th:last-child,
+	  thead + tbody:last-child > tr:last-child > td:last-child,
+	  caption + tbody:last-child > tr:last-child > th:last-child,
+	  caption + tbody:last-child > tr:last-child > td:last-child,
+	  colgroup + tbody:last-child > tr:last-child > th:last-child,
+	  colgroup + tbody:last-child > tr:last-child > td:last-child {
 		@include vui-table-bottom-border-radius('right');
 	}
 
-	& thead:only-child > tr:last-child > :only-child,
-	  tfoot > tr:last-child > :only-child,
-	  tbody:only-child > tr:last-child > :only-child,
-	  thead + tbody:last-child > tr:last-child > :only-child,
-	  caption + tbody:last-child > tr:last-child > :only-child,
-	  colgroup + tbody:last-child > tr:last-child > :only-child {
+	& thead:only-child > tr:last-child > th:only-child,
+	& thead:only-child > tr:last-child > td:only-child,
+	  tfoot > tr:last-child > th:only-child,
+	  tfoot > tr:last-child > td:only-child,
+	  tbody:only-child > tr:last-child > th:only-child,
+	  tbody:only-child > tr:last-child > td:only-child,
+	  thead + tbody:last-child > tr:last-child > th:only-child,
+	  thead + tbody:last-child > tr:last-child > td:only-child,
+	  caption + tbody:last-child > tr:last-child > th:only-child,
+	  caption + tbody:last-child > tr:last-child > td:only-child,
+	  colgroup + tbody:last-child > tr:last-child > th:only-child,
+	  colgroup + tbody:last-child > tr:last-child > td:only-child {
 		@include vui-table-bottom-border-radius('only');
 	}
 
@@ -263,17 +310,21 @@ $vui-table-row-background-color-selected: $d2l-color-celestine-light-1;
 }
 
 @mixin _applyBorderColorToRow($border-color) {
-	& >:first-child {
+	& >th:first-child,
+	& >td:first-child {
 		border-left-color: $border-color !important;
 	}
-	[dir='rtl'] & >:first-child {
+	[dir='rtl'] & >th:first-child,
+	[dir='rtl'] & >td:first-child {
 		border-right-color: $border-color !important;
 		border-left-color: $vui-table-border-color;
 	}
-	& >:last-child {
+	& >th:last-child,
+	& >td:last-child {
 		border-right-color: $border-color !important;
 	}
-	[dir='rtl'] & >:last-child {
+	[dir='rtl'] & >th:last-child,
+	[dir='rtl'] & >td:last-child {
 		border-left-color: $border-color !important;
 		border-right-color: $vui-table-border-color;
 	}
