@@ -8,4 +8,4 @@
 
 	wide.right-action:
 		inside partly wide 10px top, -15px left
-		image file dumps/${path}/objects/wide.right-action.png, error 14px
+		image file dumps/${path}/objects/wide.right-action.png, error 17px
