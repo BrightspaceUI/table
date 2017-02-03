@@ -8,6 +8,14 @@
 		foot              tfoot
 			tr-*          tr
 
+	simple                 body /deep/ .screenshot-simple
+		head              thead
+			tr-*          tr
+		body              tbody
+			tr-*          tr
+		foot              tfoot
+			tr-*          tr
+
 	rows                  body /deep/ .screenshot-rows
 		tr-*              tr
 
