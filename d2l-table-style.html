@@ -102,163 +102,81 @@
 				border-right:var(--d2l-table-border);
 			}
 
+
 			:host-context([dir="rtl"]) > ::content > thead > tr:first-child  > td:first-child,
 			:host-context([dir="rtl"]) > ::content > thead > tr:first-child  > th:first-child,
-			:host-context([dir="rtl"]) > ::content > tbody:only-child > tr:first-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > tbody:only-child > tr:first-child  > th:first-child,
-			:host-context([dir="rtl"]) > ::content > tfoot:first-child + tbody:last-child > tr:first-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > tfoot:first-child + tbody:last-child > tr:first-child  > th:first-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + tbody:last-child > tr:first-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + tbody:last-child > tr:first-child  > th:first-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child  > th:first-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child  > th:first-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child  > th:first-child,
-			:host-context([dir="rtl"]) > ::content > colgroup:first-child + tbody:last-child > tr:first-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > colgroup:first-child + tbody:last-child > tr:first-child  > th:first-child,
-			:host-context([dir="rtl"]) > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child  > th:first-child {
+			:host-context([dir="rtl"]) > ::content > tbody > tr:first-child  > td:first-child,
+			:host-context([dir="rtl"]) > ::content > tbody > tr:first-child  > th:first-child {
 				border-top-left-radius:0;
 				border-top-right-radius:var(--d2l-table-border-radius);
 			}
 
 			:host > ::content > thead > tr:first-child  > td:last-child,
 			:host > ::content > thead > tr:first-child  > th:last-child,
-			:host > ::content > tbody:only-child > tr:first-child  > td:last-child,
-			:host > ::content > tbody:only-child > tr:first-child  > th:last-child,
-			:host > ::content > tfoot:first-child + tbody:last-child > tr:first-child  > td:last-child,
-			:host > ::content > tfoot:first-child + tbody:last-child > tr:first-child  > th:last-child,
-			:host > ::content > caption:first-child + tbody:last-child > tr:first-child  > td:last-child,
-			:host > ::content > caption:first-child + tbody:last-child > tr:first-child  > th:last-child,
-			:host > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child  > td:last-child,
-			:host > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child  > th:last-child,
-			:host > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child  > td:last-child,
-			:host > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child  > th:last-child,
-			:host > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child  > td:last-child,
-			:host > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child  > th:last-child,
-			:host > ::content > colgroup:first-child + tbody:last-child > tr:first-child  > td:last-child,
-			:host > ::content > colgroup:first-child + tbody:last-child > tr:first-child  > th:last-child,
-			:host > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child  > td:last-child,
-			:host > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child  > th:last-child {
+			:host > ::content > tbody > tr:first-child  > td:last-child,
+			:host > ::content > tbody > tr:first-child  > th:last-child {
 				border-top-right-radius:var(--d2l-table-border-radius);
 			}
 
+			:host > ::content > thead ~ tbody > tr:first-child  > td:last-child,
+			:host > ::content > thead ~ tbody > tr:first-child  > th:last-child,
+			:host-context([dir="rtl"]) > ::content > thead ~ tbody > tr:first-child  > td:first-child,
+			:host-context([dir="rtl"]) > ::content > thead ~ tbody > tr:first-child  > th:first-child {
+				border-top-right-radius:0;
+			}
+
 			:host > ::content > thead > tr:first-child > th,
-			:host > ::content > tbody:only-child > tr:first-child > th,
-			:host > ::content > tfoot:first-child + tbody:last-child > tr:first-child > th,
-			:host > ::content > caption:first-child + tbody:last-child > tr:first-child > th,
-			:host > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child > th,
-			:host > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child > th,
-			:host > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > th,
-			:host > ::content > colgroup:first-child + tbody:last-child > tr:first-child > th,
-			:host > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child > th,
-			:host > ::content > tbody:only-child > tr:first-child > td,
-			:host > ::content > tfoot:first-child + tbody:last-child > tr:first-child > td,
-			:host > ::content > caption:first-child + tbody:last-child > tr:first-child > td,
-			:host > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child > td,
-			:host > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child > td,
-			:host > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child > td,
-			:host > ::content > colgroup:first-child + tbody:last-child > tr:first-child > td,
-			:host > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child > td {
+			:host > ::content > tbody > tr:first-child > th {
 				border-top:var(--d2l-table-outer-border);
+			}
+
+			:host > ::content > thead ~ tbody > tr:first-child > th {
+				border-top:var(--d2l-table-border);
 			}
 
 			:host-context([dir="rtl"]) > ::content > thead > tr:first-child  > td:last-child,
 			:host-context([dir="rtl"]) > ::content > thead > tr:first-child  > th:last-child,
-			:host-context([dir="rtl"]) > ::content > tbody:only-child > tr:first-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > tbody:only-child > tr:first-child  > th:last-child,
-			:host-context([dir="rtl"]) > ::content > tfoot:first-child + tbody:last-child > tr:first-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > tfoot:first-child + tbody:last-child > tr:first-child  > th:last-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + tbody:last-child > tr:first-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + tbody:last-child > tr:first-child  > th:last-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child  > th:last-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child  > th:last-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child  > th:last-child,
-			:host-context([dir="rtl"]) > ::content > colgroup:first-child + tbody:last-child > tr:first-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > colgroup:first-child + tbody:last-child > tr:first-child  > th:last-child,
-			:host-context([dir="rtl"]) > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child  > th:last-child {
+			:host-context([dir="rtl"]) > ::content > tbody > tr:first-child  > td:last-child,
+			:host-context([dir="rtl"]) > ::content > tbody > tr:first-child  > th:last-child {
 				border-top-right-radius:0;
 				border-top-left-radius:var(--d2l-table-border-radius);
 			}
 
 			:host > ::content > thead > tr:first-child  > td:first-child,
 			:host > ::content > thead > tr:first-child  > th:first-child,
-			:host > ::content > tbody:only-child > tr:first-child  > td:first-child,
-			:host > ::content > tbody:only-child > tr:first-child  > th:first-child,
-			:host > ::content > tfoot:first-child + tbody:last-child > tr:first-child  > td:first-child,
-			:host > ::content > tfoot:first-child + tbody:last-child > tr:first-child  > th:first-child,
-			:host > ::content > caption:first-child + tbody:last-child > tr:first-child  > td:first-child,
-			:host > ::content > caption:first-child + tbody:last-child > tr:first-child  > th:first-child,
-			:host > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child  > td:first-child,
-			:host > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child  > th:first-child,
-			:host > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child  > td:first-child,
-			:host > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child  > th:first-child,
-			:host > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child  > td:first-child,
-			:host > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child  > th:first-child,
-			:host > ::content > colgroup:first-child + tbody:last-child > tr:first-child  > td:first-child,
-			:host > ::content > colgroup:first-child + tbody:last-child > tr:first-child  > th:first-child,
-			:host > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child  > td:first-child,
-			:host > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child  > th:first-child {
+			:host > ::content > tbody > tr:first-child  > td:first-child,
+			:host > ::content > tbody > tr:first-child  > th:first-child {
 				border-top-left-radius:var(--d2l-table-border-radius);
+			}
+
+			:host > ::content > thead ~ tbody > tr:first-child  > td:first-child,
+			:host > ::content > thead ~ tbody > tr:first-child  > th:first-child,
+			:host-context([dir="rtl"]) > ::content > thead ~ tbody > tr:first-child  > td:last-child,
+			:host-context([dir="rtl"]) > ::content > thead ~ tbody > tr:first-child  > th:last-child {
+				border-top-left-radius:0;
 			}
 
 			/* This is needed for the rtl case when the there is only one td/th in a row. Doesn't affect all browsers */
 			:host-context([dir="rtl"]) > ::content > thead > tr:first-child  > td:only-child,
 			:host-context([dir="rtl"]) > ::content > thead > tr:first-child  > th:only-child,
-			:host-context([dir="rtl"]) > ::content > tbody:only-child > tr:first-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > tbody:only-child > tr:first-child  > th:only-child,
-			:host-context([dir="rtl"]) > ::content > tfoot:first-child + tbody:last-child > tr:first-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > tfoot:first-child + tbody:last-child > tr:first-child  > th:only-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + tbody:last-child > tr:first-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + tbody:last-child > tr:first-child  > th:only-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + tfoot + tbody:last-child > tr:first-child  > th:only-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + colgroup + tbody:last-child > tr:first-child  > th:only-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > caption:first-child + colgroup + tfoot + tbody:last-child > tr:first-child  > th:only-child,
-			:host-context([dir="rtl"]) > ::content > colgroup:first-child + tbody:last-child > tr:first-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > colgroup:first-child + tbody:last-child > tr:first-child  > th:only-child,
-			:host-context([dir="rtl"]) > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > colgroup:first-child + tfoot + tbody:last-child > tr:first-child  > th:only-child {
+			:host-context([dir="rtl"]) > ::content > tbody > tr:first-child  > td:only-child,
+			:host-context([dir="rtl"]) > ::content > tbody > tr:first-child  > th:only-child {
 				border-top-right-radius:var(--d2l-table-border-radius);
 				border-top-left-radius:var(--d2l-table-border-radius);
 			}
 
-			:host > ::content > thead:only-child > tr:last-child > th,
-			:host > ::content > tfoot > tr:last-child > th,
-			:host > ::content > tfoot > tr:last-child > td,
-			:host > ::content > tbody:only-child > tr:last-child > td,
-			:host > ::content > tbody:only-child > tr:last-child > th,
-			:host > ::content > thead + tbody:last-child > tr:last-child > td,
-			:host > ::content > thead + tbody:last-child > tr:last-child > th,
-			:host > ::content > caption + tbody:last-child > tr:last-child > td,
-			:host > ::content > caption + tbody:last-child > tr:last-child > th,
-			:host > ::content > colgroup + tbody:last-child > tr:last-child > th,
-			:host > ::content > colgroup + tbody:last-child > tr:last-child > td,
-			:host > ::content > tbody:last-child > tr:last-child > td,
-			:host > ::content > tbody:last-child > tr:last-child > th {
-				border-bottom:var(--d2l-table-border);
+			:host-context([dir="rtl"]) > ::content > thead ~ tbody > tr:first-child  > td:only-child,
+			:host-context([dir="rtl"]) > ::content > thead ~ tbody > tr:first-child  > th:only-child {
+				border-top-right-radius:0;
+				border-top-left-radius:0;
 			}
 
 			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child  > td:first-child,
 			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child  > th:first-child,
 			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child  > td:first-child,
 			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child  > th:first-child,
-			:host-context([dir="rtl"]) > ::content > tbody:only-child > tr:last-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > tbody:only-child > tr:last-child  > th:first-child,
-			:host-context([dir="rtl"]) > ::content > thead + tbody:last-child > tr:last-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > thead + tbody:last-child > tr:last-child  > th:first-child,
-			:host-context([dir="rtl"]) > ::content > caption + tbody:last-child > tr:last-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > caption + tbody:last-child > tr:last-child  > th:first-child,
-			:host-context([dir="rtl"]) > ::content > colgroup + tbody:last-child > tr:last-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > colgroup + tbody:last-child > tr:last-child  > th:first-child,
+			:host-context([dir="rtl"]) > ::content > tbody:last-child > tr:last-child  > td:first-child,
+			:host-context([dir="rtl"]) > ::content > tbody:last-child > tr:last-child  > th:first-child,
 			:host-context([dir="rtl"]) > ::content > * > tr[last-row]  > td:first-child,
 			:host-context([dir="rtl"]) > ::content > * > tr[last-row]  > th:first-child {
 				border-bottom-left-radius:0;
@@ -269,47 +187,42 @@
 			:host > ::content > thead:only-child > tr:last-child  > th:last-child,
 			:host > ::content > tfoot > tr:last-child  > td:last-child,
 			:host > ::content > tfoot > tr:last-child  > th:last-child,
-			:host > ::content > tbody:only-child > tr:last-child  > td:last-child,
-			:host > ::content > tbody:only-child > tr:last-child  > th:last-child,
-			:host > ::content > thead + tbody:last-child > tr:last-child  > td:last-child,
-			:host > ::content > thead + tbody:last-child > tr:last-child  > th:last-child,
-			:host > ::content > caption + tbody:last-child > tr:last-child  > td:last-child,
-			:host > ::content > caption + tbody:last-child > tr:last-child  > th:last-child,
-			:host > ::content > colgroup + tbody:last-child > tr:last-child  > td:last-child,
-			:host > ::content > colgroup + tbody:last-child > tr:last-child  > th:last-child,
+			:host > ::content > tbody:last-child tr:last-child  > td:last-child,
+			:host > ::content > tbody:last-child > tr:last-child  > th:last-child,
 			:host > ::content > * > tr[last-row]  > td:last-child,
 			:host > ::content > * > tr[last-row]  > th:last-child {
 				border-bottom-right-radius:var(--d2l-table-border-radius);
 			}
 
-			:host > ::content > thead:only-child > tr:last-child > th,
-			:host > ::content > tfoot > tr:last-child > th,
-			:host > ::content > tbody:only-child > tr:last-child > th,
-			:host > ::content > thead + tbody:last-child > tr:last-child > th,
-			:host > ::content > caption + tbody:last-child > tr:last-child > th,
-			:host > ::content > colgroup + tbody:last-child > tr:last-child > th,
-			:host > ::content > tfoot > tr:last-child > td,
-			:host > ::content > tbody:only-child > tr:last-child > td,
-			:host > ::content > thead + tbody:last-child > tr:last-child > td,
-			:host > ::content > caption + tbody:last-child > tr:last-child > td,
-			:host > ::content > colgroup + tbody:last-child > tr:last-child > td,
-			:host > ::content > * > tr[last-row] > th,
-			:host > ::content > * > tr[last-row] > td {
+			:host-context([dir="rtl"]) > ::content > tfoot ~ tbody:last-child > tr:last-child  > td:first-child,
+			:host-context([dir="rtl"]) > ::content > tfoot ~ tbody:last-child > tr:last-child  > th:first-child,
+			:host > ::content > tfoot ~ tbody:last-child > tr:last-child  > td:last-child,
+			:host > ::content > tfoot ~ tbody:last-child > tr:last-child  > th:last-child {
+				border-bottom-right-radius:0;
+			}
+
+			:host > ::content > thead:only-child > tr:last-child  > td,
+			:host > ::content > thead:only-child > tr:last-child  > th,
+			:host > ::content > tfoot > tr:last-child  > td,
+			:host > ::content > tfoot > tr:last-child  > th,
+			:host > ::content > tbody:last-child tr:last-child  > td,
+			:host > ::content > tbody:last-child > tr:last-child  > th,
+			:host > ::content > * > tr[last-row]  > td,
+			:host > ::content > * > tr[last-row]  > th {
 				border-bottom:var(--d2l-table-outer-border);
+			}
+
+			:host > ::content > tfoot ~ tbody:last-child > tr:last-child  > td,
+			:host > ::content > tfoot ~ tbody:last-child > tr:last-child  > th {
+				border-bottom:var(--d2l-table-border);
 			}
 
 			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child  > td:last-child,
 			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child  > th:last-child,
 			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child  > td:last-child,
 			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child  > th:last-child,
-			:host-context([dir="rtl"]) > ::content > tbody:only-child > tr:last-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > tbody:only-child > tr:last-child  > th:last-child,
-			:host-context([dir="rtl"]) > ::content > thead + tbody:last-child > tr:last-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > thead + tbody:last-child > tr:last-child  > th:last-child,
-			:host-context([dir="rtl"]) > ::content > caption + tbody:last-child > tr:last-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > caption + tbody:last-child > tr:last-child  > th:last-child,
-			:host-context([dir="rtl"]) > ::content > colgroup + tbody:last-child > tr:last-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > colgroup + tbody:last-child > tr:last-child  > th:last-child,
+			:host-context([dir="rtl"]) > ::content > tbody:last-child > tr:last-child  > td:last-child,
+			:host-context([dir="rtl"]) > ::content > tbody:last-child > tr:last-child  > th:last-child,
 			:host-context([dir="rtl"]) > ::content > * > tr[last-row]  > td:last-child,
 			:host-context([dir="rtl"]) > ::content > * > tr[last-row]  > th:last-child {
 				border-bottom-right-radius:0;
@@ -320,35 +233,36 @@
 			:host > ::content > thead:only-child > tr:last-child  > th:first-child,
 			:host > ::content > tfoot > tr:last-child  > td:first-child,
 			:host > ::content > tfoot > tr:last-child  > th:first-child,
-			:host > ::content > tbody:only-child > tr:last-child  > td:first-child,
-			:host > ::content > tbody:only-child > tr:last-child  > th:first-child,
-			:host > ::content > thead + tbody:last-child > tr:last-child  > td:first-child,
-			:host > ::content > thead + tbody:last-child > tr:last-child  > th:first-child,
-			:host > ::content > caption + tbody:last-child > tr:last-child  > td:first-child,
-			:host > ::content > caption + tbody:last-child > tr:last-child  > th:first-child,
-			:host > ::content > colgroup + tbody:last-child > tr:last-child  > td:first-child,
-			:host > ::content > colgroup + tbody:last-child > tr:last-child  > th:first-child,
+			:host > ::content > tbody:last-child tr:last-child  > td:first-child,
+			:host > ::content > tbody:last-child > tr:last-child  > th:first-child,
 			:host > ::content > * > tr[last-row]  > td:first-child,
 			:host > ::content > * > tr[last-row]  > th:first-child {
 				border-bottom-left-radius:var(--d2l-table-border-radius);
+			}
+
+			:host-context([dir="rtl"]) > ::content > tfoot ~ tbody:last-child > tr:last-child  > td:last-child,
+			:host-context([dir="rtl"]) > ::content > tfoot ~ tbody:last-child > tr:last-child  > th:last-child,
+			:host > ::content > tfoot ~ tbody:last-child > tr:last-child  > td:first-child,
+			:host > ::content > tfoot ~ tbody:last-child > tr:last-child  > th:first-child {
+				border-bottom-left-radius:0;
 			}
 
 			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child  > td:only-child,
 			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child  > th:only-child,
 			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child  > td:only-child,
 			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child  > th:only-child,
-			:host-context([dir="rtl"]) > ::content > tbody:only-child > tr:last-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > tbody:only-child > tr:last-child  > th:only-child,
-			:host-context([dir="rtl"]) > ::content > thead + tbody:last-child > tr:last-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > thead + tbody:last-child > tr:last-child  > th:only-child,
-			:host-context([dir="rtl"]) > ::content > caption + tbody:last-child > tr:last-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > caption + tbody:last-child > tr:last-child  > th:only-child,
-			:host-context([dir="rtl"]) > ::content > colgroup + tbody:last-child > tr:last-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > colgroup + tbody:last-child > tr:last-child  > th:only-child,
+			:host-context([dir="rtl"]) > ::content > tbody:last-child > tr:last-child  > td:only-child,
+			:host-context([dir="rtl"]) > ::content > tbody:last-child > tr:last-child  > th:only-child,
 			:host-context([dir="rtl"]) > ::content > * > tr[last-row]  > td:only-child,
 			:host-context([dir="rtl"]) > ::content > * > tr[last-row]  > th:only-child {
 				border-bottom-left-radius:var(--d2l-table-border-radius);
 				border-bottom-right-radius:var(--d2l-table-border-radius);
+			}
+
+			:host-context([dir="rtl"]) > ::content > tfoot ~ tbody:last-child > tr:last-child  > td:only-child,
+			:host-context([dir="rtl"]) > ::content > tfoot ~ tbody:last-child > tr:last-child  > th:only-child {
+				border-bottom-left-radius:0;
+				border-bottom-right-radius:0;
 			}
 
 			:host > ::content > tfoot > tr:first-child> td,
