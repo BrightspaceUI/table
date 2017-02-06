@@ -42,7 +42,7 @@
     "phantomjs-prebuilt": "^2.1.13",
     "polymer-cli": "^0.17.0",
     "rimraf": "^2.5.4",
-    "sauce-connect-launcher": "^1.0.0",
+    "sauce-connect-launcher": "^1.2.0",
     "sauceconnect-runner": "https://github.com/Brightspace/sauceconnect-runner.git#v0.3.0",
     "static-server": "^2.0.3"
   }
