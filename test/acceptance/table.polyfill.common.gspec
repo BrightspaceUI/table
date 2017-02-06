@@ -16,6 +16,9 @@
 		foot              tfoot
 			tr-*          tr
 
+	notbody               .screenshot-notbody
+		tr-*              tr
+
 	rows                  .screenshot-rows
 		tr-*              tr
 
