@@ -5,7 +5,7 @@
 	<template>
 		<style>
 			:host {
-				--d2l-table-cell:{
+				--d2l-table-cell: {
 					border-top:var(--d2l-table-border);
 					border-right:var(--d2l-table-border);
 					display:table-cell;
@@ -16,12 +16,12 @@
 				};
 				--d2l-table-header: {
 					color:var(--d2l-color-ferrite);
-					font-family:inherit;
-					font-size:.7rem;
-					font-weight:400;
-					line-height:1rem;
-					letter-spacing:.02rem;
-					background-color:var(--d2l-table-header-background-color);
+				      font-family:inherit;
+				      font-size:.7rem;
+				      font-weight:400;
+				      line-height:1rem;
+				      letter-spacing:.02rem;
+				      background-color:var(--d2l-table-header-background-color);
 					margin:1rem 0;
 				};
 				--d2l-table: {
@@ -71,267 +71,9 @@
 				@apply(--d2l-table-cell);
 			}
 
-			:host-context([dir="rtl"]) > ::content > * > tr > td,
-			:host-context([dir="rtl"]) > ::content > * > tr > th {
-				text-align:right;
-			}
-
 			:host > ::content > thead > tr > th,
 			:host > ::content > * > tr[header] > th {
 				@apply(--d2l-table-header);
-			}
-
-			:host-context([dir="rtl"]) > ::content > * > tr  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > * > tr  > th:first-child{
-				border-left:0;
-			}
-
-			:host-context([dir="rtl"]) > ::content > * > tr  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > * > tr  > th:last-child {
-				border-right:var(--d2l-table-border);
-			}
-
-			:host-context([dir="rtl"]) > ::content > thead > tr:first-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > thead > tr:first-child  > th:first-child,
-			:host-context([dir="rtl"]) > ::content > tbody:first-of-type > tr:first-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > tbody:first-of-type > tr:first-child  > th:first-child {
-				border-top-left-radius:0;
-				border-top-right-radius:var(--d2l-table-border-radius);
-			}
-
-			:host > ::content > thead > tr:first-child  > td:last-child,
-			:host > ::content > thead > tr:first-child  > th:last-child,
-			:host > ::content > tbody:first-of-type > tr:first-child  > td:last-child,
-			:host > ::content > tbody:first-of-type > tr:first-child  > th:last-child {
-				border-top-right-radius:var(--d2l-table-border-radius);
-			}
-
-			:host > ::content > thead ~ tbody:first-of-type > tr:first-child  > td:last-child,
-			:host > ::content > thead ~ tbody:first-of-type > tr:first-child  > th:last-child,
-			:host-context([dir="rtl"]) > ::content > thead ~ tbody:first-of-type > tr:first-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > thead ~ tbody:first-of-type > tr:first-child  > th:first-child {
-				border-top-right-radius:0;
-			}
-
-			:host > ::content > thead > tr:first-child > th,
-			:host > ::content > tbody:first-of-type > tr:first-child > th {
-				border-top:var(--d2l-table-outer-border);
-			}
-
-			:host > ::content > thead ~ tbody:first-of-type > tr:first-child > th {
-				border-top:var(--d2l-table-border);
-			}
-
-			:host-context([dir="rtl"]) > ::content > thead > tr:first-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > thead > tr:first-child  > th:last-child,
-			:host-context([dir="rtl"]) > ::content > tbody:first-of-type > tr:first-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > tbody:first-of-type > tr:first-child  > th:last-child {
-				border-top-right-radius:0;
-				border-top-left-radius:var(--d2l-table-border-radius);
-			}
-
-			:host > ::content > thead > tr:first-child  > td:first-child,
-			:host > ::content > thead > tr:first-child  > th:first-child,
-			:host > ::content > tbody:first-of-type > tr:first-child  > td:first-child,
-			:host > ::content > tbody:first-of-type > tr:first-child  > th:first-child {
-				border-top-left-radius:var(--d2l-table-border-radius);
-			}
-
-			:host > ::content > thead ~ tbody:first-of-type > tr:first-child  > td:first-child,
-			:host > ::content > thead ~ tbody:first-of-type > tr:first-child  > th:first-child,
-			:host-context([dir="rtl"]) > ::content > thead ~ tbody:first-of-type > tr:first-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > thead ~ tbody:first-of-type > tr:first-child  > th:last-child {
-				border-top-left-radius:0;
-			}
-
-			/* This is needed for the rtl case when the there is only one td/th in a row. Doesn't affect all browsers */
-			:host-context([dir="rtl"]) > ::content > thead > tr:first-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > thead > tr:first-child  > th:only-child,
-			:host-context([dir="rtl"]) > ::content > tbody:first-of-type > tr:first-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > tbody:first-of-type > tr:first-child  > th:only-child {
-				border-top-right-radius:var(--d2l-table-border-radius);
-				border-top-left-radius:var(--d2l-table-border-radius);
-			}
-
-			:host-context([dir="rtl"]) > ::content > thead ~ tbody:first-of-type > tr:first-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > thead ~ tbody:first-of-type > tr:first-child  > th:only-child {
-				border-top-right-radius:0;
-				border-top-left-radius:0;
-			}
-
-			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child  > th:first-child,
-			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child  > th:first-child,
-			:host-context([dir="rtl"]) > ::content > tbody:last-child > tr:last-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > tbody:last-child > tr:last-child  > th:first-child,
-			:host-context([dir="rtl"]) > ::content > * > tr[last-row]  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > * > tr[last-row]  > th:first-child {
-				border-bottom-left-radius:0;
-				border-bottom-right-radius:var(--d2l-table-border-radius);
-			}
-
-			:host > ::content > thead:only-child > tr:last-child  > td:last-child,
-			:host > ::content > thead:only-child > tr:last-child  > th:last-child,
-			:host > ::content > tfoot > tr:last-child  > td:last-child,
-			:host > ::content > tfoot > tr:last-child  > th:last-child,
-			:host > ::content > tbody:last-child tr:last-child  > td:last-child,
-			:host > ::content > tbody:last-child > tr:last-child  > th:last-child,
-			:host > ::content > * > tr[last-row]  > td:last-child,
-			:host > ::content > * > tr[last-row]  > th:last-child {
-				border-bottom-right-radius:var(--d2l-table-border-radius);
-			}
-
-			:host-context([dir="rtl"]) > ::content > tfoot ~ tbody:last-child > tr:last-child  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > tfoot ~ tbody:last-child > tr:last-child  > th:first-child,
-			:host > ::content > tfoot ~ tbody:last-child > tr:last-child  > td:last-child,
-			:host > ::content > tfoot ~ tbody:last-child > tr:last-child  > th:last-child {
-				border-bottom-right-radius:0;
-			}
-
-			:host > ::content > thead:only-child > tr:last-child  > td,
-			:host > ::content > thead:only-child > tr:last-child  > th,
-			:host > ::content > tfoot > tr:last-child  > td,
-			:host > ::content > tfoot > tr:last-child  > th,
-			:host > ::content > tbody:last-child tr:last-child  > td,
-			:host > ::content > tbody:last-child > tr:last-child  > th,
-			:host > ::content > * > tr[last-row]  > td,
-			:host > ::content > * > tr[last-row]  > th {
-				border-bottom:var(--d2l-table-outer-border);
-			}
-
-			:host > ::content > tfoot ~ tbody:last-child > tr:last-child  > td,
-			:host > ::content > tfoot ~ tbody:last-child > tr:last-child  > th {
-				border-bottom:var(--d2l-table-border);
-			}
-
-			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child  > th:last-child,
-			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child  > th:last-child,
-			:host-context([dir="rtl"]) > ::content > tbody:last-child > tr:last-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > tbody:last-child > tr:last-child  > th:last-child,
-			:host-context([dir="rtl"]) > ::content > * > tr[last-row]  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > * > tr[last-row]  > th:last-child {
-				border-bottom-right-radius:0;
-				border-bottom-left-radius:var(--d2l-table-border-radius);
-			}
-
-			:host > ::content > thead:only-child > tr:last-child  > td:first-child,
-			:host > ::content > thead:only-child > tr:last-child  > th:first-child,
-			:host > ::content > tfoot > tr:last-child  > td:first-child,
-			:host > ::content > tfoot > tr:last-child  > th:first-child,
-			:host > ::content > tbody:last-child tr:last-child  > td:first-child,
-			:host > ::content > tbody:last-child > tr:last-child  > th:first-child,
-			:host > ::content > * > tr[last-row]  > td:first-child,
-			:host > ::content > * > tr[last-row]  > th:first-child {
-				border-bottom-left-radius:var(--d2l-table-border-radius);
-			}
-
-			:host-context([dir="rtl"]) > ::content > tfoot ~ tbody:last-child > tr:last-child  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > tfoot ~ tbody:last-child > tr:last-child  > th:last-child,
-			:host > ::content > tfoot ~ tbody:last-child > tr:last-child  > td:first-child,
-			:host > ::content > tfoot ~ tbody:last-child > tr:last-child  > th:first-child {
-				border-bottom-left-radius:0;
-			}
-
-			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child  > th:only-child,
-			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child  > th:only-child,
-			:host-context([dir="rtl"]) > ::content > tbody:last-child > tr:last-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > tbody:last-child > tr:last-child  > th:only-child,
-			:host-context([dir="rtl"]) > ::content > * > tr[last-row]  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > * > tr[last-row]  > th:only-child {
-				border-bottom-left-radius:var(--d2l-table-border-radius);
-				border-bottom-right-radius:var(--d2l-table-border-radius);
-			}
-
-			:host-context([dir="rtl"]) > ::content > tfoot ~ tbody:last-child > tr:last-child  > td:only-child,
-			:host-context([dir="rtl"]) > ::content > tfoot ~ tbody:last-child > tr:last-child  > th:only-child {
-				border-bottom-left-radius:0;
-				border-bottom-right-radius:0;
-			}
-
-			:host > ::content > tfoot > tr:first-child> td,
-			:host > ::content > tfoot > tr:first-child> th {
-				border-top:none;
-			}
-
-			:host > ::content > tbody > tr[active],
-			:host([selectable]) > ::content > tbody > tr:not([selected]):hover {
-				background-color:var(--d2l-table-row-background-color-active);
-			}
-
-			:host > ::content > tbody > tr[selected] {
-				background-color:var(--d2l-table-row-background-color-selected);
-			}
-
-			:host-context([dir="rtl"]) > ::content > tbody > tr[selected]  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > tbody > tr[selected]  > th:first-child,
-			:host > ::content > tbody > tr[selected]  > td:last-child,
-			:host > ::content > tbody > tr[selected]  > th:last-child {
-				border-right-color:var(--d2l-table-outer-row-border-color-selected);
-			}
-
-			:host-context([dir="rtl"]) > ::content > tbody > tr[selected]  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > tbody > tr[selected]  > th:last-child,
-			:host > ::content > tbody > tr[selected]  > td:first-child,
-			:host > ::content > tbody > tr[selected]  > th:first-child {
-				border-left-color:var(--d2l-table-outer-row-border-color-selected);
-			}
-
-			:host > ::content > tbody > tr[active][selected],
-			:host([selectable]) > ::content > tbody > tr[selected]:hover {
-				background-color:var(--d2l-table-row-background-color-active-selected);
-			}
-
-			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected]  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected]  > th:first-child,
-			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover  > td:first-child,
-			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover  > th:first-child,
-			:host > ::content > tbody > tr[active][selected]  > td:last-child,
-			:host > ::content > tbody > tr[active][selected]  > th:last-child,
-			:host([selectable]) > ::content > tbody > tr[selected]:hover  > td:last-child,
-			:host([selectable]) > ::content > tbody > tr[selected]:hover  > th:last-child {
-				border-right-color:var(--d2l-table-outer-row-border-color-active-selected);
-			}
-
-			:host-context([dir="rtl"]):host([selectable]) > ::content > tbody > tr[selected]:hover  > td:first-child,
-			:host-context([dir="rtl"]):host([selectable]) > ::content > tbody > tr[selected]:hover  > th:first-child {
-				border-right-color:var(--d2l-table-outer-row-border-color-active-selected);
-			}
-
-			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected]  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected]  > th:last-child,
-			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover  > td:last-child,
-			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover  > th:last-child,
-			:host > ::content > tbody > tr[active][selected]  > td:first-child,
-			:host > ::content > tbody > tr[active][selected]  > th:first-child,
-			:host([selectable]) > ::content > tbody > tr[selected]:hover  > td:first-child,
-			:host([selectable]) > ::content > tbody > tr[selected]:hover  > th:first-child {
-				border-left-color:var(--d2l-table-outer-row-border-color-active-selected);
-			}
-
-			:host-context([dir="rtl"]):host([selectable]) > ::content > tbody > tr[selected]:hover  > td:last-child,
-			:host-context([dir="rtl"]):host([selectable]) > ::content > tbody > tr[selected]:hover  > th:last-child {
-				border-left-color:var(--d2l-table-outer-row-border-color-active-selected);
-			}
-
-			:host > ::content > tbody > tr[active][selected] > td,
-			:host > ::content > tbody > tr[active][selected] > th,
-			:host([selectable]) > ::content > tbody > tr[selected]:hover > td,
-			:host([selectable]) > ::content > tbody > tr[selected]:hover > th,
-			:host > ::content > tbody > tr[active][selected] + tr > td,
-			:host > ::content > tbody > tr[active][selected] + tr > th,
-			:host([selectable]) > ::content > tbody > tr[selected]:hover + tr > td,
-			:host([selectable]) > ::content > tbody > tr[selected]:hover + tr > th {
-				border-top-color:var(--d2l-table-row-border-color-active-selected);
-			}
-
-			:host > ::content > tbody > tr:first-child[selected] > td,
-			:host > ::content > tbody > tr:first-child[selected] > th {
-				border-top-color:var(--d2l-table-outer-row-border-color-selected);
 			}
 
 			:host > ::content > tbody > tr:first-child[active][selected] > td,
@@ -341,11 +83,9 @@
 				border-top-color:var(--d2l-table-outer-row-border-color-active-selected);
 			}
 
-			:host > ::content > tbody > tr:last-child[selected] > td,
-			:host > ::content > tbody > tr:last-child[selected] > th,
-			:host > ::content > tbody > tr[last-row][selected] > td,
-			:host > ::content > tbody > tr[last-row][selected] > th {
-				border-bottom-color:var(--d2l-table-outer-row-border-color-selected);
+			:host > ::content > tbody > tr:first-child[selected] > td,
+			:host > ::content > tbody > tr:first-child[selected] > th {
+				border-top-color:var(--d2l-table-outer-row-border-color-selected);
 			}
 
 			:host > ::content > tbody > tr:last-child[active][selected] > td,
@@ -359,56 +99,36 @@
 				border-bottom-color:var(--d2l-table-outer-row-border-color-active-selected);
 			}
 
-			:host([no-column-border]) > ::content > tbody > tr > td,
-			:host([no-column-border]) > ::content > tbody > tr > th {
-				border-left:none;
-				border-right:none;
+			:host > ::content > tbody > tr:last-child[selected] > td,
+			:host > ::content > tbody > tr:last-child[selected] > th,
+			:host > ::content > tbody > tr[last-row][selected] > td,
+			:host > ::content > tbody > tr[last-row][selected] > th {
+				border-bottom-color:var(--d2l-table-outer-row-border-color-selected);
 			}
 
-			:host-context([dir="rtl"]) > ::content > * > tr  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > * > tr  > th:last-child,
-			:host > ::content > * > tr  > td:first-child,
-			:host > ::content > * > tr  > th:first-child,
-			:host([no-column-border]) > ::content > tbody > tr  > td:first-child,
-			:host([no-column-border]) > ::content > tbody > tr  > th:first-child {
-				border-left:var(--d2l-table-outer-border);
+			:host > ::content > tbody > tr[active],
+			:host([selectable]) > ::content > tbody > tr:not([selected]):hover {
+				background:var(--d2l-table-row-background-color-active);
 			}
 
-			:host-context([dir="rtl"]) > ::content > * > tr  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > * > tr  > th:first-child,
-			:host > ::content > * > tr  > td:last-child,
-			:host > ::content > * > tr  > th:last-child,
-			:host([no-column-border]) > ::content > tbody > tr  > td:last-child,
-			:host([no-column-border]) > ::content > tbody > tr  > th:last-child {
-				border-right:var(--d2l-table-outer-border);
+			:host > ::content > tbody > tr[active][selected] > td,
+			:host > ::content > tbody > tr[active][selected] > th,
+			:host([selectable]) > ::content > tbody > tr[selected]:hover > td,
+			:host([selectable]) > ::content > tbody > tr[selected]:hover > th,
+			:host > ::content > tbody > tr[active][selected] + tr > td,
+			:host > ::content > tbody > tr[active][selected] + tr > th,
+			:host([selectable]) > ::content > tbody > tr[selected]:hover + tr > td,
+			:host([selectable]) > ::content > tbody > tr[selected]:hover + tr > th {
+				border-top-color:var(--d2l-table-row-border-color-active-selected);
 			}
 
-			:host-context([dir="rtl"]) > ::content > tbody > tr[selected]  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > tbody > tr[selected]  > th:first-child,
-			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected]  > td:first-child,
-			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected]  > th:first-child,
-			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover  > td:first-child,
-			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover  > th:first-child {
-				border-left-color:var(--d2l-table-border-color);
+			:host > ::content > tbody > tr[active][selected],
+			:host([selectable]) > ::content > tbody > tr[selected]:hover {
+				background:var(--d2l-table-row-background-color-active-selected);
 			}
 
-			:host-context([dir="rtl"]):host([selectable]) > ::content > tbody > tr[selected]:hover  > td:first-child,
-			:host-context([dir="rtl"]):host([selectable]) > ::content > tbody > tr[selected]:hover  > th:first-child {
-				border-left-color:var(--d2l-table-border-color);
-			}
-
-			:host-context([dir="rtl"]) > ::content > tbody > tr[selected]  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > tbody > tr[selected]  > th:last-child,
-			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected]  > td:last-child,
-			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected]  > th:last-child,
-			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover  > td:last-child,
-			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover  > th:last-child {
-				border-right-color:var(--d2l-table-border-color);
-			}
-
-			:host-context([dir="rtl"]):host([selectable]) > ::content > tbody > tr[selected]:hover  > td:last-child,
-			:host-context([dir="rtl"]):host([selectable]) > ::content > tbody > tr[selected]:hover  > th:last-child {
-				border-right-color:var(--d2l-table-border-color);
+			:host > ::content > tbody > tr[selected] {
+				background:var(--d2l-table-row-background-color-selected);
 			}
 
 			:host > ::content > tbody > tr[selected] > td,
@@ -418,38 +138,309 @@
 				border-top-color:var(--d2l-table-row-border-color-selected);
 			}
 
-			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr  > td:first-child,
-			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr  > th:first-child {
+			:host > ::content > tfoot > tr:first-child > td,
+			:host > ::content > tfoot > tr:first-child > th {
+				border-top:none;
+			}
+
+			:host > ::content > tfoot ~ tbody:last-child > tr:last-child > td,
+			:host > ::content > tfoot ~ tbody:last-child > tr:last-child > th {
+				border-bottom:var(--d2l-table-border);
+			}
+
+			:host > ::content > thead > tr:first-child > td:first-child,
+			:host > ::content > thead > tr:first-child > th:first-child,
+			:host > ::content > tbody:first-of-type > tr:first-child > td:first-child,
+			:host > ::content > tbody:first-of-type > tr:first-child > th:first-child {
+				border-top-left-radius:var(--d2l-table-border-radius);
+			}
+
+			:host > ::content > thead > tr:first-child > td:last-child,
+			:host > ::content > thead > tr:first-child > th:last-child,
+			:host > ::content > tbody:first-of-type > tr:first-child > td:last-child,
+			:host > ::content > tbody:first-of-type > tr:first-child > th:last-child {
+				border-top-right-radius:var(--d2l-table-border-radius);
+			}
+
+			:host > ::content > thead > tr:first-child > th,
+			:host > ::content > tbody:first-of-type > tr:first-child > th {
+				border-top:var(--d2l-table-outer-border);
+			}
+
+			:host > ::content > thead ~ tbody:first-of-type > tr:first-child > td:first-child,
+			:host > ::content > thead ~ tbody:first-of-type > tr:first-child > th:first-child,
+			:host-context([dir="rtl"]) > ::content > thead ~ tbody:first-of-type > tr:first-child > td:last-child,
+			:host-context([dir="rtl"]) > ::content > thead ~ tbody:first-of-type > tr:first-child > th:last-child {
+				border-top-left-radius:0;
+			}
+
+			:host > ::content > thead ~ tbody:first-of-type > tr:first-child > td:last-child,
+			:host > ::content > thead ~ tbody:first-of-type > tr:first-child > th:last-child,
+			:host-context([dir="rtl"]) > ::content > thead ~ tbody:first-of-type > tr:first-child > td:first-child,
+			:host-context([dir="rtl"]) > ::content > thead ~ tbody:first-of-type > tr:first-child > th:first-child {
+				border-top-right-radius:0;
+			}
+
+			:host > ::content > thead ~ tbody:first-of-type > tr:first-child > th {
+				border-top:var(--d2l-table-border);
+			}
+
+			:host > ::content > thead:only-child > tr:last-child > td,
+			:host > ::content > thead:only-child > tr:last-child > th,
+			:host > ::content > tfoot > tr:last-child > td,
+			:host > ::content > tfoot > tr:last-child > th,
+			:host > ::content > tbody:last-child tr:last-child > td,
+			:host > ::content > tbody:last-child > tr:last-child > th,
+			:host > ::content > * > tr[last-row] > td,
+			:host > ::content > * > tr[last-row] > th {
+				border-bottom:var(--d2l-table-outer-border);
+			}
+
+			:host > ::content > thead:only-child > tr:last-child > td:first-child,
+			:host > ::content > thead:only-child > tr:last-child > th:first-child,
+			:host > ::content > tfoot > tr:last-child > td:first-child,
+			:host > ::content > tfoot > tr:last-child > th:first-child,
+			:host > ::content > tbody:last-child tr:last-child > td:first-child,
+			:host > ::content > tbody:last-child > tr:last-child > th:first-child,
+			:host > ::content > * > tr[last-row] > td:first-child,
+			:host > ::content > * > tr[last-row] > th:first-child {
+				border-bottom-left-radius:var(--d2l-table-border-radius);
+			}
+
+			:host > ::content > thead:only-child > tr:last-child > td:last-child,
+			:host > ::content > thead:only-child > tr:last-child > th:last-child,
+			:host > ::content > tfoot > tr:last-child > td:last-child,
+			:host > ::content > tfoot > tr:last-child > th:last-child,
+			:host > ::content > tbody:last-child tr:last-child > td:last-child,
+			:host > ::content > tbody:last-child > tr:last-child > th:last-child,
+			:host > ::content > * > tr[last-row] > td:last-child,
+			:host > ::content > * > tr[last-row] > th:last-child {
+				border-bottom-right-radius:var(--d2l-table-border-radius);
+			}
+
+			:host([no-column-border]) > ::content > tbody > tr > td,
+			:host([no-column-border]) > ::content > tbody > tr > th {
+				border-left:none;
+				border-right:none;
+			}
+
+			:host-context([dir="rtl"]) > ::content > * > tr > td,
+			:host-context([dir="rtl"]) > ::content > * > tr > th {
+				text-align:right;
+			}
+
+			:host-context([dir="rtl"]) > ::content > * > tr > td:first-child,
+			:host-context([dir="rtl"]) > ::content > * > tr > th:first-child {
+				border-left:0;
+			}
+
+			:host-context([dir="rtl"]) > ::content > * > tr > td:first-child,
+			:host-context([dir="rtl"]) > ::content > * > tr > th:first-child,
+			:host > ::content > * > tr > td:last-child,
+			:host > ::content > * > tr > th:last-child,
+			:host([no-column-border]) > ::content > tbody > tr > td:last-child,
+			:host([no-column-border]) > ::content > tbody > tr > th:last-child {
+				border-right:var(--d2l-table-outer-border);
+			}
+
+			:host-context([dir="rtl"]) > ::content > * > tr > td:last-child,
+			:host-context([dir="rtl"]) > ::content > * > tr > th:last-child {
+				border-right:var(--d2l-table-border);
+			}
+
+			:host-context([dir="rtl"]) > ::content > * > tr > td:last-child,
+			:host-context([dir="rtl"]) > ::content > * > tr > th:last-child,
+			:host > ::content > * > tr > td:first-child,
+			:host > ::content > * > tr > th:first-child,
+			:host([no-column-border]) > ::content > tbody > tr > td:first-child,
+			:host([no-column-border]) > ::content > tbody > tr > th:first-child {
+				border-left:var(--d2l-table-outer-border);
+			}
+
+			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected] > td:first-child,
+			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected] > th:first-child,
+			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover > td:first-child,
+			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover > th:first-child,
+			:host > ::content > tbody > tr[active][selected] > td:last-child,
+			:host > ::content > tbody > tr[active][selected] > th:last-child,
+			:host([selectable]) > ::content > tbody > tr[selected]:hover > td:last-child,
+			:host([selectable]) > ::content > tbody > tr[selected]:hover > th:last-child {
+				border-right-color:var(--d2l-table-outer-row-border-color-active-selected);
+			}
+
+			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected] > td:last-child,
+			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected] > th:last-child,
+			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover > td:last-child,
+			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover > th:last-child,
+			:host > ::content > tbody > tr[active][selected] > td:first-child,
+			:host > ::content > tbody > tr[active][selected] > th:first-child,
+			:host([selectable]) > ::content > tbody > tr[selected]:hover > td:first-child,
+			:host([selectable]) > ::content > tbody > tr[selected]:hover > th:first-child {
+				border-left-color:var(--d2l-table-outer-row-border-color-active-selected);
+			}
+
+			:host-context([dir="rtl"]) > ::content > tbody > tr[selected] > td:first-child,
+			:host-context([dir="rtl"]) > ::content > tbody > tr[selected] > th:first-child,
+			:host > ::content > tbody > tr[selected] > td:last-child,
+			:host > ::content > tbody > tr[selected] > th:last-child {
+				border-right-color:var(--d2l-table-outer-row-border-color-selected);
+			}
+
+			:host-context([dir="rtl"]) > ::content > tbody > tr[selected] > td:first-child,
+			:host-context([dir="rtl"]) > ::content > tbody > tr[selected] > th:first-child,
+			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected] > td:first-child,
+			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected] > th:first-child,
+			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover > td:first-child,
+			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover > th:first-child {
+				border-left-color:var(--d2l-table-border-color);
+			}
+
+			:host-context([dir="rtl"]) > ::content > tbody > tr[selected] > td:last-child,
+			:host-context([dir="rtl"]) > ::content > tbody > tr[selected] > th:last-child,
+			:host > ::content > tbody > tr[selected] > td:first-child,
+			:host > ::content > tbody > tr[selected] > th:first-child {
+				border-left-color:var(--d2l-table-outer-row-border-color-selected);
+			}
+
+			:host-context([dir="rtl"]) > ::content > tbody > tr[selected] > td:last-child,
+			:host-context([dir="rtl"]) > ::content > tbody > tr[selected] > th:last-child,
+			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected] > td:last-child,
+			:host-context([dir="rtl"]) > ::content > tbody > tr[active][selected] > th:last-child,
+			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover > td:last-child,
+			:host-context([dir="rtl"])[selectable] > ::content > tbody > tr[selected]:hover > th:last-child {
+				border-right-color:var(--d2l-table-border-color);
+			}
+
+			:host-context([dir="rtl"]) > ::content > tfoot ~ tbody:last-child > tr:last-child > td:first-child,
+			:host-context([dir="rtl"]) > ::content > tfoot ~ tbody:last-child > tr:last-child > th:first-child,
+			:host > ::content > tfoot ~ tbody:last-child > tr:last-child > td:last-child,
+			:host > ::content > tfoot ~ tbody:last-child > tr:last-child > th:last-child {
+				border-bottom-right-radius:0;
+			}
+
+			:host-context([dir="rtl"]) > ::content > tfoot ~ tbody:last-child > tr:last-child > td:last-child,
+			:host-context([dir="rtl"]) > ::content > tfoot ~ tbody:last-child > tr:last-child > th:last-child,
+			:host > ::content > tfoot ~ tbody:last-child > tr:last-child > td:first-child,
+			:host > ::content > tfoot ~ tbody:last-child > tr:last-child > th:first-child {
+				border-bottom-left-radius:0;
+			}
+
+			:host-context([dir="rtl"]) > ::content > tfoot ~ tbody:last-child > tr:last-child > td:only-child,
+			:host-context([dir="rtl"]) > ::content > tfoot ~ tbody:last-child > tr:last-child > th:only-child {
+				border-bottom-left-radius:0;
+				border-bottom-right-radius:0;
+			}
+
+			:host-context([dir="rtl"]) > ::content > thead > tr:first-child > td:first-child,
+			:host-context([dir="rtl"]) > ::content > thead > tr:first-child > th:first-child,
+			:host-context([dir="rtl"]) > ::content > tbody:first-of-type > tr:first-child > td:first-child,
+			:host-context([dir="rtl"]) > ::content > tbody:first-of-type > tr:first-child > th:first-child {
+				border-top-left-radius:0;
+				border-top-right-radius:var(--d2l-table-border-radius);
+			}
+
+			:host-context([dir="rtl"]) > ::content > thead > tr:first-child > td:last-child,
+			:host-context([dir="rtl"]) > ::content > thead > tr:first-child > th:last-child,
+			:host-context([dir="rtl"]) > ::content > tbody:first-of-type > tr:first-child > td:last-child,
+			:host-context([dir="rtl"]) > ::content > tbody:first-of-type > tr:first-child > th:last-child {
+				border-top-right-radius:0;
+				border-top-left-radius:var(--d2l-table-border-radius);
+			}
+
+			:host-context([dir="rtl"]) > ::content > thead > tr:first-child > td:only-child,
+			:host-context([dir="rtl"]) > ::content > thead > tr:first-child > th:only-child,
+			:host-context([dir="rtl"]) > ::content > tbody:first-of-type > tr:first-child > td:only-child,
+			:host-context([dir="rtl"]) > ::content > tbody:first-of-type > tr:first-child > th:only-child {
+				border-top-right-radius:var(--d2l-table-border-radius);
+				border-top-left-radius:var(--d2l-table-border-radius);
+			}
+
+			:host-context([dir="rtl"]) > ::content > thead ~ tbody:first-of-type > tr:first-child > td:only-child,
+			:host-context([dir="rtl"]) > ::content > thead ~ tbody:first-of-type > tr:first-child > th:only-child {
+				border-top-right-radius:0;
+				border-top-left-radius:0;
+			}
+
+			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child > td:first-child,
+			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child > th:first-child,
+			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child > td:first-child,
+			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child > th:first-child,
+			:host-context([dir="rtl"]) > ::content > tbody:last-child > tr:last-child > td:first-child,
+			:host-context([dir="rtl"]) > ::content > tbody:last-child > tr:last-child > th:first-child,
+			:host-context([dir="rtl"]) > ::content > * > tr[last-row] > td:first-child,
+			:host-context([dir="rtl"]) > ::content > * > tr[last-row] > th:first-child {
+				border-bottom-left-radius:0;
+				border-bottom-right-radius:var(--d2l-table-border-radius);
+			}
+
+			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child > td:last-child,
+			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child > th:last-child,
+			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child > td:last-child,
+			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child > th:last-child,
+			:host-context([dir="rtl"]) > ::content > tbody:last-child > tr:last-child > td:last-child,
+			:host-context([dir="rtl"]) > ::content > tbody:last-child > tr:last-child > th:last-child,
+			:host-context([dir="rtl"]) > ::content > * > tr[last-row] > td:last-child,
+			:host-context([dir="rtl"]) > ::content > * > tr[last-row] > th:last-child {
+				border-bottom-right-radius:0;
+				border-bottom-left-radius:var(--d2l-table-border-radius);
+			}
+
+			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child > td:only-child,
+			:host-context([dir="rtl"]) > ::content > thead:only-child > tr:last-child > th:only-child,
+			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child > td:only-child,
+			:host-context([dir="rtl"]) > ::content > tfoot > tr:last-child > th:only-child,
+			:host-context([dir="rtl"]) > ::content > tbody:last-child > tr:last-child > td:only-child,
+			:host-context([dir="rtl"]) > ::content > tbody:last-child > tr:last-child > th:only-child,
+			:host-context([dir="rtl"]) > ::content > * > tr[last-row] > td:only-child,
+			:host-context([dir="rtl"]) > ::content > * > tr[last-row] > th:only-child {
+				border-bottom-left-radius:var(--d2l-table-border-radius);
+				border-bottom-right-radius:var(--d2l-table-border-radius);
+			}
+
+			:host-context([dir="rtl"]):host([selectable]) > ::content > tbody > tr[selected]:hover > td:first-child,
+			:host-context([dir="rtl"]):host([selectable]) > ::content > tbody > tr[selected]:hover > th:first-child {
+				border-right-color:var(--d2l-table-outer-row-border-color-active-selected);
+				border-left-color:var(--d2l-table-border-color);
+			}
+
+			:host-context([dir="rtl"]):host([selectable]) > ::content > tbody > tr[selected]:hover > td:last-child,
+			:host-context([dir="rtl"]):host([selectable]) > ::content > tbody > tr[selected]:hover > th:last-child {
+				border-left-color:var(--d2l-table-outer-row-border-color-active-selected);
+				border-right-color:var(--d2l-table-border-color);
+			}
+
+			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > td:first-child,
+			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > th:first-child {
 				border-left:none;
 				border-right:var(--d2l-table-outer-border);
 			}
 
-			:host-context([dir="rtl"]):host([no-column-border]) > ::content > tbody > tr  > td:first-child,
-			:host-context([dir="rtl"]):host([no-column-border]) > ::content > tbody > tr  > th:first-child {
+			:host-context([dir="rtl"]):host([no-column-border]) > ::content > tbody > tr > td:first-child,
+			:host-context([dir="rtl"]):host([no-column-border]) > ::content > tbody > tr > th:first-child {
 				border-left:none;
 				border-right:var(--d2l-table-outer-border);
 			}
 
-			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr  > td:last-child,
-			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr  > th:last-child {
+			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > td:last-child,
+			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > th:last-child {
 				border-right:none;
 				border-left:var(--d2l-table-outer-border);
 			}
 
-			:host-context([dir="rtl"]):host([no-column-border]) > ::content > tbody > tr  > td:last-child,
-			:host-context([dir="rtl"]):host([no-column-border]) > ::content > tbody > tr  > th:last-child {
+			:host-context([dir="rtl"]):host([no-column-border]) > ::content > tbody > tr > td:last-child,
+			:host-context([dir="rtl"]):host([no-column-border]) > ::content > tbody > tr > th:last-child {
 				border-right:none;
 				border-left:var(--d2l-table-outer-border);
 			}
 
-			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr  > td:only-child,
-			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr  > th:only-child {
+			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > td:only-child,
+			:host-context([dir="rtl"])[no-column-border] > ::content > tbody > tr > th:only-child {
 				border-right:var(--d2l-table-outer-border);
 				border-left:var(--d2l-table-outer-border);
 			}
 
-			:host-context([dir="rtl"]):host([no-column-border]) > ::content > tbody > tr  > td:only-child,
-			:host-context([dir="rtl"]):host([no-column-border]) > ::content > tbody > tr  > th:only-child {
+			:host-context([dir="rtl"]):host([no-column-border]) > ::content > tbody > tr > td:only-child,
+			:host-context([dir="rtl"]):host([no-column-border]) > ::content > tbody > tr > th:only-child {
 				border-right:var(--d2l-table-outer-border);
 				border-left:var(--d2l-table-outer-border);
 			}
