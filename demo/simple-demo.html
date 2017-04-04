@@ -247,7 +247,7 @@
 					<th><span> </span></th>
 				</tr>
 				</thead>
-				<tbody>
+				<tbody id="tr-last-of-type-body">
 				<tr>
 					<td><span> </span></td>
 					<td><span> </span></td>
@@ -287,7 +287,11 @@
 	</template>
 	<script>
 		Polymer({
-			is: 'simple-demo'
+			is: 'simple-demo',
+			ready: function() {
+				var template = document.createElement('template');
+				this.$['tr-last-of-type-body'].appendChild(template);
+			}
 		});
 	</script>
 </dom-module>
