@@ -47,3 +47,9 @@
 			tr-*            tr
 		body                tbody
 			tr-*            tr
+
+	tr-last-of-type       .screenshot-tr-last-of-type
+		head              thead
+			tr-*          tr
+		body              tbody
+			tr-*          tr
