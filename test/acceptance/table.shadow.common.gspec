@@ -49,7 +49,7 @@
 			tr-*            tr
 
 	tr-last-of-type       body /deep/ .screenshot-tr-last-of-type
-	  head              thead
-		  tr-*          tr
+		head              thead
+			tr-*          tr
 		body              tbody
-		  tr-*          tr
+			tr-*          tr
