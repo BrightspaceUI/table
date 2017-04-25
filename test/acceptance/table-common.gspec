@@ -1,5 +1,5 @@
 @groups
-	imageCompare small.head,small.body,small.foot,simple.head,simple.body,simple.foot,no-column-border.head,no-column-border.body,notbody
+	imageCompare small.head,small.body,small.foot,simple.head,simple.body,simple.foot,no-column-border.head,no-column-border.body,tr-last-of-type.head,tr-last-of-type.body,notbody
 	all          &imageCompare,wide,sort,rows,rows-styled,no-column-border-styled.head,no-column-border-styled.body
 
 == D2L Table ==

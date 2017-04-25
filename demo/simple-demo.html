@@ -284,10 +284,37 @@
 				</tbody>
 			</table>
 		</div>
+		<div class="screenshots screenshot-tr-last-of-type">
+			<table is="d2l-table">
+				<thead>
+				<tr>
+					<th><span> </span></th>
+					<th><span> </span></th>
+					<th><span> </span></th>
+				</tr>
+				</thead>
+				<tbody id="tr-last-of-type-body">
+				<tr>
+					<td><span> </span></td>
+					<td><span> </span></td>
+					<td><span> </span></td>
+				</tr>
+				<tr>
+					<td><span> </span></td>
+					<td><span> </span></td>
+					<td><span> </span></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
 	</template>
 	<script>
 		Polymer({
-			is: 'simple-demo'
+			is: 'simple-demo',
+			ready: function() {
+				var template = document.createElement('template');
+				this.$['tr-last-of-type-body'].appendChild(template);
+			}
 		});
 	</script>
 </dom-module>
