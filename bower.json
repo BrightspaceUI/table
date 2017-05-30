@@ -9,7 +9,7 @@
     "package.json"
   ],
   "dependencies": {
-    "polymer": "1.9.1",
+    "polymer": "^1.9.1",
     "d2l-colors": "^2.3.0",
     "d2l-icons": "^3.2.0",
     "iron-resizable-behavior": "^2.0.0",
