@@ -9,15 +9,15 @@
     "package.json"
   ],
   "dependencies": {
-    "polymer": "1.9.1",
-    "d2l-colors": "^2.3.0",
-    "d2l-icons": "^3.2.0",
-    "iron-resizable-behavior": "^2.0.0",
+    "polymer": "^1.9.1",
+    "d2l-colors": "^2.4.0",
+    "d2l-icons": "^3.3.0",
+    "iron-resizable-behavior": "^1.0.6",
     "Stickyfill": "^1.1.4"
   },
   "devDependencies": {
     "d2l-demo-template": "^0.0.12",
-    "iron-component-page": "^2.0.0",
+    "iron-component-page": "^1.1.9",
     "polyperf": "https://github.com/Brightspace/polyperf.git",
     "web-component-tester": "^6.0.0"
   }
