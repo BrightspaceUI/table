@@ -13,7 +13,7 @@ A [Polymer](https://www.polymer-project.org/1.0/)-based web component for D2L ta
 
 ![screenshot of responsive table](test/acceptance/dumps/d2l-table/objects/wide.png)
 
-For further information on this and other D2L UI components, see the docs at [ui.valence.d2l.com](http://ui.valence.d2l.com/).
+For further information on this and other Brightspace UI components, see the docs at [ui.developers.brightspace.com](http://ui.developers.brightspace.com/).
 
 ## Installation
 
