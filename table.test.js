@@ -3,7 +3,8 @@
 'use strict';
 
 var browsers = {
-	chrome: new LocalBrowserFactory({ browser: 'chrome', size: '768x768' }),
+	phantomjs: new LocalBrowserFactory({ browser: 'phantomjs', size: '768x768' }),
+	//chrome: new LocalBrowserFactory({ browser: 'chrome', size: '768x768' }),
 	chromeWindows: new SauceBrowserFactory({
 		browser: 'Chrome',
 		platform: 'WIN10',
