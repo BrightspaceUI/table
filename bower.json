@@ -23,6 +23,7 @@
     "webcomponentsjs": "^0.7.24"
   },
   "resolutions": {
-    "webcomponentsjs": "^0.7.24"
+    "webcomponentsjs": "^0.7.24",
+    "hydrolysis": "^1.18"
   }
 }
