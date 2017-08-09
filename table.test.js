@@ -33,11 +33,6 @@ var browsers = {
 		browser: 'Safari',
 		platform: 'EL_CAPITAN',
 		size: '1400x900'
-	}),
-	firefoxMac: new SauceBrowserFactory({
-		browser: 'Firefox',
-		platform: 'EL_CAPITAN',
-		size: '1400x900'
 	})
 };
 
