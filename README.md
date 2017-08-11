@@ -7,13 +7,13 @@
 
 Tables are styled like this:
 
-A [Polymer](https://www.polymer-project.org/1.0/)-based web component for D2L tables, which includes styling for tables.
+A [Polymer](https://www.polymer-project.org)-based web component for D2L tables, which includes styling for tables.
 
 ![screenshot of table](test/acceptance/dumps/d2l-table-demo/objects/small.png)
 
 ![screenshot of responsive table](test/acceptance/dumps/d2l-table/objects/wide.png)
 
-For further information on this and other Brightspace UI components, see the docs at [ui.developers.brightspace.com](http://ui.developers.brightspace.com/).
+For further information on this and other Brightspace UI components, see the docs at [ui.developers.brightspace.com](http://ui.developers.brightspace.com).
 
 ## Installation
 
