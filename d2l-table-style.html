@@ -5,372 +5,372 @@
 <dom-module id="d2l-table-style">
 	<template>
 		<style>
-			.d2l-table {
+			d2l-table > table {
 				@apply --d2l-table;
 			}
 
-			.d2l-table > thead {
+			d2l-table > table > thead {
 				@apply --d2l-table-head;
 			}
 
-			.d2l-table > tfoot {
+			d2l-table > table > tfoot {
 				@apply --d2l-table-foot;
 			}
 
-			.d2l-table > tbody {
+			d2l-table > table > tbody {
 				@apply --d2l-table-body;
 			}
 
-			.d2l-table > * > tr {
+			d2l-table > table > * > tr {
 				@apply --d2l-table-row;
 			}
 
-			.d2l-table > * > tr > td,
-			.d2l-table > * > tr > th {
+			d2l-table > table > * > tr > td,
+			d2l-table > table > * > tr > th {
 				@apply --d2l-table-cell;
 			}
 
-			[dir="rtl"] .d2l-table > * > tr > td,
-			[dir="rtl"] .d2l-table > * > tr > th {
+			[dir="rtl"] d2l-table > table > * > tr > td,
+			[dir="rtl"] d2l-table > table > * > tr > th {
 				text-align:right;
 			}
 
-			.d2l-table > thead > tr > th,
-			.d2l-table > * > tr[header] > th {
+			d2l-table > table > thead > tr > th,
+			d2l-table > table > * > tr[header] > th {
 				@apply --d2l-table-header;
 			}
 
-			[dir="rtl"] .d2l-table > * > tr  > td:first-child,
-			[dir="rtl"] .d2l-table > * > tr  > th:first-child {
+			[dir="rtl"] d2l-table > table > * > tr  > td:first-child,
+			[dir="rtl"] d2l-table > table > * > tr  > th:first-child {
 				border-left:0;
 			}
 
-			[dir="rtl"] .d2l-table > * > tr  > td:last-child,
-			[dir="rtl"] .d2l-table > * > tr  > th:last-child {
+			[dir="rtl"] d2l-table > table > * > tr  > td:last-child,
+			[dir="rtl"] d2l-table > table > * > tr  > th:last-child {
 				border-right:var(--d2l-table-border);
 			}
 
-			[dir="rtl"] .d2l-table > thead > tr:first-child  > td:first-child,
-			[dir="rtl"] .d2l-table > thead > tr:first-child  > th:first-child,
-			[dir="rtl"] .d2l-table > tbody:first-of-type > tr:first-child  > td:first-child,
-			[dir="rtl"] .d2l-table > tbody:first-of-type > tr:first-child  > th:first-child {
+			[dir="rtl"] d2l-table > table > thead > tr:first-child  > td:first-child,
+			[dir="rtl"] d2l-table > table > thead > tr:first-child  > th:first-child,
+			[dir="rtl"] d2l-table > table > tbody:first-of-type > tr:first-child  > td:first-child,
+			[dir="rtl"] d2l-table > table > tbody:first-of-type > tr:first-child  > th:first-child {
 				border-top-left-radius:0;
 				border-top-right-radius:var(--d2l-table-border-radius);
 			}
 
-			.d2l-table > thead > tr:first-child  > td:last-child,
-			.d2l-table > thead > tr:first-child  > th:last-child,
-			.d2l-table > tbody:first-of-type > tr:first-child  > td:last-child,
-			.d2l-table > tbody:first-of-type > tr:first-child  > th:last-child {
+			d2l-table > table > thead > tr:first-child  > td:last-child,
+			d2l-table > table > thead > tr:first-child  > th:last-child,
+			d2l-table > table > tbody:first-of-type > tr:first-child  > td:last-child,
+			d2l-table > table > tbody:first-of-type > tr:first-child  > th:last-child {
 				border-top-right-radius:var(--d2l-table-border-radius);
 			}
 
-			.d2l-table > thead ~ tbody:first-of-type > tr:first-child  > td:last-child,
-			.d2l-table > thead ~ tbody:first-of-type > tr:first-child  > th:last-child,
-			[dir="rtl"] .d2l-table > thead ~ tbody:first-of-type > tr:first-child  > td:first-child,
-			[dir="rtl"] .d2l-table > thead ~ tbody:first-of-type > tr:first-child  > th:first-child {
+			d2l-table > table > thead ~ tbody:first-of-type > tr:first-child  > td:last-child,
+			d2l-table > table > thead ~ tbody:first-of-type > tr:first-child  > th:last-child,
+			[dir="rtl"] d2l-table > table > thead ~ tbody:first-of-type > tr:first-child  > td:first-child,
+			[dir="rtl"] d2l-table > table > thead ~ tbody:first-of-type > tr:first-child  > th:first-child {
 				border-top-right-radius:0;
 			}
 
-			.d2l-table > thead > tr:first-child > th,
-			.d2l-table > tbody:first-of-type > tr:first-child > th {
+			d2l-table > table > thead > tr:first-child > th,
+			d2l-table > table > tbody:first-of-type > tr:first-child > th {
 				border-top:var(--d2l-table-outer-border);
 			}
 
-			.d2l-table > thead ~ tbody:first-of-type > tr:first-child > th {
+			d2l-table > table > thead ~ tbody:first-of-type > tr:first-child > th {
 				border-top:var(--d2l-table-border);
 			}
 
-			[dir="rtl"] .d2l-table > thead > tr:first-child  > td:last-child,
-			[dir="rtl"] .d2l-table > thead > tr:first-child  > th:last-child,
-			[dir="rtl"] .d2l-table > tbody:first-of-type > tr:first-child  > td:last-child,
-			[dir="rtl"] .d2l-table > tbody:first-of-type > tr:first-child  > th:last-child {
+			[dir="rtl"] d2l-table > table > thead > tr:first-child  > td:last-child,
+			[dir="rtl"] d2l-table > table > thead > tr:first-child  > th:last-child,
+			[dir="rtl"] d2l-table > table > tbody:first-of-type > tr:first-child  > td:last-child,
+			[dir="rtl"] d2l-table > table > tbody:first-of-type > tr:first-child  > th:last-child {
 				border-top-right-radius:0;
 				border-top-left-radius:var(--d2l-table-border-radius);
 			}
 
-			.d2l-table > thead > tr:first-child  > td:first-child,
-			.d2l-table > thead > tr:first-child  > th:first-child,
-			.d2l-table > tbody:first-of-type > tr:first-child  > td:first-child,
-			.d2l-table > tbody:first-of-type > tr:first-child  > th:first-child {
+			d2l-table > table > thead > tr:first-child  > td:first-child,
+			d2l-table > table > thead > tr:first-child  > th:first-child,
+			d2l-table > table > tbody:first-of-type > tr:first-child  > td:first-child,
+			d2l-table > table > tbody:first-of-type > tr:first-child  > th:first-child {
 				border-top-left-radius:var(--d2l-table-border-radius);
 			}
 
-			.d2l-table > thead ~ tbody:first-of-type > tr:first-child  > td:first-child,
-			.d2l-table > thead ~ tbody:first-of-type > tr:first-child  > th:first-child,
-			[dir="rtl"] .d2l-table > thead ~ tbody:first-of-type > tr:first-child  > td:last-child,
-			[dir="rtl"] .d2l-table > thead ~ tbody:first-of-type > tr:first-child  > th:last-child {
+			d2l-table > table > thead ~ tbody:first-of-type > tr:first-child  > td:first-child,
+			d2l-table > table > thead ~ tbody:first-of-type > tr:first-child  > th:first-child,
+			[dir="rtl"] d2l-table > table > thead ~ tbody:first-of-type > tr:first-child  > td:last-child,
+			[dir="rtl"] d2l-table > table > thead ~ tbody:first-of-type > tr:first-child  > th:last-child {
 				border-top-left-radius:0;
 			}
 
 			/* This is needed for the rtl case when the there is only one td/th in a row. Doesn't affect all browsers */
-			[dir="rtl"] .d2l-table > thead > tr:first-child  > td:only-child,
-			[dir="rtl"] .d2l-table > thead > tr:first-child  > th:only-child,
-			[dir="rtl"] .d2l-table > tbody:first-of-type > tr:first-child  > td:only-child,
-			[dir="rtl"] .d2l-table > tbody:first-of-type > tr:first-child  > th:only-child {
+			[dir="rtl"] d2l-table > table > thead > tr:first-child  > td:only-child,
+			[dir="rtl"] d2l-table > table > thead > tr:first-child  > th:only-child,
+			[dir="rtl"] d2l-table > table > tbody:first-of-type > tr:first-child  > td:only-child,
+			[dir="rtl"] d2l-table > table > tbody:first-of-type > tr:first-child  > th:only-child {
 				border-top-right-radius:var(--d2l-table-border-radius);
 				border-top-left-radius:var(--d2l-table-border-radius);
 			}
 
-			[dir="rtl"] .d2l-table > thead ~ tbody:first-of-type > tr:first-child  > td:only-child,
-			[dir="rtl"] .d2l-table > thead ~ tbody:first-of-type > tr:first-child  > th:only-child {
+			[dir="rtl"] d2l-table > table > thead ~ tbody:first-of-type > tr:first-child  > td:only-child,
+			[dir="rtl"] d2l-table > table > thead ~ tbody:first-of-type > tr:first-child  > th:only-child {
 				border-top-right-radius:0;
 				border-top-left-radius:0;
 			}
 
-			[dir="rtl"] .d2l-table > thead:only-child > tr:last-of-type  > td:first-child,
-			[dir="rtl"] .d2l-table > thead:only-child > tr:last-of-type  > th:first-child,
-			[dir="rtl"] .d2l-table > tfoot > tr:last-of-type  > td:first-child,
-			[dir="rtl"] .d2l-table > tfoot > tr:last-of-type  > th:first-child,
-			[dir="rtl"] .d2l-table > tbody:last-child > tr:last-of-type  > td:first-child,
-			[dir="rtl"] .d2l-table > tbody:last-child > tr:last-of-type  > th:first-child,
-			[dir="rtl"] .d2l-table > * > tr[last-row]  > td:first-child,
-			[dir="rtl"] .d2l-table > * > tr[last-row]  > th:first-child {
+			[dir="rtl"] d2l-table > table > thead:only-child > tr:last-of-type  > td:first-child,
+			[dir="rtl"] d2l-table > table > thead:only-child > tr:last-of-type  > th:first-child,
+			[dir="rtl"] d2l-table > table > tfoot > tr:last-of-type  > td:first-child,
+			[dir="rtl"] d2l-table > table > tfoot > tr:last-of-type  > th:first-child,
+			[dir="rtl"] d2l-table > table > tbody:last-child > tr:last-of-type  > td:first-child,
+			[dir="rtl"] d2l-table > table > tbody:last-child > tr:last-of-type  > th:first-child,
+			[dir="rtl"] d2l-table > table > * > tr[last-row]  > td:first-child,
+			[dir="rtl"] d2l-table > table > * > tr[last-row]  > th:first-child {
 				border-bottom-left-radius:0;
 				border-bottom-right-radius:var(--d2l-table-border-radius);
 			}
 
-			.d2l-table > thead:only-child > tr:last-of-type  > td:last-child,
-			.d2l-table > thead:only-child > tr:last-of-type  > th:last-child,
-			.d2l-table > tfoot > tr:last-of-type  > td:last-child,
-			.d2l-table > tfoot > tr:last-of-type  > th:last-child,
-			.d2l-table > tbody:last-child > tr:last-of-type  > td:last-child,
-			.d2l-table > tbody:last-child > tr:last-of-type  > th:last-child,
-			.d2l-table > * > tr[last-row]  > td:last-child,
-			.d2l-table > * > tr[last-row]  > th:last-child {
+			d2l-table > table > thead:only-child > tr:last-of-type  > td:last-child,
+			d2l-table > table > thead:only-child > tr:last-of-type  > th:last-child,
+			d2l-table > table > tfoot > tr:last-of-type  > td:last-child,
+			d2l-table > table > tfoot > tr:last-of-type  > th:last-child,
+			d2l-table > table > tbody:last-child > tr:last-of-type  > td:last-child,
+			d2l-table > table > tbody:last-child > tr:last-of-type  > th:last-child,
+			d2l-table > table > * > tr[last-row]  > td:last-child,
+			d2l-table > table > * > tr[last-row]  > th:last-child {
 				border-bottom-right-radius:var(--d2l-table-border-radius);
 			}
 
-			[dir="rtl"] .d2l-table > tfoot ~ tbody:last-child > tr:last-of-type  > td:first-child,
-			[dir="rtl"] .d2l-table > tfoot ~ tbody:last-child > tr:last-of-type  > th:first-child,
-			.d2l-table > tfoot ~ tbody:last-child > tr:last-of-type  > td:last-child,
-			.d2l-table > tfoot ~ tbody:last-child > tr:last-of-type  > th:last-child {
+			[dir="rtl"] d2l-table > table > tfoot ~ tbody:last-child > tr:last-of-type  > td:first-child,
+			[dir="rtl"] d2l-table > table > tfoot ~ tbody:last-child > tr:last-of-type  > th:first-child,
+			d2l-table > table > tfoot ~ tbody:last-child > tr:last-of-type  > td:last-child,
+			d2l-table > table > tfoot ~ tbody:last-child > tr:last-of-type  > th:last-child {
 				border-bottom-right-radius:0;
 			}
 
-			.d2l-table > thead:only-child > tr:last-of-type  > td,
-			.d2l-table > thead:only-child > tr:last-of-type  > th,
-			.d2l-table > tfoot > tr:last-of-type  > td,
-			.d2l-table > tfoot > tr:last-of-type  > th,
-			.d2l-table > tbody:last-child > tr:last-of-type  > td,
-			.d2l-table > tbody:last-child > tr:last-of-type  > th,
-			.d2l-table > * > tr[last-row]  > td,
-			.d2l-table > * > tr[last-row]  > th {
+			d2l-table > table > thead:only-child > tr:last-of-type  > td,
+			d2l-table > table > thead:only-child > tr:last-of-type  > th,
+			d2l-table > table > tfoot > tr:last-of-type  > td,
+			d2l-table > table > tfoot > tr:last-of-type  > th,
+			d2l-table > table > tbody:last-child > tr:last-of-type  > td,
+			d2l-table > table > tbody:last-child > tr:last-of-type  > th,
+			d2l-table > table > * > tr[last-row]  > td,
+			d2l-table > table > * > tr[last-row]  > th {
 				border-bottom:var(--d2l-table-outer-border);
 			}
 
-			.d2l-table > tfoot ~ tbody:last-child > tr:last-of-type  > td,
-			.d2l-table > tfoot ~ tbody:last-child > tr:last-of-type  > th {
+			d2l-table > table > tfoot ~ tbody:last-child > tr:last-of-type  > td,
+			d2l-table > table > tfoot ~ tbody:last-child > tr:last-of-type  > th {
 				border-bottom:var(--d2l-table-border);
 			}
 
-			[dir="rtl"] .d2l-table > thead:only-child > tr:last-of-type  > td:last-child,
-			[dir="rtl"] .d2l-table > thead:only-child > tr:last-of-type  > th:last-child,
-			[dir="rtl"] .d2l-table > tfoot > tr:last-of-type  > td:last-child,
-			[dir="rtl"] .d2l-table > tfoot > tr:last-of-type  > th:last-child,
-			[dir="rtl"] .d2l-table > tbody:last-child > tr:last-of-type  > td:last-child,
-			[dir="rtl"] .d2l-table > tbody:last-child > tr:last-of-type  > th:last-child,
-			[dir="rtl"] .d2l-table > * > tr[last-row]  > td:last-child,
-			[dir="rtl"] .d2l-table > * > tr[last-row]  > th:last-child {
+			[dir="rtl"] d2l-table > table > thead:only-child > tr:last-of-type  > td:last-child,
+			[dir="rtl"] d2l-table > table > thead:only-child > tr:last-of-type  > th:last-child,
+			[dir="rtl"] d2l-table > table > tfoot > tr:last-of-type  > td:last-child,
+			[dir="rtl"] d2l-table > table > tfoot > tr:last-of-type  > th:last-child,
+			[dir="rtl"] d2l-table > table > tbody:last-child > tr:last-of-type  > td:last-child,
+			[dir="rtl"] d2l-table > table > tbody:last-child > tr:last-of-type  > th:last-child,
+			[dir="rtl"] d2l-table > table > * > tr[last-row]  > td:last-child,
+			[dir="rtl"] d2l-table > table > * > tr[last-row]  > th:last-child {
 				border-bottom-right-radius:0;
 				border-bottom-left-radius:var(--d2l-table-border-radius);
 			}
 
-			.d2l-table > thead:only-child > tr:last-of-type  > td:first-child,
-			.d2l-table > thead:only-child > tr:last-of-type  > th:first-child,
-			.d2l-table > tfoot > tr:last-of-type  > td:first-child,
-			.d2l-table > tfoot > tr:last-of-type  > th:first-child,
-			.d2l-table > tbody:last-child > tr:last-of-type  > td:first-child,
-			.d2l-table > tbody:last-child > tr:last-of-type  > th:first-child,
-			.d2l-table > * > tr[last-row]  > td:first-child,
-			.d2l-table > * > tr[last-row]  > th:first-child {
+			d2l-table > table > thead:only-child > tr:last-of-type  > td:first-child,
+			d2l-table > table > thead:only-child > tr:last-of-type  > th:first-child,
+			d2l-table > table > tfoot > tr:last-of-type  > td:first-child,
+			d2l-table > table > tfoot > tr:last-of-type  > th:first-child,
+			d2l-table > table > tbody:last-child > tr:last-of-type  > td:first-child,
+			d2l-table > table > tbody:last-child > tr:last-of-type  > th:first-child,
+			d2l-table > table > * > tr[last-row]  > td:first-child,
+			d2l-table > table > * > tr[last-row]  > th:first-child {
 				border-bottom-left-radius:var(--d2l-table-border-radius);
 			}
 
-			[dir="rtl"] .d2l-table > tfoot ~ tbody:last-child > tr:last-of-type  > td:last-child,
-			[dir="rtl"] .d2l-table > tfoot ~ tbody:last-child > tr:last-of-type  > th:last-child,
-			.d2l-table > tfoot ~ tbody:last-child > tr:last-of-type  > td:first-child,
-			.d2l-table > tfoot ~ tbody:last-child > tr:last-of-type  > th:first-child {
+			[dir="rtl"] d2l-table > table > tfoot ~ tbody:last-child > tr:last-of-type  > td:last-child,
+			[dir="rtl"] d2l-table > table > tfoot ~ tbody:last-child > tr:last-of-type  > th:last-child,
+			d2l-table > table > tfoot ~ tbody:last-child > tr:last-of-type  > td:first-child,
+			d2l-table > table > tfoot ~ tbody:last-child > tr:last-of-type  > th:first-child {
 				border-bottom-left-radius:0;
 			}
 
-			[dir="rtl"] .d2l-table > thead:only-child > tr:last-of-type  > td:only-child,
-			[dir="rtl"] .d2l-table > thead:only-child > tr:last-of-type  > th:only-child,
-			[dir="rtl"] .d2l-table > tfoot > tr:last-of-type  > td:only-child,
-			[dir="rtl"] .d2l-table > tfoot > tr:last-of-type  > th:only-child,
-			[dir="rtl"] .d2l-table > tbody:last-child > tr:last-of-type  > td:only-child,
-			[dir="rtl"] .d2l-table > tbody:last-child > tr:last-of-type  > th:only-child,
-			[dir="rtl"] .d2l-table > * > tr[last-row]  > td:only-child,
-			[dir="rtl"] .d2l-table > * > tr[last-row]  > th:only-child {
+			[dir="rtl"] d2l-table > table > thead:only-child > tr:last-of-type  > td:only-child,
+			[dir="rtl"] d2l-table > table > thead:only-child > tr:last-of-type  > th:only-child,
+			[dir="rtl"] d2l-table > table > tfoot > tr:last-of-type  > td:only-child,
+			[dir="rtl"] d2l-table > table > tfoot > tr:last-of-type  > th:only-child,
+			[dir="rtl"] d2l-table > table > tbody:last-child > tr:last-of-type  > td:only-child,
+			[dir="rtl"] d2l-table > table > tbody:last-child > tr:last-of-type  > th:only-child,
+			[dir="rtl"] d2l-table > table > * > tr[last-row]  > td:only-child,
+			[dir="rtl"] d2l-table > table > * > tr[last-row]  > th:only-child {
 				border-bottom-left-radius:var(--d2l-table-border-radius);
 				border-bottom-right-radius:var(--d2l-table-border-radius);
 			}
 
-			[dir="rtl"] .d2l-table > tfoot ~ tbody:last-child > tr:last-of-type  > td:only-child,
-			[dir="rtl"] .d2l-table > tfoot ~ tbody:last-child > tr:last-of-type  > th:only-child {
+			[dir="rtl"] d2l-table > table > tfoot ~ tbody:last-child > tr:last-of-type  > td:only-child,
+			[dir="rtl"] d2l-table > table > tfoot ~ tbody:last-child > tr:last-of-type  > th:only-child {
 				border-bottom-left-radius:0;
 				border-bottom-right-radius:0;
 			}
 
-			.d2l-table > tfoot > tr:first-child> td,
-			.d2l-table > tfoot > tr:first-child> th {
+			d2l-table > table > tfoot > tr:first-child> td,
+			d2l-table > table > tfoot > tr:first-child> th {
 				border-top:none;
 			}
 
-			.d2l-table > tbody > tr[active],
-			.d2l-table[selectable] > tbody > tr:not([selected]):hover {
+			d2l-table > table > tbody > tr[active],
+			d2l-table > table[selectable] > tbody > tr:not([selected]):hover {
 				background-color:var(--d2l-table-row-background-color-active);
 			}
 
-			.d2l-table > tbody > tr[selected] {
+			d2l-table > table > tbody > tr[selected] {
 				background-color:var(--d2l-table-row-background-color-selected);
 			}
 
-			[dir="rtl"] .d2l-table > tbody > tr[selected]  > td:first-child,
-			[dir="rtl"] .d2l-table > tbody > tr[selected]  > th:first-child,
-			.d2l-table > tbody > tr[selected]  > td:last-child,
-			.d2l-table > tbody > tr[selected]  > th:last-child {
+			[dir="rtl"] d2l-table > table > tbody > tr[selected]  > td:first-child,
+			[dir="rtl"] d2l-table > table > tbody > tr[selected]  > th:first-child,
+			d2l-table > table > tbody > tr[selected]  > td:last-child,
+			d2l-table > table > tbody > tr[selected]  > th:last-child {
 				border-right-color:var(--d2l-table-outer-row-border-color-selected);
 			}
 
-			[dir="rtl"] .d2l-table > tbody > tr[selected]  > td:last-child,
-			[dir="rtl"] .d2l-table > tbody > tr[selected]  > th:last-child,
-			.d2l-table > tbody > tr[selected]  > td:first-child,
-			.d2l-table > tbody > tr[selected]  > th:first-child {
+			[dir="rtl"] d2l-table > table > tbody > tr[selected]  > td:last-child,
+			[dir="rtl"] d2l-table > table > tbody > tr[selected]  > th:last-child,
+			d2l-table > table > tbody > tr[selected]  > td:first-child,
+			d2l-table > table > tbody > tr[selected]  > th:first-child {
 				border-left-color:var(--d2l-table-outer-row-border-color-selected);
 			}
 
-			.d2l-table > tbody > tr[active][selected],
-			.d2l-table[selectable] > tbody > tr[selected]:hover {
+			d2l-table > table > tbody > tr[active][selected],
+			d2l-table > table[selectable] > tbody > tr[selected]:hover {
 				background-color:var(--d2l-table-row-background-color-active-selected);
 			}
 
-			[dir="rtl"] .d2l-table > tbody > tr[active][selected]  > td:first-child,
-			[dir="rtl"] .d2l-table > tbody > tr[active][selected]  > th:first-child,
-			[dir="rtl"] .d2l-table[selectable] > tbody > tr[selected]:hover  > td:first-child,
-			[dir="rtl"] .d2l-table[selectable] > tbody > tr[selected]:hover  > th:first-child,
-			.d2l-table > tbody > tr[active][selected]  > td:last-child,
-			.d2l-table > tbody > tr[active][selected]  > th:last-child,
-			.d2l-table[selectable] > tbody > tr[selected]:hover  > td:last-child,
-			.d2l-table[selectable] > tbody > tr[selected]:hover  > th:last-child {
+			[dir="rtl"] d2l-table > table > tbody > tr[active][selected]  > td:first-child,
+			[dir="rtl"] d2l-table > table > tbody > tr[active][selected]  > th:first-child,
+			[dir="rtl"] d2l-table > table[selectable] > tbody > tr[selected]:hover  > td:first-child,
+			[dir="rtl"] d2l-table > table[selectable] > tbody > tr[selected]:hover  > th:first-child,
+			d2l-table > table > tbody > tr[active][selected]  > td:last-child,
+			d2l-table > table > tbody > tr[active][selected]  > th:last-child,
+			d2l-table > table[selectable] > tbody > tr[selected]:hover  > td:last-child,
+			d2l-table > table[selectable] > tbody > tr[selected]:hover  > th:last-child {
 				border-right-color:var(--d2l-table-outer-row-border-color-active-selected);
 			}
 
-			[dir="rtl"] .d2l-table > tbody > tr[active][selected]  > td:last-child,
-			[dir="rtl"] .d2l-table > tbody > tr[active][selected]  > th:last-child,
-			[dir="rtl"] .d2l-table[selectable] > tbody > tr[selected]:hover  > td:last-child,
-			[dir="rtl"] .d2l-table[selectable] > tbody > tr[selected]:hover  > th:last-child,
-			.d2l-table > tbody > tr[active][selected]  > td:first-child,
-			.d2l-table > tbody > tr[active][selected]  > th:first-child,
-			.d2l-table[selectable] > tbody > tr[selected]:hover  > td:first-child,
-			.d2l-table[selectable] > tbody > tr[selected]:hover  > th:first-child {
+			[dir="rtl"] d2l-table > table > tbody > tr[active][selected]  > td:last-child,
+			[dir="rtl"] d2l-table > table > tbody > tr[active][selected]  > th:last-child,
+			[dir="rtl"] d2l-table > table[selectable] > tbody > tr[selected]:hover  > td:last-child,
+			[dir="rtl"] d2l-table > table[selectable] > tbody > tr[selected]:hover  > th:last-child,
+			d2l-table > table > tbody > tr[active][selected]  > td:first-child,
+			d2l-table > table > tbody > tr[active][selected]  > th:first-child,
+			d2l-table > table[selectable] > tbody > tr[selected]:hover  > td:first-child,
+			d2l-table > table[selectable] > tbody > tr[selected]:hover  > th:first-child {
 				border-left-color:var(--d2l-table-outer-row-border-color-active-selected);
 			}
 
-			.d2l-table > tbody > tr[active][selected] > td,
-			.d2l-table > tbody > tr[active][selected] > th,
-			.d2l-table[selectable] > tbody > tr[selected]:hover > td,
-			.d2l-table[selectable] > tbody > tr[selected]:hover > th,
-			.d2l-table > tbody > tr[active][selected] + tr > td,
-			.d2l-table > tbody > tr[active][selected] + tr > th,
-			.d2l-table[selectable] > tbody > tr[selected]:hover + tr > td,
-			.d2l-table[selectable] > tbody > tr[selected]:hover + tr > th {
+			d2l-table > table > tbody > tr[active][selected] > td,
+			d2l-table > table > tbody > tr[active][selected] > th,
+			d2l-table > table[selectable] > tbody > tr[selected]:hover > td,
+			d2l-table > table[selectable] > tbody > tr[selected]:hover > th,
+			d2l-table > table > tbody > tr[active][selected] + tr > td,
+			d2l-table > table > tbody > tr[active][selected] + tr > th,
+			d2l-table > table[selectable] > tbody > tr[selected]:hover + tr > td,
+			d2l-table > table[selectable] > tbody > tr[selected]:hover + tr > th {
 				border-top-color:var(--d2l-table-row-border-color-active-selected);
 			}
 
-			.d2l-table > tbody > tr:first-child[selected] > td,
-			.d2l-table > tbody > tr:first-child[selected] > th {
+			d2l-table > table > tbody > tr:first-child[selected] > td,
+			d2l-table > table > tbody > tr:first-child[selected] > th {
 				border-top-color:var(--d2l-table-outer-row-border-color-selected);
 			}
 
-			.d2l-table > tbody > tr:first-child[active][selected] > td,
-			.d2l-table > tbody > tr:first-child[active][selected] > th,
-			.d2l-table[selectable] > tbody > tr:first-child[selected]:hover > td,
-			.d2l-table[selectable] > tbody > tr:first-child[selected]:hover > th {
+			d2l-table > table > tbody > tr:first-child[active][selected] > td,
+			d2l-table > table > tbody > tr:first-child[active][selected] > th,
+			d2l-table > table[selectable] > tbody > tr:first-child[selected]:hover > td,
+			d2l-table > table[selectable] > tbody > tr:first-child[selected]:hover > th {
 				border-top-color:var(--d2l-table-outer-row-border-color-active-selected);
 			}
 
-			.d2l-table > tbody > tr:last-of-type[selected] > td,
-			.d2l-table > tbody > tr:last-of-type[selected] > th,
-			.d2l-table > tbody > tr[last-row][selected] > td,
-			.d2l-table > tbody > tr[last-row][selected] > th {
+			d2l-table > table > tbody > tr:last-of-type[selected] > td,
+			d2l-table > table > tbody > tr:last-of-type[selected] > th,
+			d2l-table > table > tbody > tr[last-row][selected] > td,
+			d2l-table > table > tbody > tr[last-row][selected] > th {
 				border-bottom-color:var(--d2l-table-outer-row-border-color-selected);
 			}
 
-			.d2l-table > tbody > tr:last-of-type[active][selected] > td,
-			.d2l-table > tbody > tr:last-of-type[active][selected] > th,
-			.d2l-table[selectable] > tbody > tr:last-of-type[selected]:hover > td,
-			.d2l-table[selectable] > tbody > tr:last-of-type[selected]:hover > th,
-			.d2l-table > tbody > tr[last-row][active][selected] > td,
-			.d2l-table > tbody > tr[last-row][active][selected] > th,
-			.d2l-table[selectable] > tbody > tr[last-row][selected]:hover > td,
-			.d2l-table[selectable] > tbody > tr[last-row][selected]:hover > th {
+			d2l-table > table > tbody > tr:last-of-type[active][selected] > td,
+			d2l-table > table > tbody > tr:last-of-type[active][selected] > th,
+			d2l-table > table[selectable] > tbody > tr:last-of-type[selected]:hover > td,
+			d2l-table > table[selectable] > tbody > tr:last-of-type[selected]:hover > th,
+			d2l-table > table > tbody > tr[last-row][active][selected] > td,
+			d2l-table > table > tbody > tr[last-row][active][selected] > th,
+			d2l-table > table[selectable] > tbody > tr[last-row][selected]:hover > td,
+			d2l-table > table[selectable] > tbody > tr[last-row][selected]:hover > th {
 				border-bottom-color:var(--d2l-table-outer-row-border-color-active-selected);
 			}
 
-			.d2l-table[no-column-border] > tbody > tr > td,
-			.d2l-table[no-column-border] > tbody > tr > th {
+			d2l-table > table[no-column-border] > tbody > tr > td,
+			d2l-table > table[no-column-border] > tbody > tr > th {
 				border-left:none;
 				border-right:none;
 			}
 
-			[dir="rtl"] .d2l-table > * > tr  > td:last-child,
-			[dir="rtl"] .d2l-table > * > tr  > th:last-child,
-			.d2l-table > * > tr  > td:first-child,
-			.d2l-table > * > tr  > th:first-child,
-			.d2l-table[no-column-border] > tbody > tr  > td:first-child,
-			.d2l-table[no-column-border] > tbody > tr  > th:first-child {
+			[dir="rtl"] d2l-table > table > * > tr  > td:last-child,
+			[dir="rtl"] d2l-table > table > * > tr  > th:last-child,
+			d2l-table > table > * > tr  > td:first-child,
+			d2l-table > table > * > tr  > th:first-child,
+			d2l-table > table[no-column-border] > tbody > tr  > td:first-child,
+			d2l-table > table[no-column-border] > tbody > tr  > th:first-child {
 				border-left:var(--d2l-table-outer-border);
 			}
 
-			[dir="rtl"] .d2l-table > * > tr  > td:first-child,
-			[dir="rtl"] .d2l-table > * > tr  > th:first-child,
-			.d2l-table > * > tr  > td:last-child,
-			.d2l-table > * > tr  > th:last-child,
-			.d2l-table[no-column-border] > tbody > tr  > td:last-child,
-			.d2l-table[no-column-border] > tbody > tr  > th:last-child {
+			[dir="rtl"] d2l-table > table > * > tr  > td:first-child,
+			[dir="rtl"] d2l-table > table > * > tr  > th:first-child,
+			d2l-table > table > * > tr  > td:last-child,
+			d2l-table > table > * > tr  > th:last-child,
+			d2l-table > table[no-column-border] > tbody > tr  > td:last-child,
+			d2l-table > table[no-column-border] > tbody > tr  > th:last-child {
 				border-right:var(--d2l-table-outer-border);
 			}
 
-			[dir="rtl"] .d2l-table > tbody > tr[selected]  > td:first-child,
-			[dir="rtl"] .d2l-table > tbody > tr[selected]  > th:first-child,
-			[dir="rtl"] .d2l-table > tbody > tr[active][selected]  > td:first-child,
-			[dir="rtl"] .d2l-table > tbody > tr[active][selected]  > th:first-child,
-			[dir="rtl"] .d2l-table[selectable] > tbody > tr[selected]:hover  > td:first-child,
-			[dir="rtl"] .d2l-table[selectable] > tbody > tr[selected]:hover  > th:first-child {
+			[dir="rtl"] d2l-table > table > tbody > tr[selected]  > td:first-child,
+			[dir="rtl"] d2l-table > table > tbody > tr[selected]  > th:first-child,
+			[dir="rtl"] d2l-table > table > tbody > tr[active][selected]  > td:first-child,
+			[dir="rtl"] d2l-table > table > tbody > tr[active][selected]  > th:first-child,
+			[dir="rtl"] d2l-table > table[selectable] > tbody > tr[selected]:hover  > td:first-child,
+			[dir="rtl"] d2l-table > table[selectable] > tbody > tr[selected]:hover  > th:first-child {
 				border-left-color:var(--d2l-table-border-color);
 			}
 
-			[dir="rtl"] .d2l-table > tbody > tr[selected]  > td:last-child,
-			[dir="rtl"] .d2l-table > tbody > tr[selected]  > th:last-child,
-			[dir="rtl"] .d2l-table > tbody > tr[active][selected]  > td:last-child,
-			[dir="rtl"] .d2l-table > tbody > tr[active][selected]  > th:last-child,
-			[dir="rtl"] .d2l-table[selectable] > tbody > tr[selected]:hover  > td:last-child,
-			[dir="rtl"] .d2l-table[selectable] > tbody > tr[selected]:hover  > th:last-child {
+			[dir="rtl"] d2l-table > table > tbody > tr[selected]  > td:last-child,
+			[dir="rtl"] d2l-table > table > tbody > tr[selected]  > th:last-child,
+			[dir="rtl"] d2l-table > table > tbody > tr[active][selected]  > td:last-child,
+			[dir="rtl"] d2l-table > table > tbody > tr[active][selected]  > th:last-child,
+			[dir="rtl"] d2l-table > table[selectable] > tbody > tr[selected]:hover  > td:last-child,
+			[dir="rtl"] d2l-table > table[selectable] > tbody > tr[selected]:hover  > th:last-child {
 				border-right-color:var(--d2l-table-border-color);
 			}
 
-			.d2l-table > tbody > tr[selected] > td,
-			.d2l-table > tbody > tr[selected] > th,
-			.d2l-table > tbody > tr[selected] + tr > td,
-			.d2l-table > tbody > tr[selected] + tr > th {
+			d2l-table > table > tbody > tr[selected] > td,
+			d2l-table > table > tbody > tr[selected] > th,
+			d2l-table > table > tbody > tr[selected] + tr > td,
+			d2l-table > table > tbody > tr[selected] + tr > th {
 				border-top-color:var(--d2l-table-row-border-color-selected);
 			}
 
-			[dir="rtl"] .d2l-table[no-column-border] > tbody > tr  > td:first-child,
-			[dir="rtl"] .d2l-table[no-column-border] > tbody > tr  > th:first-child {
+			[dir="rtl"] d2l-table > table[no-column-border] > tbody > tr  > td:first-child,
+			[dir="rtl"] d2l-table > table[no-column-border] > tbody > tr  > th:first-child {
 				border-left:none;
 				border-right:var(--d2l-table-outer-border);
 			}
 
-			[dir="rtl"] .d2l-table[no-column-border] > tbody > tr  > td:last-child,
-			[dir="rtl"] .d2l-table[no-column-border] > tbody > tr  > th:last-child {
+			[dir="rtl"] d2l-table > table[no-column-border] > tbody > tr  > td:last-child,
+			[dir="rtl"] d2l-table > table[no-column-border] > tbody > tr  > th:last-child {
 				border-right:none;
 				border-left:var(--d2l-table-outer-border);
 			}
 
-			[dir="rtl"] .d2l-table[no-column-border] > tbody > tr  > td:only-child,
-			[dir="rtl"] .d2l-table[no-column-border] > tbody > tr  > th:only-child {
+			[dir="rtl"] d2l-table > table[no-column-border] > tbody > tr  > td:only-child,
+			[dir="rtl"] d2l-table > table[no-column-border] > tbody > tr  > th:only-child {
 				border-right:var(--d2l-table-outer-border);
 				border-left:var(--d2l-table-outer-border);
 			}
