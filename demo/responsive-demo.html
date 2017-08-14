@@ -3,13 +3,13 @@
 
 <dom-module id="responsive-demo">
 	<template>
-		<style>
+		<style include="d2l-table-style">
 			:host {
 				display: block;
 			}
 		</style>
 		<h3>Small Table</h3>
-		<table is="d2l-table" selectable>
+		<d2l-table><table class="d2l-table" selectable>
 			<thead>
 			<tr>
 				<th>Column header 1</th>
@@ -28,9 +28,9 @@
 				<td>Row 1 Column 2</td>
 			</tr>
 			</tbody>
-		</table>
+		</table></d2l-table>
 		<h3>Simple Table</h3>
-		<table is="d2l-table" selectable>
+		<d2l-table><table class="d2l-table" selectable>
 			<tr>
 				<th>Column header 1</th>
 				<th>Column header 2</th>
@@ -39,9 +39,9 @@
 				<th>Row 1 Column 1</th>
 				<td>Row 1 Column 2</td>
 			</tr>
-		</table>
+		</table></d2l-table>
 		<h3>Medium Table</h3>
-		<table is="d2l-table" selectable>
+		<d2l-table><table class="d2l-table" selectable>
 			<thead>
 			<tr>
 				<th>Column header 1</th>
@@ -66,9 +66,9 @@
 				<td>Row 1 Column 4</td>
 			</tr>
 			</tbody>
-		</table>
+		</table></d2l-table>
 		<h3>Large Table</h3>
-		<table is="d2l-table" selectable>
+		<d2l-table><table class="d2l-table" selectable>
 			<thead>
 			<tr>
 				<th>Column header 1</th>
@@ -141,7 +141,7 @@
 				<td>Row 1 Column 20</td>
 			</tr>
 			</tbody>
-		</table>
+		</table></d2l-table>
 	</template>
 	<script>
 		Polymer({

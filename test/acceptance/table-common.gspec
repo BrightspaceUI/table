@@ -20,7 +20,7 @@
 			${tr}:
 				image file dumps/${path}/objects/${tr}.png, error 6px
 
-	@forEach [rows,rows-styled,no-column-border-styled.head,no-column-border-styled.body] as part
+	@forEach [rows] as part
 		${part}:
 			image file dumps/${path}/objects/${part}.png, error 92px
 
@@ -28,13 +28,24 @@
 			${tr}:
 				image file dumps/${path}/objects/${tr}.png, error 40px
 
-	@forEach [sort] as part
-		${part}.sort-button-1.sort-icon, ${part}.sort-button-2.sort-icon:
-			# The 1px is to compensate for the border
-			aligned horizontally centered ${part}.tr-1 1px
+	@on native-css
+		@forEach [rows-styled,no-column-border-styled.head,no-column-border-styled.body] as part
+			${part}:
+				image file dumps/${path}/objects/${part}.png, error 92px
 
-		${part}.sort-button-3.sort-icon:
-			absent
+			@forEach [${part}.tr-*] as tr
+				${tr}:
+					image file dumps/${path}/objects/${tr}.png, error 40px
+
+	@on 1.x
+		@on rtl
+			wide.right-action:
+				inside partly wide 10px top, -15px left
+				image file dumps/${path}/objects/wide.right-action.png, error 20px
+		@on ltr
+			wide.right-action:
+				inside partly wide 10px top, 275px left
+				image file dumps/${path}/objects/wide.right-action.png, error 20px
 
 	small.head:
 		above small.body 0px

@@ -1,6 +1,6 @@
 @objects
 
-	small                 body /deep/ .screenshot-small
+	small                 .screenshot-small
 		head              thead
 			tr-*          tr
 		body              tbody
@@ -8,7 +8,7 @@
 		foot              tfoot
 			tr-*          tr
 
-	simple                body /deep/ .screenshot-simple
+	simple                .screenshot-simple
 		head              thead
 			tr-*          tr
 		body              tbody
@@ -16,39 +16,38 @@
 		foot              tfoot
 			tr-*          tr
 
-	notbody               body /deep/ .screenshot-notbody
+	notbody               .screenshot-notbody
 		tr-*              tr
 
-	rows                  body /deep/ .screenshot-rows
+	rows                  .screenshot-rows
 		tr-*              tr
 
-	rows-styled           body /deep/ .screenshot-rows-styled
+	rows-styled           .screenshot-rows-styled
 		tr-*              tr:not(:last-child)
 
 	sort                  body /deep/ .screenshot-sort
 		tr-*              tr
-		sort-button-*     thead button[is="d2l-table-col-sort-button"]
-			sort-icon     button[is="d2l-table-col-sort-button"] /deep/ d2l-table-col-sort
+		sort-button-*     thead d2l-table-col-sort-button
 
 
-	wide                  body /deep/ .screenshot-wide
-		left-action       .screenshot-wide /deep/ .left > button[is="d2l-icon-button"]
-		right-action      .screenshot-wide /deep/ .right > button[is="d2l-icon-button"]
+	wide                  .screenshot-wide
+		left-action       .screenshot-wide /deep/ .left > d2l-icon-button
+		right-action      .screenshot-wide /deep/ .right > d2l-icon-button
 		tr-*              tr
 
-	no-column-border      body /deep/ .screenshot-no-column-border
+	no-column-border      .screenshot-no-column-border
 		head              thead
 			tr-*          tr
 		body              tbody
 			tr-*          tr
 
-	no-column-border-styled body /deep/ .screenshot-no-column-border-styled
+	no-column-border-styled .screenshot-no-column-border-styled
 		head                thead
 			tr-*            tr
 		body                tbody
 			tr-*            tr
 
-	tr-last-of-type       body /deep/ .screenshot-tr-last-of-type
+	tr-last-of-type       .screenshot-tr-last-of-type
 		head              thead
 			tr-*          tr
 		body              tbody

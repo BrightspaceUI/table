@@ -27,13 +27,13 @@
 
 	sort                  .screenshot-sort
 		tr-*              tr
-		sort-button-*     thead button[is="d2l-table-col-sort-button"]
+		sort-button-*     thead d2l-table-col-sort-button
 			sort-icon     d2l-table-col-sort
 
 
 	wide                  .screenshot-wide
-		left-action       .left > button[is="d2l-icon-button"]
-		right-action      .right > button[is="d2l-icon-button"]
+		left-action       .left > d2l-icon-button
+		right-action      .right > d2l-icon-button
 		tr-*              tr
 
 	no-column-border      .screenshot-no-column-border
@@ -53,3 +53,13 @@
 			tr-*          tr
 		body              tbody
 			tr-*          tr
+
+== D2L Table Polyfill ==
+
+	@forEach [sort] as part
+		${part}.sort-button-1.sort-icon, ${part}.sort-button-2.sort-icon:
+			# The 1px is to compensate for the border
+			aligned horizontally centered ${part}.tr-1 1px
+
+		${part}.sort-button-3.sort-icon:
+			absent

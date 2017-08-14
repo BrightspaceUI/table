@@ -4,32 +4,334 @@
 	<head>
 		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 		<link rel="import" href="../../d2l-demo-template/d2l-demo-template.html">
-		<link rel="import" href="simple-demo.html">
-		<style is="custom-style">
-			html {
-				font-size: 20px;
-				background: #fff;
-			}
+		<link rel="import" href="../d2l-table.html">
+		<link rel="import" href="reset.html">
+		<custom-style>
+			<style is="custom-style" include="reset d2l-table-style">
+				html {
+					font-size: 20px;
+					background: #fff;
+				}
 
-			body {
-				margin: 0;
-				overflow-x: hidden;
-			}
+				body {
+					margin: 0;
+					overflow-x: hidden;
+				}
 
-			:root {
-				font-size: 20px;
-			}
+				:root {
+					font-size: 20px;
+				}
 
-			.container {
-				text-align: left;
-			}
-		</style>
+				.container {
+					text-align: left;
+					display: inline-block;
+					vertical-align: top;
+				}
+				.screenshots {
+					display: inline-block;
+					vertical-align: top;
+					font-size: 1rem;
+					line-height: 1.5;
+				}
+				.screenshots span {
+					display: inline-block;
+					padding: 1px;
+					width: 8rem;
+				}
+				.screenshot-rows-styled table,
+				.screenshot-no-column-border-styled table {
+					--d2l-table-outer-border: 1px solid red;
+					--d2l-table-outer-row-border-color-selected: red;
+					--d2l-table-outer-row-border-color-active-selected: red;
+				}
+				.screenshot-wide {
+					margin-right: auto;
+					display: block;
+					width: 300px;
+				}
+				[dir="rtl"] .screenshot-wide {
+					margin-left: 370px;
+				}
+			</style>
+		</custom-style>
 	</head>
 
 	<body unresolved>
 		<d2l-demo-template title="d2l-table">
-			<div class="d2l-demo-fixture">
-				<div class="container"><simple-demo></simple-demo></div>
+			<div slot="d2l-demo-fixture" class="d2l-demo-fixture">
+				<div class="container">
+				<div class="screenshots screenshot-wide">
+					<d2l-table><table class="d2l-table">
+						<thead>
+						<tr>
+							<th><span> </span></th>
+							<th><span> </span></th>
+							<th><span> </span></th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						<tr>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						</tbody>
+					</table></d2l-table>
+				</div>
+				<div class="screenshots screenshot-small">
+					<d2l-table><table class="d2l-table">
+						<thead>
+						<tr>
+							<th><span> </span></th>
+							<th><span> </span></th>
+							<th><span> </span></th>
+						</tr>
+						</thead>
+						<tfoot>
+						<tr>
+							<th><span> </span></th>
+							<th><span> </span></th>
+							<th><span> </span></th>
+						</tr>
+						</tfoot>
+						<tbody>
+						<tr>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						<tr>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						</tbody>
+					</table></d2l-table>
+				</div>
+				<div class="screenshots screenshot-notbody">
+					<d2l-table><table class="d2l-table">
+						<tr header>
+							<th><span> </span></th>
+							<th><span> </span></th>
+							<th><span> </span></th>
+						</tr>
+						<tr>
+							<th><span> </span></th>
+							<th><span> </span></th>
+							<th><span> </span></th>
+						</tr>
+						<tr>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						<tr>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+					</table></d2l-table>
+				</div>
+				<div class="screenshots screenshot-simple">
+					<d2l-table><table class="d2l-table">
+						<thead>
+						<tr>
+							<th><span> </span></th>
+						</tr>
+						</thead>
+						<tfoot>
+						<tr>
+							<th><span> </span></th>
+						</tr>
+						</tfoot>
+						<tbody>
+						<tr>
+							<td><span> </span></td>
+						</tr>
+						<tr>
+							<td><span> </span></td>
+						</tr>
+						</tbody>
+					</table></d2l-table>
+				</div>
+				<div class="screenshots screenshot-rows">
+					<d2l-table><table class="d2l-table">
+						<tbody>
+						<tr active selected>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						<tr>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						<tr active selected>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						<tr>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						<tr active selected>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						<tr active selected>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						</tbody>
+					</table></d2l-table>
+				</div>
+				<div class="screenshots screenshot-rows-styled">
+					<d2l-table><table class="d2l-table">
+						<tbody>
+						<tr active selected>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						<tr>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						<tr active selected>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						<tr>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						<tr active selected>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						<tr active selected last-row>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						<tr style="display: none">
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						</tbody>
+					</table></d2l-table>
+				</div>
+				<div class="screenshots screenshot-sort">
+					<d2l-table><table class="d2l-table">
+						<thead>
+							<th>
+								<d2l-table-col-sort-button><span> </span></d2l-table-col-sort-button>
+							</th>
+							<th>
+								<d2l-table-col-sort-button desc><span> </span></d2l-table-col-sort-button>
+							</th>
+							<th>
+								<d2l-table-col-sort-button nosort><span> </span></d2l-table-col-sort-button>
+							</th>
+						</thead>
+						<tbody>
+						<tr>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						<tr>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						</tbody>
+					</table></d2l-table>
+				</div>
+				<div class="screenshots screenshot-no-column-border">
+					<d2l-table><table class="d2l-table" no-column-border>
+						<thead>
+						<tr>
+							<th><span> </span></th>
+							<th><span> </span></th>
+							<th><span> </span></th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						<tr>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						</tbody>
+					</table></d2l-table>
+				</div>
+				<div class="screenshots screenshot-no-column-border-styled">
+					<d2l-table><table class="d2l-table" no-column-border>
+						<thead>
+						<tr>
+							<th><span> </span></th>
+							<th><span> </span></th>
+							<th><span> </span></th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						<tr>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						</tbody>
+					</table></d2l-table>
+				</div>
+				<div class="screenshots screenshot-tr-last-of-type">
+					<d2l-table><table class="d2l-table">
+						<thead>
+						<tr>
+							<th><span> </span></th>
+							<th><span> </span></th>
+							<th><span> </span></th>
+						</tr>
+						</thead>
+						<tbody id="tr-last-of-type-body">
+						<tr>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						<tr>
+							<td><span> </span></td>
+							<td><span> </span></td>
+							<td><span> </span></td>
+						</tr>
+						</tbody>
+					</table></d2l-table>
+				</div></div>
 			</div>
 		</d2l-demo-template>
 	</body>

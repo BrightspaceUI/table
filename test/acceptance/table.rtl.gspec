@@ -3,9 +3,3 @@
 
 @import table.polyfill.common.gspec
 @import table-common.gspec
-
-== D2L Table RTL ==
-
-	wide.right-action:
-		inside partly wide 10px top, -15px left
-		image file dumps/${path}/objects/wide.right-action.png, error 20px

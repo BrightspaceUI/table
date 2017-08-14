@@ -23,29 +23,30 @@
 					text-decoration: underline;
 				};
 			}
-			:host(::-moz-focus-inner) {
+			button::-moz-focus-inner {
 				border: 0;
 			}
-			:host {
-				@apply(--d2l-table-col-sort-button);
+			button {
+				@apply --d2l-table-col-sort-button;
 			}
-			:host(:disabled) {
+			button:disabled {
 				opacity: 0.5;
 			}
-			:host(:hover),
-			:host(:focus) {
-				@apply(--d2l-table-col-sort-button-hover);
+			button:hover,
+			button:focus {
+				@apply --d2l-table-col-sort-button-hover;
 			}
 		</style>
-		<content></content>
-		<template is="dom-if" if="{{!nosort}}" strip-whitespace>
-			<d2l-table-col-sort desc="[[desc]]"></d2l-table-col-sort>
-		</template>
+		<button>
+			<slot></slot>
+			<template is="dom-if" if="{{!nosort}}" strip-whitespace>
+				<d2l-table-col-sort desc="[[desc]]"></d2l-table-col-sort>
+			</template>
+		</button>
 	</template>
 	<script>
 		Polymer({
 			is: 'd2l-table-col-sort-button',
-			extends: 'button',
 
 			properties: {
 				desc: Boolean,
