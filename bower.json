@@ -19,11 +19,6 @@
     "d2l-demo-template": "^0.0.12",
     "iron-component-page": "^1.1.9",
     "polyperf": "https://github.com/Brightspace/polyperf.git",
-    "web-component-tester": "^6.0.0",
-    "webcomponentsjs": "^0.7.24"
-  },
-  "resolutions": {
-    "webcomponentsjs": "^0.7.24",
-    "hydrolysis": "^1.18"
+    "web-component-tester": "^6.0.0"
   }
 }
