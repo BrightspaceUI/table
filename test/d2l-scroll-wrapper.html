@@ -23,8 +23,9 @@
 		<test-fixture id="with-scrollbar">
 			<template>
 				<div style="width: 300px">
+					<custom-style>
 					<style is="custom-style">
-						:root {
+						html {
 							--d2l-scroll-wrapper-left: {
 								color: rgb(1, 1, 1);
 							};
@@ -34,6 +35,7 @@
 							};
 						}
 					</style>
+					</custom-style>
 					<d2l-scroll-wrapper show-actions>
 						<div style="width: 350px">H</div>
 					</d2l-scroll-wrapper>
@@ -44,8 +46,9 @@
 		<test-fixture id="with-scrollbar-rtl">
 			<template>
 				<div style="width: 300px" dir="rtl">
+					<custom-style>
 					<style is="custom-style">
-						:root {
+						html {
 							--d2l-scroll-wrapper-left: {
 								color: rgb(1, 1, 1);
 							};
@@ -55,6 +58,7 @@
 							};
 						}
 					</style>
+					</custom-style>
 					<d2l-scroll-wrapper show-actions>
 						<div style="width: 350px">H</div>
 					</d2l-scroll-wrapper>
@@ -90,15 +94,16 @@
 					beforeEach(function(done) {
 						this.scrollWrapper = fixture('with-scrollbar').querySelector('d2l-scroll-wrapper');
 						this.wrapper = this.scrollWrapper.$.wrapper;
-						Polymer.RenderStatus._flushNextRender();
-						flush(done);
+						Polymer.RenderStatus.afterNextRender(this.scrollWrapper, function() {
+							flush(done);
+						});
 					});
 
 					common(false);
 
-					describe('isRTL', function() {
+					describe('isRtl', function() {
 						it('should return false', function() {
-							expect(this.scrollWrapper.isRTL).to.equal(false);
+							expect(this.scrollWrapper.isRtl).to.equal(false);
 						});
 					});
 
@@ -165,13 +170,14 @@
 					beforeEach(function(done) {
 						this.scrollWrapper = fixture('with-scrollbar-rtl').querySelector('d2l-scroll-wrapper');
 						this.wrapper = this.scrollWrapper.$.wrapper;
-						Polymer.RenderStatus._flushNextRender();
-						flush(done);
+						Polymer.RenderStatus.afterNextRender(this.scrollWrapper, function() {
+							flush(done);
+						});
 					});
 
-					describe('isRTL', function() {
+					describe('isRtl', function() {
 						it('should return true', function() {
-							expect(this.scrollWrapper.isRTL).to.equal(true);
+							expect(this.scrollWrapper.isRtl).to.equal(true);
 						});
 					});
 
@@ -259,7 +265,7 @@
 
 						it('should have only one visible action button pointing right', function() {
 							var actions = Polymer.dom(this.scrollWrapper.root).querySelectorAll('.sticky');
-							actions = actions.filter(function(action) {
+							actions = [].filter.call(actions, function(action) {
 								return getComputedStyle(action).display !== 'none';
 							});
 							expect(actions).to.have.lengthOf(1);
@@ -301,7 +307,7 @@
 
 						it('should have only one visible action button pointing left', function() {
 							var actions = Polymer.dom(this.scrollWrapper.root).querySelectorAll('.sticky');
-							actions = actions.filter(function(action) {
+							actions = [].filter.call(actions, function(action) {
 								return getComputedStyle(action).display !== 'none';
 							});
 							expect(actions).to.have.lengthOf(1);
