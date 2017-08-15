@@ -67,6 +67,7 @@ Custom property | Description | Default
 
 ```
 	<link rel="import" href="d2l-table.html">
+	<custom-style>
 	<style is="custom-style">
 		.ugly-table {
 			--d2l-table-border-color: purple
@@ -83,10 +84,11 @@ Custom property | Description | Default
 
 		/* tweak default border radius for all tables on the page. No d2l-table-wrapper
 		   element is required */
-		:root {
+		html {
 			--d2l-table-border-radius: 0.4rem;
 		}
 	</style>
+	</custom-style>
 	<d2l-table class="ugly-table">
 		<table class="d2l-table">
 			<thead>
