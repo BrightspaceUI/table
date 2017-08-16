@@ -28,7 +28,7 @@
 	sort                  .screenshot-sort
 		tr-*              tr
 		sort-button-*     thead d2l-table-col-sort-button
-			sort-icon     d2l-table-col-sort
+		sort-icon-*   	  xpath //d2l-table-col-sort
 
 
 	wide                  .screenshot-wide
@@ -57,9 +57,9 @@
 == D2L Table Polyfill ==
 
 	@forEach [sort] as part
-		${part}.sort-button-1.sort-icon, ${part}.sort-button-2.sort-icon:
+		${part}.sort-icon-1, ${part}.sort-icon-2:
 			# The 1px is to compensate for the border
 			aligned horizontally centered ${part}.tr-1 1px
 
-		${part}.sort-button-3.sort-icon:
+		${part}.sort-icon-3:
 			absent
