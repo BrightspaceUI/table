@@ -127,98 +127,84 @@
 				overflow-x: auto;
 				width: 100%;
 				box-sizing: border-box;
-				@apply(--d2l-scroll-wrapper-inner);
+				@apply --d2l-scroll-wrapper-inner;
 			}
 
-			:host-context([dir="rtl"])[h-scrollbar] .wrapper,
+			:host([is-rtl][h-scrollbar]) .wrapper,
 			:host([h-scrollbar]) .wrapper {
-				@apply(--d2l-scroll-wrapper-h-scroll);
+				@apply --d2l-scroll-wrapper-h-scroll;
 			}
 
-			:host-context([dir="rtl"]):host([h-scrollbar]) .wrapper {
-				@apply(--d2l-scroll-wrapper-h-scroll);
-			}
-
-			:host-context([dir="rtl"])[scrollbar-right] .wrapper,
+			:host([is-rtl][scrollbar-right]) .wrapper,
 			:host([scrollbar-left]) .wrapper {
-				@apply(--d2l-scroll-wrapper-left);
+				@apply --d2l-scroll-wrapper-left;
 			}
 
-			:host-context([dir="rtl"]):host([scrollbar-right]) .wrapper {
-				@apply(--d2l-scroll-wrapper-left);
-			}
-
-			:host-context([dir="rtl"])[scrollbar-left] .wrapper,
+			:host([is-rtl][scrollbar-left]) .wrapper,
 			:host([scrollbar-right]) .wrapper {
-				@apply(--d2l-scroll-wrapper-right);
-			}
-
-			:host-context([dir="rtl"]):host([scrollbar-left]) .wrapper {
-				@apply(--d2l-scroll-wrapper-right);
+				@apply --d2l-scroll-wrapper-right;
 			}
 
 			.action {
-				@apply(--d2l-scroll-wrapper-action);
+				@apply --d2l-scroll-wrapper-action;
 			}
 			.sticky {
-				@apply(--d2l-scroll-wrapper-action-hidden);
-				@apply(--d2l-scroll-wrapper-sticky);
+				@apply --d2l-scroll-wrapper-action-hidden;
+				@apply --d2l-scroll-wrapper-sticky;
 			}
 
-			:host-context([dir="rtl"]) .left .action,
+			:host([is-rtl]) .left .action,
 			.right .action {
-				@apply(--d2l-scroll-wrapper-action-end);
+				@apply --d2l-scroll-wrapper-action-end;
 			}
 
-			:host-context([dir="rtl"]) .right .action,
+			:host([is-rtl]) .right .action,
 			.left .action {
-				@apply(--d2l-scroll-wrapper-action-start);
+				@apply --d2l-scroll-wrapper-action-start;
 			}
 
-			:host-context([dir="rtl"]) .left,
+			:host([is-rtl]) .left,
 			.right {
 				float: right;
 			}
 
-			:host-context([dir="rtl"]) .right,
+			:host([is-rtl]) .right,
 			.left {
 				float: left;
 			}
 
 			:host([h-scrollbar]) .sticky {
-				@apply(--d2l-scroll-wrapper-action-visible);
+				@apply --d2l-scroll-wrapper-action-visible;
 			}
 
 			/* Hide the start/end buttons depending on the state */
 			:host([scrollbar-right]) .right,
 			:host([scrollbar-left]) .left {
-				@apply(--d2l-scroll-wrapper-action-hidden);
+				@apply --d2l-scroll-wrapper-action-hidden;
 			}
 		</style>
-		<template is="dom-if" if="{{showActions}}" strip-whitespace>
+		<template is="dom-if" if="[[showActions]]" strip-whitespace>
 			<d2l-sticky-element class="left sticky" disabled="[[scrollbarLeft]]">
-				<button
-					is="d2l-icon-button"
+				<d2l-icon-button
 					class="action"
 					icon="[[startIcon]]"
 					on-tap="handleTapLeft"
 					tabindex="-1"
 					aria-hidden="true"
-				></button>
+				></d2l-icon-button>
 			</d2l-sticky-element>
 			<d2l-sticky-element class="right sticky" disabled="[[scrollbarRight]]">
-				<button
-					is="d2l-icon-button"
+				<d2l-icon-button
 					class="action"
 					icon="[[endIcon]]"
 					on-tap="handleTapRight"
 					tabindex="-1"
 					aria-hidden="true"
-				></button>
+				></d2l-icon-button>
 			</d2l-sticky-element>
 		</template>
 		<div id="wrapper" class="wrapper">
-			<content id="content"></content>
+			<slot></slot>
 		</div>
 	</template>
 	<script>
@@ -343,10 +329,11 @@
 						value: 'd2l-tier1:chevron-right'
 					},
 
-					isRTL: {
+					isRtl: {
 						type: Boolean,
 						value: false,
-						computed: '_calculateRTL(isAttached)'
+						computed: '_calculateRTL(isAttached)',
+						reflectToAttribute: true
 					},
 
 					showActions: Boolean
@@ -416,7 +403,7 @@
 
 				/* Scrolls the set distance. positive === right, negative === left. Reversed when dir=rtl */
 				scrollDistance: function(distance, smooth) {
-					if (this.isRTL) {
+					if (this.isRtl) {
 						if (this.scrollRtlReverse) {
 							this.scroll(this.$.wrapper.scrollLeft + distance, smooth);
 						} else {
@@ -464,7 +451,7 @@
 				checkScrollThresholds: function() {
 					var lowerScrollValue = this.$.wrapper.scrollWidth - this.$.wrapper.offsetWidth - Math.abs(this.$.wrapper.scrollLeft);
 
-					if (this.isRTL && this.scrollRtlDefault) {
+					if (this.isRtl && this.scrollRtlDefault) {
 						this._setScrollbarRight(this.$.wrapper.scrollLeft === 0);
 						this._setScrollbarLeft(lowerScrollValue <= 0);
 					} else {

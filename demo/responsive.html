@@ -10,30 +10,32 @@
     	</script>
 		<link rel="import" href="../../d2l-demo-template/d2l-demo-template.html">
 		<link rel="import" href="./responsive-demo.html">
-    	<style is="custom-style">
-            :root {
-              font-size: 20px;
-            }
+		<custom-style>
+	    	<style is="custom-style">
+	            html {
+	              font-size: 20px;
+	            }
 
-			.fixed-mobile-width {
-                max-width: 375px;
-                width: 100%;
-			}
+				.fixed-mobile-width {
+	                max-width: 375px;
+	                width: 100%;
+				}
 
-			.fixed-tablet-width {
-                max-width: 768px;
-                width: 100%;
-			}
+				.fixed-tablet-width {
+	                max-width: 768px;
+	                width: 100%;
+				}
 
-			.full-page-width {
-                width: 100%;
-			}
-    	</style>
+				.full-page-width {
+	                width: 100%;
+				}
+	    	</style>
+		</custom-style>
     </head>
 
     <body unresolved>
 		<d2l-demo-template title="d2l-table">
-			<div class="d2l-demo-fixture">
+			<div slot="d2l-demo-fixture" class="d2l-demo-fixture">
 		        <h1>Responsive table demo</h1>
 		        <h2>100%</h2>
 				<responsive-demo class="full-page-width"></responsive-demo>

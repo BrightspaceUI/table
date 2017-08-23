@@ -12,24 +12,26 @@
     	</script>
 		<link rel="import" href="../../d2l-demo-template/d2l-demo-template.html">
     	<link rel="import" href="../d2l-table.html">
-    	<style is="custom-style">
-            :root {
-              font-size: 20px;
-            }
+        <custom-style>
+        	<style is="custom-style" include="d2l-table-style">
+                html {
+                  font-size: 20px;
+                }
 
-            .screenshots {
-              display: inline-block;
-            }
-    	</style>
+                .screenshots {
+                  display: inline-block;
+                }
+        	</style>
+        </custom-style>
     </head>
 
     <body unresolved>
     	<!-- header, footer, caption, and colgroup tests -->
 		<d2l-demo-template title="d2l-table">
-			<div class="d2l-demo-fixture">
+			<div slot="d2l-demo-fixture" class="d2l-demo-fixture">
     		<div class="screenshots screenshot-small">
     			<!-- header only -->
-    			<table is="d2l-table">
+    			<d2l-table><table class="d2l-table">
     				<thead>
     				<tr>
     					<th>First Name</th>
@@ -49,10 +51,10 @@
     					<td>Sandoval</td>
     				</tr>
     				</tbody>
-    			</table>
+    			</table></d2l-table>
     		</div>
     		<!-- footer only -->
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<tfoot>
     			<tr>
     				<th>First Name</th>
@@ -72,9 +74,9 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
     		<!-- caption only -->
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<caption>Caption</caption>
     			<tbody>
     			<tr>
@@ -88,9 +90,9 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
     		<!-- header and footer -->
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<thead>
     			<tr>
     				<th>First Name</th>
@@ -117,9 +119,9 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
     		<!-- header and caption -->
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<caption>Caption</caption>
     			<thead>
     			<tr>
@@ -140,9 +142,9 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
     		<!-- footer and caption -->
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<caption>Caption</caption>
     			<tfoot>
     			<tr>
@@ -163,9 +165,9 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
     		<!-- header and footer and caption -->
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<caption>Caption</caption>
     			<thead>
     			<tr>
@@ -193,11 +195,11 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
 
 
     		<!-- header only plus colgroup-->
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<colgroup></colgroup>
     			<thead>
     			<tr>
@@ -218,9 +220,9 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
     		<!-- footer only plus colgroup -->
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<colgroup></colgroup>
     			<tfoot>
     			<tr>
@@ -241,9 +243,9 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
     		<!-- caption only plus colgroup-->
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<caption>Caption</caption>
     			<colgroup></colgroup>
     			<tbody>
@@ -258,9 +260,9 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
     		<!-- header and footer plus colgroup -->
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<colgroup></colgroup>
     			<thead>
     			<tr>
@@ -288,9 +290,9 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
     		<!-- header and caption plus colgroup-->
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<caption>Caption</caption>
     			<colgroup></colgroup>
     			<thead>
@@ -312,9 +314,9 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
     		<!-- footer and caption plus colgroup -->
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<caption>Caption</caption>
     			<colgroup></colgroup>
     			<tfoot>
@@ -336,10 +338,10 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
 		<div>
     		<!-- header and footer and caption plus colgroup-->
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<caption>Caption</caption>
     			<colgroup></colgroup>
     			<thead>
@@ -368,13 +370,13 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
     	</div>
 
     	<!-- Selected and active rows -->
     	<div>
     		<!-- active only -->
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<tbody>
     			<tr active>
     				<td>Darlene</td>
@@ -392,8 +394,8 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
-    		<table is="d2l-table">
+    		</table></d2l-table>
+    		<d2l-table><table class="d2l-table">
     			<tbody>
     			<tr>
     				<td>Darlene</td>
@@ -411,8 +413,8 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
-    		<table is="d2l-table">
+    		</table></d2l-table>
+    		<d2l-table><table class="d2l-table">
     			<tbody>
     			<tr>
     				<td>Darlene</td>
@@ -430,9 +432,9 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
     		<!-- selected only -->
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<tbody>
     			<tr selected>
     				<td>Darlene</td>
@@ -450,8 +452,8 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
-    		<table is="d2l-table">
+    		</table></d2l-table>
+    		<d2l-table><table class="d2l-table">
     			<tbody>
     			<tr>
     				<td>Darlene</td>
@@ -469,8 +471,8 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
-    		<table is="d2l-table">
+    		</table></d2l-table>
+    		<d2l-table><table class="d2l-table">
     			<tbody>
     			<tr>
     				<td>Darlene</td>
@@ -488,9 +490,9 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
     		<!-- selected and active -->
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<tbody>
     			<tr active selected>
     				<td>Darlene</td>
@@ -508,9 +510,9 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
     		<div class="screenshots screenshot-rows">
-    			<table is="d2l-table">
+    			<d2l-table><table class="d2l-table">
     				<tbody>
     				<tr>
     					<td>Darlene</td>
@@ -528,9 +530,9 @@
     					<td>Sandoval</td>
     				</tr>
     				</tbody>
-    			</table>
+    			</table></d2l-table>
     		</div>
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<tbody>
     			<tr>
     				<td>Darlene</td>
@@ -548,22 +550,22 @@
     				<td>Sandoval</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
     	</div>
 
     	<!-- Sorting icons -->
     	<div class="screenshots screenshot-sort">
     		<!-- active only -->
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
                 <thead>
                     <th>
-                        <button is="d2l-table-col-sort-button">Ascending</button>
+                        <d2l-table-col-sort-button>Ascending</d2l-table-col-sort-button>
                     </th>
                     <th>
-                        <button is="d2l-table-col-sort-button" desc>Descending</button>
+                        <d2l-table-col-sort-button desc>Descending</d2l-table-col-sort-button>
                     </th>
 					<th>
-                        <button is="d2l-table-col-sort-button" nosort>Not sorted</button>
+                        <d2l-table-col-sort-button nosort>Not sorted</d2l-table-col-sort-button>
 					</th>
                 </thead>
     			<tbody>
@@ -578,12 +580,12 @@
                     <td>321</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
     	</div>
 
     	<!-- additional mixed styles -->
     	<div>
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<thead>
     				<tr>
     					<th>First Name</th>
@@ -614,8 +616,8 @@
     					<td>-%</td>
     				</tr>
     			</tbody>
-    		</table>
-    		<table is="d2l-table">
+    		</table></d2l-table>
+    		<d2l-table><table class="d2l-table">
     			<thead>
     				<tr>
     					<th>First</th>
@@ -656,22 +658,22 @@
     					<td>-%</td>
     				</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
     		<p>Small table (header only)</p>
-    		<table is="d2l-table">
+    		<d2l-table><table class="d2l-table">
     			<thead>
     			<tr>
-                    <th><button is="d2l-table-col-sort-button">First Name</button></th>
-                    <th><button is="d2l-table-col-sort-button" desc>Last Name</button></th>
+                    <th><d2l-table-col-sort-button>First Name</d2l-table-col-sort-button></th>
+                    <th><d2l-table-col-sort-button desc>Last Name</d2l-table-col-sort-button></th>
     				<th>Independent Assignments</th>
     				<th>Quizzes</th>
     				<th>Final Calculated Grade</th>
     			</tr>
     			</thead>
-    		</table>
+    		</table></d2l-table>
 
     		<p>Large Table</p>
-    		<table is="d2l-table" selectable>
+    		<d2l-table><table class="d2l-table" selectable>
     			<caption>Table Caption</caption>
     			<colgroup></colgroup>
     			<colgroup></colgroup>
@@ -1031,7 +1033,7 @@
     				<td>Row 15 Column 20</td>
     			</tr>
     			</tbody>
-    		</table>
+    		</table></d2l-table>
     	</div>
 		</d2l-demo-template>
     </body>

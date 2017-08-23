@@ -13,9 +13,10 @@
 				position: sticky;
 				top: 0;
 				z-index: 1;
+				line-height: 0;
 			}
 		</style>
-		<content></content>
+		<slot></slot>
 	</template>
 	<script>
 		/* global Stickyfill */
@@ -37,13 +38,17 @@
 					return;
 				}
 				var sticky = !this.disabled;
-				if (sticky) {
-					Stickyfill.add(this);
-					this._added = true;
-				} else if (this._added) {
-					Stickyfill.remove(this);
-					this._added = false;
-				} else {
+				try {
+					if (sticky) {
+						Stickyfill.add(this);
+						this._added = true;
+					} else if (this._added) {
+						Stickyfill.remove(this);
+						this._added = false;
+					} else {
+						return;
+					}
+				} catch (e) {
 					return;
 				}
 				Stickyfill.rebuild();

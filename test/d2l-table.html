@@ -2,19 +2,24 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<title>wrapper tests</title>
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-		<title>d2l-table tests</title>
 		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 		<script src="../../web-component-tester/browser.js"></script>
+		<link rel="import" href="../d2l-table.html">
 	</head>
 	<body>
+
+		<test-fixture id="d2l-table">
+			<template>
+				<d2l-table><table></table></d2l-table>
+			</template>
+		</test-fixture>
+
 		<script>
-			WCT.loadSuites([
-				'd2l-table.html?wc-shadydom',
-				'd2l-table.html?dom=shadow',
-				'd2l-scroll-wrapper.html?wc-shadydom',
-				'd2l-scroll-wrapper.html?dom=shadow'
-			]);
+			describe('a11y', function() {
+				a11ySuite('d2l-table');
+			});
 		</script>
 	</body>
 </html>

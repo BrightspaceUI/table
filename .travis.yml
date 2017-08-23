@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- 5.6
+- node
 cache:
   directories:
   - node_modules
@@ -23,8 +23,7 @@ before_install:
 - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 - export PATH=$JAVA_HOME/bin:$PATH
 script:
-- concurrently -p name -n lint:js,lint:wc,wct "npm run test:lint:js" "npm run test:lint:wc" "polymer test --skip-plugin local"
-- npm run test:galen:sauce
+- concurrently -p name -n lint:js,lint:wc,wct "npm run test:lint:js" "npm run test:lint:wc" "polymer test --skip-plugin local" && npm run test:galen:sauce
 env:
   global:
     SAUCE_USERNAME: Desire2Learn

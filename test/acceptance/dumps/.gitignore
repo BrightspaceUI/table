@@ -8,3 +8,4 @@ sort*.png
 
 d2l-table-demo/objects/*tr*.png
 !d2l-table-demo/objects/sort.png
+!*/objects/*styled*
