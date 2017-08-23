@@ -29,7 +29,8 @@
       },
       "devDependencies": {
         "d2l-demo-template": "^0.0.12",
-        "iron-component-page": "^1.1.9"
+        "iron-component-page": "^1.1.9",
+        "web-component-tester": "^4.0.0"
       },
       "resolutions": {
         "webcomponentsjs": "^0.7"
