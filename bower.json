@@ -18,7 +18,7 @@
   "devDependencies": {
     "d2l-demo-template": "0.0.12 - 1",
     "iron-component-page": "1 - 2",
-    "web-component-tester": "^6.0.0"
+    "web-component-tester": "6.0.1"
   },
   "variants": {
     "1.x": {
@@ -29,8 +29,7 @@
       },
       "devDependencies": {
         "d2l-demo-template": "^0.0.12",
-        "iron-component-page": "^1.1.9",
-        "web-component-tester": "^4.0.0"
+        "iron-component-page": "^1.1.9"
       },
       "resolutions": {
         "webcomponentsjs": "^0.7"
