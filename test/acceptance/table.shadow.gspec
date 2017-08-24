@@ -1,5 +1,0 @@
-@set
-	path d2l-table
-
-@import table.shadow.common.gspec
-@import table-common.gspec

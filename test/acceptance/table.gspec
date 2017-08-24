@@ -1,5 +1,127 @@
 @set
-	path d2l-table
+	path ${this.overridePath || "d2l-table"}
 
-@import table.polyfill.common.gspec
-@import table-common.gspec
+@objects
+
+	small                 .screenshot-small
+		head              thead
+			tr-*          tr
+		body              tbody
+			tr-*          tr
+		foot              tfoot
+			tr-*          tr
+
+	simple                .screenshot-simple
+		head              thead
+			tr-*          tr
+		body              tbody
+			tr-*          tr
+		foot              tfoot
+			tr-*          tr
+
+	notbody               .screenshot-notbody
+		tr-*              tr
+
+	rows                  .screenshot-rows
+		tr-*              tr
+
+	rows-styled           .screenshot-rows-styled
+		tr-*              tr:not(:last-child)
+
+	sort                  .screenshot-sort
+		tr-*              tr
+		sort-button-*     thead d2l-table-col-sort-button
+			sort-icon     ::d2l-shadow d2l-table-col-sort
+
+
+	wide                  .screenshot-wide d2l-table
+		scroll-wrapper    ::d2l-shadow d2l-scroll-wrapper
+			left-action   ::d2l-shadow .left > d2l-icon-button
+			right-action  ::d2l-shadow .right > d2l-icon-button
+		tr-*              tr
+
+	no-column-border      .screenshot-no-column-border
+		head              thead
+			tr-*          tr
+		body              tbody
+			tr-*          tr
+
+	no-column-border-styled .screenshot-no-column-border-styled
+		head                thead
+			tr-*            tr
+		body                tbody
+			tr-*            tr
+
+	tr-last-of-type       .screenshot-tr-last-of-type
+		head              thead
+			tr-*          tr
+		body              tbody
+			tr-*          tr
+
+@groups
+	imageCompare small.head,small.body,small.foot,simple.head,simple.body,simple.foot,no-column-border.head,no-column-border.body,tr-last-of-type.head,tr-last-of-type.body,notbody
+	all          &imageCompare,wide,sort,rows,rows-styled,no-column-border-styled.head,no-column-border-styled.body
+
+== D2L Table ==
+
+	@forEach [&all] as part
+		${part}.tr-1:
+			aligned horizontally top ${part}
+
+		@forEach [${part}.tr-*] as tr, prev as prevTr
+			${tr}:
+				below ${prevTr} 0px
+
+	@forEach [&imageCompare] as part
+		${part}:
+			image file dumps/${path}/objects/${part}.png, error 12px
+
+		@forEach [${part}.tr-*] as tr
+			${tr}:
+				image file dumps/${path}/objects/${tr}.png, error 6px
+
+	@forEach [rows] as part
+		${part}:
+			image file dumps/${path}/objects/${part}.png, error 92px
+
+		@forEach [${part}.tr-*] as tr
+			${tr}:
+				image file dumps/${path}/objects/${tr}.png, error 40px
+
+	@on native-css
+		@forEach [rows-styled,no-column-border-styled.head,no-column-border-styled.body] as part
+			${part}:
+				image file dumps/${path}/objects/${part}.png, error 92px
+
+			@forEach [${part}.tr-*] as tr
+				${tr}:
+					image file dumps/${path}/objects/${tr}.png, error 40px
+
+	@on 1.x
+		@on rtl
+			wide.scroll-wrapper.right-action:
+				inside partly wide 10px top, -15px left
+				image file dumps/${path}/objects/wide.right-action.png, error 20px
+		@on ltr
+			wide.scroll-wrapper.right-action:
+				inside partly wide 10px top, 275px left
+				image file dumps/${path}/objects/wide.right-action.png, error 20px
+
+	small.head:
+		above small.body 0px
+		aligned horizontally top small
+
+	small.body:
+		above small.foot 0px
+
+	small.foot:
+		aligned horizontally bottom small
+
+
+	@forEach [sort] as part
+		${part}.sort-button-1.sort-icon, ${part}.sort-button-2.sort-icon:
+			# The 1px is to compensate for the border
+			aligned horizontally centered ${part}.tr-1 1px
+
+		${part}.sort-button-3.sort-icon:
+			absent

@@ -49,78 +49,114 @@ polymerTests(browsers, function(test, ctx) {
 		test('d2l-table', {
 			endpoint: mainlineEndpoint + '?wc-shadydom&wc-shimcssproperties',
 			spec: 'test/acceptance/table.gspec',
-			tags: ['mainline', 'shady', 'shim-css', 'ltr']
+			tags: ['mainline', 'shady', 'shim-css', 'ltr'],
+			vars: {
+				overridePath: 'd2l-table'
+			}
 		});
 
 		test('d2l-table-rtl', {
 			endpoint: mainlineEndpoint + '?wc-shadydom&dir=rtl&wc-shimcssproperties',
-			spec: 'test/acceptance/table.rtl.gspec',
-			tags: ['mainline', 'shady', 'shim-css', 'rtl']
+			spec: 'test/acceptance/table.gspec',
+			tags: ['mainline', 'shady', 'shim-css', 'rtl'],
+			vars: {
+				overridePath: 'd2l-table-rtl'
+			}
 		});
 
 		/*if (hasCss) { // See https://github.com/webcomponents/shadycss/blob/74577b11f20442594cedf4c5a51152dca06eb67c/src/style-settings.js#L29
 			test('d2l-table-css', {
 				endpoint: mainlineEndpoint + '?wc-shadydom&useNativeCSSProperties=true',
 				spec: 'test/acceptance/table.gspec',
-				tags: ['mainline', 'shady', 'native-css', 'ltr']
+				tags: ['mainline', 'shady', 'native-css', 'ltr'],
+				vars: {
+					overridePath: 'd2l-table'
+				}
 			});
 
 			test('d2l-table-css-rtl', {
 				endpoint: mainlineEndpoint + '?wc-shadydom&dir=rtl&useNativeCSSProperties=true',
 				spec: 'test/acceptance/table.rtl.gspec',
-				tags: ['mainline', 'shady', 'native-css', 'rtl']
+				tags: ['mainline', 'shady', 'native-css', 'rtl'],
+				vars: {
+					overridePath: 'd2l-table-rtl'
+				}
 			});
 		}*/
 	}
 
 	test.shadow('d2l-table-shadow', {
 		endpoint: mainlineEndpoint + '?dom=shadow&useNativeCSSProperties=true',
-		spec: 'test/acceptance/table.shadow.gspec',
-		tags: ['mainline', 'shadow', hasCss ? 'native-css' : 'shim-css', 'ltr']
+		spec: 'test/acceptance/table.gspec',
+		tags: ['mainline', 'shadow', hasCss ? 'native-css' : 'shim-css', 'ltr'],
+		vars: {
+			overridePath: 'd2l-table'
+		}
 	});
 
 	/*
 	// This spec fails because the icon mirroring is broken in Chrome's ShadowDOM
 	test.shadow('d2l-table-rtl-shadow', {
 		endpoint: mainlineEndpoint + '?dir=rtl&dom=shadow',
-		spec: 'test/acceptance/table.rtl.shadow.gspec'
+		spec: 'test/acceptance/table.gspec',
+		vars: {
+			overridePath: 'd2l-table-rtl'
+		}
 	});*/
 
 	test('d2l-table', {
 		endpoint: xEndpoint + '?wc-shadydom',
 		spec: 'test/acceptance/table.gspec',
-		tags: ['1.x', 'shady', 'shim-css', 'ltr']
+		tags: ['1.x', 'shady', 'shim-css', 'ltr'],
+		vars: {
+			overridePath: 'd2l-table'
+		}
 	});
 
 	test('d2l-table-rtl', {
 		endpoint: xEndpoint + '?wc-shadydom&dir=rtl',
-		spec: 'test/acceptance/table.rtl.gspec',
-		tags: ['1.x', 'shady', 'shim-css', 'rtl']
+		spec: 'test/acceptance/table.gspec',
+		tags: ['1.x', 'shady', 'shim-css', 'rtl'],
+		vars: {
+			overridePath: 'd2l-table-rtl'
+		}
 	});
 
 	test.shadow('d2l-table-shadow', {
 		endpoint: xEndpoint + '?dom=shadow',
-		spec: 'test/acceptance/table.shadow.gspec',
-		tags: ['1.x', 'shadow', 'shim-css', 'ltr']
+		spec: 'test/acceptance/table.gspec',
+		tags: ['1.x', 'shadow', 'shim-css', 'ltr'],
+		vars: {
+			overridePath: 'd2l-table'
+		}
 	});
 
 	if (hasCss) {
 		test('d2l-table-css', {
 			endpoint: xEndpoint + '?wc-shadydom&useNativeCSSProperties=true',
 			spec: 'test/acceptance/table.gspec',
-			tags: ['1.x', 'shady', 'native-css', 'ltr']
+			tags: ['1.x', 'shady', 'native-css', 'ltr'],
+			vars: {
+				overridePath: 'd2l-table'
+			}
 		});
 
 		test('d2l-table-css-rtl', {
 			endpoint: xEndpoint + '?wc-shadydom&dir=rtl&useNativeCSSProperties=true',
-			spec: 'test/acceptance/table.rtl.gspec',
-			tags: ['1.x', 'shady', 'native-css', 'rtl']
+			spec: 'test/acceptance/table.gspec',
+			tags: ['1.x', 'shady', 'native-css', 'rtl'],
+			vars: {
+				overridePath: 'd2l-table-rtl'
+			}
 		});
 
 		test.shadow('d2l-table-css-shadow', {
 			endpoint: xEndpoint + '?dom=shadow&useNativeCSSProperties=true',
-			spec: 'test/acceptance/table.shadow.gspec',
-			tags: ['1.x', 'shadow', 'native-css', 'ltr']
+			spec: 'test/acceptance/table.gspec',
+			tags: ['1.x', 'shadow', 'native-css', 'ltr'],
+			vars: {
+				overridePath: 'd2l-table'
+			}
 		});
 	}
 
@@ -128,7 +164,10 @@ polymerTests(browsers, function(test, ctx) {
 	// This spec fails because the icon mirroring is broken in Chrome's ShadowDOM
 	test.shadow('d2l-table-rtl-shadow', {
 		endpoint: xEndpoint + '?dir=rtl&dom=shadow',
-		spec: 'test/acceptance/table.rtl.shadow.gspec'
+		spec: 'test/acceptance/table.gspec',
+		vars: {
+			overridePath: 'd2l-table-rtl'
+		}
 	});*/
 
 	test.demo('d2l-table-demo', {
