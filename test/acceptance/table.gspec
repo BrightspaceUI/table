@@ -2,7 +2,6 @@
 	path ${this.overridePath || "d2l-table"}
 
 @objects
-
 	small                 .screenshot-small
 		head              thead
 			tr-*          tr
@@ -33,7 +32,6 @@
 		sort-button-*     thead d2l-table-col-sort-button
 			sort-icon     ::d2l-shadow d2l-table-col-sort
 
-
 	wide                  .screenshot-wide d2l-table
 		scroll-wrapper    ::d2l-shadow d2l-scroll-wrapper
 			left-action   ::d2l-shadow .left > d2l-icon-button
@@ -57,6 +55,17 @@
 			tr-*          tr
 		body              tbody
 			tr-*          tr
+
+@on no-d2l-shadow
+	@objects
+		sort                  .screenshot-sort
+			sort-button-*     thead d2l-table-col-sort-button
+				sort-icon     d2l-table-col-sort
+
+		wide                  .screenshot-wide d2l-table
+			scroll-wrapper    d2l-scroll-wrapper
+				left-action   .left > d2l-icon-button
+				right-action  .right > d2l-icon-button
 
 @groups
 	imageCompare small.head,small.body,small.foot,simple.head,simple.body,simple.foot,no-column-border.head,no-column-border.body,tr-last-of-type.head,tr-last-of-type.body,notbody

@@ -18,7 +18,8 @@ var browsers = {
 	edgeWindows: new SauceBrowserFactory({
 		browser: 'microsoftedge',
 		platform: 'WIN10',
-		size: '1400x900'
+		size: '1400x900',
+		tags: ['no-d2l-shadow']
 	}),
 	chromeMac: new SauceBrowserFactory({
 		browser: 'Chrome',
