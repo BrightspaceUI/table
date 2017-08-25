@@ -33,7 +33,8 @@ var browsers = {
 	safariMac: new SauceBrowserFactory({
 		browser: 'Safari',
 		platform: 'EL_CAPITAN',
-		size: '1400x900'
+		size: '1400x900',
+		tags: ['no-d2l-shadow']
 	})
 };
 
