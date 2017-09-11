@@ -142,7 +142,7 @@ See the [Best Practices & Style Guide](https://github.com/Brightspace/valence-ui
 [bower-url]: http://bower.io/search/?q=d2l-table
 [bower-image]: https://img.shields.io/bower/v/d2l-table.svg
 [ci-url]: https://travis-ci.org/BrightspaceUI/table
-[ci-image]: https://img.shields.io/travis-ci/BrightspaceUI/table.svg
+[ci-image]: https://img.shields.io/travis-ci/BrightspaceUI/table/master.svg
 [dependencies-url]: https://david-dm.org/BrightspaceUI/table
 [dependencies-image]: https://img.shields.io/david/BrightspaceUI/table.svg
 [Galen]: http://galenframework.com/
