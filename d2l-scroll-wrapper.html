@@ -173,36 +173,34 @@
 				float: left;
 			}
 
-			:host([h-scrollbar]) .sticky {
+			:host([show-actions][h-scrollbar]) .sticky {
 				@apply --d2l-scroll-wrapper-action-visible;
 			}
 
 			/* Hide the start/end buttons depending on the state */
-			:host([scrollbar-right]) .right,
-			:host([scrollbar-left]) .left {
+			:host([show-actions][scrollbar-right]) .right,
+			:host([show-actions][scrollbar-left]) .left {
 				@apply --d2l-scroll-wrapper-action-hidden;
 			}
 		</style>
-		<template is="dom-if" if="[[showActions]]" strip-whitespace>
-			<d2l-sticky-element class="left sticky" disabled="[[scrollbarLeft]]">
-				<d2l-icon-button
-					class="action"
-					icon="[[startIcon]]"
-					on-tap="handleTapLeft"
-					tabindex="-1"
-					aria-hidden="true"
-				></d2l-icon-button>
-			</d2l-sticky-element>
-			<d2l-sticky-element class="right sticky" disabled="[[scrollbarRight]]">
-				<d2l-icon-button
-					class="action"
-					icon="[[endIcon]]"
-					on-tap="handleTapRight"
-					tabindex="-1"
-					aria-hidden="true"
-				></d2l-icon-button>
-			</d2l-sticky-element>
-		</template>
+		<d2l-sticky-element class="left sticky" disabled="[[scrollbarLeft]]">
+			<d2l-icon-button
+				class="action"
+				icon="[[startIcon]]"
+				on-tap="handleTapLeft"
+				tabindex="-1"
+				aria-hidden="true"
+			></d2l-icon-button>
+		</d2l-sticky-element>
+		<d2l-sticky-element class="right sticky" disabled="[[scrollbarRight]]">
+			<d2l-icon-button
+				class="action"
+				icon="[[endIcon]]"
+				on-tap="handleTapRight"
+				tabindex="-1"
+				aria-hidden="true"
+			></d2l-icon-button>
+		</d2l-sticky-element>
 		<div id="wrapper" class="wrapper">
 			<slot></slot>
 		</div>
@@ -336,7 +334,10 @@
 						reflectToAttribute: true
 					},
 
-					showActions: Boolean
+					showActions: {
+						type: Boolean,
+						reflectToAttribute: true
+					}
 				},
 
 				attached: function() {

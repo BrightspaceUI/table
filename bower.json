@@ -18,7 +18,8 @@
   "devDependencies": {
     "d2l-demo-template": "0.0.12 - 1",
     "iron-component-page": "1 - 2",
-    "web-component-tester": "6.0.1"
+    "web-component-tester": "6.0.1",
+    "webcomponentsjs": "1.0.1"
   },
   "variants": {
     "1.x": {
@@ -37,6 +38,6 @@
     }
   },
   "resolutions": {
-    "webcomponentsjs": "^1.0.2"
+    "webcomponentsjs": "1.0.1"
   }
 }
