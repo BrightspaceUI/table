@@ -10,7 +10,7 @@
 ## Usage
 ```
 	<link rel="import" href="d2l-table.html">
-	<d2l-table>
+	<d2l-table-wrapper>
 		<table class="d2l-table">
 		<thead>
 			<tr>
@@ -27,8 +27,8 @@
 				<td>Table cell</td>
 			</tr>
 		</tbody>
-	</table>
-	</d2l-table>
+	    </table>
+    </d2l-table-wrapper>
 ```
 
 ### Table attributes
@@ -89,7 +89,7 @@ Custom property | Description | Default
 		}
 	</style>
 	</custom-style>
-	<d2l-table class="ugly-table">
+	<d2l-table-wraper class="ugly-table">
 		<table class="d2l-table">
 			<thead>
 				<tr>
@@ -107,7 +107,7 @@ Custom property | Description | Default
 				</tr>
 			</tbody>
 		</table>
-	</d2l-table>
+	</d2l-table-wrapper>
 ```
 
 
@@ -115,7 +115,7 @@ Custom property | Description | Default
 @demo demo/index.rtl.html  RTL Table demo
 @demo demo/responsive.html Identical tables with different widths
 -->
-<dom-module id="d2l-table">
+<dom-module id="d2l-table-wrapper">
 	<template strip-whitespace>
 		<style>
 			:host {
@@ -151,7 +151,7 @@ Custom property | Description | Default
 	</template>
 	<script>
 		Polymer({
-			is: 'd2l-table',
+			is: 'd2l-table-wrapper',
 			notifyResize: function() {
 				this.$$('d2l-scroll-wrapper').notifyResize();
 			}

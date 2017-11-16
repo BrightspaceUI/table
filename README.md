@@ -35,7 +35,7 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
 
 HTML:
 ```html
-<d2l-table><table class="d2l-table">
+<d2l-table-wrapper><table class="d2l-table">
 	<thead>
 		<tr>
 			<th>Header column 1</th>
@@ -52,7 +52,7 @@ HTML:
 			<td>row 2 column 2</td>
 		</tr>
 	</tbody>
-</table></d2l-table>
+</table></d2l-table-wrapper>
 ```
 
 #### Row Styles
@@ -61,7 +61,7 @@ HTML:
 
 HTML:
 ```html
-<d2l-table><table class="d2l-table">
+<d2l-table-wrapper><table class="d2l-table">
 	<tr selected>
 		<td>selected</td>
 	</tr>
@@ -71,7 +71,7 @@ HTML:
 	<tr active selected>
 		<td>active and selected</td>
 	</tr>
-</table></d2l-table>
+</table></d2l-table-wrapper>
 ```
 
 #### Header Icons
@@ -80,7 +80,7 @@ HTML:
 
 HTML:
 ```html
-<d2l-table><table class="d2l-table">
+<d2l-table-wrapper><table class="d2l-table">
 	<thead>
 		<th>
 			<d2l-table-col-sort-button>Ascending</d2l-table-col-sort-button>
@@ -99,7 +99,7 @@ HTML:
 		<td>654</td>
 	</tr>
 	</tbody>
-</table></d2l-table>
+</table></d2l-table-wrapper>
 ```
 
 ### Usage in Production

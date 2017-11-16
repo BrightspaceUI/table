@@ -32,7 +32,7 @@
 		sort-button-*     thead d2l-table-col-sort-button
 			sort-icon     ::d2l-shadow d2l-table-col-sort
 
-	wide                  .screenshot-wide d2l-table
+	wide                  .screenshot-wide d2l-table-wrapper
 		scroll-wrapper    ::d2l-shadow d2l-scroll-wrapper
 			left-action   ::d2l-shadow .left > d2l-icon-button
 			right-action  ::d2l-shadow .right > d2l-icon-button
@@ -62,7 +62,7 @@
 			sort-button-*     thead d2l-table-col-sort-button
 				sort-icon     d2l-table-col-sort
 
-		wide                  .screenshot-wide d2l-table
+		wide                  .screenshot-wide d2l-table-wrapper
 			scroll-wrapper    d2l-scroll-wrapper
 				left-action   .left > d2l-icon-button
 				right-action  .right > d2l-icon-button
