@@ -56,7 +56,7 @@ polymerTests(browsers, function(test, ctx) {
 	});
 
 	test('d2l-table-rtl', {
-		endpoint: mainlineEndpoint + '?wc-shadydom&dir-demo=rtl&wc-shimcssproperties',
+		endpoint: mainlineEndpoint + '?wc-shadydom&dir=rtl&wc-shimcssproperties',
 		spec: 'test/acceptance/table.gspec',
 		tags: ['mainline', 'shady', 'shim-css', 'rtl'],
 		vars: {
@@ -75,7 +75,7 @@ polymerTests(browsers, function(test, ctx) {
 		});
 
 		test('d2l-table-css-rtl', {
-			endpoint: mainlineEndpoint + '?wc-shadydom&dir-demo=rtl&useNativeCSSProperties=true',
+			endpoint: mainlineEndpoint + '?wc-shadydom&dir=rtl&useNativeCSSProperties=true',
 			spec: 'test/acceptance/table.gspec',
 			tags: ['mainline', 'shady', 'native-css', 'rtl'],
 			vars: {
@@ -96,7 +96,7 @@ polymerTests(browsers, function(test, ctx) {
 	/*
 	// This spec fails because the icon mirroring is broken in Chrome's ShadowDOM
 	test.shadow('d2l-table-rtl-shadow', {
-		endpoint: mainlineEndpoint + '?dir-demo=rtl&dom=shadow',
+		endpoint: mainlineEndpoint + '?dir=rtl&dom=shadow',
 		spec: 'test/acceptance/table.gspec',
 		vars: {
 			overridePath: 'd2l-table-rtl'
@@ -113,7 +113,7 @@ polymerTests(browsers, function(test, ctx) {
 	});
 
 	test('d2l-table-rtl', {
-		endpoint: xEndpoint + '?wc-shadydom&dir-demo=rtl',
+		endpoint: xEndpoint + '?wc-shadydom&dir=rtl',
 		spec: 'test/acceptance/table.gspec',
 		tags: ['1.x', 'shady', 'shim-css', 'rtl'],
 		vars: {
@@ -141,7 +141,7 @@ polymerTests(browsers, function(test, ctx) {
 		});
 
 		test('d2l-table-css-rtl', {
-			endpoint: xEndpoint + '?wc-shadydom&dir-demo=rtl&useNativeCSSProperties=true',
+			endpoint: xEndpoint + '?wc-shadydom&dir=rtl&useNativeCSSProperties=true',
 			spec: 'test/acceptance/table.gspec',
 			tags: ['1.x', 'shady', 'native-css', 'rtl'],
 			vars: {
@@ -162,7 +162,7 @@ polymerTests(browsers, function(test, ctx) {
 	/*
 	// This spec fails because the icon mirroring is broken in Chrome's ShadowDOM
 	test.shadow('d2l-table-rtl-shadow', {
-		endpoint: xEndpoint + '?dir-demo=rtl&dom=shadow',
+		endpoint: xEndpoint + '?dir=rtl&dom=shadow',
 		spec: 'test/acceptance/table.gspec',
 		vars: {
 			overridePath: 'd2l-table-rtl'

@@ -16,6 +16,7 @@
 				body {
 					margin: 0;
 					overflow-x: hidden;
+					-ms-overflow-style: none;
 				}
 
 				.container {
@@ -329,11 +330,5 @@
 				</table></d2l-table-wrapper>
 			</div>
 		</div>
-		<script>
-var isRtl = (window.location.search.indexOf('dir-demo=rtl') > -1);
-if (isRtl) {
-	document.body.querySelector('.container').setAttribute('dir', 'rtl');
-}
-		</script>
 	</body>
 </html>
