@@ -43,48 +43,45 @@ var xEndpoint = 'http://localhost:8000/components/d2l-table/demo/simple.html';
 var demoEndpoint = 'http://localhost:8081/components/d2l-table/demo/index.html';
 
 polymerTests(browsers, function(test, ctx) {
-	var hasShadow = ctx.driver.executeScript('return Boolean(Element.prototype.createShadowRoot)').booleanValue();
-	var hasCss = ctx.driver.executeScript('return Boolean(window.CSS && window.CSS.supports("color", "var(--primary)"))').booleanValue();
+	// See https://github.com/webcomponents/shadycss/blob/74577b11f20442594cedf4c5a51152dca06eb67c/src/style-settings.js#L29
+	var hasCss = ctx.driver.executeScript('return Boolean(!navigator.userAgent.match(/AppleWebKit\\/601|Edge\\/15/) && window.CSS && window.CSS.supports("color", "var(--primary)"))').booleanValue();
 
-	// https://github.com/webcomponents/shadydom/issues/168
-	if (!hasShadow) {
-		test('d2l-table', {
-			endpoint: mainlineEndpoint + '?wc-shadydom&wc-shimcssproperties',
+	test('d2l-table', {
+		endpoint: mainlineEndpoint + '?wc-shadydom&wc-shimcssproperties',
+		spec: 'test/acceptance/table.gspec',
+		tags: ['mainline', 'shady', 'shim-css', 'ltr'],
+		vars: {
+			overridePath: 'd2l-table'
+		}
+	});
+
+	test('d2l-table-rtl', {
+		endpoint: mainlineEndpoint + '?wc-shadydom&dir=rtl&wc-shimcssproperties',
+		spec: 'test/acceptance/table.gspec',
+		tags: ['mainline', 'shady', 'shim-css', 'rtl'],
+		vars: {
+			overridePath: 'd2l-table-rtl'
+		}
+	});
+
+	if (hasCss) {
+		test('d2l-table-css', {
+			endpoint: mainlineEndpoint + '?wc-shadydom&useNativeCSSProperties=true',
 			spec: 'test/acceptance/table.gspec',
-			tags: ['mainline', 'shady', 'shim-css', 'ltr'],
+			tags: ['mainline', 'shady', 'native-css', 'ltr'],
 			vars: {
 				overridePath: 'd2l-table'
 			}
 		});
 
-		test('d2l-table-rtl', {
-			endpoint: mainlineEndpoint + '?wc-shadydom&dir=rtl&wc-shimcssproperties',
+		test('d2l-table-css-rtl', {
+			endpoint: mainlineEndpoint + '?wc-shadydom&dir=rtl&useNativeCSSProperties=true',
 			spec: 'test/acceptance/table.gspec',
-			tags: ['mainline', 'shady', 'shim-css', 'rtl'],
+			tags: ['mainline', 'shady', 'native-css', 'rtl'],
 			vars: {
 				overridePath: 'd2l-table-rtl'
 			}
 		});
-
-		/*if (hasCss) { // See https://github.com/webcomponents/shadycss/blob/74577b11f20442594cedf4c5a51152dca06eb67c/src/style-settings.js#L29
-			test('d2l-table-css', {
-				endpoint: mainlineEndpoint + '?wc-shadydom&useNativeCSSProperties=true',
-				spec: 'test/acceptance/table.gspec',
-				tags: ['mainline', 'shady', 'native-css', 'ltr'],
-				vars: {
-					overridePath: 'd2l-table'
-				}
-			});
-
-			test('d2l-table-css-rtl', {
-				endpoint: mainlineEndpoint + '?wc-shadydom&dir=rtl&useNativeCSSProperties=true',
-				spec: 'test/acceptance/table.rtl.gspec',
-				tags: ['mainline', 'shady', 'native-css', 'rtl'],
-				vars: {
-					overridePath: 'd2l-table-rtl'
-				}
-			});
-		}*/
 	}
 
 	test.shadow('d2l-table-shadow', {

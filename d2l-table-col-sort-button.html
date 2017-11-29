@@ -36,12 +36,13 @@
 			button:focus {
 				@apply --d2l-table-col-sort-button-hover;
 			}
+			[hidden] {
+				display: none;
+			}
 		</style>
 		<button>
 			<slot></slot>
-			<template is="dom-if" if="{{!nosort}}" strip-whitespace>
-				<d2l-table-col-sort desc="[[desc]]"></d2l-table-col-sort>
-			</template>
+			<d2l-table-col-sort hidden="[[nosort]]" desc="[[desc]]"></d2l-table-col-sort>
 		</button>
 	</template>
 	<script>

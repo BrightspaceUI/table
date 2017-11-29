@@ -16,6 +16,7 @@
 				body {
 					margin: 0;
 					overflow-x: hidden;
+					-ms-overflow-style: none;
 				}
 
 				.container {
@@ -54,281 +55,280 @@
 
 	<body>
 		<d2l-demo-template title="d2l-table">
-			<div slot="d2l-demo-fixture" class="d2l-demo-fixture">
-				<div class="container">
-				<div class="screenshots screenshot-wide">
-					<d2l-table><table class="d2l-table">
-						<thead>
-						<tr>
-							<th><span> </span></th>
-							<th><span> </span></th>
-							<th><span> </span></th>
-						</tr>
-						</thead>
-						<tbody>
-						<tr>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						<tr>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						</tbody>
-					</table></d2l-table>
-				</div>
-				<div class="screenshots screenshot-small">
-					<d2l-table><table class="d2l-table">
-						<thead>
-						<tr>
-							<th><span> </span></th>
-							<th><span> </span></th>
-							<th><span> </span></th>
-						</tr>
-						</thead>
-						<tfoot>
-						<tr>
-							<th><span> </span></th>
-							<th><span> </span></th>
-							<th><span> </span></th>
-						</tr>
-						</tfoot>
-						<tbody>
-						<tr>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						<tr>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						</tbody>
-					</table></d2l-table>
-				</div>
-				<div class="screenshots screenshot-notbody">
-					<d2l-table><table class="d2l-table">
-						<tr header>
-							<th><span> </span></th>
-							<th><span> </span></th>
-							<th><span> </span></th>
-						</tr>
-						<tr>
-							<th><span> </span></th>
-							<th><span> </span></th>
-							<th><span> </span></th>
-						</tr>
-						<tr>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						<tr>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-					</table></d2l-table>
-				</div>
-				<div class="screenshots screenshot-simple">
-					<d2l-table><table class="d2l-table">
-						<thead>
-						<tr>
-							<th><span> </span></th>
-						</tr>
-						</thead>
-						<tfoot>
-						<tr>
-							<th><span> </span></th>
-						</tr>
-						</tfoot>
-						<tbody>
-						<tr>
-							<td><span> </span></td>
-						</tr>
-						<tr>
-							<td><span> </span></td>
-						</tr>
-						</tbody>
-					</table></d2l-table>
-				</div>
-				<div class="screenshots screenshot-rows">
-					<d2l-table><table class="d2l-table">
-						<tbody>
-						<tr active selected>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						<tr>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						<tr active selected>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						<tr>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						<tr active selected>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						<tr active selected>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						</tbody>
-					</table></d2l-table>
-				</div>
-				<div class="screenshots screenshot-rows-styled">
-					<d2l-table><table class="d2l-table">
-						<tbody>
-						<tr active selected>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						<tr>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						<tr active selected>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						<tr>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						<tr active selected>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						<tr active selected last-row>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						<tr style="display: none">
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						</tbody>
-					</table></d2l-table>
-				</div>
-				<div class="screenshots screenshot-sort">
-					<d2l-table><table class="d2l-table">
-						<thead>
-							<th>
-								<d2l-table-col-sort-button><span> </span></d2l-table-col-sort-button>
-							</th>
-							<th>
-								<d2l-table-col-sort-button desc><span> </span></d2l-table-col-sort-button>
-							</th>
-							<th>
-								<d2l-table-col-sort-button nosort><span> </span></d2l-table-col-sort-button>
-							</th>
-						</thead>
-						<tbody>
-						<tr>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						<tr>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						</tbody>
-					</table></d2l-table>
-				</div>
-				<div class="screenshots screenshot-no-column-border">
-					<d2l-table><table class="d2l-table" no-column-border>
-						<thead>
-						<tr>
-							<th><span> </span></th>
-							<th><span> </span></th>
-							<th><span> </span></th>
-						</tr>
-						</thead>
-						<tbody>
-						<tr>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						<tr>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						</tbody>
-					</table></d2l-table>
-				</div>
-				<div class="screenshots screenshot-no-column-border-styled">
-					<d2l-table><table class="d2l-table" no-column-border>
-						<thead>
-						<tr>
-							<th><span> </span></th>
-							<th><span> </span></th>
-							<th><span> </span></th>
-						</tr>
-						</thead>
-						<tbody>
-						<tr>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						<tr>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						</tbody>
-					</table></d2l-table>
-				</div>
-				<div class="screenshots screenshot-tr-last-of-type">
-					<d2l-table><table class="d2l-table">
-						<thead>
-						<tr>
-							<th><span> </span></th>
-							<th><span> </span></th>
-							<th><span> </span></th>
-						</tr>
-						</thead>
-						<tbody id="tr-last-of-type-body">
-						<tr>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						<tr>
-							<td><span> </span></td>
-							<td><span> </span></td>
-							<td><span> </span></td>
-						</tr>
-						</tbody>
-					</table></d2l-table>
-				</div></div>
-			</div>
 		</d2l-demo-template>
+		<div class="container">
+			<div class="screenshots screenshot-wide">
+				<d2l-table-wrapper><table class="d2l-table">
+					<thead>
+					<tr>
+						<th><span> </span></th>
+						<th><span> </span></th>
+						<th><span> </span></th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					<tr>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					</tbody>
+				</table></d2l-table-wrapper>
+			</div>
+			<div class="screenshots screenshot-small">
+				<d2l-table-wrapper><table class="d2l-table">
+					<thead>
+					<tr>
+						<th><span> </span></th>
+						<th><span> </span></th>
+						<th><span> </span></th>
+					</tr>
+					</thead>
+					<tfoot>
+					<tr>
+						<th><span> </span></th>
+						<th><span> </span></th>
+						<th><span> </span></th>
+					</tr>
+					</tfoot>
+					<tbody>
+					<tr>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					<tr>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					</tbody>
+				</table></d2l-table-wrapper>
+			</div>
+			<div class="screenshots screenshot-notbody">
+				<d2l-table-wrapper><table class="d2l-table">
+					<tr header>
+						<th><span> </span></th>
+						<th><span> </span></th>
+						<th><span> </span></th>
+					</tr>
+					<tr>
+						<th><span> </span></th>
+						<th><span> </span></th>
+						<th><span> </span></th>
+					</tr>
+					<tr>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					<tr>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+				</table></d2l-table-wrapper>
+			</div>
+			<div class="screenshots screenshot-simple">
+				<d2l-table-wrapper><table class="d2l-table">
+					<thead>
+					<tr>
+						<th><span> </span></th>
+					</tr>
+					</thead>
+					<tfoot>
+					<tr>
+						<th><span> </span></th>
+					</tr>
+					</tfoot>
+					<tbody>
+					<tr>
+						<td><span> </span></td>
+					</tr>
+					<tr>
+						<td><span> </span></td>
+					</tr>
+					</tbody>
+				</table></d2l-table-wrapper>
+			</div>
+			<div class="screenshots screenshot-rows">
+				<d2l-table-wrapper><table class="d2l-table">
+					<tbody>
+					<tr active selected>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					<tr>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					<tr active selected>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					<tr>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					<tr active selected>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					<tr active selected>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					</tbody>
+				</table></d2l-table-wrapper>
+			</div>
+			<div class="screenshots screenshot-rows-styled">
+				<d2l-table-wrapper><table class="d2l-table">
+					<tbody>
+					<tr active selected>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					<tr>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					<tr active selected>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					<tr>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					<tr active selected>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					<tr active selected last-row>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					<tr style="display: none">
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					</tbody>
+				</table></d2l-table-wrapper>
+			</div>
+			<div class="screenshots screenshot-sort">
+				<d2l-table-wrapper><table class="d2l-table">
+					<thead>
+						<th>
+							<d2l-table-col-sort-button><span> </span></d2l-table-col-sort-button>
+						</th>
+						<th>
+							<d2l-table-col-sort-button desc><span> </span></d2l-table-col-sort-button>
+						</th>
+						<th>
+							<d2l-table-col-sort-button nosort><span> </span></d2l-table-col-sort-button>
+						</th>
+					</thead>
+					<tbody>
+					<tr>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					<tr>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					</tbody>
+				</table></d2l-table-wrapper>
+			</div>
+			<div class="screenshots screenshot-no-column-border">
+				<d2l-table-wrapper><table class="d2l-table" no-column-border>
+					<thead>
+					<tr>
+						<th><span> </span></th>
+						<th><span> </span></th>
+						<th><span> </span></th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					<tr>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					</tbody>
+				</table></d2l-table-wrapper>
+			</div>
+			<div class="screenshots screenshot-no-column-border-styled">
+				<d2l-table-wrapper><table class="d2l-table" no-column-border>
+					<thead>
+					<tr>
+						<th><span> </span></th>
+						<th><span> </span></th>
+						<th><span> </span></th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					<tr>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					</tbody>
+				</table></d2l-table-wrapper>
+			</div>
+			<div class="screenshots screenshot-tr-last-of-type">
+				<d2l-table-wrapper><table class="d2l-table">
+					<thead>
+					<tr>
+						<th><span> </span></th>
+						<th><span> </span></th>
+						<th><span> </span></th>
+					</tr>
+					</thead>
+					<tbody id="tr-last-of-type-body">
+					<tr>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					<tr>
+						<td><span> </span></td>
+						<td><span> </span></td>
+						<td><span> </span></td>
+					</tr>
+					</tbody>
+				</table></d2l-table-wrapper>
+			</div>
+		</div>
 	</body>
 </html>
