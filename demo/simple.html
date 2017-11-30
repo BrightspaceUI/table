@@ -15,14 +15,17 @@
 
 				body {
 					margin: 0;
-					overflow-x: hidden;
 					-ms-overflow-style: none;
+					direction: ltr;
 				}
 
 				.container {
 					text-align: left;
 					display: inline-block;
 					vertical-align: top;
+				}
+				[dir="rtl"] .container {
+					direction: rtl;
 				}
 				.screenshots {
 					display: inline-block;
