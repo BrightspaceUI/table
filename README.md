@@ -30,11 +30,17 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
 <head>
 	<script src="https://s.brightspace.com/lib/webcomponentsjs/0.7.21/webcomponents-lite.min.js"></script>
 	<link rel="import" href="../d2l-table/d2l-table.html">
+	<!-- Alternatively use the style include only in custom components that use d2l-table -->
+	<custom-style>
+		<style include="d2l-table-style"></style>
+	</custom-style>
 </head>
 ```
 
 HTML:
 ```html
+<!-- use the style include in custom components -->
+<style include="d2l-table-style"></style>
 <d2l-table-wrapper><table class="d2l-table">
 	<thead>
 		<tr>
@@ -61,6 +67,8 @@ HTML:
 
 HTML:
 ```html
+<!-- use the style include in custom components -->
+<style include="d2l-table-style"></style>
 <d2l-table-wrapper><table class="d2l-table">
 	<tr selected>
 		<td>selected</td>
@@ -80,6 +88,8 @@ HTML:
 
 HTML:
 ```html
+<!-- use the style include in custom components -->
+<style include="d2l-table-style"></style>
 <d2l-table-wrapper><table class="d2l-table">
 	<thead>
 		<th>
