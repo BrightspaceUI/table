@@ -165,12 +165,16 @@
 
 			:host([is-rtl]) .left,
 			.right {
-				float: right;
+				position: absolute;
+				right: 0;
+				left: auto;
 			}
 
 			:host([is-rtl]) .right,
 			.left {
-				float: left;
+				position: absolute;
+				left: 0;
+				right: auto;
 			}
 
 			:host([show-actions][h-scrollbar]) .sticky {
