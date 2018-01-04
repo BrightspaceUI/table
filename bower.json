@@ -17,7 +17,7 @@
     "webcomponentsjs": "^1.0.22"
   },
   "devDependencies": {
-    "d2l-demo-template": "0.0.12 - 1",
+    "d2l-demo-template": "b152eca4",
     "iron-component-page": "1 - 2",
     "web-component-tester": "^6.4.0"
   },
