@@ -1,0 +1,19 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="d2l-tfoot">
+	<template strip-whitespace>
+		<slot></slot>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-tfoot',
+			properties: {
+				role: {
+					type: String,
+					value: 'rowgroup',
+					readonly: true
+				}
+			}
+		});
+	</script>
+</dom-module>

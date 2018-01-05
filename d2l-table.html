@@ -4,6 +4,13 @@
 <link rel="import" href="d2l-table-col-sort-button.html">
 <link rel="import" href="../d2l-colors/d2l-colors.html">
 
+<link rel="import" href="d2l-tbody.html">
+<link rel="import" href="d2l-td.html">
+<link rel="import" href="d2l-tfoot.html">
+<link rel="import" href="d2l-th.html">
+<link rel="import" href="d2l-thead.html">
+<link rel="import" href="d2l-tr.html">
+
 <!--
 # D2L Table
 
@@ -152,6 +159,49 @@ Custom property | Description | Default
 	<script>
 		Polymer({
 			is: 'd2l-table-wrapper',
+			notifyResize: function() {
+				this.$$('d2l-scroll-wrapper').notifyResize();
+			}
+		});
+	</script>
+</dom-module>
+
+<dom-module id="d2l-table">
+	<template strip-whitespace>
+		<style>
+			:host {
+				@apply --d2l-table;
+				display: inline-block;
+				--d2l-table-border-color: var(--d2l-color-mica);
+				--d2l-table-header-background-color: var(--d2l-color-regolith);
+				--d2l-table-border-overflow: dashed 1px #d3d9e3;
+			}
+			d2l-scroll-wrapper {
+				--d2l-scroll-wrapper-h-scroll: {
+					border-left: var(--d2l-table-border-overflow);
+					border-right: var(--d2l-table-border-overflow);
+				};
+				--d2l-scroll-wrapper-h-scroll-focus: {
+					border-left: var(--d2l-table-border-overflow-focus);
+					border-right: var(--d2l-table-border-overflow-focus);
+				};
+				--d2l-scroll-wrapper-left: {
+					border-left: none;
+				};
+				--d2l-scroll-wrapper-right: {
+					border-right: none;
+				};
+				--d2l-scroll-wrapper-border-color: var(--d2l-table-border-color);
+				--d2l-scroll-wrapper-background-color: var(--d2l-table-header-background-color);
+			}
+		</style>
+		<d2l-scroll-wrapper show-actions>
+			<slot></slot>
+		</d2l-scroll-wrapper>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-table',
 			notifyResize: function() {
 				this.$$('d2l-scroll-wrapper').notifyResize();
 			}

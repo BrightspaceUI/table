@@ -1,0 +1,19 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="d2l-th">
+	<template strip-whitespace>
+		<slot></slot>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-th',
+			properties: {
+				role: {
+					type: String,
+					value: 'columnheader',
+					readonly: true
+				}
+			}
+		});
+	</script>
+</dom-module>

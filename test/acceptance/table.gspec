@@ -38,6 +38,12 @@
 			right-action  ::d2l-shadow .right > d2l-icon-button
 		tr-*              tr
 
+	d2l-wide              .screenshot-d2l-wide d2l-table-wrapper
+		scroll-wrapper    ::d2l-shadow d2l-scroll-wrapper
+			left-action   ::d2l-shadow .left > d2l-icon-button
+			right-action  ::d2l-shadow .right > d2l-icon-button
+		tr-*              tr
+
 	no-column-border      .screenshot-no-column-border
 		head              thead
 			tr-*          tr
@@ -67,9 +73,14 @@
 				left-action   .left > d2l-icon-button
 				right-action  .right > d2l-icon-button
 
+		d2l-wide              .screenshot-d2l-wide d2l-table-wrapper
+			scroll-wrapper    d2l-scroll-wrapper
+				left-action   .left > d2l-icon-button
+				right-action  .right > d2l-icon-button
+
 @groups
 	imageCompare small.head,small.body,small.foot,simple.head,simple.body,simple.foot,no-column-border.head,no-column-border.body,tr-last-of-type.head,tr-last-of-type.body,notbody
-	all          &imageCompare,wide,sort,rows,rows-styled,no-column-border-styled.head,no-column-border-styled.body
+	all          &imageCompare,wide,d2l-wide,sort,rows,rows-styled,no-column-border-styled.head,no-column-border-styled.body
 
 == D2L Table ==
 
@@ -110,8 +121,16 @@
 		wide.scroll-wrapper.right-action:
 			inside partly wide 10px top, -15px left
 			image file dumps/${path}/objects/wide.right-action.png, error 20px
+
+		d2l-wide.scroll-wrapper.right-action:
+			inside partly wide 10px top, -15px left
+			image file dumps/${path}/objects/wide.right-action.png, error 20px
 	@on ltr
 		wide.scroll-wrapper.right-action:
+			inside partly wide 10px top, 275px left
+			image file dumps/${path}/objects/wide.right-action.png, error 20px
+
+		d2l-wide.scroll-wrapper.right-action:
 			inside partly wide 10px top, 275px left
 			image file dumps/${path}/objects/wide.right-action.png, error 20px
 
