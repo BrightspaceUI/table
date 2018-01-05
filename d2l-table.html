@@ -170,11 +170,12 @@ Custom property | Description | Default
 	<template strip-whitespace>
 		<style>
 			:host {
-				@apply --d2l-table;
-				display: inline-block;
 				--d2l-table-border-color: var(--d2l-color-mica);
 				--d2l-table-header-background-color: var(--d2l-color-regolith);
 				--d2l-table-border-overflow: dashed 1px #d3d9e3;
+			}
+			div {
+				@apply --d2l-table;
 			}
 			d2l-scroll-wrapper {
 				--d2l-scroll-wrapper-h-scroll: {
@@ -196,7 +197,7 @@ Custom property | Description | Default
 			}
 		</style>
 		<d2l-scroll-wrapper show-actions>
-			<slot></slot>
+			<div><slot></slot></div>
 		</d2l-scroll-wrapper>
 	</template>
 	<script>
