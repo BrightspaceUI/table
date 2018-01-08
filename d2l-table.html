@@ -166,7 +166,7 @@ Custom property | Description | Default
 	</script>
 </dom-module>
 
-<dom-module id="d2l-table-root">
+<dom-module id="d2l-table">
 	<template strip-whitespace>
 		<style>
 			:host {
@@ -201,7 +201,7 @@ Custom property | Description | Default
 	</template>
 	<script>
 		Polymer({
-			is: 'd2l-table-root',
+			is: 'd2l-table',
 			notifyResize: function() {
 				this.$$('d2l-scroll-wrapper').notifyResize();
 			}
