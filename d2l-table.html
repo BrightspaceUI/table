@@ -166,16 +166,15 @@ Custom property | Description | Default
 	</script>
 </dom-module>
 
-<dom-module id="d2l-table">
+<dom-module id="d2l-table-root">
 	<template strip-whitespace>
 		<style>
 			:host {
+				@apply --d2l-table;
+				display: block;
 				--d2l-table-border-color: var(--d2l-color-mica);
 				--d2l-table-header-background-color: var(--d2l-color-regolith);
 				--d2l-table-border-overflow: dashed 1px #d3d9e3;
-			}
-			div {
-				@apply --d2l-table;
 			}
 			d2l-scroll-wrapper {
 				--d2l-scroll-wrapper-h-scroll: {
@@ -197,12 +196,12 @@ Custom property | Description | Default
 			}
 		</style>
 		<d2l-scroll-wrapper show-actions>
-			<div><slot></slot></div>
+			<slot></slot>
 		</d2l-scroll-wrapper>
 	</template>
 	<script>
 		Polymer({
-			is: 'd2l-table',
+			is: 'd2l-table-root',
 			notifyResize: function() {
 				this.$$('d2l-scroll-wrapper').notifyResize();
 			}

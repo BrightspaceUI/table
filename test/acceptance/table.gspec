@@ -123,7 +123,7 @@
 			image file dumps/${path}/objects/wide.right-action.png, error 20px
 
 		d2l-wide.scroll-wrapper.right-action:
-			inside partly wide 10px top, -15px left
+			inside partly d2l-wide 10px top, -15px left
 			image file dumps/${path}/objects/wide.right-action.png, error 20px
 	@on ltr
 		wide.scroll-wrapper.right-action:
@@ -131,7 +131,7 @@
 			image file dumps/${path}/objects/wide.right-action.png, error 20px
 
 		d2l-wide.scroll-wrapper.right-action:
-			inside partly wide 10px top, 275px left
+			inside partly d2l-wide 10px top, 275px left
 			image file dumps/${path}/objects/wide.right-action.png, error 20px
 
 	small.head:
