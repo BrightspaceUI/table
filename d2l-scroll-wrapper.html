@@ -127,6 +127,9 @@
 				overflow-x: auto;
 				width: 100%;
 				box-sizing: border-box;
+			}
+
+			.inner-wrapper {
 				@apply --d2l-scroll-wrapper-inner;
 			}
 
@@ -206,7 +209,7 @@
 			></d2l-icon-button>
 		</d2l-sticky-element>
 		<div id="wrapper" class="wrapper">
-			<slot></slot>
+			<div class="inner-wrapper"><slot></slot></div>
 		</div>
 	</template>
 	<script>

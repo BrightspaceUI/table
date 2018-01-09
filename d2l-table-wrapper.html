@@ -3,14 +3,6 @@
 <link rel="import" href="d2l-table-style.html">
 <link rel="import" href="d2l-table-col-sort-button.html">
 <link rel="import" href="../d2l-colors/d2l-colors.html">
-<link rel="import" href="d2l-table-wrapper.html">
-
-<link rel="import" href="d2l-tbody.html">
-<link rel="import" href="d2l-td.html">
-<link rel="import" href="d2l-tfoot.html">
-<link rel="import" href="d2l-th.html">
-<link rel="import" href="d2l-thead.html">
-<link rel="import" href="d2l-tr.html">
 
 <!--
 # D2L Table
@@ -18,23 +10,25 @@
 ## Usage
 ```
 	<link rel="import" href="d2l-table.html">
-	<d2l-table>
-		<d2l-thead>
-			<d2l-tr>
-				<d2l-th>Table header cell</d2l-th>
-			</d2l-tr>
-		</d2l-thead>
-		<d2l-tfoot>
-			<d2l-tr>
-				<d2l-th>Table header cell</d2l-th>
-			</d2l-tr>
-		</d2l-tfoot>
-		<d2l-tbody>
-			<d2l-tr>
-				<d2l-td>Table cell</d2l-td>
-			</d2l-tr>
-		</d2l-tbody>
-	</d2l-table>
+	<d2l-table-wrapper>
+		<table class="d2l-table">
+		<thead>
+			<tr>
+				<th>Table header cell</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<th>Table header cell</th>
+			</tr>
+		</tfoot>
+		<tbody>
+			<tr>
+				<td>Table cell</td>
+			</tr>
+		</tbody>
+	    </table>
+    </d2l-table-wrapper>
 ```
 
 ### Table attributes
@@ -95,23 +89,25 @@ Custom property | Description | Default
 		}
 	</style>
 	</custom-style>
-	<d2l-table class="ugly-table">
-		<d2l-thead>
-			<d2l-tr>
-				<d2l-th>Table header cell</d2l-th>
-			</d2l-tr>
-		</d2l-thead>
-		<d2l-tfoot>
-			<d2l-tr>
-				<d2l-th>Table header cell</d2l-th>
-			</d2l-tr>
-		</d2l-tfoot>
-		<d2l-tbody>
-			<d2l-tr>
-				<d2l-td>Table cell</d2l-td>
-			</d2l-tr>
-		</d2l-tbody>
-	</d2l-table>
+	<d2l-table-wraper class="ugly-table">
+		<table class="d2l-table">
+			<thead>
+				<tr>
+					<th>Table header cell</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th>Table header cell</th>
+				</tr>
+			</tfoot>
+			<tbody>
+				<tr>
+					<td>Table cell</td>
+				</tr>
+			</tbody>
+		</table>
+	</d2l-table-wrapper>
 ```
 
 
@@ -119,7 +115,7 @@ Custom property | Description | Default
 @demo demo/index.rtl.html  RTL Table demo
 @demo demo/responsive.html Identical tables with different widths
 -->
-<dom-module id="d2l-table">
+<dom-module id="d2l-table-wrapper">
 	<template strip-whitespace>
 		<style>
 			:host {
@@ -147,10 +143,6 @@ Custom property | Description | Default
 				};
 				--d2l-scroll-wrapper-border-color: var(--d2l-table-border-color);
 				--d2l-scroll-wrapper-background-color: var(--d2l-table-header-background-color);
-
-				--d2l-scroll-wrapper-inner: {
-					@apply --d2l-table;
-				};
 			}
 		</style>
 		<d2l-scroll-wrapper show-actions>
@@ -159,14 +151,7 @@ Custom property | Description | Default
 	</template>
 	<script>
 		Polymer({
-			is: 'd2l-table',
-			properties: {
-				role: {
-					type: String,
-					value: 'table',
-					reflectToAttribute: true
-				}
-			},
+			is: 'd2l-table-wrapper',
 			notifyResize: function() {
 				this.$$('d2l-scroll-wrapper').notifyResize();
 			}

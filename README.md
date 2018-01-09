@@ -61,6 +61,32 @@ HTML:
 </table></d2l-table-wrapper>
 ```
 
+Alternatively, use the d2l-t* elements (allows use of dom-repeat, etc.)
+HTML:
+```html
+<!-- d2l-t* elements still need the d2l-table-style,
+since the table styling can't be done with polyfilled css mixins yet -->
+<style include="d2l-table-style"></style>
+<d2l-table>
+	<d2l-thead>
+		<d2l-tr>
+			<d2l-th>Header column 1</d2l-th>
+			<d2l-th>Header column 2</d2l-th>
+		</d2l-tr>
+	</d2l-thead>
+	<d2l-tbody>
+		<d2l-tr>
+			<d2l-td>row 1 column 1</d2l-td>
+			<d2l-td>row 1 column 2</d2l-td>
+		</d2l-tr>
+		<d2l-tr>
+			<d2l-td>row 2 column 1</d2l-td>
+			<d2l-td>row 2 column 2</d2l-td>
+		</d2l-tr>
+	</d2l-tbody>
+</d2l-table>
+```
+
 #### Row Styles
 
 ![screenshot of table with styled rows](test/acceptance/dumps/d2l-table-demo/objects/rows.png)

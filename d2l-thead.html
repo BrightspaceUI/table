@@ -1,0 +1,20 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="d2l-thead">
+	<template strip-whitespace>
+		<slot></slot>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-thead',
+			properties: {
+				role: {
+					type: String,
+					value: 'rowgroup',
+					readonly: true,
+					reflectToAttribute: true
+				}
+			}
+		});
+	</script>
+</dom-module>

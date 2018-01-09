@@ -1,0 +1,19 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="td">
+	<template strip-whitespace>
+		<slot></slot>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-td',
+			properties: {
+				role: {
+					type: String,
+					value: 'cell',
+					reflectToAttribute: true
+				}
+			}
+		});
+	</script>
+</dom-module>
