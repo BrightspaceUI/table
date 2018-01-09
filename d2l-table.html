@@ -123,10 +123,9 @@ Custom property | Description | Default
 	<template strip-whitespace>
 		<style>
 			:host {
-				@apply --d2l-table;
-				/* There is a sizing issue with display: table (doesn't respond to width).
-				   The table looks fine in all browsers with display:block */
+				background-color: transparent;
 				display: block;
+				width: 100%;
 				--d2l-table-border-color: var(--d2l-color-mica);
 				--d2l-table-header-background-color: var(--d2l-color-regolith);
 				--d2l-table-border-overflow: dashed 1px #d3d9e3;
@@ -148,6 +147,10 @@ Custom property | Description | Default
 				};
 				--d2l-scroll-wrapper-border-color: var(--d2l-table-border-color);
 				--d2l-scroll-wrapper-background-color: var(--d2l-table-header-background-color);
+
+				--d2l-scroll-wrapper-inner: {
+					@apply --d2l-table;
+				};
 			}
 		</style>
 		<d2l-scroll-wrapper show-actions>

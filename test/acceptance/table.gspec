@@ -10,6 +10,14 @@
 		foot              tfoot
 			tr-*          tr
 
+	d2l-small             .screenshot-d2l-small
+		head              d2l-thead
+			tr-*          d2l-tr
+		body              d2l-tbody
+			tr-*          d2l-tr
+		foot              d2l-tfoot
+			tr-*          d2l-tr
+
 	simple                .screenshot-simple
 		head              thead
 			tr-*          tr
@@ -79,7 +87,7 @@
 				right-action  .right > d2l-icon-button
 
 @groups
-	imageCompare small.head,small.body,small.foot,simple.head,simple.body,simple.foot,no-column-border.head,no-column-border.body,tr-last-of-type.head,tr-last-of-type.body,notbody
+	imageCompare small.head,small.body,small.foot,d2l-small.head,d2l-small.body,d2l-small.foot,simple.head,simple.body,simple.foot,no-column-border.head,no-column-border.body,tr-last-of-type.head,tr-last-of-type.body,notbody
 	all          &imageCompare,wide,d2l-wide,sort,rows,rows-styled,no-column-border-styled.head,no-column-border-styled.body
 
 == D2L Table ==
@@ -124,7 +132,7 @@
 
 		d2l-wide.scroll-wrapper.right-action:
 			inside partly d2l-wide 10px top, -15px left
-			image file dumps/${path}/objects/wide.right-action.png, error 20px
+			image file dumps/${path}/objects/d2l-wide.right-action.png, error 20px
 	@on ltr
 		wide.scroll-wrapper.right-action:
 			inside partly wide 10px top, 275px left
@@ -132,7 +140,7 @@
 
 		d2l-wide.scroll-wrapper.right-action:
 			inside partly d2l-wide 10px top, 275px left
-			image file dumps/${path}/objects/wide.right-action.png, error 20px
+			image file dumps/${path}/objects/d2l-wide.right-action.png, error 20px
 
 	small.head:
 		above small.body 0px
@@ -143,6 +151,16 @@
 
 	small.foot:
 		aligned horizontally bottom small
+
+	d2l-small.head:
+		above d2l-small.body 0px
+		aligned horizontally top d2l-small
+
+	d2l-small.body:
+		above d2l-small.foot 0px
+
+	d2l-small.foot:
+		aligned horizontally bottom d2l-small
 
 
 	@forEach [sort] as part
