@@ -160,6 +160,14 @@ Custom property | Description | Default
 	<script>
 		Polymer({
 			is: 'd2l-table',
+			properties: {
+				role: {
+					type: String,
+					value: 'table',
+					readonly: true,
+					reflectToAttribute: true
+				}
+			},
 			notifyResize: function() {
 				this.$$('d2l-scroll-wrapper').notifyResize();
 			}

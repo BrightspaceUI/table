@@ -11,8 +11,18 @@
 				role: {
 					type: String,
 					value: 'row',
-					readonly: true
+					readonly: true,
+					reflectToAttribute: true
+				},
+				selected: {
+					type: Boolean,
+					value: false,
+					reflectToAttribute: true,
+					observer: '_selectedChanged'
 				}
+			},
+			_selectedChanged: function(selected) {
+				this.setAttribute('aria-selected', selected.toString());
 			}
 		});
 	</script>
