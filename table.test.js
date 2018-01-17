@@ -39,7 +39,7 @@ var browsers = {
 };
 
 var mainlineEndpoint = 'http://localhost:8081/components/d2l-table/demo/simple.html';
-var xEndpoint = 'http://localhost:8001/components/d2l-table/demo/simple.html';
+var xEndpoint = 'http://localhost:8000/components/d2l-table/demo/simple.html';
 var demoEndpoint = 'http://localhost:8081/components/d2l-table/demo/index.html';
 
 polymerTests(browsers, function(test, ctx) {
