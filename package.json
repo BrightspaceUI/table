@@ -30,16 +30,16 @@
   "author": "D2L Corporation",
   "license": "Apache-2.0",
   "devDependencies": {
-    "chromedriver": "^2.31.0",
-    "concurrently": "^3.4.0",
+    "chromedriver": "^2.34.1",
+    "concurrently": "^3.5.1",
     "d2l-galen-utils": "https://github.com/Brightspace/d2l-galen-utils.git#v0.3.0",
-    "eslint": "^3.19.0",
-    "eslint-config-brightspace": "^0.2.4",
-    "eslint-plugin-html": "^1.7.0",
-    "galenframework": "^2.3.4",
+    "eslint": "^4.15.0",
+    "eslint-config-brightspace": "^0.4.0",
+    "eslint-plugin-html": "^4.0.1",
+    "galenframework": "^2.3.6",
     "polymer-cli": "^1.5.7",
-    "rimraf": "^2.6.1",
-    "sauce-connect-launcher": "^1.2.2",
+    "rimraf": "^2.6.2",
+    "sauce-connect-launcher": "^1.2.3",
     "sauceconnect-runner": "git+https://github.com/Brightspace/sauceconnect-runner.git#v0.3.0"
   }
 }
