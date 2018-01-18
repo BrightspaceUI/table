@@ -5,9 +5,11 @@
   "license": "Apache-2.0",
   "ignore": [
     "test",
-    "demo",
     "/.*",
-    "package.json"
+    "CODEOWNERS",
+    "package.json",
+    "polymer.json",
+    "wct.conf.json"
   ],
   "dependencies": {
     "d2l-colors": "^3.1.2",
