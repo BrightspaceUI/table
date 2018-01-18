@@ -11,9 +11,9 @@
     "test:lint:js": "eslint --ext html .",
     "test:lint:wc": "polymer lint --input *.html",
     "galen": "d2l-galen -s -c \"java -Xmx2g -cp node_modules/galenframework/lib/galen/galen.jar com.galenframework.GalenMain\"",
-    "dump:galen:local:run": "npm run galen -- dump table.test.js -g factory:local -d test/acceptance/dumps",
-    "galen:local:run": "npm run galen -- test table.test.js -g factory:local -- -p4",
-    "galen:sauce:run": "sc-run -- npm run galen -- test table.test.js -g factory:sauce -i SAUCE_USERNAME SAUCE_ACCESS_KEY TRAVIS_REPO_SLUG TRAVIS_BUILD_NUMBER -- -p4",
+    "dump:galen:local:run": "npm run galen -- dump test/acceptance/table.test.js -g factory:local -d test/acceptance/dumps",
+    "galen:local:run": "npm run galen -- test test/acceptance/table.test.js -g factory:local -- -p4",
+    "galen:sauce:run": "sc-run -- npm run galen -- test test/acceptance/table.test.js -g factory:sauce -i SAUCE_USERNAME SAUCE_ACCESS_KEY TRAVIS_REPO_SLUG TRAVIS_BUILD_NUMBER -- -p4",
     "dump:galen:local": "concurrently -p name -n serve,galen -s first -k \"polymer serve -p 8080\" \"npm run dump:galen:local:run\"",
     "test:galen:local": "concurrently -p name -n serve,galen -s first -k \"polymer serve -p 8080\" \"npm run galen:local:run\"",
     "test:galen:sauce": "concurrently -p name -n serve,galen -s first -k \"polymer serve -p 8080\" \"npm run galen:sauce:run\""
