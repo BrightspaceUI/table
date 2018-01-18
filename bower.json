@@ -1,5 +1,6 @@
 {
   "name": "d2l-table",
+  "description": "Polymer-based web components for D2L tables",
   "main": "d2l-table.html",
   "license": "Apache-2.0",
   "ignore": [
