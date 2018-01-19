@@ -1,12 +1,16 @@
 {
   "name": "d2l-table",
+  "description": "Polymer-based web components for D2L tables",
   "main": "d2l-table.html",
   "license": "Apache-2.0",
   "ignore": [
-    "test",
     "demo",
+    "test",
     "/.*",
-    "package.json"
+    "CODEOWNERS",
+    "package.json",
+    "polymer.json",
+    "wct.conf.json"
   ],
   "dependencies": {
     "d2l-colors": "^3.1.2",

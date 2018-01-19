@@ -1,6 +1,7 @@
 **Looking for SASS-based `d2l-table`?** It's [over here](https://github.com/BrightspaceUI/table/tree/sass).
 
 # d2l-table
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/BrightspaceUI/table)
 [![Bower version][bower-image]][bower-url]
 [![Build status][ci-image]][ci-url]
 [![Dependency Status][dependencies-image]][dependencies-url]
@@ -28,7 +29,7 @@ Include the [webcomponents.js](http://webcomponents.org/polyfills/) "lite" polyf
 
 ```html
 <head>
-	<script src="https://s.brightspace.com/lib/webcomponentsjs/0.7.21/webcomponents-lite.min.js"></script>
+	<script src="../webcomponentsjs/webcomponents-lite.js"></script>
 	<link rel="import" href="../d2l-table/d2l-table.html">
 	<!-- Alternatively use the style include only in custom components that use d2l-table -->
 	<custom-style>
@@ -138,28 +139,39 @@ HTML:
 </table></d2l-table-wrapper>
 ```
 
-### Usage in Production
+## Developing, Testing and Contributing
 
-In production, it's recommended to use a build tool like [Vulcanize](https://github.com/Polymer/vulcanize) to combine all your web components into a single import file. [More from the Polymer Docs: Optimize for Production](https://www.polymer-project.org/1.0/tools/optimize-for-production.html)...
+After cloning the repo, run `npm install` to install dependencies.
+
+If you don't have it already, install the [Polymer CLI](https://www.polymer-project.org/2.0/docs/tools/polymer-cli) globally:
 
 ```shell
-vulcanize --inline-scripts index.html
+npm install -g polymer-cli
 ```
 
-## Tests
+To start a [local web server](https://www.polymer-project.org/2.0/docs/tools/polymer-cli-commands#serve) that hosts the demo page and tests:
 
-Run
+```shell
+polymer serve
+```
+
+To lint ([eslint](http://eslint.org/) and [Polymer lint](https://www.polymer-project.org/2.0/docs/tools/polymer-cli-commands#lint)):
+
+```shell
+npm run lint
+```
+
+To run unit tests locally using [Polymer test](https://www.polymer-project.org/2.0/docs/tools/polymer-cli-commands#tests):
+
+```shell
+polymer test --skip-plugin sauce
+```
+
+To lint AND run local unit tests:
 
 ```shell
 npm test
 ```
-
-To run tests. The following tests are run:
-
-* **lint:js** Runs eslint for Javascript in and out of HTML
-* **lint:wc** Runs Polymer's linter
-* **galen**   Runs Galen tests. See [Galen](#galen)
-* **wct**     Runs WCT tests. Tests functionality of table
 
 ### Galen
 
@@ -170,10 +182,6 @@ To update the screenshots, run `npm run dump`. The screenshots will be placed un
 * run the tests with `npm run test:galen`
 * [galen.config](galen.config) can be used to change the browser that is being tested. See the [config documentation][GalenConfig]
 * [table.gspec](table.gspec) contains the actual assertions. Documentation can be found [here][GalenSpec]
-
-## Coding styles
-
-See the [Best Practices & Style Guide](https://github.com/Brightspace/valence-ui-docs/wiki/Best-Practices-&-Style-Guide) for information on naming conventions, plus information about the [EditorConfig](http://editorconfig.org) rules used in this repo.
 
 [bower-url]: http://bower.io/search/?q=d2l-table
 [bower-image]: https://img.shields.io/bower/v/d2l-table.svg
