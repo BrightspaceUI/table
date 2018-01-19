@@ -103,7 +103,7 @@
 			.d2l-table > tbody:first-of-type > tr:first-of-type > th,
 			d2l-thead > d2l-tr:first-of-type > d2l-th,
 			d2l-tbody:first-of-type > d2l-tr:first-of-type > d2l-th {
-				border-top:var(--d2l-table-outer-border);
+				border-top:var(--d2l-table-border);
 			}
 
 			.d2l-table > thead ~ tbody:first-of-type > tr:first-of-type > th,
@@ -232,7 +232,7 @@
 			d2l-tbody:last-child > d2l-tr:last-of-type  > d2l-th,
 			d2l-tr[last-row]  > d2l-td,
 			d2l-tr[last-row]  > d2l-th {
-				border-bottom:var(--d2l-table-outer-border);
+				border-bottom:var(--d2l-table-border);
 			}
 
 			.d2l-table > tfoot ~ tbody:last-child > tr:last-of-type  > td,
@@ -347,7 +347,7 @@
 			[dir="rtl"] d2l-tbody > d2l-tr[selected]  > d2l-th:first-of-type,
 			d2l-tbody > d2l-tr[selected]  > d2l-td:last-of-type,
 			d2l-tbody > d2l-tr[selected]  > d2l-th:last-of-type {
-				border-right-color:var(--d2l-table-outer-row-border-color-selected);
+				border-right-color:var(--d2l-table-row-border-color-selected);
 			}
 
 			[dir="rtl"] .d2l-table > tbody > tr[selected]  > td:last-of-type,
@@ -358,7 +358,7 @@
 			[dir="rtl"] d2l-tbody > d2l-tr[selected]  > d2l-th:last-of-type,
 			d2l-tbody > d2l-tr[selected]  > d2l-td:first-of-type,
 			d2l-tbody > d2l-tr[selected]  > d2l-th:first-of-type {
-				border-left-color:var(--d2l-table-outer-row-border-color-selected);
+				border-left-color:var(--d2l-table-row-border-color-selected);
 			}
 
 			.d2l-table > tbody > tr[active][selected],
@@ -384,7 +384,7 @@
 			d2l-tbody > d2l-tr[active][selected]  > d2l-th:last-of-type,
 			d2l-table[selectable] d2l-tbody > d2l-tr[selected]:hover  > d2l-td:last-of-type,
 			d2l-table[selectable] d2l-tbody > d2l-tr[selected]:hover  > d2l-th:last-of-type {
-				border-right-color:var(--d2l-table-outer-row-border-color-active-selected);
+				border-right-color:var(--d2l-table-row-border-color-active-selected);
 			}
 
 			[dir="rtl"] .d2l-table > tbody > tr[active][selected]  > td:last-of-type,
@@ -403,7 +403,7 @@
 			d2l-tbody > d2l-tr[active][selected]  > d2l-th:first-of-type,
 			d2l-table[selectable] d2l-tbody > d2l-tr[selected]:hover  > d2l-td:first-of-type,
 			d2l-table[selectable] d2l-tbody > d2l-tr[selected]:hover  > d2l-th:first-of-type {
-				border-left-color:var(--d2l-table-outer-row-border-color-active-selected);
+				border-left-color:var(--d2l-table-row-border-color-active-selected);
 			}
 
 			.d2l-table > tbody > tr[active][selected] > td,
@@ -429,7 +429,7 @@
 			.d2l-table > tbody > tr:first-of-type[selected] > th,
 			d2l-tbody > d2l-tr:first-of-type[selected] > d2l-td,
 			d2l-tbody > d2l-tr:first-of-type[selected] > d2l-th {
-				border-top-color:var(--d2l-table-outer-row-border-color-selected);
+				border-top-color:var(--d2l-table-row-border-color-selected);
 			}
 
 			.d2l-table > tbody > tr:first-of-type[active][selected] > td,
@@ -440,7 +440,7 @@
 			d2l-tbody > d2l-tr:first-of-type[active][selected] > d2l-th,
 			d2l-table[selectable] d2l-tbody > d2l-tr:first-of-type[selected]:hover > d2l-td,
 			d2l-table[selectable] d2l-tbody > d2l-tr:first-of-type[selected]:hover > d2l-th {
-				border-top-color:var(--d2l-table-outer-row-border-color-active-selected);
+				border-top-color:var(--d2l-table-row-border-color-active-selected);
 			}
 
 			.d2l-table > tbody > tr:last-of-type[selected] > td,
@@ -451,7 +451,7 @@
 			d2l-tbody > d2l-tr:last-of-type[selected] > d2l-th,
 			d2l-tbody > d2l-tr[last-row][selected] > d2l-td,
 			d2l-tbody > d2l-tr[last-row][selected] > d2l-th {
-				border-bottom-color:var(--d2l-table-outer-row-border-color-selected);
+				border-bottom-color:var(--d2l-table-row-border-color-selected);
 			}
 
 			.d2l-table > tbody > tr:last-of-type[active][selected] > td,
@@ -470,7 +470,7 @@
 			d2l-tbody > d2l-tr[last-row][active][selected] > d2l-th,
 			d2l-table[selectable] d2l-tbody > d2l-tr[last-row][selected]:hover > d2l-td,
 			d2l-table[selectable] d2l-tbody > d2l-tr[last-row][selected]:hover > d2l-th {
-				border-bottom-color:var(--d2l-table-outer-row-border-color-active-selected);
+				border-bottom-color:var(--d2l-table-row-border-color-active-selected);
 			}
 
 			.d2l-table[no-column-border] > tbody > tr > td,
@@ -493,7 +493,7 @@
 			d2l-tr  > d2l-th:first-of-type,
 			d2l-table[no-column-border] d2l-tbody > d2l-tr  > d2l-td:first-of-type,
 			d2l-table[no-column-border] d2l-tbody > d2l-tr  > d2l-th:first-of-type {
-				border-left:var(--d2l-table-outer-border);
+				border-left:var(--d2l-table-border);
 			}
 
 			[dir="rtl"] .d2l-table > * > tr  > td:first-of-type,
@@ -508,7 +508,7 @@
 			d2l-tr  > d2l-th:last-of-type,
 			d2l-table[no-column-border] d2l-tbody > d2l-tr  > d2l-td:last-of-type,
 			d2l-table[no-column-border] d2l-tbody > d2l-tr  > d2l-th:last-of-type {
-				border-right:var(--d2l-table-outer-border);
+				border-right:var(--d2l-table-border);
 			}
 
 			[dir="rtl"] .d2l-table > tbody > tr[selected]  > td:first-of-type,
@@ -557,7 +557,7 @@
 			[dir="rtl"] d2l-table[no-column-border] d2l-tbody > d2l-tr  > d2l-td:first-of-type,
 			[dir="rtl"] d2l-table[no-column-border] d2l-tbody > d2l-tr  > d2l-th:first-of-type {
 				border-left:none;
-				border-right:var(--d2l-table-outer-border);
+				border-right:var(--d2l-table-border);
 			}
 
 			[dir="rtl"] .d2l-table[no-column-border] > tbody > tr  > td:last-of-type,
@@ -565,15 +565,15 @@
 			[dir="rtl"] d2l-table[no-column-border] d2l-tbody > d2l-tr  > d2l-td:last-of-type,
 			[dir="rtl"] d2l-table[no-column-border] d2l-tbody > d2l-tr  > d2l-th:last-of-type {
 				border-right:none;
-				border-left:var(--d2l-table-outer-border);
+				border-left:var(--d2l-table-border);
 			}
 
 			[dir="rtl"] .d2l-table[no-column-border] > tbody > tr  > td:only-of-type,
 			[dir="rtl"] .d2l-table[no-column-border] > tbody > tr  > th:only-of-type,
 			[dir="rtl"] d2l-table[no-column-border] d2l-tbody > d2l-tr  > d2l-td:only-of-type,
 			[dir="rtl"] d2l-table[no-column-border] d2l-tbody > d2l-tr  > d2l-th:only-of-type {
-				border-right:var(--d2l-table-outer-border);
-				border-left:var(--d2l-table-outer-border);
+				border-right:var(--d2l-table-border);
+				border-left:var(--d2l-table-border);
 			}
 		</style>
 	</template>
