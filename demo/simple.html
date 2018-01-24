@@ -15,6 +15,7 @@
 
 				body {
 					margin: 0;
+					margin-bottom: 500px;
 					-ms-overflow-style: none;
 				}
 
@@ -421,6 +422,86 @@
 					</table>
 				</d2l-table-wrapper>
 			</div>
+			<div class="screenshots screenshot-dynamic">
+				<d2l-table-wrapper id="dynamic-wrapper">
+				</d2l-table-wrapper>
+			</div>
+			<div class="screenshots screenshot-d2l-dynamic">
+				<d2l-table id="d2l-dynamic"></d2l-table>
+			</div>
 		</div>
+		<script>
+		(function() {
+
+			function createCellContent() {
+				var span = document.createElement('span');
+				span.appendChild(document.createTextNode(' '));
+				return span;
+			}
+
+			function createTable() {
+
+				var wrapper = document.getElementById('dynamic-wrapper');
+				var tbl = document.createElement('table');
+				tbl.className = 'd2l-table';
+				wrapper.appendChild(tbl);
+
+				var thead = document.createElement('thead');
+				var headerRow = document.createElement('tr');
+				for (var i = 0; i < 3; i++) {
+					var th = document.createElement('th');
+					th.appendChild(createCellContent());
+					headerRow.appendChild(th);
+				}
+				thead.appendChild(headerRow);
+				tbl.appendChild(thead);
+
+				var tbody = document.createElement('tbody');
+				for (var j = 0; j < 3; j++) {
+					var row = document.createElement('tr');
+					for (var k = 0; k < 3; k++) {
+						var cell = document.createElement('td');
+						cell.appendChild(createCellContent());
+						row.appendChild(cell);
+					}
+					tbody.appendChild(row);
+				}
+				tbl.appendChild(tbody);
+			}
+
+			function createD2LTable() {
+
+				var tbl = document.getElementById('d2l-dynamic');
+
+				var thead = document.createElement('d2l-thead');
+				var headerRow = document.createElement('d2l-tr');
+				for (var i = 0; i < 3; i++) {
+					var th = document.createElement('d2l-th');
+					Polymer.dom(th).appendChild(createCellContent());
+					Polymer.dom(headerRow).appendChild(th);
+				}
+				Polymer.dom(thead).appendChild(headerRow);
+				Polymer.dom(tbl).appendChild(thead);
+
+				var tbody = document.createElement('d2l-tbody');
+				for (var j = 0; j < 3; j++) {
+					var row = document.createElement('d2l-tr');
+					for (var k = 0; k < 3; k++) {
+						var cell = document.createElement('d2l-td');
+						Polymer.dom(cell).appendChild(createCellContent());
+						Polymer.dom(row).appendChild(cell);
+					}
+					Polymer.dom(tbody).appendChild(row);
+				}
+				Polymer.dom(tbl).appendChild(tbody);
+
+			}
+
+			createTable();
+			window.addEventListener('WebComponentsReady', function() {
+				createD2LTable();
+			});
+		})();
+		</script>
 	</body>
 </html>
