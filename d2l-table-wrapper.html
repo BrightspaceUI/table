@@ -1,8 +1,10 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="d2l-scroll-wrapper.html">
-<link rel="import" href="d2l-table-style.html">
-<link rel="import" href="d2l-table-col-sort-button.html">
 <link rel="import" href="../d2l-colors/d2l-colors.html">
+<link rel="import" href="../d2l-fastdom-import/fastdom.html">
+<link rel="import" href="d2l-scroll-wrapper.html">
+<link rel="import" href="d2l-table-col-sort-button.html">
+<link rel="import" href="d2l-table-observer-behavior.html">
+<link rel="import" href="d2l-table-style.html">
 
 <!--
 # D2L Table
@@ -143,14 +145,123 @@ Custom property | Description | Default
 			}
 		</style>
 		<d2l-scroll-wrapper show-actions>
-			<slot></slot>
+			<slot id="slot"></slot>
 		</d2l-scroll-wrapper>
 	</template>
 	<script>
 		Polymer({
 			is: 'd2l-table-wrapper',
+			behaviors: [
+				D2L.PolymerBehaviors.Table.LocalObserverBehavior
+			],
+			listeners: {
+				'd2l-table-local-observer': '_handleLocalObserver'
+			},
+			__applyInQueue: false,
+			__tableObserver: null,
+			attached: function() {
+				Polymer.RenderStatus.afterNextRender(this, function() {
+					this._registerTableObserver();
+					this._applyClassNames();
+				}.bind(this));
+			},
+			detached: function() {
+				if (this.__tableObserver !== null) {
+					this.__tableObserver.disconnect();
+					this.__tableObserver = null;
+				}
+			},
 			notifyResize: function() {
 				this.$$('d2l-scroll-wrapper').notifyResize();
+			},
+			_applyClassNames: function() {
+
+				// don't allow a bunch of calls to queue up
+				if (this.__applyInQueue) return;
+
+				var table = this.queryEffectiveChildren('.d2l-table');
+				if (!table) return;
+
+				this.__applyInQueue = true;
+
+				fastdom.measure(function() {
+
+					this.__applyInQueue = false;
+
+					var firstRow = null;
+					var lastRow = null;
+					for (var i = 0; i < table.rows.length; i++) {
+						// checking offsetParent is a measure
+						if (table.rows[i].offsetParent !== null) {
+							if (firstRow === null) {
+								firstRow = table.rows[i];
+							}
+							lastRow = table.rows[i];
+						}
+					}
+
+					fastdom.mutate(function() {
+
+						for (var j = 0; j < table.rows.length; j++) {
+
+							var row = table.rows[j];
+							if (row === firstRow) {
+								firstRow.classList.add('d2l-table-row-first');
+							} else {
+								row.classList.remove('d2l-table-row-first');
+							}
+							if (row === lastRow) {
+								lastRow.classList.add('d2l-table-row-last');
+							} else {
+								row.classList.remove('d2l-table-row-last');
+							}
+
+							for (var k = 0; k < row.cells.length; k++) {
+								// would be great to use classList.toggle() here,
+								// but IE11 doesn't support it
+								if (k === 0) {
+									row.cells[k].classList.add('d2l-table-cell-first');
+								} else {
+									row.cells[k].classList.remove('d2l-table-cell-first');
+								}
+								if (k === row.cells.length - 1) {
+									row.cells[k].classList.add('d2l-table-cell-last');
+								} else {
+									row.cells[k].classList.remove('d2l-table-cell-last');
+								}
+							}
+
+						}
+
+					}.bind(this));
+
+				}.bind(this));
+
+			},
+			_handleLocalObserver: function() {
+				// children have been added/removed from <slot>,
+				// try again to register observer on <table> element
+				this._registerTableObserver();
+			},
+			_registerTableObserver: function() {
+
+				if (this.__tableObserver) return;
+
+				var table = this.queryEffectiveChildren('.d2l-table');
+				if (!table) return;
+
+				// any time a mutation occurs, re-calculate class names
+				this.__tableObserver = new MutationObserver(function() {
+					this._applyClassNames();
+				}.bind(this));
+
+				// observes mutations to <table>'s direct children and also
+				// its subtree (rows or cells added/removed to any descendant)
+				this.__tableObserver.observe(table, {
+					childList: true,
+					subtree: true
+				});
+
 			}
 		});
 	</script>

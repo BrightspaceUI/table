@@ -1,10 +1,12 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="d2l-scroll-wrapper.html">
-<link rel="import" href="d2l-table-style.html">
-<link rel="import" href="d2l-table-col-sort-button.html">
 <link rel="import" href="../d2l-colors/d2l-colors.html">
-<link rel="import" href="d2l-table-wrapper.html">
+<link rel="import" href="../d2l-fastdom-import/fastdom.html">
 
+<link rel="import" href="d2l-scroll-wrapper.html">
+<link rel="import" href="d2l-table-col-sort-button.html">
+<link rel="import" href="d2l-table-observer-behavior.html">
+<link rel="import" href="d2l-table-style.html">
+<link rel="import" href="d2l-table-wrapper.html">
 <link rel="import" href="d2l-tbody.html">
 <link rel="import" href="d2l-td.html">
 <link rel="import" href="d2l-tfoot.html">
@@ -151,12 +153,18 @@ Custom property | Description | Default
 			}
 		</style>
 		<d2l-scroll-wrapper show-actions>
-			<slot></slot>
+			<slot id="slot"></slot>
 		</d2l-scroll-wrapper>
 	</template>
 	<script>
 		Polymer({
 			is: 'd2l-table',
+			behaviors: [
+				D2L.PolymerBehaviors.Table.LocalObserverBehavior
+			],
+			listeners: {
+				'd2l-table-local-observer': '_handleLocalObserver'
+			},
 			properties: {
 				role: {
 					type: String,
@@ -164,8 +172,101 @@ Custom property | Description | Default
 					reflectToAttribute: true
 				}
 			},
+			__applyInQueue: false,
+			attached: function() {
+				Polymer.RenderStatus.afterNextRender(this, function() {
+					this._applyClassNames();
+				}.bind(this));
+			},
 			notifyResize: function() {
 				this.$$('d2l-scroll-wrapper').notifyResize();
+			},
+			_applyClassNames: function() {
+
+				// don't allow a bunch of calls to queue up
+				if (this.__applyInQueue) return;
+				this.__applyInQueue = true;
+
+				fastdom.mutate(function() {
+					this.__applyInQueue = false;
+					var rows = this._getRowsAndCells();
+					for (var i = 0; i < rows.length; i++) {
+						var row = rows[i];
+						if (i === 0) {
+							row.elem.classList.add('d2l-table-row-first');
+						} else {
+							row.elem.classList.remove('d2l-table-row-first');
+						}
+						if (i === rows.length - 1) {
+							row.elem.classList.add('d2l-table-row-last');
+						} else {
+							row.elem.classList.remove('d2l-table-row-last');
+						}
+						for (var j = 0; j < row.cells.length; j++) {
+							var cell = row.cells[j];
+							if (j === 0) {
+								cell.classList.add('d2l-table-cell-first');
+							} else {
+								cell.classList.remove('d2l-table-cell-first');
+							}
+							if (j === row.cells.length - 1) {
+								cell.classList.add('d2l-table-cell-last');
+							} else {
+								cell.classList.remove('d2l-table-cell-last');
+							}
+						}
+					}
+				}.bind(this));
+
+			},
+			_handleLocalObserver: function() {
+				// descendants have been added/removed from somewhere in
+				// the <slot>,so re-calculate
+				this._applyClassNames();
+			},
+			_getRowsAndCells: function() {
+
+				var headerRows = [];
+				var bodyRows = [];
+				var footerRows = [];
+
+				function recurse(node, rows) {
+
+					var keepGoing = true;
+					var childRows = rows;
+
+					if (node.nodeType === 1) {
+						var tagName = node.tagName.toLowerCase();
+						if (tagName === 'd2l-tr') {
+							rows.push({elem: node, cells: []});
+						} else if (tagName === 'd2l-td' || tagName === 'd2l-th') {
+							if (rows.length > 0) {
+								rows[rows.length - 1].cells.push(node);
+								keepGoing = false;
+							}
+						} else if (tagName === 'thead' || tagName === 'd2l-thead') {
+							childRows = headerRows;
+						} else if (tagName === 'tfoot' || tagName === 'd2l-tfoot') {
+							childRows = footerRows;
+						} else if (tagName === 'tbody' || tagName === 'd2l-tbody') {
+							childRows = bodyRows;
+						}
+					}
+
+					if (!keepGoing) return;
+
+					var children = Polymer.dom(node).getEffectiveChildNodes();
+					for (var i = 0; i < children.length; i++) {
+						recurse(children[i], childRows);
+					}
+
+				}
+
+				recurse(this.root, bodyRows);
+
+				var rows = headerRows.concat(bodyRows.concat(footerRows));
+				return rows;
+
 			}
 		});
 	</script>
