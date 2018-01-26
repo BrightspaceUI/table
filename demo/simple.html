@@ -270,7 +270,7 @@
 						<td><span> </span></td>
 						<td><span> </span></td>
 					</tr>
-					<tr active last-row>
+					<tr selected>
 						<td><span> </span></td>
 						<td><span> </span></td>
 						<td><span> </span></td>
@@ -444,7 +444,7 @@
 				var wrapper = document.getElementById('dynamic-wrapper');
 				var tbl = document.createElement('table');
 				tbl.className = 'd2l-table';
-				wrapper.appendChild(tbl);
+				Polymer.dom(wrapper).appendChild(tbl);
 
 				var thead = document.createElement('thead');
 				var headerRow = document.createElement('tr');
@@ -457,16 +457,21 @@
 				tbl.appendChild(thead);
 
 				var tbody = document.createElement('tbody');
-				for (var j = 0; j < 3; j++) {
-					var row = document.createElement('tr');
-					for (var k = 0; k < 3; k++) {
-						var cell = document.createElement('td');
-						cell.appendChild(createCellContent());
-						row.appendChild(cell);
-					}
-					tbody.appendChild(row);
-				}
 				tbl.appendChild(tbody);
+				setTimeout(function() {
+
+					for (var j = 0; j < 3; j++) {
+						var row = document.createElement('tr');
+						for (var k = 0; k < 3; k++) {
+							var cell = document.createElement('td');
+							cell.appendChild(createCellContent());
+							row.appendChild(cell);
+						}
+						tbody.appendChild(row);
+					}
+
+				}, 0);
+
 			}
 
 			function createD2LTable() {
@@ -484,22 +489,27 @@
 				Polymer.dom(tbl).appendChild(thead);
 
 				var tbody = document.createElement('d2l-tbody');
-				for (var j = 0; j < 3; j++) {
-					var row = document.createElement('d2l-tr');
-					for (var k = 0; k < 3; k++) {
-						var cell = document.createElement('d2l-td');
-						Polymer.dom(cell).appendChild(createCellContent());
-						Polymer.dom(row).appendChild(cell);
-					}
-					Polymer.dom(tbody).appendChild(row);
-				}
 				Polymer.dom(tbl).appendChild(tbody);
+
+				setTimeout(function() {
+					for (var j = 0; j < 3; j++) {
+						var row = document.createElement('d2l-tr');
+						for (var k = 0; k < 3; k++) {
+							var cell = document.createElement('d2l-td');
+							Polymer.dom(cell).appendChild(createCellContent());
+							Polymer.dom(row).appendChild(cell);
+						}
+						Polymer.dom(tbody).appendChild(row);
+					}
+				}, 0);
 
 			}
 
-			createTable();
 			window.addEventListener('WebComponentsReady', function() {
-				createD2LTable();
+				setTimeout(function() {
+					createTable();
+					createD2LTable();
+				}, 0);
 			});
 		})();
 		</script>

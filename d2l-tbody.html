@@ -1,12 +1,16 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="d2l-table-observer-behavior.html">
 
 <dom-module id="d2l-tbody">
 	<template strip-whitespace>
-		<slot></slot>
+		<slot id="slot"></slot>
 	</template>
 	<script>
 		Polymer({
 			is: 'd2l-tbody',
+			behaviors: [
+				D2L.PolymerBehaviors.Table.LocalObserverBehavior
+			],
 			properties: {
 				role: {
 					type: String,
