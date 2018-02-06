@@ -7,9 +7,17 @@
     "demo",
     "test",
     "/.*",
-    "CODEOWNERS",
+    ".csslintrc",
+    ".editorconfig",
+    ".eslintignore",
+    ".eslintrc.json",
+    ".gitignore",
+    ".npmignore",
+    ".travis.yml",
+    "galen.config",
     "package.json",
     "polymer.json",
+    "table.test.js",
     "wct.conf.json"
   ],
   "dependencies": {
