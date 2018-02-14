@@ -85,6 +85,7 @@
 				/* For sticky buttons. Prevents Stickyfill from forcing layout
 				   changes by setting position itself */
 				position: relative;
+				--d2l-scroll-wrapper-height: initial;
 
 				--d2l-scroll-wrapper-action: {
 					position: absolute;
@@ -125,8 +126,8 @@
 			.wrapper {
 				outline: none;
 				overflow-x: auto;
-				width: 100%;
 				box-sizing: border-box;
+				max-height: var(--d2l-scroll-wrapper-height);
 			}
 
 			.inner-wrapper {
@@ -169,14 +170,13 @@
 			:host([is-rtl]) .left,
 			.right {
 				position: absolute;
-				right: 0;
+				right: 32px;
 				left: auto;
 			}
-
 			:host([is-rtl]) .right,
 			.left {
 				position: absolute;
-				left: 0;
+				left: 32px;
 				right: auto;
 			}
 

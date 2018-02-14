@@ -236,6 +236,151 @@
 			[dir="rtl"] d2l-table[no-column-border] d2l-tbody > d2l-tr > .d2l-table-cell-first {
 				border-right: var(--d2l-table-border);
 			}
+
+			[sticky-headers] {
+				position: relative;
+				overflow: hidden;
+			}
+
+			[sticky-headers] tr[header] th {
+				position: -webkit-sticky;
+				position: sticky;
+				top: 0;
+				border-bottom: var(--d2l-table-border);
+			}
+
+			[sticky-headers] th[sticky]:first-child,
+			[sticky-headers] td[sticky]:first-child {
+				left: -1px;
+			}
+
+			[sticky-headers] tr[header] + tr[header] th[sticky]:first-child,
+			[sticky-headers] tr[header] + tr[header] td[sticky]:first-child {
+				left: 0;
+			}
+
+			[dir="rtl"] [sticky-headers] th[sticky]:first-child,
+			[dir="rtl"] [sticky-headers] td[sticky]:first-child {
+				right: -1px;
+			}
+
+			[dir="rtl"] [sticky-headers] tr[header] + tr[header] th[sticky]:first-child,
+			[dir="rtl"] [sticky-headers] tr[header] + tr[header] td[sticky]:first-child {
+				right: 0;
+			}
+
+			[dir="rtl"] [sticky-headers] tr[header]:not(:first-child) th,
+			[dir="rtl"] [sticky-headers] tr[header]:not(:first-child) td {
+				border-left: var(--d2l-table-border);
+			}
+
+			[sticky-headers] tr[header]:not(:first-child) th,
+			[sticky-headers] tr[header]:not(:first-child) td {
+				position: -webkit-sticky;
+				position: sticky;
+				top: 0;
+				border-left: none;
+				border-top: none;
+				border-bottom: var(--d2l-table-border);
+			}
+
+			[sticky-headers] tr[header] th,
+			[sticky-headers] tr[header] td {
+				position: -webkit-sticky;
+				position: sticky;
+				top: 0;
+			}
+
+			[sticky-headers] tr:not([header]) td,
+			[sticky-headers] tr:not([header]) th {
+				border-top: var(--d2l-table-border);
+				border-bottom: none;
+			}
+
+			[sticky-headers] tr[header] + tr:not([header]) td,
+			[sticky-headers] tr[header] + tr:not([header]) th {
+				border-top: none;
+				border-bottom: none;
+			}
+
+			[sticky-headers] tr[header] + tr:not([header])[selected] td,
+			[sticky-headers] tr[header] + tr:not([header])[selected] th {
+				border-top: var(--d2l-table-border);
+				border-top-color: var(--d2l-table-row-border-color-selected);
+			}
+
+			[sticky-headers] tr[header] th[sticky],
+			[sticky-headers] tr[header] td[sticky] {
+				z-index: 3;
+			}
+
+			[dir="rtl"] [sticky-headers] th[sticky],
+			[dir="rtl"] [sticky-headers] td[sticky] {
+				right: 0;
+			}
+
+			[dir="rtl"] [sticky-headers] .d2l-table-cell-last {
+				border-left: none;
+			}
+
+			[sticky-headers] th[sticky],
+			[sticky-headers] td[sticky] {
+				position: -webkit-sticky;
+				position: sticky;
+				left: 0;
+				z-index: 2;
+				background-color: inherit;
+			}
+
+			[dir="rtl"] [sticky-headers] .d2l-table td,
+			[dir="rtl"] [sticky-headers] .d2l-table th {
+				border-left: var(--d2l-table-border);
+				border-right: none;
+			}
+
+			[dir="rtl"] [sticky-headers] .d2l-table [selected] td:last-child,
+			[dir="rtl"] [sticky-headers] .d2l-table [selected] th:last-child {
+				border-left: var(--d2l-table-border);
+				border-left-color: var(--d2l-table-row-border-color-selected);
+			}
+
+			[sticky-headers] .d2l-table tr[selected] + tr:not([selected]) th,
+			[sticky-headers] .d2l-table tr[selected] + tr:not([selected]) td {
+				border-top: var(--d2l-table-border);
+				border-top-color: var(--d2l-table-row-border-color-selected);
+			}
+
+			[sticky-headers] .d2l-table tr[selected] th,
+			[sticky-headers] .d2l-table tr[selected] td {
+				border-top: var(--d2l-table-border);
+				border-bottom: none;
+				border-top-color: var(--d2l-table-row-border-color-selected);
+				border-bottom-color: var(--d2l-table-row-border-color-selected);
+			}
+
+			[dir="rtl"] [sticky-headers] .d2l-table td:first-child,
+			[dir="rtl"] [sticky-headers] .d2l-table th:first-child {
+				border-right: var(--d2l-table-border);
+				border-left: var(--d2l-table-border);
+			}
+
+			[dir="rtl"] [sticky-headers] .d2l-table [selected]:hover > :first-child {
+				border-left: var(--d2l-table-border);
+			}
+
+			[dir="rtl"] [sticky-headers] .d2l-table [header] + [header] > * {
+				border-right: none;
+			}
+
+			[sticky-headers] .d2l-table tr:last-child td,
+			[sticky-headers] .d2l-table tr:last-child th {
+				border-bottom: var(--d2l-table-border)
+			}
+
+			[sticky-headers] .d2l-table tr[selected]:last-child td,
+			[sticky-headers] .d2l-table tr[selected]:last-child th {
+				border-bottom-color: var(--d2l-table-row-border-color-selected);
+			}
 		</style>
 	</template>
 </dom-module>
