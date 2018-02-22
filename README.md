@@ -196,7 +196,7 @@ npm test
 
 ### Galen
 
-The [Galen][Galen] tests check layout and look of table. Galen is not meant to test functionality. For example, these tests will fail if the border-radius changes. The tests use a combination of screenshots and layout assertions. The results of the tests can be found in reports/d2l-table/report.html
+The [Galen][Galen] tests check layout and look of table. Galen is not meant to test functionality. For example, these tests will fail if the border-radius changes. The tests use a combination of screenshots and layout assertions. The results of the tests can be found in *reports/d2l-table/report.html*
 
 __Testing with galen does not currently work on Windows. Use Docker or a VM until it's fixed.__
 
