@@ -247,17 +247,16 @@ Custom property | Description | Default
 
 			},
 			_applySubheadingTop: function(val) {
-				if( !val ) {
+				if (!val) {
 					return;
-				}				
+				}
 
-				/* It appears Polymer 1 calls this observer before everything is 
-					finished rendering so it gets the incorrect clientHeight. In 
+				/* It appears Polymer 1 calls this observer before everything is
+					finished rendering so it gets the incorrect clientHeight. In
 					Polymer 2 this works without the afterNextRender.
 				*/
-				Polymer.RenderStatus.afterNextRender(this, function () {
+				Polymer.RenderStatus.afterNextRender(this, function() {
 					var topHeader = this.querySelector('.d2l-table tr[header].d2l-table-row-first th:not([rowspan]), .d2l-table thead tr:first-child th:not([rowspan])');
-					console.log(topHeader);
 					if (!topHeader) {
 						return;
 					}
@@ -267,7 +266,6 @@ Custom property | Description | Default
 						ths[i].style.top = topHeader.clientHeight - 3 + 'px';
 					}
 				}.bind(this));
-				
 			},
 			_handleLocalObserver: function() {
 				// children have been added/removed from <slot>,
