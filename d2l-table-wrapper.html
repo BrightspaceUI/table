@@ -256,12 +256,12 @@ Custom property | Description | Default
 					Polymer 2 this works without the afterNextRender.
 				*/
 				Polymer.RenderStatus.afterNextRender(this, function() {
-					var topHeader = this.querySelector('.d2l-table tr[header].d2l-table-row-first th:not([rowspan]), .d2l-table thead tr:first-child th:not([rowspan])');
+					var topHeader = this.querySelector('.d2l-table tr[header]:first-child th:not([rowspan]), .d2l-table thead tr:first-child th:not([rowspan])');
 					if (!topHeader) {
 						return;
 					}
 
-					var ths = this.querySelectorAll('.d2l-table tr[header]:not(.d2l-table-row-first) th, .d2l-table thead tr:not(:first-child) th');
+					var ths = this.querySelectorAll('.d2l-table tr[header]:not(:first-child) th, .d2l-table thead tr:not(:first-child) th');
 					for (var i = 0; i < ths.length; i++) {
 						ths[i].style.top = topHeader.clientHeight - 3 + 'px';
 					}
