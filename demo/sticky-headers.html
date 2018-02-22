@@ -19,10 +19,6 @@
 				font-size: 20px;
 			}
 
-			[sticky-headers] {
-				--d2l-table-height: 50vw;
-			}
-
 			.screenshots {
 				display: inline-block;
 			}
@@ -760,8 +756,8 @@
 				<p>Multi-Header Table</p>
 				<d2l-table-wrapper sticky-headers>
 					<table id="multi" class="d2l-table" selectable>
-						<tbody>
-							<tr header>
+						<thead>
+							<tr>
 								<th rowspan="2">Column header 1 Really Really REALLY long</th>
 								<th sticky>Column header 2</th>
 								<th rowspan="2">Column header 3</th>
@@ -783,12 +779,14 @@
 								<th rowspan="2">Column header 19</th>
 								<th rowspan="2">Column header 20</th>
 							</tr>
-							<tr header>
+							<tr>
 								<th sticky>Sub Header</th>
 								<th>Sub Header</th>
 								<th>Sub Header</th>
 								<th>Sub Header</th>
 							</tr>
+						</thead>
+						<tbody>
 							<tr selected>
 								<td>Row 1 Column 1</td>
 								<td sticky>Row 1 Column 2</td>

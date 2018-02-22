@@ -124,7 +124,6 @@ Custom property | Description | Default
 				--d2l-table-border-color: var(--d2l-color-mica);
 				--d2l-table-header-background-color: var(--d2l-color-regolith);
 				--d2l-table-border-overflow: dashed 1px #d3d9e3;
-				--d2l-table-height: 100%;
 			}
 			d2l-scroll-wrapper {
 				--d2l-scroll-wrapper-h-scroll: {
@@ -143,7 +142,6 @@ Custom property | Description | Default
 				};
 				--d2l-scroll-wrapper-border-color: var(--d2l-table-border-color);
 				--d2l-scroll-wrapper-background-color: var(--d2l-table-header-background-color);
-				--d2l-scroll-wrapper-height: var(--d2l-table-height);
 			}
 		</style>
 		<d2l-scroll-wrapper show-actions>
@@ -159,13 +157,20 @@ Custom property | Description | Default
 			listeners: {
 				'd2l-table-local-observer': '_handleLocalObserver'
 			},
+			properties: {
+				stickyHeaders: {
+					type: Boolean,
+					value: false,
+					observer: '_applySubheadingTop',
+					reflectToAttribute: true
+				}
+			},
 			__applyInQueue: false,
 			__tableObserver: null,
 			attached: function() {
 				Polymer.RenderStatus.afterNextRender(this, function() {
 					this._registerTableObserver();
 					this._applyClassNames();
-					this._applySubheadingTop();
 				}.bind(this));
 			},
 			detached: function() {
@@ -241,20 +246,28 @@ Custom property | Description | Default
 				}.bind(this));
 
 			},
-			_applySubheadingTop: function() {
-				if( !this.root.host.hasAttribute('sticky-headers') ) {
+			_applySubheadingTop: function(val) {
+				if( !val ) {
 					return;
-				}
+				}				
 
-				var topHeader = this.querySelector('.d2l-table tr[header]:first-child th:not([rowspan])');
-				if( !topHeader ) {
-					return;
-				}
+				/* It appears Polymer 1 calls this observer before everything is 
+					finished rendering so it gets the incorrect clientHeight. In 
+					Polymer 2 this works without the afterNextRender.
+				*/
+				Polymer.RenderStatus.afterNextRender(this, function () {
+					var topHeader = this.querySelector('.d2l-table tr[header].d2l-table-row-first th:not([rowspan]), .d2l-table thead tr:first-child th:not([rowspan])');
+					console.log(topHeader);
+					if (!topHeader) {
+						return;
+					}
 
-				var ths = this.querySelectorAll('.d2l-table tr[header]:not(:first-child) th');
-				for (var i = 0; i < ths.length; i++) {
-					ths[i].style.top = topHeader.clientHeight + 2 + 'px';
-				}
+					var ths = this.querySelectorAll('.d2l-table tr[header]:not(.d2l-table-row-first) th, .d2l-table thead tr:not(:first-child) th');
+					for (var i = 0; i < ths.length; i++) {
+						ths[i].style.top = topHeader.clientHeight - 3 + 'px';
+					}
+				}.bind(this));
+				
 			},
 			_handleLocalObserver: function() {
 				// children have been added/removed from <slot>,
