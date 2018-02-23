@@ -125,8 +125,11 @@
 			.wrapper {
 				outline: none;
 				overflow-x: auto;
-				width: 100%;
 				box-sizing: border-box;
+			}
+
+			:host([is-sticky]) .wrapper {
+				overflow-x: initial;
 			}
 
 			.inner-wrapper {
@@ -136,6 +139,10 @@
 			:host([is-rtl][h-scrollbar]) .wrapper,
 			:host([h-scrollbar]) .wrapper {
 				@apply --d2l-scroll-wrapper-h-scroll;
+			}
+
+			:host([is-sticky][h-scrollbar]) .wrapper {
+				border-right: none;
 			}
 
 			:host([is-rtl][scrollbar-right]) .wrapper,
@@ -172,12 +179,16 @@
 				right: 0;
 				left: auto;
 			}
-
 			:host([is-rtl]) .right,
 			.left {
 				position: absolute;
 				left: 0;
 				right: auto;
+			}
+
+			:host([is-sticky]) .right,
+			:host([is-sticky]) .left {
+				display: none !important;
 			}
 
 			:host([show-actions][h-scrollbar]) .sticky {
@@ -341,6 +352,13 @@
 						reflectToAttribute: true
 					},
 
+					isSticky: {
+						type: Boolean,
+						value: false,
+						computed: '_isSticky(isAttached)',
+						reflectToAttribute: true
+					},
+
 					showActions: {
 						type: Boolean,
 						reflectToAttribute: true
@@ -387,6 +405,23 @@
 					}
 
 					return isRTL;
+				},
+
+				_isSticky: function(isAttached) {
+					var isSticky = false;
+					if (isAttached) {
+						if (this.$$('[sticky-headers] *')) {
+							isSticky = true;
+						} else {
+							try {
+								isSticky = !!this.$$(':host-context([sticky-headers]) *');
+							} catch (e) {
+								isSticky = false;
+							}
+						}
+					}
+
+					return isSticky;
 				},
 
 				_checkRTLScrollType: function() {

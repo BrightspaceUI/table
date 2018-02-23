@@ -157,6 +157,14 @@ Custom property | Description | Default
 			listeners: {
 				'd2l-table-local-observer': '_handleLocalObserver'
 			},
+			properties: {
+				stickyHeaders: {
+					type: Boolean,
+					value: false,
+					observer: '_applySubheadingTop',
+					reflectToAttribute: true
+				}
+			},
 			__applyInQueue: false,
 			__tableObserver: null,
 			attached: function() {
@@ -237,6 +245,27 @@ Custom property | Description | Default
 
 				}.bind(this));
 
+			},
+			_applySubheadingTop: function(val) {
+				if (!val) {
+					return;
+				}
+
+				/* It appears Polymer 1 calls this observer before everything is
+					finished rendering so it gets the incorrect clientHeight. In
+					Polymer 2 this works without the afterNextRender.
+				*/
+				Polymer.RenderStatus.afterNextRender(this, function() {
+					var topHeader = this.querySelector('.d2l-table tr[header]:first-child th:not([rowspan]), .d2l-table thead tr:first-child th:not([rowspan])');
+					if (!topHeader) {
+						return;
+					}
+
+					var ths = this.querySelectorAll('.d2l-table tr[header]:not(:first-child) th, .d2l-table thead tr:not(:first-child) th');
+					for (var i = 0; i < ths.length; i++) {
+						ths[i].style.top = topHeader.clientHeight - 3 + 'px';
+					}
+				}.bind(this));
 			},
 			_handleLocalObserver: function() {
 				// children have been added/removed from <slot>,
