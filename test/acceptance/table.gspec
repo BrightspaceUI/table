@@ -100,14 +100,6 @@
 		foot              tfoot
 			tr-*          tr
 
-	d2l-small-sticky      .screenshot-d2l-small-sticky
-		head              d2l-thead
-			tr-*          d2l-tr
-		body              d2l-tbody
-			tr-*          d2l-tr
-		foot              d2l-tfoot
-			tr-*          d2l-tr
-
 @on no-d2l-shadow
 	@objects
 		sort                  .screenshot-sort
@@ -125,7 +117,7 @@
 				right-action  .right > d2l-icon-button
 
 @groups
-	imageCompare small.head,small.body,small.foot,d2l-small.head,d2l-small.body,d2l-small.foot,simple.head,simple.body,simple.foot,no-column-border.head,no-column-border.body,tr-last-of-type.head,tr-last-of-type.body,notbody,row-header-with-thead.head,row-header-with-thead.body,row-header-without-thead.body,dynamic.head,dynamic.body,d2l-dynamic.head,d2l-dynamic.body,small-sticky.head,small-sticky.body,small-sticky.foot,d2l-small-sticky.head,d2l-small-sticky.body,d2l-small-sticky.foot
+	imageCompare small.head,small.body,small.foot,d2l-small.head,d2l-small.body,d2l-small.foot,simple.head,simple.body,simple.foot,no-column-border.head,no-column-border.body,tr-last-of-type.head,tr-last-of-type.body,notbody,row-header-with-thead.head,row-header-with-thead.body,row-header-without-thead.body,dynamic.head,dynamic.body,d2l-dynamic.head,d2l-dynamic.body,small-sticky.head,small-sticky.body,small-sticky.foot
 	all          &imageCompare,wide,d2l-wide,sort,rows,rows-selected,no-column-border-styled.head,no-column-border-styled.body
 
 == D2L Table ==
