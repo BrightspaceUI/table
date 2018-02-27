@@ -250,8 +250,10 @@
 				z-index: 1;
 			}
 
-			[sticky-headers] [sticky].d2l-table-cell-first,
-			[sticky-headers] [sticky]:first-child {
+			[sticky-headers] td[sticky].d2l-table-cell-first,
+			[sticky-headers] th[sticky].d2l-table-cell-first,
+			[sticky-headers] td[sticky]:first-child,
+			[sticky-headers] th[sticky]:first-child {
 				left: -5px;
 			}
 
@@ -260,8 +262,10 @@
 				left: 0;
 			}
 
-			[dir="rtl"] [sticky-headers] [sticky].d2l-table-cell-first,
-			[dir="rtl"] [sticky-headers] [sticky]:first-child {
+			[dir="rtl"] [sticky-headers] td[sticky].d2l-table-cell-first,
+			[dir="rtl"] [sticky-headers] th[sticky].d2l-table-cell-first,
+			[dir="rtl"] [sticky-headers] td[sticky]:first-child,
+			[dir="rtl"] [sticky-headers] th[sticky]:first-child {
 				right: -5px;
 			}
 
@@ -303,8 +307,8 @@
 
 			[sticky-headers] tr[header] + tr:not([header]) td,
 			[sticky-headers] tr[header] + tr:not([header]) th ,
-			[sticky-headers] tbody tr:not(.d2l-table-row-first):first-child td,
-			[sticky-headers] tbody tr:not(.d2l-table-row-first):first-child th  {
+			[sticky-headers] tbody tr:not([header]):not([selected]):first-child td,
+			[sticky-headers] tbody tr:not([header]):not([selected]):first-child th  {
 				border-top: none;
 				border-bottom: none;
 			}
@@ -319,8 +323,9 @@
 
 			[sticky-headers] tr[header] th[sticky],
 			[sticky-headers] tr[header] td[sticky],
-			[sticky-headers] thead tr th[sticky] {
+			[sticky-headers] thead > tr > th[sticky] {
 				z-index: 3;
+				left: 0;
 			}
 
 			[dir="rtl"] [sticky-headers] th[sticky],
@@ -332,8 +337,7 @@
 				border-left: none;
 			}
 
-			[sticky-headers] th[sticky],
-			[sticky-headers] td[sticky] {
+			[sticky-headers] tbody :not([header]) [sticky]{
 				position: -webkit-sticky;
 				position: sticky;
 				left: 0;
@@ -389,6 +393,10 @@
 			[sticky-headers] .d2l-table tr[selected].d2l-table-row-last td,
 			[sticky-headers] .d2l-table tr[selected].d2l-table-row-last th {
 				border-bottom-color: var(--d2l-table-row-border-color-selected);
+			}
+
+			[dir="rtl"] [sticky-headers] tr[selected]:hover td:first-child {
+				border-left: var(--d2l-table-border);
 			}
 		</style>
 	</template>
