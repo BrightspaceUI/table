@@ -144,7 +144,7 @@ Custom property | Description | Default
 				--d2l-scroll-wrapper-background-color: var(--d2l-table-header-background-color);
 			}
 		</style>
-		<d2l-scroll-wrapper show-actions>
+		<d2l-scroll-wrapper show-actions is-sticky$="[[stickyHeaders]]">
 			<slot id="slot"></slot>
 		</d2l-scroll-wrapper>
 	</template>

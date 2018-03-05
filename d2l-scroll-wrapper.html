@@ -355,7 +355,6 @@
 					isSticky: {
 						type: Boolean,
 						value: false,
-						computed: '_isSticky(isAttached)',
 						reflectToAttribute: true
 					},
 
@@ -405,23 +404,6 @@
 					}
 
 					return isRTL;
-				},
-
-				_isSticky: function(isAttached) {
-					var isSticky = false;
-					if (isAttached) {
-						if (this.$$('[sticky-headers] *')) {
-							isSticky = true;
-						} else {
-							try {
-								isSticky = !!this.$$(':host-context([sticky-headers]) *');
-							} catch (e) {
-								isSticky = false;
-							}
-						}
-					}
-
-					return isSticky;
 				},
 
 				_checkRTLScrollType: function() {
