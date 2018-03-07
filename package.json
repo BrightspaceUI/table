@@ -42,5 +42,8 @@
     "rimraf": "^2.6.2",
     "sauce-connect-launcher": "^1.2.3",
     "sauceconnect-runner": "git+https://github.com/Brightspace/sauceconnect-runner.git#v0.3.0"
+  },
+  "dependencies": {
+    "wct": "^2.1.3"
   }
 }

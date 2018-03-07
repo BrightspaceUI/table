@@ -106,11 +106,11 @@
 					overflow: visible;
 				};
 
-				--d2l-scroll-sticky-hidden: {
+				--d2l-scroll-wrapper-sticky-hidden: {
 					display: none;
 				};
 
-				--d2l-scroll-sticky-visible: {
+				--d2l-scroll-wrapper-sticky-visible: {
 					display: block;
 				};
 
@@ -172,7 +172,7 @@
 
 			.sticky {
 				@apply --d2l-scroll-wrapper-sticky;
-				@apply --d2l-scroll-sticky-hidden;
+				@apply --d2l-scroll-wrapper-sticky-hidden;
 			}
 
 			:host([is-rtl]) .left.action,
@@ -204,7 +204,7 @@
 			}
 
 			:host([show-actions][h-scrollbar]) .sticky {
-				@apply --d2l-scroll-sticky-visible;
+				@apply --d2l-scroll-wrapper-sticky-visible;
 			}
 
 			/* Hide the start/end buttons depending on the state */
