@@ -264,12 +264,12 @@
 						});
 
 						it('should have only one visible action button pointing right', function() {
-							var actions = Polymer.dom(this.scrollWrapper.root).querySelectorAll('.sticky');
+							var actions = Polymer.dom(this.scrollWrapper.root).querySelectorAll('.action');
 							actions = [].filter.call(actions, function(action) {
 								return getComputedStyle(action).display !== 'none';
 							});
 							expect(actions).to.have.lengthOf(1);
-							var style = getComputedStyle(Polymer.dom(actions[0]).firstChild);
+							var style = getComputedStyle(actions[0]);
 							expect(style.right).to.equal('-15px');
 						});
 					});
@@ -306,12 +306,12 @@
 						});
 
 						it('should have only one visible action button pointing left', function() {
-							var actions = Polymer.dom(this.scrollWrapper.root).querySelectorAll('.sticky');
+							var actions = Polymer.dom(this.scrollWrapper.root).querySelectorAll('.action');
 							actions = [].filter.call(actions, function(action) {
 								return getComputedStyle(action).display !== 'none';
 							});
 							expect(actions).to.have.lengthOf(1);
-							var style = getComputedStyle(Polymer.dom(actions[0]).firstChild);
+							var style = getComputedStyle(actions[0]);
 							expect(style.left).to.equal('-15px');
 						});
 					});
