@@ -3,17 +3,19 @@
 'use strict';
 
 var browsers = {
-	chrome: new LocalBrowserFactory({ browser: 'chrome', size: '768x768' }),
+	chrome: new LocalBrowserFactory({ browser: 'chrome', size: '768x768', tags: ['sticky'] }),
 	chromeWindows: new SauceBrowserFactory({
 		browser: 'Chrome',
 		platform: 'WIN10',
-		size: '1400x900'
+		size: '1400x900',
+		tags: ['sticky']
 	}),
 	ie11Windows: new SauceBrowserFactory({
 		browser: 'internet explorer',
 		version: '11',
 		platform: 'WIN10',
-		size: '1400x900'
+		size: '1400x900',
+		tags: ['sticky']
 	}),
 	edgeWindows: new SauceBrowserFactory({
 		browser: 'microsoftedge',
@@ -28,13 +30,14 @@ var browsers = {
 		 *			https://bugs.chromium.org/p/chromedriver/issues/detail?id=1770# */
 		desiredCapabilities: {
 			chromedriverVersion: '2.24'
-		}
+		},
+		tags: ['sticky']
 	}),
 	safariMac: new SauceBrowserFactory({
 		browser: 'Safari',
 		platform: 'EL_CAPITAN',
 		size: '1400x900',
-		tags: ['no-d2l-shadow']
+		tags: ['no-d2l-shadow', 'sticky']
 	})
 };
 
