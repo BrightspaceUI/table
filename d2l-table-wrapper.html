@@ -161,7 +161,7 @@ Custom property | Description | Default
 				stickyHeaders: {
 					type: Boolean,
 					value: false,
-					observer: '_applySubheadingTop',
+					observer: '_applyStickyHeaders',
 					reflectToAttribute: true
 				}
 			},
@@ -246,11 +246,14 @@ Custom property | Description | Default
 				}.bind(this));
 
 			},
-			_applySubheadingTop: function(val) {
+			 _applyStickyHeaders: function(val) {
 				if (!val) {
 					return;
 				}
-
+				this._applySubheadingTop();
+				this._applyBodyClass();
+			},
+			_applySubheadingTop: function() {
 				/* It appears Polymer 1 calls this observer before everything is
 					finished rendering so it gets the incorrect clientHeight. In
 					Polymer 2 this works without the afterNextRender.
@@ -266,6 +269,13 @@ Custom property | Description | Default
 						ths[i].style.top = topHeader.clientHeight - 3 + 'px';
 					}
 				}.bind(this));
+			},
+			_applyBodyClass: function () {
+				if (document.body.classList.contains('d2l-table-sticky-headers')) {
+					return;
+				}
+
+				document.body.classList.add('d2l-table-sticky-headers');
 			},
 			_handleLocalObserver: function() {
 				// children have been added/removed from <slot>,
