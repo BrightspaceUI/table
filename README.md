@@ -141,7 +141,14 @@ HTML:
 
 ### Sticky Headers
 
-The header row will always be vertically sticky. To add a sticky column, you add the sticky attribute to each cell in the column. 
+Note: This feature is only works with browsers that support `position: sticky` which currently includes:
+ - Chrome 56+
+ - FF 59+
+ - Safari 8+
+
+Edge 16 is currently not working due to bugs with `position: sticky;` and right-to-left as well as border issues.
+
+The header row will always be vertically sticky. To add a sticky column, you add the `sticky` attribute to each cell in the column.
 
 ```html
 <d2l-table-wrapper sticky-headers>
