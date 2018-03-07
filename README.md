@@ -139,6 +139,34 @@ HTML:
 </table></d2l-table-wrapper>
 ```
 
+### Sticky Headers
+
+Note: This feature is only works with browsers that support `position: sticky` which currently includes:
+ - Chrome 56+
+ - FF 59+
+ - Safari 8+
+
+Edge 16 is currently not working due to bugs with `position: sticky;` and right-to-left as well as border issues.
+
+The header row will always be vertically sticky. To add a sticky column, you add the `sticky` attribute to each cell in the column.
+
+```html
+<d2l-table-wrapper sticky-headers>
+<table>
+	<thead>
+		<tr>
+			<th sticky>Sticky Column</th>
+			<th>Not sticky column</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th sticky>Sticky Column</th>
+			<th>Not sticky column</th>
+		</tr>
+	</tbody>
+</table>
+```
 ## Developing, Testing and Contributing
 
 After cloning the repo, run `npm install` to install dependencies.
@@ -176,6 +204,8 @@ npm test
 ### Galen
 
 The [Galen][Galen] tests check layout and look of table. Galen is not meant to test functionality. For example, these tests will fail if the border-radius changes. The tests use a combination of screenshots and layout assertions. The results of the tests can be found in *reports/d2l-table/report.html*
+
+__Testing with galen does not currently work on Windows. Use Docker or a VM until it's fixed.__
 
 To update the screenshots, run `npm run dump`. The screenshots will be placed under *dumps/d2l-table/objects*
 
