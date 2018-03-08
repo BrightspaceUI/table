@@ -28,6 +28,24 @@
 					observer: '_disabledChanged'
 				}
 			},
+			detached: function() {
+				try {
+					this._ensureStickyRemoved();
+				} catch (e) {
+					return;
+				}
+			},
+			_ensureStickyAdded: function() {
+				if (this._sticky) return;
+				this._sticky = Stickyfill.addOne(this);
+			},
+			_ensureStickyRemoved: function() {
+				if (!this._sticky) return;
+				// If remove fails, still unset _sticky.
+				var tmp = this._sticky;
+				this._sticky = null;
+				tmp.remove();
+			},
 			_updateSticky: function() {
 				/**
 				 * Stickyfill requires the component to be attached to the DOM
@@ -40,22 +58,17 @@
 				var sticky = !this.disabled;
 				try {
 					if (sticky) {
-						Stickyfill.add(this);
-						this._added = true;
-					} else if (this._added) {
-						Stickyfill.remove(this);
-						this._added = false;
+						this._ensureStickyAdded();
 					} else {
-						return;
+						this._ensureStickyRemoved();
 					}
 				} catch (e) {
 					return;
 				}
-				Stickyfill.rebuild();
 			},
 			_disabledChanged: function() {
 				// Defer the getComputedStyle() calls until after the page has rendered
-				Polymer.RenderStatus.afterNextRender(this, this._updateSticky.bind(this));
+				Polymer.RenderStatus.afterNextRender(this, this._updateSticky);
 			}
 		});
 	</script>

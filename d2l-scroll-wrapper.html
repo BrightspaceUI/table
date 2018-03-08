@@ -502,7 +502,7 @@
 				},
 
 				_computeStickyIsDisabled: function(scrollbarLeft, scrollbarRight) {
-					return !scrollbarLeft && !scrollbarRight;
+					return Boolean(scrollbarLeft) && Boolean(scrollbarRight);
 				}
 			});
 		})();
