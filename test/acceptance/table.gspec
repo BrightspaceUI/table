@@ -164,13 +164,15 @@
 					image file dumps/${path}/objects/${tr}.png, error 40px
 
 	@on rtl
-		wide.scroll-wrapper.right-action:
-			inside partly wide 10px top, -15px left
-			image file dumps/${path}/objects/wide.scroll-wrapper.right-action.png, error 20px
+		# There is a bug on Edge's sticky implementation. So skip the rtl test on edge
+		@on sticky
+			wide.scroll-wrapper.right-action:
+				inside partly wide 10px top, -15px left
+				image file dumps/${path}/objects/wide.scroll-wrapper.right-action.png, error 20px
 
-		d2l-wide.scroll-wrapper.right-action:
-			inside partly d2l-wide 10px top, -15px left
-			image file dumps/${path}/objects/d2l-wide.scroll-wrapper.right-action.png, error 20px
+			d2l-wide.scroll-wrapper.right-action:
+				inside partly d2l-wide 10px top, -15px left
+				image file dumps/${path}/objects/d2l-wide.scroll-wrapper.right-action.png, error 20px
 	@on ltr
 		wide.scroll-wrapper.right-action:
 			inside partly wide 10px top, 275px left
