@@ -23,7 +23,7 @@ before_install:
 - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 - export PATH=$JAVA_HOME/bin:$PATH
 script:
-- concurrently -p name -n lint:js,lint:wc,wct "npm run lint:js" "npm run lint:wc" "wct --skip-plugin local" && npm run test:galen:sauce
+- concurrently -p name -n lint:js,lint:wc,polymer:test "npm run lint:js" "npm run lint:wc" "polymer test --skip-plugin local" && npm run test:galen:sauce
 env:
   global:
     SAUCE_USERNAME: Desire2Learn

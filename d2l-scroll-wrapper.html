@@ -99,8 +99,19 @@
 				};
 
 				--d2l-scroll-wrapper-sticky: {
+					height: 0;
 					/* height of button (40) + distance of button from top (10) + desired spacing (10) */
 					margin-bottom: 60px;
+					margin-top: -60px;
+					overflow: visible;
+				};
+
+				--d2l-scroll-wrapper-sticky-hidden: {
+					display: none;
+				};
+
+				--d2l-scroll-wrapper-sticky-visible: {
+					display: block;
 				};
 
 				--d2l-scroll-wrapper-action-hidden: {
@@ -157,19 +168,21 @@
 
 			.action {
 				@apply --d2l-scroll-wrapper-action;
-			}
-			.sticky {
-				@apply --d2l-scroll-wrapper-action-hidden;
-				@apply --d2l-scroll-wrapper-sticky;
+				@apply --d2l-scroll-wrapper-action-visible;
 			}
 
-			:host([is-rtl]) .left .action,
-			.right .action {
+			.sticky {
+				@apply --d2l-scroll-wrapper-sticky;
+				@apply --d2l-scroll-wrapper-sticky-hidden;
+			}
+
+			:host([is-rtl]) .left.action,
+			.right.action {
 				@apply --d2l-scroll-wrapper-action-end;
 			}
 
-			:host([is-rtl]) .right .action,
-			.left .action {
+			:host([is-rtl]) .right.action,
+			.left.action {
 				@apply --d2l-scroll-wrapper-action-start;
 			}
 
@@ -192,27 +205,25 @@
 			}
 
 			:host([show-actions][h-scrollbar]) .sticky {
-				@apply --d2l-scroll-wrapper-action-visible;
+				@apply --d2l-scroll-wrapper-sticky-visible;
 			}
 
 			/* Hide the start/end buttons depending on the state */
-			:host([show-actions][scrollbar-right]) .right,
-			:host([show-actions][scrollbar-left]) .left {
+			:host([show-actions][scrollbar-right]) .right.action,
+			:host([show-actions][scrollbar-left]) .left.action {
 				@apply --d2l-scroll-wrapper-action-hidden;
 			}
 		</style>
-		<d2l-sticky-element class="left sticky" disabled="[[scrollbarLeft]]">
+		<d2l-sticky-element class="sticky" disabled="[[_stickyIsDisabled]]">
 			<d2l-icon-button
-				class="action"
+				class="left action"
 				icon="[[startIcon]]"
 				on-tap="handleTapLeft"
 				tabindex="-1"
 				aria-hidden="true"
 			></d2l-icon-button>
-		</d2l-sticky-element>
-		<d2l-sticky-element class="right sticky" disabled="[[scrollbarRight]]">
 			<d2l-icon-button
-				class="action"
+				class="right action"
 				icon="[[endIcon]]"
 				on-tap="handleTapRight"
 				tabindex="-1"
@@ -361,6 +372,11 @@
 					showActions: {
 						type: Boolean,
 						reflectToAttribute: true
+					},
+
+					_stickyIsDisabled: {
+						type: Boolean,
+						computed: '_computeStickyIsDisabled(scrollbarLeft, scrollbarRight)'
 					}
 				},
 
@@ -483,6 +499,10 @@
 						this._setScrollbarLeft(this.$.wrapper.scrollLeft === 0);
 						this._setScrollbarRight(lowerScrollValue <= 0);
 					}
+				},
+
+				_computeStickyIsDisabled: function(scrollbarLeft, scrollbarRight) {
+					return Boolean(scrollbarLeft) && Boolean(scrollbarRight);
 				}
 			});
 		})();
