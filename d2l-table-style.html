@@ -286,7 +286,6 @@
 				position: sticky;
 				top: -5px;
 				border-left: none;
-				border-top: none;
 				border-bottom: var(--d2l-table-border);
 			}
 
@@ -309,10 +308,10 @@
 			[sticky-headers] tbody tr:not([header]):not([selected]):first-child td,
 			[sticky-headers] tbody tr:not([header]):not([selected]):first-child th  {
 				border-top: none;
-				border-bottom: none;
 			}
 
-			[sticky-headers] tr[header] + tr:not([header])[selected] td,
+			[sticky-headers] .d2l-table > thead > tr[header] + tr:not([header])[selected] > td,
+			[sticky-headers] .d2l-table > tbody > tr[header] + tr:not([header])[selected] > td,
 			[sticky-headers] tr[header] + tr:not([header])[selected] th
 			[sticky-headers] tbody tr[selected]:first-child td,
 			[sticky-headers] tbody tr[selected]:first-child th {
@@ -344,14 +343,16 @@
 				background-color: inherit;
 			}
 
-			[dir="rtl"] [sticky-headers] .d2l-table td,
+			[dir="rtl"] [sticky-headers] .d2l-table > thead > tr > td,
+			[dir="rtl"] [sticky-headers] .d2l-table > tbody > tr > td,
 			[dir="rtl"] [sticky-headers] .d2l-table th {
 				border-left: var(--d2l-table-border);
 				border-right: none;
 			}
 
 			[dir="rtl"] [sticky-headers] .d2l-table [selected] .d2l-table-cell-last,
-			[dir="rtl"] [sticky-headers] .d2l-table tbody tr[selected] td:last-child {
+			[dir="rtl"] [sticky-headers] .d2l-table > thead > tr[selected] > td:last-child,
+			[dir="rtl"] [sticky-headers] .d2l-table > tbody > tr[selected] > td:last-child {
 				border-left: var(--d2l-table-border);
 				border-left-color: var(--d2l-table-row-border-color-selected);
 			}
@@ -363,13 +364,15 @@
 			}
 
 			[dir="rtl"] [sticky-headers] .d2l-table .d2l-table-cell-first,
-			[dir="rtl"] [sticky-headers] .d2l-table td:first-child,
+			[dir="rtl"] [sticky-headers] .d2l-table > thead > tr > td:first-child,
+			[dir="rtl"] [sticky-headers] .d2l-table > tbody > tr > td:first-child,
 			[dir="rtl"] [sticky-headers] .d2l-table th:first-child {
 				border-right: var(--d2l-table-border);
 			}
 
 			[dir="rtl"] [sticky-headers] .d2l-table [selected] .d2l-table-cell-first,
-			[dir="rtl"] [sticky-headers] .d2l-table [selected] td:first-child {
+			[dir="rtl"] [sticky-headers] .d2l-table [selected] > thead > tr > td:first-child {
+			[dir="rtl"] [sticky-headers] .d2l-table [selected] > tbody > tr > td:first-child {
 				border-left: var(--d2l-table-border);
 			}
 
