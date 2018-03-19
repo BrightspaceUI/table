@@ -305,7 +305,7 @@
 			}
 
 			[sticky-headers] tr[header] + tr:not([header]) td,
-			[sticky-headers] tr[header] + tr:not([header]) th ,
+			[sticky-headers] tr[header] + tr:not([header]) th,
 			[sticky-headers] tbody tr:not([header]):not([selected]):first-child td,
 			[sticky-headers] tbody tr:not([header]):not([selected]):first-child th  {
 				border-top: none;
@@ -313,7 +313,7 @@
 
 			[sticky-headers] .d2l-table > thead > tr[header] + tr:not([header])[selected] > td,
 			[sticky-headers] .d2l-table > tbody > tr[header] + tr:not([header])[selected] > td,
-			[sticky-headers] tr[header] + tr:not([header])[selected] th
+			[sticky-headers] tr[header] + tr:not([header])[selected] th,
 			[sticky-headers] tbody tr[selected]:first-child td,
 			[sticky-headers] tbody tr[selected]:first-child th {
 				border-top: var(--d2l-table-border);
@@ -372,13 +372,18 @@
 			}
 
 			[dir="rtl"] [sticky-headers] .d2l-table [selected] .d2l-table-cell-first,
-			[dir="rtl"] [sticky-headers] .d2l-table [selected] > thead > tr > td:first-child,
-			[dir="rtl"] [sticky-headers] .d2l-table [selected] > tbody > tr > td:first-child {
-				border-left: var(--d2l-table-border);
+			[dir="rtl"] [sticky-headers] .d2l-table > thead > tr[selected] > td:first-child,
+			[dir="rtl"] [sticky-headers] .d2l-table > tbody > tr[selected] > td:first-child,
+			[dir="rtl"] [sticky-headers] .d2l-table [selected] th:first-child {
+				border-right-color: var(--d2l-table-row-border-color-selected);
 			}
 
+			[dir="rtl"] [sticky-headers] .d2l-table [selected] .d2l-table-cell-first,
+			[dir="rtl"] [sticky-headers] .d2l-table [selected] > thead > tr > td:first-child,
+			[dir="rtl"] [sticky-headers] .d2l-table [selected] > tbody > tr > td:first-child,
 			[dir="rtl"] [sticky-headers] .d2l-table [selected] + :not([selected]) .d2l-table-cell-last,
-			[dir="rtl"] [sticky-headers] .d2l-table [selected] + :not([selected]) td:last-child {
+			[dir="rtl"] [sticky-headers] .d2l-table [selected] + :not([selected]) td:last-child,
+			[dir="rtl"] [sticky-headers] tr[selected]:hover td:first-child {
 				border-left: var(--d2l-table-border);
 			}
 			
@@ -396,10 +401,6 @@
 			[sticky-headers] .d2l-table tr[selected].d2l-table-row-last td,
 			[sticky-headers] .d2l-table tr[selected].d2l-table-row-last th {
 				border-bottom-color: var(--d2l-table-row-border-color-selected);
-			}
-
-			[dir="rtl"] [sticky-headers] tr[selected]:hover td:first-child {
-				border-left: var(--d2l-table-border);
 			}
 		</style>
 	</template>
