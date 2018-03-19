@@ -26,11 +26,6 @@ var browsers = {
 	chromeMac: new SauceBrowserFactory({
 		browser: 'Chrome',
 		platform: 'SIERRA',
-		/* crashes during screenshot command on > 2.24
-		 *			https://bugs.chromium.org/p/chromedriver/issues/detail?id=1770# */
-		desiredCapabilities: {
-			chromedriverVersion: '2.24'
-		},
 		tags: ['sticky']
 	}),
 	safariMac: new SauceBrowserFactory({
