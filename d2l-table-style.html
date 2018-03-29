@@ -309,6 +309,7 @@
 			[sticky-headers] tbody tr:not([header]):not([selected]):first-child td,
 			[sticky-headers] tbody tr:not([header]):not([selected]):first-child th  {
 				border-top: none;
+				border-bottom: none;
 			}
 
 			[sticky-headers] .d2l-table > thead > tr[header] + tr:not([header])[selected] > td,
@@ -382,8 +383,7 @@
 			[dir="rtl"] [sticky-headers] .d2l-table [selected] > thead > tr > td:first-child,
 			[dir="rtl"] [sticky-headers] .d2l-table [selected] > tbody > tr > td:first-child,
 			[dir="rtl"] [sticky-headers] .d2l-table [selected] + :not([selected]) .d2l-table-cell-last,
-			[dir="rtl"] [sticky-headers] .d2l-table [selected] + :not([selected]) td:last-child,
-			[dir="rtl"] [sticky-headers] tr[selected]:hover td:first-child {
+			[dir="rtl"] [sticky-headers] .d2l-table [selected] + :not([selected]) td:last-child {
 				border-left: var(--d2l-table-border);
 			}
 			
