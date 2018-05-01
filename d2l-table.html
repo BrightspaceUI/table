@@ -195,23 +195,23 @@ Custom property | Description | Default
 						var row = rows[i];
 						if (i === 0) {
 							row.elem.classList.add('d2l-table-row-first');
-							if( row.elem.tagName === 'D2L-TSPAN' ) {
+							if (row.elem.tagName === 'D2L-TSPAN') {
 								row.elem.$.float.classList.add('d2l-table-row-first');
 							}
 						} else {
 							row.elem.classList.remove('d2l-table-row-first');
-							if( row.elem.tagName === 'D2L-TSPAN' ) {
+							if (row.elem.tagName === 'D2L-TSPAN') {
 								row.elem.$.float.classList.remove('d2l-table-row-first');
 							}
 						}
 						if (i === rows.length - 1) {
 							row.elem.classList.add('d2l-table-row-last');
-							if( row.elem.tagName === 'D2L-TSPAN' ) {
+							if (row.elem.tagName === 'D2L-TSPAN') {
 								row.elem.$.float.classList.add('d2l-table-row-last');
 							}
 						} else {
 							row.elem.classList.remove('d2l-table-row-last');
-							if( row.elem.tagName === 'D2L-TSPAN' ) {
+							if (row.elem.tagName === 'D2L-TSPAN') {
 								row.elem.$.float.classList.remove('d2l-table-row-last');
 							}
 						}

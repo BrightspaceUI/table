@@ -1,6 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="d2l-table-observer-behavior.html">
 <link rel="import" href="bower_components-1.x/resize-aware/resize-aware.html">
+<link rel="import" hred="d2l-td.html">
 
 <dom-module id="d2l-tspan">
 	<template strip-whitespace>
@@ -68,12 +69,12 @@
 				this.setAttribute('aria-selected', selected.toString());
 			},
 			_onSizeChanged: function() {
-				if( this.root.host ) {
+				if (this.root.host) {
 					this.root.host.style.height = this.$.float.offsetHeight + 'px';
 				}
 			},
 			attached: function() {
-				Polymer.RenderStatus.beforeNextRender( this, function() {
+				Polymer.RenderStatus.beforeNextRender(this, function() {
 					this.root.host.style.height = this.$.float.offsetHeight + 'px';
 					this.$.float.style.top = this.root.host.offsetTop;
 				});
