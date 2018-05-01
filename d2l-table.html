@@ -13,6 +13,7 @@
 <link rel="import" href="d2l-th.html">
 <link rel="import" href="d2l-thead.html">
 <link rel="import" href="d2l-tr.html">
+<link rel="import" href="d2l-tspan.html">
 
 <!--
 # D2L Table
@@ -194,13 +195,25 @@ Custom property | Description | Default
 						var row = rows[i];
 						if (i === 0) {
 							row.elem.classList.add('d2l-table-row-first');
+							if( row.elem.tagName === 'D2L-TSPAN' ) {
+								row.elem.$.float.classList.add('d2l-table-row-first');
+							}
 						} else {
 							row.elem.classList.remove('d2l-table-row-first');
+							if( row.elem.tagName === 'D2L-TSPAN' ) {
+								row.elem.$.float.classList.remove('d2l-table-row-first');
+							}
 						}
 						if (i === rows.length - 1) {
 							row.elem.classList.add('d2l-table-row-last');
+							if( row.elem.tagName === 'D2L-TSPAN' ) {
+								row.elem.$.float.classList.add('d2l-table-row-last');
+							}
 						} else {
 							row.elem.classList.remove('d2l-table-row-last');
+							if( row.elem.tagName === 'D2L-TSPAN' ) {
+								row.elem.$.float.classList.remove('d2l-table-row-last');
+							}
 						}
 						for (var j = 0; j < row.cells.length; j++) {
 							var cell = row.cells[j];
@@ -237,7 +250,7 @@ Custom property | Description | Default
 
 					if (node.nodeType === 1) {
 						var tagName = node.tagName.toLowerCase();
-						if (tagName === 'd2l-tr') {
+						if (tagName === 'd2l-tr' || tagName === 'd2l-tspan') {
 							rows.push({elem: node, cells: []});
 						} else if (tagName === 'd2l-td' || tagName === 'd2l-th') {
 							if (rows.length > 0) {
