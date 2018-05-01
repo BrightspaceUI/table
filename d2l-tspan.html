@@ -1,7 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="d2l-table-observer-behavior.html">
 <link rel="import" href="bower_components-1.x/resize-aware/resize-aware.html">
-<link rel="import" hred="d2l-td.html">
+<link rel="import" href="d2l-td.html">
 
 <dom-module id="d2l-tspan">
 	<template strip-whitespace>
@@ -40,7 +40,7 @@
 		<d2l-td id="cell">
 			<div id="float">
 				<resize-aware on-element-size-changed="_onSizeChanged">
-					<slot id="slot"></slot>
+					<slot></slot>
 				</resize-aware>
 			</div>
 		</d2l-td>
