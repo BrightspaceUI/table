@@ -30,7 +30,7 @@
 		tr-*              tr
 
 	rows                  .screenshot-rows
-		tr-*              tr
+		tr-*              tr,tspan
 
 	rows-selected           .screenshot-rows-selected
 		tr-*              tr:not(:last-child)
@@ -99,6 +99,9 @@
 			tr-*          tr
 		foot              tfoot
 			tr-*          tr
+			
+	table-with-tspan	.screenshot-tspan
+		tall-row		.tall-row
 
 @on no-d2l-shadow
 	@objects
@@ -181,6 +184,10 @@
 		d2l-wide.scroll-wrapper.right-action:
 			inside partly d2l-wide 10px top, 275px left
 			image file dumps/${path}/objects/d2l-wide.scroll-wrapper.right-action.png, error 20px
+			
+	@if ${isPresent("screenshot-tspan")}
+		table-with-tspan.tall-row:
+			width > 100 px
 
 	small.head:
 		above small.body 0px
@@ -201,8 +208,7 @@
 
 	d2l-small.foot:
 		aligned horizontally bottom d2l-small
-
-
+		
 	@forEach [sort] as part
 		${part}.sort-button-1.sort-icon, ${part}.sort-button-2.sort-icon:
 			# The 1px is to compensate for the border
