@@ -185,7 +185,7 @@
 			inside partly d2l-wide 10px top, 275px left
 			image file dumps/${path}/objects/d2l-wide.scroll-wrapper.right-action.png, error 20px
 			
-	@if ${isPresent("screenshot-tspan")}
+	@if ${isPresent("table-with-tspan")}
 		table-with-tspan.tall-row:
 			width > 100 px
 
