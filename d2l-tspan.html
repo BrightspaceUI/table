@@ -72,12 +72,6 @@
 				if (this.root.host) {
 					this.root.host.style.height = this.$.float.offsetHeight + 'px';
 				}
-			},
-			attached: function() {
-				Polymer.RenderStatus.beforeNextRender(this, function() {
-					this.root.host.style.height = this.$.float.offsetHeight + 'px';
-					this.$.float.style.top = this.root.host.offsetTop;
-				});
 			}
 		});
 	</script>
