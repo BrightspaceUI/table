@@ -30,7 +30,7 @@
 		tr-*              tr
 
 	rows                  .screenshot-rows
-		tr-*              tr,tspan
+		tr-*              tr
 
 	rows-selected           .screenshot-rows-selected
 		tr-*              tr:not(:last-child)
@@ -101,6 +101,7 @@
 			tr-*          tr
 			
 	table-with-tspan	.screenshot-tspan
+		tr-*      	    d2l-tr,d2l-tspan
 
 @on no-d2l-shadow
 	@objects
