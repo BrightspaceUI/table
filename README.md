@@ -88,6 +88,30 @@ since the table styling can't be done with polyfilled css mixins yet -->
 </d2l-table>
 ```
 
+The `d2l-tr` element does not support the `colspan` attribute. To create a row containing only a single cell that
+spans the entire width of the table, use `d2l-tspan` instead. Note that `d2l-tspan` rows are unaffected by horizontal
+scrolling.
+
+HTML:
+```html
+<style include="d2l-table-style"></style>
+<d2l-table>
+	<d2l-tbody>
+		<d2l-tr>
+			<d2l-td>row 1 column 1</d2l-td>
+			<d2l-td>row 1 column 2</d2l-td>
+		</d2l-tr>
+		<d2l-tspan>
+			row 2 (spans entire table width)
+		</d2l-tspan>
+		<d2l-tr>
+			<d2l-td>row 3 column 1</d2l-td>
+			<d2l-td>row 3 column 2</d2l-td>
+		</d2l-tr>
+	</d2l-tbody>
+</d2l-table>
+```
+
 #### Row Styles
 
 ![screenshot of table with styled rows](test/acceptance/dumps/d2l-table-demo/objects/rows.png)
