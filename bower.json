@@ -26,6 +26,7 @@
     "d2l-icons": "^4.5.1",
     "iron-resizable-behavior": "^2.0.1",
     "polymer": "1 - 2",
+    "resize-aware": "1.9.1",
     "Stickyfill": "^2.0.3"
   },
   "devDependencies": {

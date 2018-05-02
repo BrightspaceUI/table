@@ -99,6 +99,9 @@
 			tr-*          tr
 		foot              tfoot
 			tr-*          tr
+			
+	table-with-tspan	.screenshot-tspan
+		tr-*      	    d2l-tr,d2l-tspan
 
 @on no-d2l-shadow
 	@objects
@@ -117,7 +120,7 @@
 				right-action  d2l-icon-button.right
 
 @groups
-	baseImageCompare small.head,small.body,small.foot,d2l-small.head,d2l-small.body,d2l-small.foot,simple.head,simple.body,simple.foot,no-column-border.head,no-column-border.body,tr-last-of-type.head,tr-last-of-type.body,notbody,row-header-with-thead.head,row-header-with-thead.body,row-header-without-thead.body,dynamic.head,dynamic.body,d2l-dynamic.head,d2l-dynamic.body
+	baseImageCompare small.head,small.body,small.foot,d2l-small.head,d2l-small.body,d2l-small.foot,simple.head,simple.body,simple.foot,no-column-border.head,no-column-border.body,tr-last-of-type.head,tr-last-of-type.body,notbody,row-header-with-thead.head,row-header-with-thead.body,row-header-without-thead.body,dynamic.head,dynamic.body,d2l-dynamic.head,d2l-dynamic.body,table-with-tspan
 	stickyCompare    small-sticky.head,small-sticky.body,small-sticky.foot
 	imageCompare     &baseImageCompare
 
@@ -201,8 +204,7 @@
 
 	d2l-small.foot:
 		aligned horizontally bottom d2l-small
-
-
+		
 	@forEach [sort] as part
 		${part}.sort-button-1.sort-icon, ${part}.sort-button-2.sort-icon:
 			# The 1px is to compensate for the border
