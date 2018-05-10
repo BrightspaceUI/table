@@ -27,7 +27,7 @@
     "iron-resizable-behavior": "^2.0.1",
     "polymer": "1 - 2",
     "resize-aware": "1.9.1",
-    "Stickyfill": "^2.0.3"
+    "stickyfill": "https://github.com/wilddeer/stickyfill.git#^2.0.3"
   },
   "devDependencies": {
     "d2l-demo-template": "^1.0.3",
