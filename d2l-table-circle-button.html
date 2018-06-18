@@ -1,0 +1,71 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../d2l-icons/d2l-icon.html">
+
+<!--
+# D2L Table Circle Button
+-->
+
+<dom-module id="d2l-table-circle-button">
+	<template strip-whitespace>
+		<style>
+			:host {
+				display: inline-block;
+				position: absolute;
+			}
+			button.d2l-table-circle-button::-moz-focus-inner {
+				border: 0;
+			}
+			button.d2l-table-circle-button {
+				background-color: var(--d2l-scroll-wrapper-background-color);
+				border: 1px solid var(--d2l-scroll-wrapper-border-color);
+				border-radius: 50%;
+				box-sizing: content-box;
+				cursor: pointer;
+				display: inline-block;
+				font-family: inherit;
+				font-size: inherit;
+				height: 18px;
+				line-height: 0;
+				margin: 0;
+				padding: 10px;
+				text-decoration: none;
+				width: 18px;
+			}
+			button.d2l-table-circle-button:hover,
+			button.d2l-table-circle-button:focus {
+				outline-style: none;
+			}
+			button.d2l-table-circle-button > d2l-icon {
+				transition: color 0.3s ease;
+			}
+			button.d2l-table-circle-button:hover > d2l-icon,
+			button.d2l-table-circle-button:focus > d2l-icon {
+				color: var(--d2l-color-celestine-minus-1);
+			}
+		</style>
+		<button class="d2l-table-circle-button" type=[[type]]>
+			<d2l-icon icon="[[icon]]"></d2l-icon>
+		</button>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-table-circle-button',
+			properties: {
+				/**
+				 * Name of icon (ex. [iconset-name:icon-id]) for underlying [Polymer iron-iconset-svg](https://github.com/PolymerElements/iron-iconset-svg)
+				 */
+				icon: {
+					type: String,
+					reflectToAttribute: true
+				},
+				/**
+				 * Standard HTML button type.
+				 */
+				type: {
+					type: String,
+					reflectToAttribute: true
+				}
+			}
+		});
+	</script>
+</dom-module>

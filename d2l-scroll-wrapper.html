@@ -1,8 +1,8 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../d2l-icons/tier1-icons.html">
-<link rel="import" href="../d2l-icons/d2l-icon-button.html">
 <link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="d2l-sticky-element.html">
+<link rel="import" href="d2l-table-circle-button.html">
 
 <!--
 # D2L Scroll Wrapper
@@ -86,18 +86,6 @@
 				   changes by setting position itself */
 				position: relative;
 
-				--d2l-scroll-wrapper-action: {
-					position: absolute;
-					top: 10px;
-					border-radius: 50%;
-					border: 1px solid var(--d2l-scroll-wrapper-border-color);
-					background-color: var(--d2l-scroll-wrapper-background-color);
-					height: 18px;
-					width: 18px;
-					padding: 10px;
-					box-sizing: content-box;
-				};
-
 				--d2l-scroll-wrapper-sticky: {
 					height: 0;
 					/* height of button (40) + distance of button from top (10) + desired spacing (10) */
@@ -120,6 +108,7 @@
 
 				--d2l-scroll-wrapper-action-visible: {
 					display: inline;
+					top: 10px;
 				};
 
 				--d2l-scroll-wrapper-action-start: {
@@ -167,7 +156,6 @@
 			}
 
 			.action {
-				@apply --d2l-scroll-wrapper-action;
 				@apply --d2l-scroll-wrapper-action-visible;
 			}
 
@@ -215,22 +203,22 @@
 			}
 		</style>
 		<d2l-sticky-element class="sticky" disabled="[[_stickyIsDisabled]]">
-			<d2l-icon-button
+			<d2l-table-circle-button
 				class="left action"
 				icon="[[startIcon]]"
 				on-tap="handleTapLeft"
 				tabindex="-1"
 				aria-hidden="true"
 				type="button"
-			></d2l-icon-button>
-			<d2l-icon-button
+			></d2l-table-circle-button>
+			<d2l-table-circle-button
 				class="right action"
 				icon="[[endIcon]]"
 				on-tap="handleTapRight"
 				tabindex="-1"
 				aria-hidden="true"
 				type="button"
-			></d2l-icon-button>
+			></d2l-table-circle-button>
 		</d2l-sticky-element>
 		<div id="wrapper" class="wrapper">
 			<div class="inner-wrapper"><slot></slot></div>
