@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../d2l-colors/d2l-colors.html">
 <link rel="import" href="../d2l-icons/d2l-icon.html">
 
 <!--
@@ -43,7 +44,7 @@
 				color: var(--d2l-color-celestine-minus-1);
 			}
 		</style>
-		<button class="d2l-table-circle-button" type=[[type]]>
+		<button class="d2l-table-circle-button" type="button">
 			<d2l-icon icon="[[icon]]"></d2l-icon>
 		</button>
 	</template>
@@ -55,13 +56,6 @@
 				 * Name of icon (ex. [iconset-name:icon-id]) for underlying [Polymer iron-iconset-svg](https://github.com/PolymerElements/iron-iconset-svg)
 				 */
 				icon: {
-					type: String,
-					reflectToAttribute: true
-				},
-				/**
-				 * Standard HTML button type.
-				 */
-				type: {
 					type: String,
 					reflectToAttribute: true
 				}
