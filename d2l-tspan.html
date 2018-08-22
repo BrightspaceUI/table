@@ -1,6 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="d2l-table-observer-behavior.html">
-<link rel="import" href="../resize-aware/resize-aware.html">
+<link rel="import" href="../d2l-resize-observer-polyfill-import/resize-observer.html">
 <link rel="import" href="d2l-td.html">
 
 <dom-module id="d2l-tspan">
@@ -10,12 +10,12 @@
 				margin-left: 0;
 				display: table-row;
 			}
-			
+
 			#cell {
 				padding: 0;
 				border: none;
 			}
-			
+
 			#float {
 				position: absolute;
 				width: 100%;
@@ -25,12 +25,12 @@
 				left: 0;
 				box-sizing: border-box;
 			}
-			
+
 			#float.d2l-table-row-first {
 				border-top-left-radius: var(--d2l-table-border-radius);
 				border-top-right-radius: var(--d2l-table-border-radius);
 			}
-			
+
 			#float.d2l-table-row-last {
 				border-bottom: var(--d2l-table-border);
 				border-bottom-left-radius: var(--d2l-table-border-radius);
@@ -39,9 +39,7 @@
 		</style>
 		<d2l-td id="cell">
 			<div id="float">
-				<resize-aware on-element-size-changed="_onSizeChanged">
-					<slot></slot>
-				</resize-aware>
+				<slot></slot>
 			</div>
 		</d2l-td>
 	</template>
@@ -64,6 +62,17 @@
 					reflectToAttribute: true,
 					observer: '_selectedChanged'
 				}
+			},
+			ready: function() {
+				this._sizeObserver = new ResizeObserver(this._onSizeChanged.bind(this));
+			},
+			attached: function() {
+				var slot = Polymer.dom(this.root).querySelector('#float');
+				this._sizeObserver.observe(slot);
+			},
+			detached: function() {
+				var slot = Polymer.dom(this.root).querySelector('#float');
+				this._sizeObserver.unobserve(slot);
 			},
 			_selectedChanged: function(selected) {
 				this.setAttribute('aria-selected', selected.toString());
