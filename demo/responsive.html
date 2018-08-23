@@ -4,14 +4,15 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="update-direction.js"></script>
     	<script>
             window.Polymer = window.Polymer || {};
             window.Polymer.dom = 'shadow';
     	</script>
-		<link rel="import" href="../../d2l-demo-template/d2l-demo-template.html">
 		<link rel="import" href="./responsive-demo.html">
+		<link rel="import" href="../../d2l-typography/d2l-typography.html">
 		<custom-style>
-	    	<style is="custom-style">
+	    	<style is="custom-style" include="d2l-typography">
 	            html {
 	              font-size: 20px;
 	            }
@@ -33,17 +34,15 @@
 		</custom-style>
     </head>
 
-    <body unresolved>
-		<d2l-demo-template title="d2l-table">
-			<div slot="d2l-demo-fixture" class="d2l-demo-fixture">
-		        <h1>Responsive table demo</h1>
-		        <h2>100%</h2>
-				<responsive-demo class="full-page-width"></responsive-demo>
-		        <h2>Tablet</h2>
-				<responsive-demo class="fixed-tablet-width"></responsive-demo>
-		        <h2>Mobile</h2>
-				<responsive-demo class="fixed-mobile-width"></responsive-demo>
-			</div>
-		</d2l-demo-template>
+    <body unresolved class="d2l-typography">
+		<div class="d2l-demo-fixture">
+			<h1>Responsive table demo</h1>
+			<h2>100%</h2>
+			<responsive-demo class="full-page-width"></responsive-demo>
+			<h2>Tablet</h2>
+			<responsive-demo class="fixed-tablet-width"></responsive-demo>
+			<h2>Mobile</h2>
+			<responsive-demo class="fixed-mobile-width"></responsive-demo>
+		</div>
 	</body>
 </html>
