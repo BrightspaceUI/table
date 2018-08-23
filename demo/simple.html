@@ -3,11 +3,12 @@
 
 	<head>
 		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-		<link rel="import" href="../../d2l-demo-template/d2l-demo-template.html">
+		<script src="update-direction.js"></script>
 		<link rel="import" href="../d2l-table.html">
 		<link rel="import" href="reset.html">
+		<link rel="import" href="../../d2l-typography/d2l-typography.html">
 		<custom-style>
-			<style is="custom-style" include="reset d2l-table-style">
+			<style is="custom-style" include="reset d2l-table-style d2l-typography">
 				html {
 					font-size: 20px;
 					background: #fff;
@@ -49,9 +50,7 @@
 		</custom-style>
 	</head>
 
-	<body>
-		<d2l-demo-template title="d2l-table">
-		</d2l-demo-template>
+	<body class="d2l-typography">
 		<div class="container">
 			<div class="screenshots screenshot-wide">
 				<d2l-table-wrapper><table class="d2l-table">

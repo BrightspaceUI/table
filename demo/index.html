@@ -10,10 +10,11 @@
               window.Polymer.dom = 'shadow';
              */
     	</script>
-		<link rel="import" href="../../d2l-demo-template/d2l-demo-template.html">
+        <script src="update-direction.js"></script>
     	<link rel="import" href="../d2l-table.html">
+		<link rel="import" href="../../d2l-typography/d2l-typography.html">
         <custom-style>
-        	<style is="custom-style" include="d2l-table-style">
+        	<style is="custom-style" include="d2l-table-style d2l-typography">
                 html {
                   font-size: 20px;
                 }
@@ -32,10 +33,9 @@
         </custom-style>
     </head>
 
-    <body unresolved>
+    <body unresolved class="d2l-typography">
     	<!-- header, footer, caption, and colgroup tests -->
-		<d2l-demo-template title="d2l-table">
-			<div slot="d2l-demo-fixture" class="d2l-demo-fixture">
+		<div class="d2l-demo-fixture">
     		<div class="screenshots screenshot-small">
     			<!-- header only -->
     			<d2l-table-wrapper><table class="d2l-table">
@@ -702,7 +702,7 @@
     			</tr>
     			</thead>
     		</table></d2l-table-wrapper>
-			
+
 			<p>Table with Floating Row Spanning Cells</p>
 			<div style="width: 50%;" class="screenshots screenshot-tspan">
 				<d2l-table>
@@ -1107,7 +1107,6 @@
 				chevrons clamping at the bottom of the table.
 			</div>
     	</div>
-		</d2l-demo-template>
     </body>
 
 </html>
