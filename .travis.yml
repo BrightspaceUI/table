@@ -1,29 +1,38 @@
-language: node_js
-node_js:
-- 9
 cache:
   directories:
-  - node_modules
-  - bower_components
-addons:
-  apt:
-    packages:
-    - oracle-java8-installer
-  jwt:
-    secure: ElX5yaWbl/KVwvMYWGluR5XRrhl5sX1pM2rautKxAjlTkq45vRVafnDscm4UcOfT4ygi0TyUqlJwyUU0UIzJjatUG/D2f9osekUSxVfhv9U3qh0SmhxSSbYbFmy5ZsUFeR1fJtR9/575FOzR8kj0qKeIBVsOHOT0cweQzgBWep3LRpAT/GRdB6bNWad92skTgxeeBu6QxEhuU/u2LOVaKC4m74J813qE1lhXc3t0gMro6fF23AyOH5vNUp2qpwPXJoZu+pYeTH4oMRJm3nu98TPm+zKluTq8fOb0XwneDOt1ZjSjTxrowgySWaRv0Bk9OWA+wEvcFZPHPKFm+2N2GzZMvnh85hGtxJjDI/l2fslv0Mj3nhwKvy+jbP4Xv1vTFVoDTMgwGGMpvKMFnkiCPB7FRxRaFuCyXC7jkmGimDerdSC21A4LlfPJuVf4hWnmyiVIY5YCQA/gXLujTDIvimDjTWMSnX+NGUHaA27wo1WFIwC8O+rAaPmsurRRrlh6xvMifStL+zm3vK5ETfInUxkpBLM37UW2hQqbzJTXqCXBjobnt0+WgaPjqdSuTTfAIFyNsxs7LlGA2p4c72h7JfuYqLQBnPYqG8rWvtES7JLawioaS5yyjiPTnnSFiRxwHomr9veE4dIZlS89Ts0g06yq7lLjQrHNK8jhj74UO8k=
-  artifacts:
-    key:
-      secure: IWkqgI4Fm1T4hr+riIzL0j3Zg+Yl3znkv6q6EyHhRnIWbSKkLHcqrnhOUmqdv/6DyRfDsXJf8sJHqiwV2guvQsf1InkSbIFleM5/myl80G3Y91QthnRZKVuFvza0xbgoI+zyOvI5AVgNmFUP6y1h4xh0ho+aajPcL9DB4NBTMp6uk7ioaaUELVYNhngMdiXk9FQWpSD2y+zg94SIXSQKI5Dn+roCi+n0cmmpz12gyEUFsRCNAsidtOaDSP35heGPOLjihJuGTWahN1jO06kvE/kQ4r2K6omKK1ff1k2tFY+wtPttVYM/92fgURoMrpoLh6OzO4nko95WbbjCMQmdK9sjOUnbyZhSjeVLOAxVTj5oRz/X3GqSUcvARuj63q+fniphODkOgkifDFd5JeDqHLMBsOEJf6GSZW3Gy9bdfSW/JH+dWO5FJBuFDtj9qQlanOaUhUmIhj9z0Fx5xBH6D2FsmknNPWVuVNbtFcu32zBQ5pOJ7Mav1M6TyQtBbxc9eZmhFKN70E9R6PjjWUXaGzts5MNJCY4bQ5LTKaUdfiAoB9KYDIz9fa4ugvU91HTeG6136AKy9OjPbRATz2vV+i9cW0sTvMjYCGRUxRStCa4aHD7oBjs9HtEA1/RVo8US1GizPwe27z1GYQuKmVPQ44lKUDWJr/VTB6EMDHTF71U=
-    secret:
-      secure: ICiS31Zx5VSu0rcnVKD30r9ZvFUlrYawiC0F7itaTqyhynN+lWRyI2oOXrVReu04wiIzrLQtfm4ZUrHATp7PTdpEzz28fpn5f8zybdWkkYrcAD+hLsZuTd/QrbOKmkdS6hCNgS0Qx1ZJmUyHYDeE/uhSb1dfx/cKe3ntqWFFHj/HhAfHBpWNBnYn5mqqXO1du0xsRvo16pSG4QukS8cLSWQj1dL7c9cXQEi0JljBJbY2UiD2nryoFU585+enKaDvG+IP+CFIpoqVmrcIqGGESyoTg/8Zlnn1kR9pm8+kUJCxa1hb/xoYWAIYr0vYpRQ5rlF+999rBEEqQjDjgTxqneLgwRYCGib8FHZZI9yJQFzfNbovGbmg7EqlgxwMlIUqK+iZZswg15y2L9ND+/mzRT3raIprDlMcEpuuUfqh1TqYNejxN02BjD63hb7lMLSysjPJUs0sPg5sLYvc2RfI4WHdkmhoKMEo0eQxdD7RfMpNd29Em+Mb4bL7WTCAqvkacG4o76UGQ3n9fpIWrt6jsezmIeEr/pDdeQARd09uYCDO87cklUv16PPOFi0vPxnbF8DaN29Hf/el4OANgj3mAgEUTRSyZPic+SZtKP+iJ/WSvL/4zT06px2AihUYCo/0g2S09OWFbM/cKAv7f/nSfDiAtAbWjV4rp4qUc5eaIqA=
-    bucket: sequence-viewer-artifacts
-    paths:
-    - reports
-before_install:
-- export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-- export PATH=$JAVA_HOME/bin:$PATH
-script:
-- concurrently -p name -n lint:js,lint:wc,polymer:test "npm run lint:js" "npm run lint:wc" "polymer test --skip-plugin local" && npm run test:galen:sauce
-env:
-  global:
-    SAUCE_USERNAME: Desire2Learn
+    - "$HOME/.npm"
+    - "$HOME/.cache/bower"
+
+stages:
+  - test
+  - name: galen test
+    if: type = pull_request
+
+jobs:
+  include:
+    - stage: test
+      language: node_js
+      node_js:
+        - 10.11.0
+      install:
+        - npm ci
+      script:
+        - concurrently -p name -n lint:js,lint:wc,polymer:test "npm run lint:js" "npm run lint:wc" "polymer test --skip-plugin local"
+    - stage: galen test
+      language: node_js
+      node_js:
+        - 10.11.0
+      addons:
+        apt:
+          packages:
+          - oracle-java8-installer
+      install:
+        - npm ci
+      before_script:
+        - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+        - export PATH=$JAVA_HOME/bin:$PATH
+      script:
+        - npm run test:galen:sauce
+      after_script:
+        - pip install --user awscli
+        - aws s3 sync reports s3://farnsworth-travis-ci-artifacts/BrightspaceUI/table/$TRAVIS_BUILD_NUMBER
