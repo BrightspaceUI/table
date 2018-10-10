@@ -36,6 +36,15 @@ var browsers = {
 	})
 };
 
+var xBrowsers = {
+	xChrome: browsers.chrome,
+	xChromeWindows: browsers.chromeWindows,
+	xie11Windows: browsers.ie11Windows,
+	xedgeWindows: browsers.edgeWindows,
+	xChromeMac: browsers.chromeMac,
+	xSafariMac: browsers.safariMac
+};
+
 var mainlineEndpoint = 'http://localhost:8081/components/d2l-table/demo/simple.html';
 var xEndpoint = 'http://localhost:8000/components/d2l-table/demo/simple.html';
 var demoEndpoint = 'http://localhost:8081/components/d2l-table/demo/index.html';
@@ -100,6 +109,16 @@ polymerTests(browsers, function(test, ctx) {
 			overridePath: 'd2l-table-rtl'
 		}
 	});*/
+
+	test.demo('d2l-table-demo', {
+		endpoint: demoEndpoint,
+		spec: 'test/acceptance/table.gspec'
+	});
+});
+
+polymerTests(xBrowsers, function(test, ctx) {
+	// See https://github.com/webcomponents/shadycss/blob/74577b11f20442594cedf4c5a51152dca06eb67c/src/style-settings.js#L29
+	var hasCss = ctx.driver.executeScript('return Boolean(!navigator.userAgent.match(/AppleWebKit\\/601|Edge\\/15/) && window.CSS && window.CSS.supports("color", "var(--primary)"))').booleanValue();
 
 	test('d2l-table', {
 		endpoint: xEndpoint + '?wc-shadydom',
@@ -166,9 +185,4 @@ polymerTests(browsers, function(test, ctx) {
 			overridePath: 'd2l-table-rtl'
 		}
 	});*/
-
-	test.demo('d2l-table-demo', {
-		endpoint: demoEndpoint,
-		spec: 'test/acceptance/table.gspec'
-	});
 });
