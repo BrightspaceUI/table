@@ -21,13 +21,17 @@ jobs:
     - stage: test
       language: node_js
       node_js:
-        - 9
+        - 10.11.0
+      install:
+        - npm ci
       script:
         - concurrently -p name -n lint:js,lint:wc,polymer:test "npm run lint:js" "npm run lint:wc" "polymer test --skip-plugin local"
     - stage: galen test
       language: node_js
       node_js:
-        - 9
+        - 10.11.0
+      install:
+        - npm ci
       before_script:
         - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
         - export PATH=$JAVA_HOME/bin:$PATH
