@@ -1,16 +1,3 @@
-addons:
-  apt:
-    packages:
-    - oracle-java8-installer
-  artifacts:
-    key:
-      secure: IWkqgI4Fm1T4hr+riIzL0j3Zg+Yl3znkv6q6EyHhRnIWbSKkLHcqrnhOUmqdv/6DyRfDsXJf8sJHqiwV2guvQsf1InkSbIFleM5/myl80G3Y91QthnRZKVuFvza0xbgoI+zyOvI5AVgNmFUP6y1h4xh0ho+aajPcL9DB4NBTMp6uk7ioaaUELVYNhngMdiXk9FQWpSD2y+zg94SIXSQKI5Dn+roCi+n0cmmpz12gyEUFsRCNAsidtOaDSP35heGPOLjihJuGTWahN1jO06kvE/kQ4r2K6omKK1ff1k2tFY+wtPttVYM/92fgURoMrpoLh6OzO4nko95WbbjCMQmdK9sjOUnbyZhSjeVLOAxVTj5oRz/X3GqSUcvARuj63q+fniphODkOgkifDFd5JeDqHLMBsOEJf6GSZW3Gy9bdfSW/JH+dWO5FJBuFDtj9qQlanOaUhUmIhj9z0Fx5xBH6D2FsmknNPWVuVNbtFcu32zBQ5pOJ7Mav1M6TyQtBbxc9eZmhFKN70E9R6PjjWUXaGzts5MNJCY4bQ5LTKaUdfiAoB9KYDIz9fa4ugvU91HTeG6136AKy9OjPbRATz2vV+i9cW0sTvMjYCGRUxRStCa4aHD7oBjs9HtEA1/RVo8US1GizPwe27z1GYQuKmVPQ44lKUDWJr/VTB6EMDHTF71U=
-    secret:
-      secure: ICiS31Zx5VSu0rcnVKD30r9ZvFUlrYawiC0F7itaTqyhynN+lWRyI2oOXrVReu04wiIzrLQtfm4ZUrHATp7PTdpEzz28fpn5f8zybdWkkYrcAD+hLsZuTd/QrbOKmkdS6hCNgS0Qx1ZJmUyHYDeE/uhSb1dfx/cKe3ntqWFFHj/HhAfHBpWNBnYn5mqqXO1du0xsRvo16pSG4QukS8cLSWQj1dL7c9cXQEi0JljBJbY2UiD2nryoFU585+enKaDvG+IP+CFIpoqVmrcIqGGESyoTg/8Zlnn1kR9pm8+kUJCxa1hb/xoYWAIYr0vYpRQ5rlF+999rBEEqQjDjgTxqneLgwRYCGib8FHZZI9yJQFzfNbovGbmg7EqlgxwMlIUqK+iZZswg15y2L9ND+/mzRT3raIprDlMcEpuuUfqh1TqYNejxN02BjD63hb7lMLSysjPJUs0sPg5sLYvc2RfI4WHdkmhoKMEo0eQxdD7RfMpNd29Em+Mb4bL7WTCAqvkacG4o76UGQ3n9fpIWrt6jsezmIeEr/pDdeQARd09uYCDO87cklUv16PPOFi0vPxnbF8DaN29Hf/el4OANgj3mAgEUTRSyZPic+SZtKP+iJ/WSvL/4zT06px2AihUYCo/0g2S09OWFbM/cKAv7f/nSfDiAtAbWjV4rp4qUc5eaIqA=
-    bucket: sequence-viewer-artifacts
-    paths:
-    - reports
-
 stages:
   - test
   - name: galen test
@@ -30,6 +17,18 @@ jobs:
       language: node_js
       node_js:
         - 10.11.0
+      addons:
+        apt:
+          packages:
+          - oracle-java8-installer
+        artifacts:
+          key:
+            secure: IWkqgI4Fm1T4hr+riIzL0j3Zg+Yl3znkv6q6EyHhRnIWbSKkLHcqrnhOUmqdv/6DyRfDsXJf8sJHqiwV2guvQsf1InkSbIFleM5/myl80G3Y91QthnRZKVuFvza0xbgoI+zyOvI5AVgNmFUP6y1h4xh0ho+aajPcL9DB4NBTMp6uk7ioaaUELVYNhngMdiXk9FQWpSD2y+zg94SIXSQKI5Dn+roCi+n0cmmpz12gyEUFsRCNAsidtOaDSP35heGPOLjihJuGTWahN1jO06kvE/kQ4r2K6omKK1ff1k2tFY+wtPttVYM/92fgURoMrpoLh6OzO4nko95WbbjCMQmdK9sjOUnbyZhSjeVLOAxVTj5oRz/X3GqSUcvARuj63q+fniphODkOgkifDFd5JeDqHLMBsOEJf6GSZW3Gy9bdfSW/JH+dWO5FJBuFDtj9qQlanOaUhUmIhj9z0Fx5xBH6D2FsmknNPWVuVNbtFcu32zBQ5pOJ7Mav1M6TyQtBbxc9eZmhFKN70E9R6PjjWUXaGzts5MNJCY4bQ5LTKaUdfiAoB9KYDIz9fa4ugvU91HTeG6136AKy9OjPbRATz2vV+i9cW0sTvMjYCGRUxRStCa4aHD7oBjs9HtEA1/RVo8US1GizPwe27z1GYQuKmVPQ44lKUDWJr/VTB6EMDHTF71U=
+          secret:
+            secure: ICiS31Zx5VSu0rcnVKD30r9ZvFUlrYawiC0F7itaTqyhynN+lWRyI2oOXrVReu04wiIzrLQtfm4ZUrHATp7PTdpEzz28fpn5f8zybdWkkYrcAD+hLsZuTd/QrbOKmkdS6hCNgS0Qx1ZJmUyHYDeE/uhSb1dfx/cKe3ntqWFFHj/HhAfHBpWNBnYn5mqqXO1du0xsRvo16pSG4QukS8cLSWQj1dL7c9cXQEi0JljBJbY2UiD2nryoFU585+enKaDvG+IP+CFIpoqVmrcIqGGESyoTg/8Zlnn1kR9pm8+kUJCxa1hb/xoYWAIYr0vYpRQ5rlF+999rBEEqQjDjgTxqneLgwRYCGib8FHZZI9yJQFzfNbovGbmg7EqlgxwMlIUqK+iZZswg15y2L9ND+/mzRT3raIprDlMcEpuuUfqh1TqYNejxN02BjD63hb7lMLSysjPJUs0sPg5sLYvc2RfI4WHdkmhoKMEo0eQxdD7RfMpNd29Em+Mb4bL7WTCAqvkacG4o76UGQ3n9fpIWrt6jsezmIeEr/pDdeQARd09uYCDO87cklUv16PPOFi0vPxnbF8DaN29Hf/el4OANgj3mAgEUTRSyZPic+SZtKP+iJ/WSvL/4zT06px2AihUYCo/0g2S09OWFbM/cKAv7f/nSfDiAtAbWjV4rp4qUc5eaIqA=
+          bucket: sequence-viewer-artifacts
+          paths:
+          - reports
       install:
         - npm ci
       before_script:
