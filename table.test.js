@@ -39,7 +39,6 @@ var browsers = {
 var cssBrowsers = {
 	cssChrome: browsers.chrome,
 	cssChromeWindows: browsers.chromeWindows,
-	cssie11Windows: browsers.ie11Windows,
 	cssedgeWindows: browsers.edgeWindows,
 	cssChromeMac: browsers.chromeMac,
 	cssSafariMac: browsers.safariMac
@@ -57,7 +56,6 @@ var xBrowsers = {
 var xCssBrowsers = {
 	xCssChrome: browsers.chrome,
 	xCssChromeWindows: browsers.chromeWindows,
-	xCssie11Windows: browsers.ie11Windows,
 	xCssedgeWindows: browsers.edgeWindows,
 	xCssChromeMac: browsers.chromeMac,
 	xCssSafariMac: browsers.safariMac
