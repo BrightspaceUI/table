@@ -13,8 +13,8 @@
     "lint:wc": "polymer lint --input *.html",
     "galen": "d2l-galen -s -c \"java -Xmx2g -cp node_modules/galenframework/lib/galen/galen.jar com.galenframework.GalenMain\"",
     "dump:galen:local:run": "npm run galen -- dump table.test.js -g factory:local -d test/acceptance/dumps",
-    "galen:local:run": "npm run galen -- test table.test.js -g factory:local -- -p5",
-    "galen:sauce:run": "sc-run -- npm run galen -- test table.test.js -g factory:sauce -i SAUCE_USERNAME SAUCE_ACCESS_KEY TRAVIS_REPO_SLUG TRAVIS_BUILD_NUMBER -- -p5",
+    "galen:local:run": "npm run galen -- test table.test.js -g factory:local -- -p8",
+    "galen:sauce:run": "sc-run -- npm run galen -- test table.test.js -g factory:sauce -i SAUCE_USERNAME SAUCE_ACCESS_KEY TRAVIS_REPO_SLUG TRAVIS_BUILD_NUMBER -- -p8",
     "dump:galen:local": "concurrently -p name -n serve,galen -s first -k \"polymer serve -p 8080\" \"npm run dump:galen:local:run\"",
     "test:galen:local": "concurrently -p name -n serve,galen -s first -k \"polymer serve -p 8080\" \"npm run galen:local:run\"",
     "test:galen:sauce": "concurrently -p name -n serve,galen -s first -k \"polymer serve -p 8080\" \"npm run galen:sauce:run\""
