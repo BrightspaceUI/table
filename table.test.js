@@ -36,6 +36,14 @@ var browsers = {
 	})
 };
 
+var cssBrowsers = {
+	cssChrome: browsers.chrome,
+	cssChromeWindows: browsers.chromeWindows,
+	cssedgeWindows: browsers.edgeWindows,
+	cssChromeMac: browsers.chromeMac,
+	cssSafariMac: browsers.safariMac
+};
+
 var xBrowsers = {
 	xChrome: browsers.chrome,
 	xChromeWindows: browsers.chromeWindows,
@@ -45,14 +53,19 @@ var xBrowsers = {
 	xSafariMac: browsers.safariMac
 };
 
+var xCssBrowsers = {
+	xCssChrome: browsers.chrome,
+	xCssChromeWindows: browsers.chromeWindows,
+	xCssedgeWindows: browsers.edgeWindows,
+	xCssChromeMac: browsers.chromeMac,
+	xCssSafariMac: browsers.safariMac
+};
+
 var mainlineEndpoint = 'http://localhost:8081/components/d2l-table/demo/simple.html';
 var xEndpoint = 'http://localhost:8000/components/d2l-table/demo/simple.html';
 var demoEndpoint = 'http://localhost:8081/components/d2l-table/demo/index.html';
 
-polymerTests(browsers, function(test, ctx) {
-	// See https://github.com/webcomponents/shadycss/blob/74577b11f20442594cedf4c5a51152dca06eb67c/src/style-settings.js#L29
-	var hasCss = ctx.driver.executeScript('return Boolean(!navigator.userAgent.match(/AppleWebKit\\/601|Edge\\/15/) && window.CSS && window.CSS.supports("color", "var(--primary)"))').booleanValue();
-
+polymerTests(browsers, function(test) {
 	test('d2l-table', {
 		endpoint: mainlineEndpoint + '?wc-shadydom&wc-shimcssproperties',
 		spec: 'test/acceptance/table.gspec',
@@ -70,6 +83,16 @@ polymerTests(browsers, function(test, ctx) {
 			overridePath: 'd2l-table-rtl'
 		}
 	});
+
+	test.demo('d2l-table-demo', {
+		endpoint: demoEndpoint,
+		spec: 'test/acceptance/table.gspec'
+	});
+});
+
+polymerTests(cssBrowsers, function(test, ctx) {
+	// See https://github.com/webcomponents/shadycss/blob/74577b11f20442594cedf4c5a51152dca06eb67c/src/style-settings.js#L29
+	var hasCss = ctx.driver.executeScript('return Boolean(!navigator.userAgent.match(/AppleWebKit\\/601|Edge\\/15/) && window.CSS && window.CSS.supports("color", "var(--primary)"))').booleanValue();
 
 	if (hasCss) {
 		test('d2l-table-css', {
@@ -109,17 +132,9 @@ polymerTests(browsers, function(test, ctx) {
 			overridePath: 'd2l-table-rtl'
 		}
 	});*/
-
-	test.demo('d2l-table-demo', {
-		endpoint: demoEndpoint,
-		spec: 'test/acceptance/table.gspec'
-	});
 });
 
-polymerTests(xBrowsers, function(test, ctx) {
-	// See https://github.com/webcomponents/shadycss/blob/74577b11f20442594cedf4c5a51152dca06eb67c/src/style-settings.js#L29
-	var hasCss = ctx.driver.executeScript('return Boolean(!navigator.userAgent.match(/AppleWebKit\\/601|Edge\\/15/) && window.CSS && window.CSS.supports("color", "var(--primary)"))').booleanValue();
-
+polymerTests(xBrowsers, function(test) {
 	test('d2l-table', {
 		endpoint: xEndpoint + '?wc-shadydom',
 		spec: 'test/acceptance/table.gspec',
@@ -146,6 +161,21 @@ polymerTests(xBrowsers, function(test, ctx) {
 			overridePath: 'd2l-table'
 		}
 	});
+
+	/*
+	// This spec fails because the icon mirroring is broken in Chrome's ShadowDOM
+	test.shadow('d2l-table-rtl-shadow', {
+		endpoint: xEndpoint + '?dir=rtl&dom=shadow',
+		spec: 'test/acceptance/table.gspec',
+		vars: {
+			overridePath: 'd2l-table-rtl'
+		}
+	});*/
+});
+
+polymerTests(xCssBrowsers, function(test, ctx) {
+	// See https://github.com/webcomponents/shadycss/blob/74577b11f20442594cedf4c5a51152dca06eb67c/src/style-settings.js#L29
+	var hasCss = ctx.driver.executeScript('return Boolean(!navigator.userAgent.match(/AppleWebKit\\/601|Edge\\/15/) && window.CSS && window.CSS.supports("color", "var(--primary)"))').booleanValue();
 
 	if (hasCss) {
 		test('d2l-table-css', {
@@ -175,14 +205,4 @@ polymerTests(xBrowsers, function(test, ctx) {
 			}
 		});
 	}
-
-	/*
-	// This spec fails because the icon mirroring is broken in Chrome's ShadowDOM
-	test.shadow('d2l-table-rtl-shadow', {
-		endpoint: xEndpoint + '?dir=rtl&dom=shadow',
-		spec: 'test/acceptance/table.gspec',
-		vars: {
-			overridePath: 'd2l-table-rtl'
-		}
-	});*/
 });
