@@ -3,6 +3,9 @@
     "es6": true,
     "mocha": true
   },
+  "rules": {
+    "no-invalid-this": 0
+  },
   "globals": {
     "fixture": true,
     "flush": true,
