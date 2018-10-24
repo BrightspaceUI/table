@@ -364,6 +364,12 @@
 						reflectToAttribute: true
 					},
 					/** IE and Edge requires the value to be 1 in some cases **/
+					/**
+						Background: In some occasions in IE and Edge, there is a
+						little deviation in the lowerScrollValue used in checkScrollThresholds for not being 0.
+						I have seen it being 1 in IE and Edge. Resulting the scroll arrow icon being shown
+						incorrectly when there is no overflow happening in UI.
+					**/
 					checkScrollDeltaValue: {
 						type: Number,
 						value: 0
@@ -478,8 +484,9 @@
 				},
 
 				checkScrollbar: function() {
-					var hScrollbar = this.$.wrapper.offsetWidth !== this.$.wrapper.scrollWidth;
-					this._setHScrollbar(hScrollbar);
+					var hScrollbar = Math.abs(this.$.wrapper.offsetWidth - this.$.wrapper.scrollWidth);
+
+					this._setHScrollbar(hScrollbar > 0 && hScrollbar !== this.checkScrollDeltaValue) ;
 					this.checkScrollThresholds();
 				},
 
