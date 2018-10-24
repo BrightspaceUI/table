@@ -363,7 +363,11 @@
 						type: Boolean,
 						reflectToAttribute: true
 					},
-
+					/** IE and Edge requires the value to be 1 in some cases **/
+					checkScrollDeltaValue: {
+						type: Number,
+						value: 0
+					},
 					_stickyIsDisabled: {
 						type: Boolean,
 						computed: '_computeStickyIsDisabled(scrollbarLeft, scrollbarRight)'
@@ -484,10 +488,10 @@
 
 					if (this.isRtl && this.scrollRtlDefault) {
 						this._setScrollbarRight(this.$.wrapper.scrollLeft === 0);
-						this._setScrollbarLeft(lowerScrollValue <= 0);
+						this._setScrollbarLeft(lowerScrollValue <= this.checkScrollDeltaValue);
 					} else {
 						this._setScrollbarLeft(this.$.wrapper.scrollLeft === 0);
-						this._setScrollbarRight(lowerScrollValue <= 0);
+						this._setScrollbarRight(lowerScrollValue <= this.checkScrollDeltaValue);
 					}
 				},
 
