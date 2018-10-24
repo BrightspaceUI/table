@@ -363,7 +363,17 @@
 						type: Boolean,
 						reflectToAttribute: true
 					},
-
+					/** IE and Edge requires the value to be 1 in some cases **/
+					/**
+						Background: In some occasions in IE and Edge, there is a
+						little deviation in the lowerScrollValue used in checkScrollThresholds for not being 0.
+						I have seen it being 1 in IE and Edge. Resulting the scroll arrow icon being shown
+						incorrectly when there is no overflow happening in UI.
+					**/
+					checkScrollDeltaValue: {
+						type: Number,
+						value: 0
+					},
 					_stickyIsDisabled: {
 						type: Boolean,
 						computed: '_computeStickyIsDisabled(scrollbarLeft, scrollbarRight)'
@@ -474,8 +484,9 @@
 				},
 
 				checkScrollbar: function() {
-					var hScrollbar = this.$.wrapper.offsetWidth !== this.$.wrapper.scrollWidth;
-					this._setHScrollbar(hScrollbar);
+					var hScrollbar = Math.abs(this.$.wrapper.offsetWidth - this.$.wrapper.scrollWidth);
+
+					this._setHScrollbar(hScrollbar > 0 && hScrollbar !== this.checkScrollDeltaValue) ;
 					this.checkScrollThresholds();
 				},
 
@@ -484,10 +495,10 @@
 
 					if (this.isRtl && this.scrollRtlDefault) {
 						this._setScrollbarRight(this.$.wrapper.scrollLeft === 0);
-						this._setScrollbarLeft(lowerScrollValue <= 0);
+						this._setScrollbarLeft(lowerScrollValue <= this.checkScrollDeltaValue);
 					} else {
 						this._setScrollbarLeft(this.$.wrapper.scrollLeft === 0);
-						this._setScrollbarRight(lowerScrollValue <= 0);
+						this._setScrollbarRight(lowerScrollValue <= this.checkScrollDeltaValue);
 					}
 				},
 
