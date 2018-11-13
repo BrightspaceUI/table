@@ -2,12 +2,23 @@
 <html>
 
 	<head>
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-		<script src="update-direction.js"></script>
-		<link rel="import" href="../d2l-table.html">
-		<link rel="import" href="reset.html">
-		<link rel="import" href="../../d2l-typography/d2l-typography.html">
-		<custom-style>
+		<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script src="./update-direction.js"></script>
+		<script type="module" src="../d2l-table.js"></script>
+		<script type="module" src="./reset.js"></script>
+		<script type="module" src="../../d2l-typography/d2l-typography.js"></script>
+		<!-- FIXME(polymer-modulizer):
+		These imperative modules that innerHTML your HTML are
+		a hacky way to be sure that any mixins in included style
+		modules are ready before any elements that reference them are
+		instantiated, otherwise the CSS @apply mixin polyfill won't be
+		able to expand the underlying CSS custom properties.
+		See: https://github.com/Polymer/polymer-modulizer/issues/154
+		-->
+	<script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<custom-style>
 			<style is="custom-style" include="reset d2l-table-style d2l-typography">
 				html {
 					font-size: 20px;
@@ -47,11 +58,17 @@
 					margin-left: 370px;
 				}
 			</style>
-		</custom-style>
+		</custom-style>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
 	</head>
 
 	<body class="d2l-typography">
-		<div class="container">
+		<script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="container">
 			<div class="screenshots screenshot-wide">
 				<d2l-table-wrapper><table class="d2l-table">
 					<thead>
@@ -160,7 +177,7 @@
 			</div>
 			<div class="screenshots screenshot-notbody">
 				<d2l-table-wrapper><table class="d2l-table">
-					<tr header>
+					<tbody><tr header="">
 						<th><span> </span></th>
 						<th><span> </span></th>
 						<th><span> </span></th>
@@ -180,7 +197,7 @@
 						<td><span> </span></td>
 						<td><span> </span></td>
 					</tr>
-				</table></d2l-table-wrapper>
+				</tbody></table></d2l-table-wrapper>
 			</div>
 			<div class="screenshots screenshot-simple">
 				<d2l-table-wrapper><table class="d2l-table">
@@ -207,7 +224,7 @@
 			<div class="screenshots screenshot-rows">
 				<d2l-table-wrapper><table class="d2l-table">
 					<tbody>
-					<tr active selected>
+					<tr active="" selected="">
 						<td><span> </span></td>
 						<td><span> </span></td>
 						<td><span> </span></td>
@@ -217,7 +234,7 @@
 						<td><span> </span></td>
 						<td><span> </span></td>
 					</tr>
-					<tr active selected>
+					<tr active="" selected="">
 						<td><span> </span></td>
 						<td><span> </span></td>
 						<td><span> </span></td>
@@ -227,12 +244,12 @@
 						<td><span> </span></td>
 						<td><span> </span></td>
 					</tr>
-					<tr active selected>
+					<tr active="" selected="">
 						<td><span> </span></td>
 						<td><span> </span></td>
 						<td><span> </span></td>
 					</tr>
-					<tr active selected>
+					<tr active="" selected="">
 						<td><span> </span></td>
 						<td><span> </span></td>
 						<td><span> </span></td>
@@ -243,7 +260,7 @@
 			<div class="screenshots screenshot-rows-selected">
 				<d2l-table-wrapper><table class="d2l-table">
 					<tbody>
-					<tr selected>
+					<tr selected="">
 						<td><span> </span></td>
 						<td><span> </span></td>
 						<td><span> </span></td>
@@ -253,7 +270,7 @@
 						<td><span> </span></td>
 						<td><span> </span></td>
 					</tr>
-					<tr selected>
+					<tr selected="">
 						<td><span> </span></td>
 						<td><span> </span></td>
 						<td><span> </span></td>
@@ -263,12 +280,12 @@
 						<td><span> </span></td>
 						<td><span> </span></td>
 					</tr>
-					<tr selected>
+					<tr selected="">
 						<td><span> </span></td>
 						<td><span> </span></td>
 						<td><span> </span></td>
 					</tr>
-					<tr selected>
+					<tr selected="">
 						<td><span> </span></td>
 						<td><span> </span></td>
 						<td><span> </span></td>
@@ -284,16 +301,16 @@
 			<div class="screenshots screenshot-sort">
 				<d2l-table-wrapper><table class="d2l-table">
 					<thead>
-						<th>
+						<tr><th>
 							<d2l-table-col-sort-button><span> </span></d2l-table-col-sort-button>
 						</th>
 						<th>
-							<d2l-table-col-sort-button desc><span> </span></d2l-table-col-sort-button>
+							<d2l-table-col-sort-button desc=""><span> </span></d2l-table-col-sort-button>
 						</th>
 						<th>
-							<d2l-table-col-sort-button nosort><span> </span></d2l-table-col-sort-button>
+							<d2l-table-col-sort-button nosort=""><span> </span></d2l-table-col-sort-button>
 						</th>
-					</thead>
+					</tr></thead>
 					<tbody>
 					<tr>
 						<td><span> </span></td>
@@ -309,7 +326,7 @@
 				</table></d2l-table-wrapper>
 			</div>
 			<div class="screenshots screenshot-no-column-border">
-				<d2l-table-wrapper><table class="d2l-table" no-column-border>
+				<d2l-table-wrapper><table class="d2l-table" no-column-border="">
 					<thead>
 					<tr>
 						<th><span> </span></th>
@@ -332,7 +349,7 @@
 				</table></d2l-table-wrapper>
 			</div>
 			<div class="screenshots screenshot-no-column-border-styled">
-				<d2l-table-wrapper><table class="d2l-table" no-column-border>
+				<d2l-table-wrapper><table class="d2l-table" no-column-border="">
 					<thead>
 					<tr>
 						<th><span> </span></th>
@@ -428,29 +445,29 @@
 				<d2l-table id="d2l-dynamic"></d2l-table>
 			</div>
 			<div class="screenshots screenshot-small-sticky">
-				<d2l-table-wrapper sticky-headers><table class="d2l-table">
+				<d2l-table-wrapper sticky-headers=""><table class="d2l-table">
 					<thead>
 					<tr>
-						<th sticky><span> </span></th>
+						<th sticky=""><span> </span></th>
 						<th><span> </span></th>
 						<th><span> </span></th>
 					</tr>
 					</thead>
 					<tfoot>
 					<tr>
-						<th sticky><span> </span></th>
+						<th sticky=""><span> </span></th>
 						<th><span> </span></th>
 						<th><span> </span></th>
 					</tr>
 					</tfoot>
 					<tbody>
 					<tr>
-						<th sticky><span> </span></th>
+						<th sticky=""><span> </span></th>
 						<td><span> </span></td>
 						<td><span> </span></td>
 					</tr>
 					<tr>
-						<th sticky><span> </span></th>
+						<th sticky=""><span> </span></th>
 						<td><span> </span></td>
 						<td><span> </span></td>
 					</tr>
@@ -485,89 +502,94 @@
 					</d2l-tbody>
 				</d2l-table>
 			</div>
-		</div>
-		<script>
-		(function() {
+		</div>`;
 
-			function createCellContent() {
-				var span = document.createElement('span');
-				span.appendChild(document.createTextNode(' '));
-				return span;
+document.body.appendChild($_documentContainer.content);
+</script>
+		<script type="module">
+import '../d2l-table.js';
+import './reset.js';
+import '../../d2l-typography/d2l-typography.js';
+import { dom } from '../../@polymer/polymer/lib/legacy/polymer.dom.js';
+
+function createCellContent() {
+	var span = document.createElement('span');
+	span.appendChild(document.createTextNode(' '));
+	return span;
+}
+
+function createTable() {
+
+	var wrapper = document.getElementById('dynamic-wrapper');
+	var tbl = document.createElement('table');
+	tbl.className = 'd2l-table';
+	dom(wrapper).appendChild(tbl);
+
+	var thead = document.createElement('thead');
+	var headerRow = document.createElement('tr');
+	for (var i = 0; i < 3; i++) {
+		var th = document.createElement('th');
+		th.appendChild(createCellContent());
+		headerRow.appendChild(th);
+	}
+	thead.appendChild(headerRow);
+	tbl.appendChild(thead);
+
+	var tbody = document.createElement('tbody');
+	tbl.appendChild(tbody);
+	setTimeout(function() {
+
+		for (var j = 0; j < 3; j++) {
+			var row = document.createElement('tr');
+			for (var k = 0; k < 3; k++) {
+				var cell = document.createElement('td');
+				cell.appendChild(createCellContent());
+				row.appendChild(cell);
 			}
+			tbody.appendChild(row);
+		}
 
-			function createTable() {
+	}, 0);
 
-				var wrapper = document.getElementById('dynamic-wrapper');
-				var tbl = document.createElement('table');
-				tbl.className = 'd2l-table';
-				Polymer.dom(wrapper).appendChild(tbl);
+}
 
-				var thead = document.createElement('thead');
-				var headerRow = document.createElement('tr');
-				for (var i = 0; i < 3; i++) {
-					var th = document.createElement('th');
-					th.appendChild(createCellContent());
-					headerRow.appendChild(th);
-				}
-				thead.appendChild(headerRow);
-				tbl.appendChild(thead);
+function createD2LTable() {
 
-				var tbody = document.createElement('tbody');
-				tbl.appendChild(tbody);
-				setTimeout(function() {
+	var tbl = document.getElementById('d2l-dynamic');
 
-					for (var j = 0; j < 3; j++) {
-						var row = document.createElement('tr');
-						for (var k = 0; k < 3; k++) {
-							var cell = document.createElement('td');
-							cell.appendChild(createCellContent());
-							row.appendChild(cell);
-						}
-						tbody.appendChild(row);
-					}
+	var thead = document.createElement('d2l-thead');
+	var headerRow = document.createElement('d2l-tr');
+	for (var i = 0; i < 3; i++) {
+		var th = document.createElement('d2l-th');
+		dom(th).appendChild(createCellContent());
+		dom(headerRow).appendChild(th);
+	}
+	dom(thead).appendChild(headerRow);
+	dom(tbl).appendChild(thead);
 
-				}, 0);
+	var tbody = document.createElement('d2l-tbody');
+	dom(tbl).appendChild(tbody);
 
+	setTimeout(function() {
+		for (var j = 0; j < 3; j++) {
+			var row = document.createElement('d2l-tr');
+			for (var k = 0; k < 3; k++) {
+				var cell = document.createElement('d2l-td');
+				dom(cell).appendChild(createCellContent());
+				dom(row).appendChild(cell);
 			}
+			dom(tbody).appendChild(row);
+		}
+	}, 0);
 
-			function createD2LTable() {
+}
 
-				var tbl = document.getElementById('d2l-dynamic');
-
-				var thead = document.createElement('d2l-thead');
-				var headerRow = document.createElement('d2l-tr');
-				for (var i = 0; i < 3; i++) {
-					var th = document.createElement('d2l-th');
-					Polymer.dom(th).appendChild(createCellContent());
-					Polymer.dom(headerRow).appendChild(th);
-				}
-				Polymer.dom(thead).appendChild(headerRow);
-				Polymer.dom(tbl).appendChild(thead);
-
-				var tbody = document.createElement('d2l-tbody');
-				Polymer.dom(tbl).appendChild(tbody);
-
-				setTimeout(function() {
-					for (var j = 0; j < 3; j++) {
-						var row = document.createElement('d2l-tr');
-						for (var k = 0; k < 3; k++) {
-							var cell = document.createElement('d2l-td');
-							Polymer.dom(cell).appendChild(createCellContent());
-							Polymer.dom(row).appendChild(cell);
-						}
-						Polymer.dom(tbody).appendChild(row);
-					}
-				}, 0);
-
-			}
-
-			window.addEventListener('WebComponentsReady', function() {
-				setTimeout(function() {
-					createTable();
-					createD2LTable();
-				}, 0);
-			});
-		})();
-		</script>
+window.addEventListener('WebComponentsReady', function() {
+	setTimeout(function() {
+		createTable();
+		createD2LTable();
+	}, 0);
+});
+</script>
 	</body>
 </html>

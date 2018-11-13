@@ -1,15 +1,16 @@
-<link rel="import" href="../../polymer/polymer.html">
-<link rel="import" href="../d2l-table.html">
-
-<dom-module id="responsive-demo">
-	<template>
+import '../../@polymer/polymer/polymer-legacy.js';
+import '../d2l-table.js';
+import { Polymer } from '../../@polymer/polymer/lib/legacy/polymer-fn.js';
+import { html } from '../../@polymer/polymer/lib/utils/html-tag.js';
+Polymer({
+  _template: html`
 		<style include="d2l-table-style">
 			:host {
 				display: block;
 			}
 		</style>
 		<h3>Small Table</h3>
-		<d2l-table-wrapper><table class="d2l-table" selectable>
+		<d2l-table-wrapper><table class="d2l-table" selectable="">
 			<thead>
 			<tr>
 				<th>Column header 1</th>
@@ -30,8 +31,8 @@
 			</tbody>
 		</table></d2l-table-wrapper>
 		<h3>Simple Table</h3>
-		<d2l-table-wrapper><table class="d2l-table" selectable>
-			<tr>
+		<d2l-table-wrapper><table class="d2l-table" selectable="">
+			<tbody><tr>
 				<th>Column header 1</th>
 				<th>Column header 2</th>
 			</tr>
@@ -39,9 +40,9 @@
 				<th>Row 1 Column 1</th>
 				<td>Row 1 Column 2</td>
 			</tr>
-		</table></d2l-table-wrapper>
+		</tbody></table></d2l-table-wrapper>
 		<h3>Medium Table</h3>
-		<d2l-table-wrapper><table class="d2l-table" selectable>
+		<d2l-table-wrapper><table class="d2l-table" selectable="">
 			<thead>
 			<tr>
 				<th>Column header 1</th>
@@ -68,7 +69,7 @@
 			</tbody>
 		</table></d2l-table-wrapper>
 		<h3>Large Table</h3>
-		<d2l-table-wrapper><table class="d2l-table" selectable>
+		<d2l-table-wrapper><table class="d2l-table" selectable="">
 			<thead>
 			<tr>
 				<th>Column header 1</th>
@@ -142,10 +143,7 @@
 			</tr>
 			</tbody>
 		</table></d2l-table-wrapper>
-	</template>
-	<script>
-		Polymer({
-			is: 'responsive-demo'
-		});
-	</script>
-</dom-module>
+`,
+
+  is: 'responsive-demo'
+});

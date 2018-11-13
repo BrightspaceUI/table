@@ -4,9 +4,10 @@
 		<meta charset="utf-8">
 		<title>wrapper tests</title>
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-		<script src="../../web-component-tester/browser.js"></script>
-		<link rel="import" href="../d2l-table.html">
+		<script src="../../@babel/polyfill/browser.js"></script>
+		<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script src="../../wct-browser-legacy/browser.js"></script>
+		<script type="module" src="../d2l-table.js"></script>
 	</head>
 	<body>
 
@@ -16,10 +17,12 @@
 			</template>
 		</test-fixture>
 
-		<script>
-			describe('a11y', function() {
-				a11ySuite('d2l-table');
-			});
-		</script>
+		<script type="module">
+import '../d2l-table.js';
+import { a11ySuite } from '../../wct-browser-legacy/a11ySuite.js';
+describe('a11y', function() {
+	a11ySuite('d2l-table');
+});
+</script>
 	</body>
 </html>

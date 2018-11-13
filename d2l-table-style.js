@@ -1,8 +1,9 @@
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../d2l-colors/d2l-colors.html">
-<link rel="import" href="d2l-table-shared-styles.html">
+import '../@polymer/polymer/polymer-legacy.js';
+import '../d2l-colors/d2l-colors.js';
+import './d2l-table-shared-styles.js';
+const $_documentContainer = document.createElement('template');
 
-<dom-module id="d2l-table-style">
+$_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 	<template>
 		<style>
 			.d2l-table {
@@ -413,4 +414,6 @@
 			}
 		</style>
 	</template>
-</dom-module>
+</dom-module>`;
+
+document.head.appendChild($_documentContainer.content);
