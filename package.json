@@ -7,7 +7,7 @@
     "postinstall": "polymer install --variants",
     "predump": "npm run -s clean",
     "dump": "npm run -s dump:galen:local",
-    "test": "concurrently -p name -n lint:js,lint:wc,polymer:test \"npm run lint:js\" \"npm run lint:wc\" \"npm run test:galen:local\" \"polymer test --skip-plugin sauce\"",
+    "test": "concurrently -p name -n lint:html,lint:wc,polymer:test \"npm run lint:html\" \"npm run lint:wc\" \"npm run test:galen:local\" \"polymer test --skip-plugin sauce\"",
     "lint": "npm run lint:html && npm run lint:wc",
     "lint:html": "eslint --ext html .",
     "lint:wc": "polymer lint --input *.html",

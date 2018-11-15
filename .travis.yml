@@ -17,7 +17,7 @@ jobs:
       install:
         - npm ci
       script:
-        - concurrently -p name -n lint:js,lint:wc,polymer:test "npm run lint:js" "npm run lint:wc" "polymer test --skip-plugin local"
+        - concurrently -p name -n lint:html,lint:wc,polymer:test "npm run lint:html" "npm run lint:wc" "polymer test --skip-plugin local"
     - stage: galen test
       language: node_js
       node_js:
