@@ -1,13 +1,20 @@
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../d2l-colors/d2l-colors.html">
-<link rel="import" href="../d2l-icons/d2l-icon.html">
-
-<!--
+/*
 # D2L Table Circle Button
--->
+*/
+/*
+  FIXME(polymer-modulizer): the above comments were extracted
+  from HTML and may be out of place here. Review them and
+  then delete this comment!
+*/
+import '../@polymer/polymer/polymer-legacy.js';
 
-<dom-module id="d2l-table-circle-button">
-	<template strip-whitespace>
+import '../d2l-colors/d2l-colors.js';
+import '../d2l-icons/d2l-icon.js';
+import { Polymer } from '../@polymer/polymer/lib/legacy/polymer-fn.js';
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<dom-module id="d2l-table-circle-button">
+	<template strip-whitespace="">
 		<style>
 			:host {
 				display: inline-block;
@@ -48,18 +55,19 @@
 			<d2l-icon icon="[[icon]]"></d2l-icon>
 		</button>
 	</template>
-	<script>
-		Polymer({
-			is: 'd2l-table-circle-button',
-			properties: {
-				/**
-				 * Name of icon (ex. [iconset-name:icon-id]) for underlying [Polymer iron-iconset-svg](https://github.com/PolymerElements/iron-iconset-svg)
-				 */
-				icon: {
-					type: String,
-					reflectToAttribute: true
-				}
-			}
-		});
-	</script>
-</dom-module>
+	
+</dom-module>`;
+
+document.head.appendChild($_documentContainer.content);
+Polymer({
+	is: 'd2l-table-circle-button',
+	properties: {
+		/**
+		 * Name of icon (ex. [iconset-name:icon-id]) for underlying [Polymer iron-iconset-svg](https://github.com/PolymerElements/iron-iconset-svg)
+		 */
+		icon: {
+			type: String,
+			reflectToAttribute: true
+		}
+	}
+});
