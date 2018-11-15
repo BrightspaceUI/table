@@ -1,6 +1,6 @@
-<script type="module" src="../../@polymer/polymer/polymer-legacy.js"></script>
-<script type="module" src="../d2l-table.js"></script>
-<script type="module" src="./reset.js"></script>
+<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../d2l-table.html">
+<link rel="import" href="reset.html">
 
 <dom-module id="simple-demo">
 	<template strip-whitespace>
@@ -302,17 +302,13 @@
 			</table></d2l-table-wrapper>
 		</div>
 	</template>
-	<script type="module">
-import '../../@polymer/polymer/polymer-legacy.js';
-import '../d2l-table.js';
-import './reset.js';
-import { Polymer } from '../../@polymer/polymer/lib/legacy/polymer-fn.js';
-Polymer({
-	is: 'simple-demo',
-	ready: function() {
-		var template = document.createElement('template');
-		this.$['tr-last-of-type-body'].appendChild(template);
-	}
-});
-</script>
+	<script>
+		Polymer({
+			is: 'simple-demo',
+			ready: function() {
+				var template = document.createElement('template');
+				this.$['tr-last-of-type-body'].appendChild(template);
+			}
+		});
+	</script>
 </dom-module>

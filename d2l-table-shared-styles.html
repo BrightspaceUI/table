@@ -1,8 +1,7 @@
-import '../@polymer/polymer/polymer-legacy.js';
-import '../d2l-colors/d2l-colors.js';
-const $_documentContainer = document.createElement('template');
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../d2l-colors/d2l-colors.html">
 
-$_documentContainer.innerHTML = `<custom-style>
+<custom-style>
 	<style is="custom-style">
 		html {
 			--d2l-table-border-color: var(--d2l-color-mica);
@@ -57,6 +56,4 @@ $_documentContainer.innerHTML = `<custom-style>
 			};
 		}
 	</style>
-</custom-style>`;
-
-document.head.appendChild($_documentContainer.content);
+</custom-style>

@@ -1,0 +1,33 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="d2l-table-observer-behavior.html">
+
+<dom-module id="d2l-tr">
+	<template strip-whitespace>
+		<slot id="slot"></slot>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-tr',
+			behaviors: [
+				D2L.PolymerBehaviors.Table.LocalObserverBehavior
+			],
+			properties: {
+				role: {
+					type: String,
+					value: 'row',
+					readonly: true,
+					reflectToAttribute: true
+				},
+				selected: {
+					type: Boolean,
+					value: false,
+					reflectToAttribute: true,
+					observer: '_selectedChanged'
+				}
+			},
+			_selectedChanged: function(selected) {
+				this.setAttribute('aria-selected', selected.toString());
+			}
+		});
+	</script>
+</dom-module>
