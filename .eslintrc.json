@@ -1,5 +1,5 @@
 {
-  "extends": "brightspace/polymer-3-config",
+  "extends": "brightspace/polymer-config",
   "globals": {
     "fastdom": false
   }
