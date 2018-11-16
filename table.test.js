@@ -44,26 +44,8 @@ var cssBrowsers = {
 	cssSafariMac: browsers.safariMac
 };
 
-var xBrowsers = {
-	xChrome: browsers.chrome,
-	xChromeWindows: browsers.chromeWindows,
-	xie11Windows: browsers.ie11Windows,
-	xedgeWindows: browsers.edgeWindows,
-	xChromeMac: browsers.chromeMac,
-	xSafariMac: browsers.safariMac
-};
-
-var xCssBrowsers = {
-	xCssChrome: browsers.chrome,
-	xCssChromeWindows: browsers.chromeWindows,
-	xCssedgeWindows: browsers.edgeWindows,
-	xCssChromeMac: browsers.chromeMac,
-	xCssSafariMac: browsers.safariMac
-};
-
-var mainlineEndpoint = 'http://localhost:8081/components/d2l-table/demo/simple.html';
-var xEndpoint = 'http://localhost:8000/components/d2l-table/demo/simple.html';
-var demoEndpoint = 'http://localhost:8081/components/d2l-table/demo/index.html';
+var mainlineEndpoint = 'http://localhost:8080/components/d2l-table/demo/simple.html';
+var demoEndpoint = 'http://localhost:8080/components/d2l-table/demo/index.html';
 
 polymerTests(browsers, function(test) {
 	test('d2l-table', {
@@ -132,77 +114,4 @@ polymerTests(cssBrowsers, function(test, ctx) {
 			overridePath: 'd2l-table-rtl'
 		}
 	});*/
-});
-
-polymerTests(xBrowsers, function(test) {
-	test('d2l-table', {
-		endpoint: xEndpoint + '?wc-shadydom',
-		spec: 'test/acceptance/table.gspec',
-		tags: ['1.x', 'shady', 'shim-css', 'ltr'],
-		vars: {
-			overridePath: 'd2l-table'
-		}
-	});
-
-	test('d2l-table-rtl', {
-		endpoint: xEndpoint + '?wc-shadydom&dir=rtl',
-		spec: 'test/acceptance/table.gspec',
-		tags: ['1.x', 'shady', 'shim-css', 'rtl'],
-		vars: {
-			overridePath: 'd2l-table-rtl'
-		}
-	});
-
-	test.shadow('d2l-table-shadow', {
-		endpoint: xEndpoint + '?dom=shadow',
-		spec: 'test/acceptance/table.gspec',
-		tags: ['1.x', 'shadow', 'shim-css', 'ltr'],
-		vars: {
-			overridePath: 'd2l-table'
-		}
-	});
-
-	/*
-	// This spec fails because the icon mirroring is broken in Chrome's ShadowDOM
-	test.shadow('d2l-table-rtl-shadow', {
-		endpoint: xEndpoint + '?dir=rtl&dom=shadow',
-		spec: 'test/acceptance/table.gspec',
-		vars: {
-			overridePath: 'd2l-table-rtl'
-		}
-	});*/
-});
-
-polymerTests(xCssBrowsers, function(test, ctx) {
-	// See https://github.com/webcomponents/shadycss/blob/74577b11f20442594cedf4c5a51152dca06eb67c/src/style-settings.js#L29
-	var hasCss = ctx.driver.executeScript('return Boolean(!navigator.userAgent.match(/AppleWebKit\\/601|Edge\\/15/) && window.CSS && window.CSS.supports("color", "var(--primary)"))').booleanValue();
-
-	if (hasCss) {
-		test('d2l-table-css', {
-			endpoint: xEndpoint + '?wc-shadydom&useNativeCSSProperties=true',
-			spec: 'test/acceptance/table.gspec',
-			tags: ['1.x', 'shady', 'native-css', 'ltr'],
-			vars: {
-				overridePath: 'd2l-table'
-			}
-		});
-
-		test('d2l-table-css-rtl', {
-			endpoint: xEndpoint + '?wc-shadydom&dir=rtl&useNativeCSSProperties=true',
-			spec: 'test/acceptance/table.gspec',
-			tags: ['1.x', 'shady', 'native-css', 'rtl'],
-			vars: {
-				overridePath: 'd2l-table-rtl'
-			}
-		});
-
-		test.shadow('d2l-table-css-shadow', {
-			endpoint: xEndpoint + '?dom=shadow&useNativeCSSProperties=true',
-			spec: 'test/acceptance/table.gspec',
-			tags: ['1.x', 'shadow', 'native-css', 'ltr'],
-			vars: {
-				overridePath: 'd2l-table'
-			}
-		});
-	}
 });
