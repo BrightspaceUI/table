@@ -1,16 +1,23 @@
 {
-  "name": "d2l-table",
   "description": "Mixins and CSS for applying table styles",
-  "private": true,
+  "keywords": [
+    "d2l",
+    "polymer",
+    "table"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BrightspaceUI/table.git"
+  },
+  "name": "d2l-table",
   "scripts": {
     "clean": "rimraf test/acceptance/dumps/* reports/",
-    "postinstall": "polymer install --variants",
     "predump": "npm run -s clean",
     "dump": "npm run -s dump:galen:local",
     "test": "concurrently -p name -n lint,polymer:test \"npm run lint\" \"npm run test:galen:local\" \"polymer test --skip-plugin sauce\"",
-    "lint": "npm run lint:html && npm run lint:wc",
-    "lint:html": "eslint --ext html .",
-    "lint:wc": "polymer lint --input *.html",
+    "lint": "npm run lint:wc && npm run lint:js",
+    "lint:js": "eslint . --ext .js,.html test/**/*.js test/**/*.html demo/**/*.js demo/**/*.html",
+    "lint:wc": "polymer lint",
     "galen": "d2l-galen -s -c \"java -Xmx2g -cp node_modules/galenframework/lib/galen/galen.jar com.galenframework.GalenMain\"",
     "dump:galen:local:run": "npm run galen -- dump table.test.js -g factory:local -d test/acceptance/dumps",
     "galen:local:run": "npm run galen -- test table.test.js -g factory:local -- -p8",
@@ -19,28 +26,42 @@
     "test:galen:local": "concurrently -p name -n serve,galen -s first -k \"polymer serve -p 8080\" \"npm run galen:local:run\"",
     "test:galen:sauce": "concurrently -p name -n serve,galen -s first -k \"polymer serve -p 8080\" \"npm run galen:sauce:run\""
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/BrightspaceUI/table.git"
-  },
-  "keywords": [
-    "d2l",
-    "polymer",
-    "table"
-  ],
   "author": "D2L Corporation",
   "license": "Apache-2.0",
   "devDependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "@polymer/iron-component-page": "^3.0.0-pre.18",
+    "@webcomponents/webcomponentsjs": "^2.1.3",
+    "babel-eslint": "^10.0.1",
     "chromedriver": "^2.34.1",
     "concurrently": "^3.5.1",
     "d2l-galen-utils": "https://github.com/Brightspace/d2l-galen-utils.git#add-retry-behavior",
+    "d2l-typography": "BrightspaceUI/typography#semver:^7.0.0",
     "eslint": "^4.15.0",
     "eslint-config-brightspace": "^0.4.0",
     "eslint-plugin-html": "^4.0.1",
     "galenframework": "^2.3.6",
-    "polymer-cli": "^1.5.7",
+    "polymer-cli": "^1.9.1",
     "rimraf": "^2.6.2",
     "sauce-connect-launcher": "^1.2.3",
-    "sauceconnect-runner": "git+https://github.com/Brightspace/sauceconnect-runner.git#v0.3.0"
+    "sauceconnect-runner": "git+https://github.com/Brightspace/sauceconnect-runner.git#v0.3.0",
+    "wct-browser-legacy": "^1.0.1"
+  },
+  "version": "",
+  "resolutions": {
+    "inherits": "2.0.3",
+    "samsam": "1.1.3",
+    "supports-color": "3.1.2",
+    "type-detect": "1.0.0"
+  },
+  "main": "d2l-table.js",
+  "dependencies": {
+    "d2l-colors": "BrightspaceUI/colors#semver:^4.0.0",
+    "fastdom": "^1.0.8",
+    "d2l-icons": "BrightspaceUI/icons#semver:^6.0.0",
+    "@polymer/iron-resizable-behavior": "^3.0.0-pre.18",
+    "@polymer/polymer": "^3.0.0",
+    "stickyfilljs": "^2.1.0",
+    "resize-observer-polyfill": "^1.5.0"
   }
 }

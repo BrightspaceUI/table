@@ -3,18 +3,26 @@
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-	<script>
-		/*
-			window.Polymer = window.Polymer || {};
-			window.Polymer.dom = 'shadow';
-			*/
+	<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+	<script type="module">
+import '../d2l-table.js';
+import '../../d2l-typography/d2l-typography.js';
+</script>
+	<script src="./update-direction.js"></script>
+	<script type="module" src="../d2l-table.js"></script>
+	<script type="module" src="../../d2l-typography/d2l-typography.js"></script>
+	<!-- FIXME(polymer-modulizer):
+		These imperative modules that innerHTML your HTML are
+		a hacky way to be sure that any mixins in included style
+		modules are ready before any elements that reference them are
+		instantiated, otherwise the CSS @apply mixin polyfill won't be
+		able to expand the underlying CSS custom properties.
+		See: https://github.com/Polymer/polymer-modulizer/issues/154
+		-->
+	<script type="module">
+const $_documentContainer = document.createElement('template');
 
-	</script>
-	<script src="update-direction.js"></script>
-	<link rel="import" href="../d2l-table.html">
-	<link rel="import" href="../../d2l-typography/d2l-typography.html">
-	<custom-style>
+$_documentContainer.innerHTML = `<custom-style>
 		<style is="custom-style" include="d2l-table-style d2l-typography">
 			html {
 				font-size: 20px;
@@ -25,19 +33,25 @@
 			}
 
 		</style>
-	</custom-style>
+	</custom-style>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
 </head>
 
 <body unresolved class="d2l-typography">
 	<!-- header, footer, caption, and colgroup tests -->
-	<div class="d2l-demo-fixture">
+	<script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 		<div id="app">
 
 			<p>Just Headers</p>
-			<d2l-table-wrapper sticky-headers>
-				<table class="d2l-table" selectable>
+			<d2l-table-wrapper sticky-headers="">
+				<table class="d2l-table" selectable="">
 					<tbody>
-						<tr header>
+						<tr header="">
 							<th>Column header 1 Really Really REALLY long</th>
 							<th>Column header 2</th>
 							<th>Column header 3</th>
@@ -59,7 +73,7 @@
 							<th>Column header 19</th>
 							<th>Column header 20</th>
 						</tr>
-						<tr selected>
+						<tr selected="">
 							<td>Row 1 Column 1</td>
 							<td>Row 1 Column 2</td>
 							<td>Row 1 Column 3 - Also really really really long</td>
@@ -103,7 +117,7 @@
 							<td>Row 2 Column 19</td>
 							<td>Row 2 Column 20</td>
 						</tr>
-						<tr selected>
+						<tr selected="">
 							<td>Row 3 Column 1</td>
 							<td>Row 3 Column 2</td>
 							<td>Row 3 Column 3</td>
@@ -125,7 +139,7 @@
 							<td>Row 3 Column 19</td>
 							<td>Row 3 Column 20</td>
 						</tr>
-						<tr selected>
+						<tr selected="">
 							<td>Row 4 Column 1</td>
 							<td>Row 4 Column 2</td>
 							<td>Row 4 Column 3</td>
@@ -147,7 +161,7 @@
 							<td>Row 4 Column 19</td>
 							<td>Row 4 Column 20</td>
 						</tr>
-						<tr selected>
+						<tr selected="">
 							<td>Row 5 Column 1</td>
 							<td>Row 5 Column 2</td>
 							<td>Row 5 Column 3</td>
@@ -367,7 +381,7 @@
 							<td>Row 14 Column 19</td>
 							<td>Row 14 Column 20</td>
 						</tr>
-						<tr selected>
+						<tr selected="">
 							<td>Row 15 Column 1</td>
 							<td>Row 15 Column 2</td>
 							<td>Row 15 Column 3</td>
@@ -394,11 +408,11 @@
 			</d2l-table-wrapper>
 
 			<p>Headers and First Column</p>
-			<d2l-table-wrapper sticky-headers>
-				<table class="d2l-table" selectable>
+			<d2l-table-wrapper sticky-headers="">
+				<table class="d2l-table" selectable="">
 					<tbody>
-						<tr header>
-							<th sticky>Column header 1 Really Really REALLY long</th>
+						<tr header="">
+							<th sticky="">Column header 1 Really Really REALLY long</th>
 							<th>Column header 2</th>
 							<th>Column header 3</th>
 							<th>Column header 4</th>
@@ -419,16 +433,16 @@
 							<th>Column header 19</th>
 							<th>Column header 20</th>
 						</tr>
-						<tr selected>
-							<td sticky>Row 1 Column 1
+						<tr selected="">
+							<td sticky="">Row 1 Column 1
 								<table>
 									<tbody>
 										<tr>
-											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"/></td>
+											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
 											<td> / </td>
-											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"/></td>
-											<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></td>
-											<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></td>
+											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+											<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></d2l-icon></td>
+											<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></d2l-icon></td>
 										</tr>
 									</tbody>
 								</table>
@@ -448,11 +462,11 @@
 								<table>
 									<tbody>
 										<tr>
-											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"/></td>
+											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
 											<td> / </td>
-											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"/></td>
-											<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></td>
-											<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></td>
+											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+											<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></d2l-icon></td>
+											<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></d2l-icon></td>
 										</tr>
 									</tbody>
 								</table>
@@ -467,26 +481,26 @@
 								<table>
 									<tbody>
 										<tr>
-											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"/></td>
+											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
 											<td> / </td>
-											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"/></td>
-											<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></td>
-											<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></td>
+											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+											<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></d2l-icon></td>
+											<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></d2l-icon></td>
 										</tr>
 									</tbody>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td sticky>Row 2 Column 1
+							<td sticky="">Row 2 Column 1
 								<table>
 									<tbody>
 										<tr>
-											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"/></td>
+											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
 											<td> / </td>
-											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"/></td>
-											<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></td>
-											<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></td>
+											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+											<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></d2l-icon></td>
+											<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></d2l-icon></td>
 										</tr>
 									</tbody>
 								</table>
@@ -506,11 +520,11 @@
 								<table>
 									<tbody>
 										<tr>
-											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"/></td>
+											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
 											<td> / </td>
-											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"/></td>
-											<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></td>
-											<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></td>
+											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+											<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></d2l-icon></td>
+											<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></d2l-icon></td>
 										</tr>
 									</tbody>
 								</table>
@@ -525,18 +539,18 @@
 								<table>
 									<tbody>
 										<tr>
-											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"/></td>
+											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
 											<td> / </td>
-											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"/></td>
-											<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></td>
-											<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></td>
+											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+											<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></d2l-icon></td>
+											<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></d2l-icon></td>
 										</tr>
 									</tbody>
 								</table>
 							</td>
 						</tr>
-						<tr selected>
-							<td sticky>Row 3 Column 1</td>
+						<tr selected="">
+							<td sticky="">Row 3 Column 1</td>
 							<td>Row 3 Column 2</td>
 							<td>Row 3 Column 3</td>
 							<td>Row 3 Column 4</td>
@@ -557,8 +571,8 @@
 							<td>Row 3 Column 19</td>
 							<td>Row 3 Column 20</td>
 						</tr>
-						<tr selected>
-							<td sticky>Row 4 Column 1</td>
+						<tr selected="">
+							<td sticky="">Row 4 Column 1</td>
 							<td>Row 4 Column 2</td>
 							<td>Row 4 Column 3</td>
 							<td>Row 4 Column 4</td>
@@ -579,8 +593,8 @@
 							<td>Row 4 Column 19</td>
 							<td>Row 4 Column 20</td>
 						</tr>
-						<tr selected>
-							<td sticky>Row 5 Column 1</td>
+						<tr selected="">
+							<td sticky="">Row 5 Column 1</td>
 							<td>Row 5 Column 2</td>
 							<td>Row 5 Column 3</td>
 							<td>Row 5 Column 4</td>
@@ -602,7 +616,7 @@
 							<td>Row 5 Column 20</td>
 						</tr>
 						<tr>
-							<td sticky>Row 6 Column 1</td>
+							<td sticky="">Row 6 Column 1</td>
 							<td>Row 6 Column 2</td>
 							<td>Row 6 Column 3</td>
 							<td>Row 6 Column 4</td>
@@ -624,7 +638,7 @@
 							<td>Row 6 Column 20</td>
 						</tr>
 						<tr>
-							<td sticky>Row 7 Column 1</td>
+							<td sticky="">Row 7 Column 1</td>
 							<td>Row 7 Column 2</td>
 							<td>Row 7 Column 3</td>
 							<td>Row 7 Column 4</td>
@@ -646,7 +660,7 @@
 							<td>Row 7 Column 20</td>
 						</tr>
 						<tr>
-							<td sticky>Row 8 Column 1</td>
+							<td sticky="">Row 8 Column 1</td>
 							<td>Row 8 Column 2</td>
 							<td>Row 8 Column 3</td>
 							<td>Row 8 Column 4</td>
@@ -668,7 +682,7 @@
 							<td>Row 8 Column 20</td>
 						</tr>
 						<tr>
-							<td sticky>Row 9 Column 1</td>
+							<td sticky="">Row 9 Column 1</td>
 							<td>Row 9 Column 2</td>
 							<td>Row 9 Column 3</td>
 							<td>Row 9 Column 4</td>
@@ -690,7 +704,7 @@
 							<td>Row 9 Column 20</td>
 						</tr>
 						<tr>
-							<td sticky>Row 10 Column 1</td>
+							<td sticky="">Row 10 Column 1</td>
 							<td>Row 10 Column 2</td>
 							<td>Row 10 Column 3</td>
 							<td>Row 10 Column 4</td>
@@ -712,7 +726,7 @@
 							<td>Row 10 Column 20</td>
 						</tr>
 						<tr>
-							<td sticky>Row 11 Column 1</td>
+							<td sticky="">Row 11 Column 1</td>
 							<td>Row 11 Column 2</td>
 							<td>Row 11 Column 3</td>
 							<td>Row 11 Column 4</td>
@@ -734,7 +748,7 @@
 							<td>Row 11 Column 20</td>
 						</tr>
 						<tr>
-							<td sticky>Row 12 Column 1</td>
+							<td sticky="">Row 12 Column 1</td>
 							<td>Row 12 Column 2</td>
 							<td>Row 12 Column 3</td>
 							<td>Row 12 Column 4</td>
@@ -756,7 +770,7 @@
 							<td>Row 12 Column 20</td>
 						</tr>
 						<tr>
-							<td sticky>Row 13 Column 1</td>
+							<td sticky="">Row 13 Column 1</td>
 							<td>Row 13 Column 2</td>
 							<td>Row 13 Column 3</td>
 							<td>Row 13 Column 4</td>
@@ -778,7 +792,7 @@
 							<td>Row 13 Column 20</td>
 						</tr>
 						<tr>
-							<td sticky>Row 14 Column 1</td>
+							<td sticky="">Row 14 Column 1</td>
 							<td>Row 14 Column 2</td>
 							<td>Row 14 Column 3</td>
 							<td>Row 14 Column 4</td>
@@ -799,16 +813,16 @@
 							<td>Row 14 Column 19</td>
 							<td>Row 14 Column 20</td>
 						</tr>
-						<tr selected>
-							<td sticky>Row 15 Column 1
+						<tr selected="">
+							<td sticky="">Row 15 Column 1
 								<table>
 									<tbody>
 										<tr>
-											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"/></td>
+											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
 											<td> / </td>
-											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"/></td>
-											<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></td>
-											<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></td>
+											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+											<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></d2l-icon></td>
+											<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></d2l-icon></td>
 										</tr>
 									</tbody>
 								</table>
@@ -828,11 +842,11 @@
 								<table>
 									<tbody>
 										<tr>
-											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"/></td>
+											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
 											<td> / </td>
-											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"/></td>
-											<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></td>
-											<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></td>
+											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+											<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></d2l-icon></td>
+											<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></d2l-icon></td>
 										</tr>
 									</tbody>
 								</table>
@@ -847,11 +861,11 @@
 								<table>
 									<tbody>
 										<tr>
-											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"/></td>
+											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
 											<td> / </td>
-											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"/></td>
-											<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></td>
-											<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></td>
+											<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+											<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></d2l-icon></td>
+											<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></d2l-icon></td>
 										</tr>
 									</tbody>
 								</table>
@@ -862,12 +876,12 @@
 			</d2l-table-wrapper>
 
 			<p>Multi-Header Table</p>
-			<d2l-table-wrapper sticky-headers>
-				<table id="multi" class="d2l-table" selectable>
+			<d2l-table-wrapper sticky-headers="">
+				<table id="multi" class="d2l-table" selectable="">
 					<thead>
 						<tr>
 							<th rowspan="2">Column header 1 Really Really REALLY long</th>
-							<th sticky>Column header 2</th>
+							<th sticky="">Column header 2</th>
 							<th rowspan="2">Column header 3</th>
 							<th>Column header 4</th>
 							<th rowspan="2">Column header 5</th>
@@ -888,16 +902,16 @@
 							<th rowspan="2">Column header 20</th>
 						</tr>
 						<tr>
-							<th sticky>Sub Header</th>
+							<th sticky="">Sub Header</th>
 							<th>Sub Header</th>
 							<th>Sub Header</th>
 							<th>Sub Header</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr selected>
+						<tr selected="">
 							<td>Row 1 Column 1</td>
-							<td sticky>Row 1 Column 2</td>
+							<td sticky="">Row 1 Column 2</td>
 							<td>Row 1 Column 3 - Also really really really long</td>
 							<td>Row 1 Column 4</td>
 							<td>Row 1 Column 5</td>
@@ -919,7 +933,7 @@
 						</tr>
 						<tr>
 							<td>Row 2 Column 1</td>
-							<td sticky>Row 2 Column 2</td>
+							<td sticky="">Row 2 Column 2</td>
 							<td>Row 2 Column 3</td>
 							<td>Row 2 Column 4</td>
 							<td>Row 2 Column 5</td>
@@ -939,9 +953,9 @@
 							<td>Row 2 Column 19</td>
 							<td>Row 2 Column 20</td>
 						</tr>
-						<tr selected>
+						<tr selected="">
 							<td>Row 3 Column 1</td>
-							<td sticky>Row 3 Column 2</td>
+							<td sticky="">Row 3 Column 2</td>
 							<td>Row 3 Column 3</td>
 							<td>Row 3 Column 4</td>
 							<td>Row 3 Column 5</td>
@@ -961,9 +975,9 @@
 							<td>Row 3 Column 19</td>
 							<td>Row 3 Column 20</td>
 						</tr>
-						<tr selected>
+						<tr selected="">
 							<td>Row 4 Column 1</td>
-							<td sticky>Row 4 Column 2</td>
+							<td sticky="">Row 4 Column 2</td>
 							<td>Row 4 Column 3</td>
 							<td>Row 4 Column 4</td>
 							<td>Row 4 Column 5</td>
@@ -983,9 +997,9 @@
 							<td>Row 4 Column 19</td>
 							<td>Row 4 Column 20</td>
 						</tr>
-						<tr selected>
+						<tr selected="">
 							<td>Row 5 Column 1</td>
-							<td sticky>Row 5 Column 2</td>
+							<td sticky="">Row 5 Column 2</td>
 							<td>Row 5 Column 3</td>
 							<td>Row 5 Column 4</td>
 							<td>Row 5 Column 5</td>
@@ -1007,7 +1021,7 @@
 						</tr>
 						<tr>
 							<td>Row 6 Column 1</td>
-							<td sticky>Row 6 Column 2</td>
+							<td sticky="">Row 6 Column 2</td>
 							<td>Row 6 Column 3</td>
 							<td>Row 6 Column 4</td>
 							<td>Row 6 Column 5</td>
@@ -1029,7 +1043,7 @@
 						</tr>
 						<tr>
 							<td>Row 7 Column 1</td>
-							<td sticky>Row 7 Column 2</td>
+							<td sticky="">Row 7 Column 2</td>
 							<td>Row 7 Column 3</td>
 							<td>Row 7 Column 4</td>
 							<td>Row 7 Column 5</td>
@@ -1051,7 +1065,7 @@
 						</tr>
 						<tr>
 							<td>Row 8 Column 1</td>
-							<td sticky>Row 8 Column 2</td>
+							<td sticky="">Row 8 Column 2</td>
 							<td>Row 8 Column 3</td>
 							<td>Row 8 Column 4</td>
 							<td>Row 8 Column 5</td>
@@ -1073,7 +1087,7 @@
 						</tr>
 						<tr>
 							<td>Row 9 Column 1</td>
-							<td sticky>Row 9 Column 2</td>
+							<td sticky="">Row 9 Column 2</td>
 							<td>Row 9 Column 3</td>
 							<td>Row 9 Column 4</td>
 							<td>Row 9 Column 5</td>
@@ -1095,7 +1109,7 @@
 						</tr>
 						<tr>
 							<td>Row 10 Column 1</td>
-							<td sticky>Row 10 Column 2</td>
+							<td sticky="">Row 10 Column 2</td>
 							<td>Row 10 Column 3</td>
 							<td>Row 10 Column 4</td>
 							<td>Row 10 Column 5</td>
@@ -1117,7 +1131,7 @@
 						</tr>
 						<tr>
 							<td>Row 11 Column 1</td>
-							<td sticky>Row 11 Column 2</td>
+							<td sticky="">Row 11 Column 2</td>
 							<td>Row 11 Column 3</td>
 							<td>Row 11 Column 4</td>
 							<td>Row 11 Column 5</td>
@@ -1139,7 +1153,7 @@
 						</tr>
 						<tr>
 							<td>Row 12 Column 1</td>
-							<td sticky>Row 12 Column 2</td>
+							<td sticky="">Row 12 Column 2</td>
 							<td>Row 12 Column 3</td>
 							<td>Row 12 Column 4</td>
 							<td>Row 12 Column 5</td>
@@ -1161,7 +1175,7 @@
 						</tr>
 						<tr>
 							<td>Row 13 Column 1</td>
-							<td sticky>Row 13 Column 2</td>
+							<td sticky="">Row 13 Column 2</td>
 							<td>Row 13 Column 3</td>
 							<td>Row 13 Column 4</td>
 							<td>Row 13 Column 5</td>
@@ -1183,7 +1197,7 @@
 						</tr>
 						<tr>
 							<td>Row 14 Column 1</td>
-							<td sticky>Row 14 Column 2</td>
+							<td sticky="">Row 14 Column 2</td>
 							<td>Row 14 Column 3</td>
 							<td>Row 14 Column 4</td>
 							<td>Row 14 Column 5</td>
@@ -1203,9 +1217,9 @@
 							<td>Row 14 Column 19</td>
 							<td>Row 14 Column 20</td>
 						</tr>
-						<tr selected>
+						<tr selected="">
 							<td>Row 15 Column 1</td>
-							<td sticky>Row 15 Column 2</td>
+							<td sticky="">Row 15 Column 2</td>
 							<td>Row 15 Column 3</td>
 							<td>Row 15 Column 4</td>
 							<td>Row 15 Column 5</td>
@@ -1230,7 +1244,7 @@
 			</d2l-table-wrapper>
 
 			<p>Just one row</p>
-			<d2l-table-wrapper sticky-headers>
+			<d2l-table-wrapper sticky-headers="">
 				<table class="d2l-table">
 					<tbody>
 						<tr>
@@ -1243,10 +1257,10 @@
 			</d2l-table-wrapper>
 
 			<p>One header and one data table</p>
-			<d2l-table-wrapper sticky-headers>
+			<d2l-table-wrapper sticky-headers="">
 				<table class="d2l-table">
 					<tbody>
-						<tr header>
+						<tr header="">
 							<th>
 								One thing
 							</th>
@@ -1260,7 +1274,10 @@
 				</table>
 			</d2l-table-wrapper>
 		</div>
-	</div>
+	</div>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
 </body>
 
 </html>
