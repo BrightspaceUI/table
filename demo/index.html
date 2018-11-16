@@ -1,27 +1,36 @@
 <!doctype html>
 <html>
 
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    	<script>
-        	/*
-              window.Polymer = window.Polymer || {};
-              window.Polymer.dom = 'shadow';
-             */
-    	</script>
-        <script src="update-direction.js"></script>
-    	<link rel="import" href="../d2l-table.html">
-		<link rel="import" href="../../d2l-typography/d2l-typography.html">
-        <custom-style>
-        	<style is="custom-style" include="d2l-table-style d2l-typography">
-                html {
-                  font-size: 20px;
-                }
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script type="module">
+import '../d2l-table.js';
+import '../../d2l-typography/d2l-typography.js';
+</script>
+		<script src="./update-direction.js"></script>
+		<script type="module" src="../d2l-table.js"></script>
+		<script type="module" src="../../d2l-typography/d2l-typography.js"></script>
+		<!-- FIXME(polymer-modulizer):
+		These imperative modules that innerHTML your HTML are
+		a hacky way to be sure that any mixins in included style
+		modules are ready before any elements that reference them are
+		instantiated, otherwise the CSS @apply mixin polyfill won't be
+		able to expand the underlying CSS custom properties.
+		See: https://github.com/Polymer/polymer-modulizer/issues/154
+		-->
+	<script type="module">
+const $_documentContainer = document.createElement('template');
 
-                .screenshots {
-                  display: inline-block;
-                }
+$_documentContainer.innerHTML = `<custom-style>
+			<style is="custom-style" include="d2l-table-style d2l-typography">
+				html {
+				  font-size: 20px;
+				}
+
+				.screenshots {
+				  display: inline-block;
+				}
 
 				/* allow the demo to show the scroll actions clamping */
 				.scroll-action-spacer {
@@ -29,679 +38,685 @@
 					padding-bottom: 600px;
 					padding-top: 600px;
 				}
-        	</style>
-        </custom-style>
-    </head>
+			</style>
+		</custom-style>`;
 
-    <body unresolved class="d2l-typography">
-    	<!-- header, footer, caption, and colgroup tests -->
-		<div class="d2l-demo-fixture">
-    		<div class="screenshots screenshot-small">
-    			<!-- header only -->
-    			<d2l-table-wrapper><table class="d2l-table">
-    				<thead>
-    				<tr>
-    					<th>First Name</th>
-    					<th>Middle Name</th>
-    					<th>Last Name</th>
-    				</tr>
-    				</thead>
-    				<tbody>
-    				<tr>
-    					<td>Darlene</td>
-    					<td>Bridget</td>
-    					<td>Waters</td>
-    				</tr>
-    				<tr>
-    					<td>David</td>
-    					<td>Robert</td>
-    					<td>Sandoval</td>
-    				</tr>
-    				</tbody>
-    			</table></d2l-table-wrapper>
-    		</div>
-            <div class="screenshots screenshot-small">
-    			<!-- using d2l-t* elements -->
-    			<d2l-table>
-    				<d2l-thead>
-    				<d2l-tr>
-    					<d2l-th>First Name</d2l-th>
-    					<d2l-th>Middle Name</d2l-th>
-    					<d2l-th>Last Name</d2l-th>
-    				</d2l-tr>
-    				</d2l-thead>
-    				<d2l-tbody>
-    				<d2l-tr>
-    					<d2l-td>Darlene</d2l-td>
-    					<d2l-td>Bridget</d2l-td>
-    					<d2l-td>Waters</d2l-td>
-    				</d2l-tr>
-    				<d2l-tr>
-    					<d2l-td>David</d2l-td>
-    					<d2l-td>Robert</d2l-td>
-    					<d2l-td>Sandoval</d2l-td>
-    				</d2l-tr>
-    				</d2l-tbody>
-    			</d2l-table>
-    		</div>
-    		<!-- footer only -->
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<tfoot>
-    			<tr>
-    				<th>First Name</th>
-    				<th>Middle Name</th>
-    				<th>Last Name</th>
-    			</tr>
-    			</tfoot>
-    			<tbody>
-    			<tr>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<!-- caption only -->
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<caption>Caption</caption>
-    			<tbody>
-    			<tr>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<!-- header and footer -->
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<thead>
-    			<tr>
-    				<th>First Name</th>
-    				<th>Middle Name</th>
-    				<th>Last Name</th>
-    			</tr>
-    			</thead>
-    			<tfoot>
-    			<tr>
-    				<th>First Name</th>
-    				<th>Middle Name</th>
-    				<th>Last Name</th>
-    			</tr>
-    			</tfoot>
-    			<tbody>
-    			<tr>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<!-- header and caption -->
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<caption>Caption</caption>
-    			<thead>
-    			<tr>
-    				<th>First Name</th>
-    				<th>Middle Name</th>
-    				<th>Last Name</th>
-    			</tr>
-    			</thead>
-    			<tbody>
-    			<tr>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<!-- footer and caption -->
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<caption>Caption</caption>
-    			<tfoot>
-    			<tr>
-    				<th>First Name</th>
-    				<th>Middle Name</th>
-    				<th>Last Name</th>
-    			</tr>
-    			</tfoot>
-    			<tbody>
-    			<tr>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<!-- header and footer and caption -->
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<caption>Caption</caption>
-    			<thead>
-    			<tr>
-    				<th>First Name</th>
-    				<th>Middle Name</th>
-    				<th>Last Name</th>
-    			</tr>
-    			</thead>
-    			<tfoot>
-    			<tr>
-    				<th>First Name</th>
-    				<th>Middle Name</th>
-    				<th>Last Name</th>
-    			</tr>
-    			</tfoot>
-    			<tbody>
-    			<tr>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
+document.body.appendChild($_documentContainer.content);
+</script>
+	</head>
+
+	<body unresolved class="d2l-typography">
+		<!-- header, footer, caption, and colgroup tests -->
+		<script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
+			<div class="screenshots screenshot-small">
+				<!-- header only -->
+				<d2l-table-wrapper><table class="d2l-table">
+					<thead>
+					<tr>
+						<th>First Name</th>
+						<th>Middle Name</th>
+						<th>Last Name</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>Darlene</td>
+						<td>Bridget</td>
+						<td>Waters</td>
+					</tr>
+					<tr>
+						<td>David</td>
+						<td>Robert</td>
+						<td>Sandoval</td>
+					</tr>
+					</tbody>
+				</table></d2l-table-wrapper>
+			</div>
+			<div class="screenshots screenshot-small">
+				<!-- using d2l-t* elements -->
+				<d2l-table>
+					<d2l-thead>
+					<d2l-tr>
+						<d2l-th>First Name</d2l-th>
+						<d2l-th>Middle Name</d2l-th>
+						<d2l-th>Last Name</d2l-th>
+					</d2l-tr>
+					</d2l-thead>
+					<d2l-tbody>
+					<d2l-tr>
+						<d2l-td>Darlene</d2l-td>
+						<d2l-td>Bridget</d2l-td>
+						<d2l-td>Waters</d2l-td>
+					</d2l-tr>
+					<d2l-tr>
+						<d2l-td>David</d2l-td>
+						<d2l-td>Robert</d2l-td>
+						<d2l-td>Sandoval</d2l-td>
+					</d2l-tr>
+					</d2l-tbody>
+				</d2l-table>
+			</div>
+			<!-- footer only -->
+			<d2l-table-wrapper><table class="d2l-table">
+				<tfoot>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<!-- caption only -->
+			<d2l-table-wrapper><table class="d2l-table">
+				<caption>Caption</caption>
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<!-- header and footer -->
+			<d2l-table-wrapper><table class="d2l-table">
+				<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</thead>
+				<tfoot>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<!-- header and caption -->
+			<d2l-table-wrapper><table class="d2l-table">
+				<caption>Caption</caption>
+				<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<!-- footer and caption -->
+			<d2l-table-wrapper><table class="d2l-table">
+				<caption>Caption</caption>
+				<tfoot>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<!-- header and footer and caption -->
+			<d2l-table-wrapper><table class="d2l-table">
+				<caption>Caption</caption>
+				<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</thead>
+				<tfoot>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
 
 
-    		<!-- header only plus colgroup-->
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<colgroup></colgroup>
-    			<thead>
-    			<tr>
-    				<th>First Name</th>
-    				<th>Middle Name</th>
-    				<th>Last Name</th>
-    			</tr>
-    			</thead>
-    			<tbody>
-    			<tr>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<!-- footer only plus colgroup -->
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<colgroup></colgroup>
-    			<tfoot>
-    			<tr>
-    				<th>First Name</th>
-    				<th>Middle Name</th>
-    				<th>Last Name</th>
-    			</tr>
-    			</tfoot>
-    			<tbody>
-    			<tr>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<!-- caption only plus colgroup-->
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<caption>Caption</caption>
-    			<colgroup></colgroup>
-    			<tbody>
-    			<tr>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<!-- header and footer plus colgroup -->
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<colgroup></colgroup>
-    			<thead>
-    			<tr>
-    				<th>First Name</th>
-    				<th>Middle Name</th>
-    				<th>Last Name</th>
-    			</tr>
-    			</thead>
-    			<tfoot>
-    			<tr>
-    				<th>First Name</th>
-    				<th>Middle Name</th>
-    				<th>Last Name</th>
-    			</tr>
-    			</tfoot>
-    			<tbody>
-    			<tr>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<!-- header and caption plus colgroup-->
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<caption>Caption</caption>
-    			<colgroup></colgroup>
-    			<thead>
-    			<tr>
-    				<th>First Name</th>
-    				<th>Middle Name</th>
-    				<th>Last Name</th>
-    			</tr>
-    			</thead>
-    			<tbody>
-    			<tr>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<!-- footer and caption plus colgroup -->
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<caption>Caption</caption>
-    			<colgroup></colgroup>
-    			<tfoot>
-    			<tr>
-    				<th>First Name</th>
-    				<th>Middle Name</th>
-    				<th>Last Name</th>
-    			</tr>
-    			</tfoot>
-    			<tbody>
-    			<tr>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
+			<!-- header only plus colgroup-->
+			<d2l-table-wrapper><table class="d2l-table">
+				<colgroup></colgroup>
+				<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<!-- footer only plus colgroup -->
+			<d2l-table-wrapper><table class="d2l-table">
+				<colgroup></colgroup>
+				<tfoot>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<!-- caption only plus colgroup-->
+			<d2l-table-wrapper><table class="d2l-table">
+				<caption>Caption</caption>
+				<colgroup></colgroup>
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<!-- header and footer plus colgroup -->
+			<d2l-table-wrapper><table class="d2l-table">
+				<colgroup></colgroup>
+				<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</thead>
+				<tfoot>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<!-- header and caption plus colgroup-->
+			<d2l-table-wrapper><table class="d2l-table">
+				<caption>Caption</caption>
+				<colgroup></colgroup>
+				<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<!-- footer and caption plus colgroup -->
+			<d2l-table-wrapper><table class="d2l-table">
+				<caption>Caption</caption>
+				<colgroup></colgroup>
+				<tfoot>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
 		<div>
-    		<!-- header and footer and caption plus colgroup-->
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<caption>Caption</caption>
-    			<colgroup></colgroup>
-    			<thead>
-    			<tr>
-    				<th>First Name</th>
-    				<th>Middle Name</th>
-    				<th>Last Name</th>
-    			</tr>
-    			</thead>
-    			<tfoot>
-    			<tr>
-    				<th>First Name</th>
-    				<th>Middle Name</th>
-    				<th>Last Name</th>
-    			</tr>
-    			</tfoot>
-    			<tbody>
-    			<tr>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    	</div>
+			<!-- header and footer and caption plus colgroup-->
+			<d2l-table-wrapper><table class="d2l-table">
+				<caption>Caption</caption>
+				<colgroup></colgroup>
+				<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</thead>
+				<tfoot>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+		</div>
 
-    	<!-- Selected and active rows -->
-    	<div>
-    		<!-- active only -->
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<tbody>
-    			<tr active>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>Paula</td>
-    				<td>Rose</td>
-    				<td>Baldwin</td>
-    			</tr>
-    			<tr>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<tbody>
-    			<tr>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr active>
-    				<td>Paula</td>
-    				<td>Rose</td>
-    				<td>Baldwin</td>
-    			</tr>
-    			<tr>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<tbody>
-    			<tr>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>Paula</td>
-    				<td>Rose</td>
-    				<td>Baldwin</td>
-    			</tr>
-    			<tr active>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<!-- selected only -->
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<tbody>
-    			<tr selected>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>Paula</td>
-    				<td>Rose</td>
-    				<td>Baldwin</td>
-    			</tr>
-    			<tr>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<tbody>
-    			<tr>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr selected>
-    				<td>Paula</td>
-    				<td>Rose</td>
-    				<td>Baldwin</td>
-    			</tr>
-    			<tr>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<tbody>
-    			<tr>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>Paula</td>
-    				<td>Rose</td>
-    				<td>Baldwin</td>
-    			</tr>
-    			<tr selected>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<!-- selected and active -->
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<tbody>
-    			<tr active selected>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>Paula</td>
-    				<td>Rose</td>
-    				<td>Baldwin</td>
-    			</tr>
-    			<tr>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<div class="screenshots screenshot-rows">
-    			<d2l-table-wrapper><table class="d2l-table">
-    				<tbody>
-    				<tr>
-    					<td>Darlene</td>
-    					<td>Bridget</td>
-    					<td>Waters</td>
-    				</tr>
-    				<tr active selected>
-    					<td>Paula</td>
-    					<td>Rose</td>
-    					<td>Baldwin</td>
-    				</tr>
-    				<tr>
-    					<td>David</td>
-    					<td>Robert</td>
-    					<td>Sandoval</td>
-    				</tr>
-    				</tbody>
-    			</table></d2l-table-wrapper>
-    		</div>
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<tbody>
-    			<tr>
-    				<td>Darlene</td>
-    				<td>Bridget</td>
-    				<td>Waters</td>
-    			</tr>
-    			<tr>
-    				<td>Paula</td>
-    				<td>Rose</td>
-    				<td>Baldwin</td>
-    			</tr>
-    			<tr active selected>
-    				<td>David</td>
-    				<td>Robert</td>
-    				<td>Sandoval</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    	</div>
+		<!-- Selected and active rows -->
+		<div>
+			<!-- active only -->
+			<d2l-table-wrapper><table class="d2l-table">
+				<tbody>
+				<tr active="">
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>Paula</td>
+					<td>Rose</td>
+					<td>Baldwin</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<d2l-table-wrapper><table class="d2l-table">
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr active="">
+					<td>Paula</td>
+					<td>Rose</td>
+					<td>Baldwin</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<d2l-table-wrapper><table class="d2l-table">
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>Paula</td>
+					<td>Rose</td>
+					<td>Baldwin</td>
+				</tr>
+				<tr active="">
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<!-- selected only -->
+			<d2l-table-wrapper><table class="d2l-table">
+				<tbody>
+				<tr selected="">
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>Paula</td>
+					<td>Rose</td>
+					<td>Baldwin</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<d2l-table-wrapper><table class="d2l-table">
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr selected="">
+					<td>Paula</td>
+					<td>Rose</td>
+					<td>Baldwin</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<d2l-table-wrapper><table class="d2l-table">
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>Paula</td>
+					<td>Rose</td>
+					<td>Baldwin</td>
+				</tr>
+				<tr selected="">
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<!-- selected and active -->
+			<d2l-table-wrapper><table class="d2l-table">
+				<tbody>
+				<tr active="" selected="">
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>Paula</td>
+					<td>Rose</td>
+					<td>Baldwin</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<div class="screenshots screenshot-rows">
+				<d2l-table-wrapper><table class="d2l-table">
+					<tbody>
+					<tr>
+						<td>Darlene</td>
+						<td>Bridget</td>
+						<td>Waters</td>
+					</tr>
+					<tr active="" selected="">
+						<td>Paula</td>
+						<td>Rose</td>
+						<td>Baldwin</td>
+					</tr>
+					<tr>
+						<td>David</td>
+						<td>Robert</td>
+						<td>Sandoval</td>
+					</tr>
+					</tbody>
+				</table></d2l-table-wrapper>
+			</div>
+			<d2l-table-wrapper><table class="d2l-table">
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>Paula</td>
+					<td>Rose</td>
+					<td>Baldwin</td>
+				</tr>
+				<tr active="" selected="">
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+		</div>
 
-    	<!-- Sorting icons -->
-    	<div class="screenshots screenshot-sort">
-    		<!-- active only -->
-    		<d2l-table-wrapper><table class="d2l-table">
-                <thead>
-                    <th>
-                        <d2l-table-col-sort-button>Ascending</d2l-table-col-sort-button>
-                    </th>
-                    <th>
-                        <d2l-table-col-sort-button desc>Descending</d2l-table-col-sort-button>
-                    </th>
-					<th>
-                        <d2l-table-col-sort-button nosort>Not sorted</d2l-table-col-sort-button>
+		<!-- Sorting icons -->
+		<div class="screenshots screenshot-sort">
+			<!-- active only -->
+			<d2l-table-wrapper><table class="d2l-table">
+				<thead>
+					<tr><th>
+						<d2l-table-col-sort-button>Ascending</d2l-table-col-sort-button>
 					</th>
-                </thead>
-    			<tbody>
-    			<tr>
-    				<td>123</td>
-    				<td>654</td>
-                    <td>654</td>
-    			</tr>
-    			<tr>
-    				<td>456</td>
-    				<td>321</td>
-                    <td>321</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    	</div>
+					<th>
+						<d2l-table-col-sort-button desc="">Descending</d2l-table-col-sort-button>
+					</th>
+					<th>
+						<d2l-table-col-sort-button nosort="">Not sorted</d2l-table-col-sort-button>
+					</th>
+				</tr></thead>
+				<tbody>
+				<tr>
+					<td>123</td>
+					<td>654</td>
+					<td>654</td>
+				</tr>
+				<tr>
+					<td>456</td>
+					<td>321</td>
+					<td>321</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+		</div>
 
-    	<!-- additional mixed styles -->
-    	<div>
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<thead>
-    				<tr>
-    					<th>First Name</th>
-    					<th>Last Name</th>
-    					<th>Independent Assignments</th>
-    					<th>Quizzes</th>
-    					<th>Final Calculated Grade</th>
-    				</tr>
-    			</thead>
-    			<tfoot>
-    				<tr>
-    					<td colspan="5"> footer </td>
-    				</tr>
-    			</tfoot>
-    			<tbody>
-    				<tr>
-    					<td>Aarons</td>
-    					<td>Meghan</td>
-    					<td>of 10</td>
-    					<td>of 10</td>
-    					<td>-%</td>
-    				</tr>
-    				<tr active>
-    					<td>Lourdes</td>
-    					<td>Beadle</td>
-    					<td>of 10</td>
-    					<td>of 10</td>
-    					<td>-%</td>
-    				</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<thead>
-    				<tr>
-    					<th>First</th>
-    					<th>Last</th>
-    					<th>Independent</th>
-    					<th>Quizzes</th>
-    					<th>Final Calculated</th>
-    				</tr>
-    				<tr>
-    					<th>Name</th>
-    					<th>Name</th>
-    					<th>Assignments</th>
-    					<th>%</th>
-    					<th>Grade</th>
-    				</tr>
-    			</thead>
-    			<tfoot>
-    				<tr>
-    					<td colspan="5"> footer </td>
-    				</tr>
-    				<tr>
-    					<td colspan="5"> second row </td>
-    				</tr>
-    			</tfoot>
-    			<tbody>
-    				<tr active selected>
-    					<td>Aarons</td>
-    					<td>Meghan</td>
-    					<td>of 10</td>
-    					<td>of 10</td>
-    					<td>-%</td>
-    				</tr>
-    				<tr>
-    					<td>Lourdes</td>
-    					<td>Beadle</td>
-    					<td>of 10</td>
-    					<td>of 10</td>
-    					<td>-%</td>
-    				</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
-    		<p>Small table (header only)</p>
-    		<d2l-table-wrapper><table class="d2l-table">
-    			<thead>
-    			<tr>
-                    <th><d2l-table-col-sort-button>First Name</d2l-table-col-sort-button></th>
-                    <th><d2l-table-col-sort-button desc>Last Name</d2l-table-col-sort-button></th>
-    				<th>Independent Assignments</th>
-    				<th>Quizzes</th>
-    				<th>Final Calculated Grade</th>
-    			</tr>
-    			</thead>
-    		</table></d2l-table-wrapper>
+		<!-- additional mixed styles -->
+		<div>
+			<d2l-table-wrapper><table class="d2l-table">
+				<thead>
+					<tr>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Independent Assignments</th>
+						<th>Quizzes</th>
+						<th>Final Calculated Grade</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<td colspan="5"> footer </td>
+					</tr>
+				</tfoot>
+				<tbody>
+					<tr>
+						<td>Aarons</td>
+						<td>Meghan</td>
+						<td>of 10</td>
+						<td>of 10</td>
+						<td>-%</td>
+					</tr>
+					<tr active="">
+						<td>Lourdes</td>
+						<td>Beadle</td>
+						<td>of 10</td>
+						<td>of 10</td>
+						<td>-%</td>
+					</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<d2l-table-wrapper><table class="d2l-table">
+				<thead>
+					<tr>
+						<th>First</th>
+						<th>Last</th>
+						<th>Independent</th>
+						<th>Quizzes</th>
+						<th>Final Calculated</th>
+					</tr>
+					<tr>
+						<th>Name</th>
+						<th>Name</th>
+						<th>Assignments</th>
+						<th>%</th>
+						<th>Grade</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<td colspan="5"> footer </td>
+					</tr>
+					<tr>
+						<td colspan="5"> second row </td>
+					</tr>
+				</tfoot>
+				<tbody>
+					<tr active="" selected="">
+						<td>Aarons</td>
+						<td>Meghan</td>
+						<td>of 10</td>
+						<td>of 10</td>
+						<td>-%</td>
+					</tr>
+					<tr>
+						<td>Lourdes</td>
+						<td>Beadle</td>
+						<td>of 10</td>
+						<td>of 10</td>
+						<td>-%</td>
+					</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<p>Small table (header only)</p>
+			<d2l-table-wrapper><table class="d2l-table">
+				<thead>
+				<tr>
+					<th><d2l-table-col-sort-button>First Name</d2l-table-col-sort-button></th>
+					<th><d2l-table-col-sort-button desc="">Last Name</d2l-table-col-sort-button></th>
+					<th>Independent Assignments</th>
+					<th>Quizzes</th>
+					<th>Final Calculated Grade</th>
+				</tr>
+				</thead>
+			</table></d2l-table-wrapper>
 
 			<p>Table with Floating Row Spanning Cells</p>
 			<div style="width: 50%;" class="screenshots screenshot-tspan">
@@ -740,373 +755,377 @@
 				</d2l-table>
 			</div>
 
-    		<p>Large Table</p>
-    		<d2l-table-wrapper><table class="d2l-table" selectable>
-    			<caption>Table Caption</caption>
-    			<colgroup></colgroup>
-    			<colgroup></colgroup>
-    			<thead>
-    			<tr>
-    				<th>Column header 1</th>
-    				<th>Column header 2</th>
-    				<th>Column header 3</th>
-    				<th>Column header 4</th>
-    				<th>Column header 5</th>
-    				<th>Column header 6</th>
-    				<th>Column header 7</th>
-    				<th>Column header 8</th>
-    				<th>Column header 9</th>
-    				<th>Column header 10</th>
-    				<th>Column header 11</th>
-    				<th>Column header 12</th>
-    				<th>Column header 13</th>
-    				<th>Column header 14</th>
-    				<th>Column header 15</th>
-    				<th>Column header 16</th>
-    				<th>Column header 17</th>
-    				<th>Column header 18</th>
-    				<th>Column header 19</th>
-    				<th>Column header 20</th>
-    			</tr>
-    			</thead>
-    			<tbody>
-    			<tr>
-    				<th>Row 1 Column 1</th>
-    				<td>Row 1 Column 2</td>
-    				<td>Row 1 Column 3</td>
-    				<td>Row 1 Column 4</td>
-    				<td>Row 1 Column 5</td>
-    				<td>Row 1 Column 6</td>
-    				<td>Row 1 Column 7</td>
-    				<td>Row 1 Column 8</td>
-    				<td>Row 1 Column 9</td>
-    				<td>Row 1 Column 10</td>
-    				<td>Row 1 Column 11</td>
-    				<td>Row 1 Column 12</td>
-    				<td>Row 1 Column 13</td>
-    				<td>Row 1 Column 14</td>
-    				<td>Row 1 Column 15</td>
-    				<td>Row 1 Column 16</td>
-    				<td>Row 1 Column 17</td>
-    				<td>Row 1 Column 18</td>
-    				<td>Row 1 Column 19</td>
-    				<td>Row 1 Column 20</td>
-    			</tr>
-    			<tr>
-    				<th>Row 2 Column 1</th>
-    				<td>Row 2 Column 2</td>
-    				<td>Row 2 Column 3</td>
-    				<td>Row 2 Column 4</td>
-    				<td>Row 2 Column 5</td>
-    				<td>Row 2 Column 6</td>
-    				<td>Row 2 Column 7</td>
-    				<td>Row 2 Column 8</td>
-    				<td>Row 2 Column 9</td>
-    				<td>Row 2 Column 10</td>
-    				<td>Row 2 Column 11</td>
-    				<td>Row 2 Column 12</td>
-    				<td>Row 2 Column 13</td>
-    				<td>Row 2 Column 14</td>
-    				<td>Row 2 Column 15</td>
-    				<td>Row 2 Column 16</td>
-    				<td>Row 2 Column 17</td>
-    				<td>Row 2 Column 18</td>
-    				<td>Row 2 Column 19</td>
-    				<td>Row 2 Column 20</td>
-    			</tr>
-    			<tr selected>
-    				<th>Row 3 Column 1</th>
-    				<td>Row 3 Column 2</td>
-    				<td>Row 3 Column 3</td>
-    				<td>Row 3 Column 4</td>
-    				<td>Row 3 Column 5</td>
-    				<td>Row 3 Column 6</td>
-    				<td>Row 3 Column 7</td>
-    				<td>Row 3 Column 8</td>
-    				<td>Row 3 Column 9</td>
-    				<td>Row 3 Column 10</td>
-    				<td>Row 3 Column 11</td>
-    				<td>Row 3 Column 12</td>
-    				<td>Row 3 Column 13</td>
-    				<td>Row 3 Column 14</td>
-    				<td>Row 3 Column 15</td>
-    				<td>Row 3 Column 16</td>
-    				<td>Row 3 Column 17</td>
-    				<td>Row 3 Column 18</td>
-    				<td>Row 3 Column 19</td>
-    				<td>Row 3 Column 20</td>
-    			</tr>
-    			<tr selected>
-    				<th>Row 4 Column 1</th>
-    				<td>Row 4 Column 2</td>
-    				<td>Row 4 Column 3</td>
-    				<td>Row 4 Column 4</td>
-    				<td>Row 4 Column 5</td>
-    				<td>Row 4 Column 6</td>
-    				<td>Row 4 Column 7</td>
-    				<td>Row 4 Column 8</td>
-    				<td>Row 4 Column 9</td>
-    				<td>Row 4 Column 10</td>
-    				<td>Row 4 Column 11</td>
-    				<td>Row 4 Column 12</td>
-    				<td>Row 4 Column 13</td>
-    				<td>Row 4 Column 14</td>
-    				<td>Row 4 Column 15</td>
-    				<td>Row 4 Column 16</td>
-    				<td>Row 4 Column 17</td>
-    				<td>Row 4 Column 18</td>
-    				<td>Row 4 Column 19</td>
-    				<td>Row 4 Column 20</td>
-    			</tr>
-    			<tr>
-    				<th>Row 5 Column 1</th>
-    				<td>Row 5 Column 2</td>
-    				<td>Row 5 Column 3</td>
-    				<td>Row 5 Column 4</td>
-    				<td>Row 5 Column 5</td>
-    				<td>Row 5 Column 6</td>
-    				<td>Row 5 Column 7</td>
-    				<td>Row 5 Column 8</td>
-    				<td>Row 5 Column 9</td>
-    				<td>Row 5 Column 10</td>
-    				<td>Row 5 Column 11</td>
-    				<td>Row 5 Column 12</td>
-    				<td>Row 5 Column 13</td>
-    				<td>Row 5 Column 14</td>
-    				<td>Row 5 Column 15</td>
-    				<td>Row 5 Column 16</td>
-    				<td>Row 5 Column 17</td>
-    				<td>Row 5 Column 18</td>
-    				<td>Row 5 Column 19</td>
-    				<td>Row 5 Column 20</td>
-    			</tr>
-    			<tr>
-    				<th>Row 6 Column 1</th>
-    				<td>Row 6 Column 2</td>
-    				<td>Row 6 Column 3</td>
-    				<td>Row 6 Column 4</td>
-    				<td>Row 6 Column 5</td>
-    				<td>Row 6 Column 6</td>
-    				<td>Row 6 Column 7</td>
-    				<td>Row 6 Column 8</td>
-    				<td>Row 6 Column 9</td>
-    				<td>Row 6 Column 10</td>
-    				<td>Row 6 Column 11</td>
-    				<td>Row 6 Column 12</td>
-    				<td>Row 6 Column 13</td>
-    				<td>Row 6 Column 14</td>
-    				<td>Row 6 Column 15</td>
-    				<td>Row 6 Column 16</td>
-    				<td>Row 6 Column 17</td>
-    				<td>Row 6 Column 18</td>
-    				<td>Row 6 Column 19</td>
-    				<td>Row 6 Column 20</td>
-    			</tr>
-    			<tr>
-    				<th>Row 7 Column 1</th>
-    				<td>Row 7 Column 2</td>
-    				<td>Row 7 Column 3</td>
-    				<td>Row 7 Column 4</td>
-    				<td>Row 7 Column 5</td>
-    				<td>Row 7 Column 6</td>
-    				<td>Row 7 Column 7</td>
-    				<td>Row 7 Column 8</td>
-    				<td>Row 7 Column 9</td>
-    				<td>Row 7 Column 10</td>
-    				<td>Row 7 Column 11</td>
-    				<td>Row 7 Column 12</td>
-    				<td>Row 7 Column 13</td>
-    				<td>Row 7 Column 14</td>
-    				<td>Row 7 Column 15</td>
-    				<td>Row 7 Column 16</td>
-    				<td>Row 7 Column 17</td>
-    				<td>Row 7 Column 18</td>
-    				<td>Row 7 Column 19</td>
-    				<td>Row 7 Column 20</td>
-    			</tr>
-    			<tr>
-    				<th>Row 8 Column 1</th>
-    				<td>Row 8 Column 2</td>
-    				<td>Row 8 Column 3</td>
-    				<td>Row 8 Column 4</td>
-    				<td>Row 8 Column 5</td>
-    				<td>Row 8 Column 6</td>
-    				<td>Row 8 Column 7</td>
-    				<td>Row 8 Column 8</td>
-    				<td>Row 8 Column 9</td>
-    				<td>Row 8 Column 10</td>
-    				<td>Row 8 Column 11</td>
-    				<td>Row 8 Column 12</td>
-    				<td>Row 8 Column 13</td>
-    				<td>Row 8 Column 14</td>
-    				<td>Row 8 Column 15</td>
-    				<td>Row 8 Column 16</td>
-    				<td>Row 8 Column 17</td>
-    				<td>Row 8 Column 18</td>
-    				<td>Row 8 Column 19</td>
-    				<td>Row 8 Column 20</td>
-    			</tr>
-    			<tr>
-    				<th>Row 9 Column 1</th>
-    				<td>Row 9 Column 2</td>
-    				<td>Row 9 Column 3</td>
-    				<td>Row 9 Column 4</td>
-    				<td>Row 9 Column 5</td>
-    				<td>Row 9 Column 6</td>
-    				<td>Row 9 Column 7</td>
-    				<td>Row 9 Column 8</td>
-    				<td>Row 9 Column 9</td>
-    				<td>Row 9 Column 10</td>
-    				<td>Row 9 Column 11</td>
-    				<td>Row 9 Column 12</td>
-    				<td>Row 9 Column 13</td>
-    				<td>Row 9 Column 14</td>
-    				<td>Row 9 Column 15</td>
-    				<td>Row 9 Column 16</td>
-    				<td>Row 9 Column 17</td>
-    				<td>Row 9 Column 18</td>
-    				<td>Row 9 Column 19</td>
-    				<td>Row 9 Column 20</td>
-    			</tr>
-    			<tr>
-    				<th>Row 10 Column 1</th>
-    				<td>Row 10 Column 2</td>
-    				<td>Row 10 Column 3</td>
-    				<td>Row 10 Column 4</td>
-    				<td>Row 10 Column 5</td>
-    				<td>Row 10 Column 6</td>
-    				<td>Row 10 Column 7</td>
-    				<td>Row 10 Column 8</td>
-    				<td>Row 10 Column 9</td>
-    				<td>Row 10 Column 10</td>
-    				<td>Row 10 Column 11</td>
-    				<td>Row 10 Column 12</td>
-    				<td>Row 10 Column 13</td>
-    				<td>Row 10 Column 14</td>
-    				<td>Row 10 Column 15</td>
-    				<td>Row 10 Column 16</td>
-    				<td>Row 10 Column 17</td>
-    				<td>Row 10 Column 18</td>
-    				<td>Row 10 Column 19</td>
-    				<td>Row 10 Column 20</td>
-    			</tr>
-    			<tr>
-    				<th>Row 11 Column 1</th>
-    				<td>Row 11 Column 2</td>
-    				<td>Row 11 Column 3</td>
-    				<td>Row 11 Column 4</td>
-    				<td>Row 11 Column 5</td>
-    				<td>Row 11 Column 6</td>
-    				<td>Row 11 Column 7</td>
-    				<td>Row 11 Column 8</td>
-    				<td>Row 11 Column 9</td>
-    				<td>Row 11 Column 10</td>
-    				<td>Row 11 Column 11</td>
-    				<td>Row 11 Column 12</td>
-    				<td>Row 11 Column 13</td>
-    				<td>Row 11 Column 14</td>
-    				<td>Row 11 Column 15</td>
-    				<td>Row 11 Column 16</td>
-    				<td>Row 11 Column 17</td>
-    				<td>Row 11 Column 18</td>
-    				<td>Row 11 Column 19</td>
-    				<td>Row 11 Column 20</td>
-    			</tr>
-    			<tr>
-    				<th>Row 12 Column 1</th>
-    				<td>Row 12 Column 2</td>
-    				<td>Row 12 Column 3</td>
-    				<td>Row 12 Column 4</td>
-    				<td>Row 12 Column 5</td>
-    				<td>Row 12 Column 6</td>
-    				<td>Row 12 Column 7</td>
-    				<td>Row 12 Column 8</td>
-    				<td>Row 12 Column 9</td>
-    				<td>Row 12 Column 10</td>
-    				<td>Row 12 Column 11</td>
-    				<td>Row 12 Column 12</td>
-    				<td>Row 12 Column 13</td>
-    				<td>Row 12 Column 14</td>
-    				<td>Row 12 Column 15</td>
-    				<td>Row 12 Column 16</td>
-    				<td>Row 12 Column 17</td>
-    				<td>Row 12 Column 18</td>
-    				<td>Row 12 Column 19</td>
-    				<td>Row 12 Column 20</td>
-    			</tr>
-    			<tr>
-    				<th>Row 13 Column 1</th>
-    				<td>Row 13 Column 2</td>
-    				<td>Row 13 Column 3</td>
-    				<td>Row 13 Column 4</td>
-    				<td>Row 13 Column 5</td>
-    				<td>Row 13 Column 6</td>
-    				<td>Row 13 Column 7</td>
-    				<td>Row 13 Column 8</td>
-    				<td>Row 13 Column 9</td>
-    				<td>Row 13 Column 10</td>
-    				<td>Row 13 Column 11</td>
-    				<td>Row 13 Column 12</td>
-    				<td>Row 13 Column 13</td>
-    				<td>Row 13 Column 14</td>
-    				<td>Row 13 Column 15</td>
-    				<td>Row 13 Column 16</td>
-    				<td>Row 13 Column 17</td>
-    				<td>Row 13 Column 18</td>
-    				<td>Row 13 Column 19</td>
-    				<td>Row 13 Column 20</td>
-    			</tr>
-    			<tr>
-    				<th>Row 14 Column 1</th>
-    				<td>Row 14 Column 2</td>
-    				<td>Row 14 Column 3</td>
-    				<td>Row 14 Column 4</td>
-    				<td>Row 14 Column 5</td>
-    				<td>Row 14 Column 6</td>
-    				<td>Row 14 Column 7</td>
-    				<td>Row 14 Column 8</td>
-    				<td>Row 14 Column 9</td>
-    				<td>Row 14 Column 10</td>
-    				<td>Row 14 Column 11</td>
-    				<td>Row 14 Column 12</td>
-    				<td>Row 14 Column 13</td>
-    				<td>Row 14 Column 14</td>
-    				<td>Row 14 Column 15</td>
-    				<td>Row 14 Column 16</td>
-    				<td>Row 14 Column 17</td>
-    				<td>Row 14 Column 18</td>
-    				<td>Row 14 Column 19</td>
-    				<td>Row 14 Column 20</td>
-    			</tr>
-    			<tr>
-    				<th>Row 15 Column 1</th>
-    				<td>Row 15 Column 2</td>
-    				<td>Row 15 Column 3</td>
-    				<td>Row 15 Column 4</td>
-    				<td>Row 15 Column 5</td>
-    				<td>Row 15 Column 6</td>
-    				<td>Row 15 Column 7</td>
-    				<td>Row 15 Column 8</td>
-    				<td>Row 15 Column 9</td>
-    				<td>Row 15 Column 10</td>
-    				<td>Row 15 Column 11</td>
-    				<td>Row 15 Column 12</td>
-    				<td>Row 15 Column 13</td>
-    				<td>Row 15 Column 14</td>
-    				<td>Row 15 Column 15</td>
-    				<td>Row 15 Column 16</td>
-    				<td>Row 15 Column 17</td>
-    				<td>Row 15 Column 18</td>
-    				<td>Row 15 Column 19</td>
-    				<td>Row 15 Column 20</td>
-    			</tr>
-    			</tbody>
-    		</table></d2l-table-wrapper>
+			<p>Large Table</p>
+			<d2l-table-wrapper><table class="d2l-table" selectable="">
+				<caption>Table Caption</caption>
+				<colgroup></colgroup>
+				<colgroup></colgroup>
+				<thead>
+				<tr>
+					<th>Column header 1</th>
+					<th>Column header 2</th>
+					<th>Column header 3</th>
+					<th>Column header 4</th>
+					<th>Column header 5</th>
+					<th>Column header 6</th>
+					<th>Column header 7</th>
+					<th>Column header 8</th>
+					<th>Column header 9</th>
+					<th>Column header 10</th>
+					<th>Column header 11</th>
+					<th>Column header 12</th>
+					<th>Column header 13</th>
+					<th>Column header 14</th>
+					<th>Column header 15</th>
+					<th>Column header 16</th>
+					<th>Column header 17</th>
+					<th>Column header 18</th>
+					<th>Column header 19</th>
+					<th>Column header 20</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<th>Row 1 Column 1</th>
+					<td>Row 1 Column 2</td>
+					<td>Row 1 Column 3</td>
+					<td>Row 1 Column 4</td>
+					<td>Row 1 Column 5</td>
+					<td>Row 1 Column 6</td>
+					<td>Row 1 Column 7</td>
+					<td>Row 1 Column 8</td>
+					<td>Row 1 Column 9</td>
+					<td>Row 1 Column 10</td>
+					<td>Row 1 Column 11</td>
+					<td>Row 1 Column 12</td>
+					<td>Row 1 Column 13</td>
+					<td>Row 1 Column 14</td>
+					<td>Row 1 Column 15</td>
+					<td>Row 1 Column 16</td>
+					<td>Row 1 Column 17</td>
+					<td>Row 1 Column 18</td>
+					<td>Row 1 Column 19</td>
+					<td>Row 1 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 2 Column 1</th>
+					<td>Row 2 Column 2</td>
+					<td>Row 2 Column 3</td>
+					<td>Row 2 Column 4</td>
+					<td>Row 2 Column 5</td>
+					<td>Row 2 Column 6</td>
+					<td>Row 2 Column 7</td>
+					<td>Row 2 Column 8</td>
+					<td>Row 2 Column 9</td>
+					<td>Row 2 Column 10</td>
+					<td>Row 2 Column 11</td>
+					<td>Row 2 Column 12</td>
+					<td>Row 2 Column 13</td>
+					<td>Row 2 Column 14</td>
+					<td>Row 2 Column 15</td>
+					<td>Row 2 Column 16</td>
+					<td>Row 2 Column 17</td>
+					<td>Row 2 Column 18</td>
+					<td>Row 2 Column 19</td>
+					<td>Row 2 Column 20</td>
+				</tr>
+				<tr selected="">
+					<th>Row 3 Column 1</th>
+					<td>Row 3 Column 2</td>
+					<td>Row 3 Column 3</td>
+					<td>Row 3 Column 4</td>
+					<td>Row 3 Column 5</td>
+					<td>Row 3 Column 6</td>
+					<td>Row 3 Column 7</td>
+					<td>Row 3 Column 8</td>
+					<td>Row 3 Column 9</td>
+					<td>Row 3 Column 10</td>
+					<td>Row 3 Column 11</td>
+					<td>Row 3 Column 12</td>
+					<td>Row 3 Column 13</td>
+					<td>Row 3 Column 14</td>
+					<td>Row 3 Column 15</td>
+					<td>Row 3 Column 16</td>
+					<td>Row 3 Column 17</td>
+					<td>Row 3 Column 18</td>
+					<td>Row 3 Column 19</td>
+					<td>Row 3 Column 20</td>
+				</tr>
+				<tr selected="">
+					<th>Row 4 Column 1</th>
+					<td>Row 4 Column 2</td>
+					<td>Row 4 Column 3</td>
+					<td>Row 4 Column 4</td>
+					<td>Row 4 Column 5</td>
+					<td>Row 4 Column 6</td>
+					<td>Row 4 Column 7</td>
+					<td>Row 4 Column 8</td>
+					<td>Row 4 Column 9</td>
+					<td>Row 4 Column 10</td>
+					<td>Row 4 Column 11</td>
+					<td>Row 4 Column 12</td>
+					<td>Row 4 Column 13</td>
+					<td>Row 4 Column 14</td>
+					<td>Row 4 Column 15</td>
+					<td>Row 4 Column 16</td>
+					<td>Row 4 Column 17</td>
+					<td>Row 4 Column 18</td>
+					<td>Row 4 Column 19</td>
+					<td>Row 4 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 5 Column 1</th>
+					<td>Row 5 Column 2</td>
+					<td>Row 5 Column 3</td>
+					<td>Row 5 Column 4</td>
+					<td>Row 5 Column 5</td>
+					<td>Row 5 Column 6</td>
+					<td>Row 5 Column 7</td>
+					<td>Row 5 Column 8</td>
+					<td>Row 5 Column 9</td>
+					<td>Row 5 Column 10</td>
+					<td>Row 5 Column 11</td>
+					<td>Row 5 Column 12</td>
+					<td>Row 5 Column 13</td>
+					<td>Row 5 Column 14</td>
+					<td>Row 5 Column 15</td>
+					<td>Row 5 Column 16</td>
+					<td>Row 5 Column 17</td>
+					<td>Row 5 Column 18</td>
+					<td>Row 5 Column 19</td>
+					<td>Row 5 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 6 Column 1</th>
+					<td>Row 6 Column 2</td>
+					<td>Row 6 Column 3</td>
+					<td>Row 6 Column 4</td>
+					<td>Row 6 Column 5</td>
+					<td>Row 6 Column 6</td>
+					<td>Row 6 Column 7</td>
+					<td>Row 6 Column 8</td>
+					<td>Row 6 Column 9</td>
+					<td>Row 6 Column 10</td>
+					<td>Row 6 Column 11</td>
+					<td>Row 6 Column 12</td>
+					<td>Row 6 Column 13</td>
+					<td>Row 6 Column 14</td>
+					<td>Row 6 Column 15</td>
+					<td>Row 6 Column 16</td>
+					<td>Row 6 Column 17</td>
+					<td>Row 6 Column 18</td>
+					<td>Row 6 Column 19</td>
+					<td>Row 6 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 7 Column 1</th>
+					<td>Row 7 Column 2</td>
+					<td>Row 7 Column 3</td>
+					<td>Row 7 Column 4</td>
+					<td>Row 7 Column 5</td>
+					<td>Row 7 Column 6</td>
+					<td>Row 7 Column 7</td>
+					<td>Row 7 Column 8</td>
+					<td>Row 7 Column 9</td>
+					<td>Row 7 Column 10</td>
+					<td>Row 7 Column 11</td>
+					<td>Row 7 Column 12</td>
+					<td>Row 7 Column 13</td>
+					<td>Row 7 Column 14</td>
+					<td>Row 7 Column 15</td>
+					<td>Row 7 Column 16</td>
+					<td>Row 7 Column 17</td>
+					<td>Row 7 Column 18</td>
+					<td>Row 7 Column 19</td>
+					<td>Row 7 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 8 Column 1</th>
+					<td>Row 8 Column 2</td>
+					<td>Row 8 Column 3</td>
+					<td>Row 8 Column 4</td>
+					<td>Row 8 Column 5</td>
+					<td>Row 8 Column 6</td>
+					<td>Row 8 Column 7</td>
+					<td>Row 8 Column 8</td>
+					<td>Row 8 Column 9</td>
+					<td>Row 8 Column 10</td>
+					<td>Row 8 Column 11</td>
+					<td>Row 8 Column 12</td>
+					<td>Row 8 Column 13</td>
+					<td>Row 8 Column 14</td>
+					<td>Row 8 Column 15</td>
+					<td>Row 8 Column 16</td>
+					<td>Row 8 Column 17</td>
+					<td>Row 8 Column 18</td>
+					<td>Row 8 Column 19</td>
+					<td>Row 8 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 9 Column 1</th>
+					<td>Row 9 Column 2</td>
+					<td>Row 9 Column 3</td>
+					<td>Row 9 Column 4</td>
+					<td>Row 9 Column 5</td>
+					<td>Row 9 Column 6</td>
+					<td>Row 9 Column 7</td>
+					<td>Row 9 Column 8</td>
+					<td>Row 9 Column 9</td>
+					<td>Row 9 Column 10</td>
+					<td>Row 9 Column 11</td>
+					<td>Row 9 Column 12</td>
+					<td>Row 9 Column 13</td>
+					<td>Row 9 Column 14</td>
+					<td>Row 9 Column 15</td>
+					<td>Row 9 Column 16</td>
+					<td>Row 9 Column 17</td>
+					<td>Row 9 Column 18</td>
+					<td>Row 9 Column 19</td>
+					<td>Row 9 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 10 Column 1</th>
+					<td>Row 10 Column 2</td>
+					<td>Row 10 Column 3</td>
+					<td>Row 10 Column 4</td>
+					<td>Row 10 Column 5</td>
+					<td>Row 10 Column 6</td>
+					<td>Row 10 Column 7</td>
+					<td>Row 10 Column 8</td>
+					<td>Row 10 Column 9</td>
+					<td>Row 10 Column 10</td>
+					<td>Row 10 Column 11</td>
+					<td>Row 10 Column 12</td>
+					<td>Row 10 Column 13</td>
+					<td>Row 10 Column 14</td>
+					<td>Row 10 Column 15</td>
+					<td>Row 10 Column 16</td>
+					<td>Row 10 Column 17</td>
+					<td>Row 10 Column 18</td>
+					<td>Row 10 Column 19</td>
+					<td>Row 10 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 11 Column 1</th>
+					<td>Row 11 Column 2</td>
+					<td>Row 11 Column 3</td>
+					<td>Row 11 Column 4</td>
+					<td>Row 11 Column 5</td>
+					<td>Row 11 Column 6</td>
+					<td>Row 11 Column 7</td>
+					<td>Row 11 Column 8</td>
+					<td>Row 11 Column 9</td>
+					<td>Row 11 Column 10</td>
+					<td>Row 11 Column 11</td>
+					<td>Row 11 Column 12</td>
+					<td>Row 11 Column 13</td>
+					<td>Row 11 Column 14</td>
+					<td>Row 11 Column 15</td>
+					<td>Row 11 Column 16</td>
+					<td>Row 11 Column 17</td>
+					<td>Row 11 Column 18</td>
+					<td>Row 11 Column 19</td>
+					<td>Row 11 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 12 Column 1</th>
+					<td>Row 12 Column 2</td>
+					<td>Row 12 Column 3</td>
+					<td>Row 12 Column 4</td>
+					<td>Row 12 Column 5</td>
+					<td>Row 12 Column 6</td>
+					<td>Row 12 Column 7</td>
+					<td>Row 12 Column 8</td>
+					<td>Row 12 Column 9</td>
+					<td>Row 12 Column 10</td>
+					<td>Row 12 Column 11</td>
+					<td>Row 12 Column 12</td>
+					<td>Row 12 Column 13</td>
+					<td>Row 12 Column 14</td>
+					<td>Row 12 Column 15</td>
+					<td>Row 12 Column 16</td>
+					<td>Row 12 Column 17</td>
+					<td>Row 12 Column 18</td>
+					<td>Row 12 Column 19</td>
+					<td>Row 12 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 13 Column 1</th>
+					<td>Row 13 Column 2</td>
+					<td>Row 13 Column 3</td>
+					<td>Row 13 Column 4</td>
+					<td>Row 13 Column 5</td>
+					<td>Row 13 Column 6</td>
+					<td>Row 13 Column 7</td>
+					<td>Row 13 Column 8</td>
+					<td>Row 13 Column 9</td>
+					<td>Row 13 Column 10</td>
+					<td>Row 13 Column 11</td>
+					<td>Row 13 Column 12</td>
+					<td>Row 13 Column 13</td>
+					<td>Row 13 Column 14</td>
+					<td>Row 13 Column 15</td>
+					<td>Row 13 Column 16</td>
+					<td>Row 13 Column 17</td>
+					<td>Row 13 Column 18</td>
+					<td>Row 13 Column 19</td>
+					<td>Row 13 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 14 Column 1</th>
+					<td>Row 14 Column 2</td>
+					<td>Row 14 Column 3</td>
+					<td>Row 14 Column 4</td>
+					<td>Row 14 Column 5</td>
+					<td>Row 14 Column 6</td>
+					<td>Row 14 Column 7</td>
+					<td>Row 14 Column 8</td>
+					<td>Row 14 Column 9</td>
+					<td>Row 14 Column 10</td>
+					<td>Row 14 Column 11</td>
+					<td>Row 14 Column 12</td>
+					<td>Row 14 Column 13</td>
+					<td>Row 14 Column 14</td>
+					<td>Row 14 Column 15</td>
+					<td>Row 14 Column 16</td>
+					<td>Row 14 Column 17</td>
+					<td>Row 14 Column 18</td>
+					<td>Row 14 Column 19</td>
+					<td>Row 14 Column 20</td>
+				</tr>
+				<tr>
+					<th>Row 15 Column 1</th>
+					<td>Row 15 Column 2</td>
+					<td>Row 15 Column 3</td>
+					<td>Row 15 Column 4</td>
+					<td>Row 15 Column 5</td>
+					<td>Row 15 Column 6</td>
+					<td>Row 15 Column 7</td>
+					<td>Row 15 Column 8</td>
+					<td>Row 15 Column 9</td>
+					<td>Row 15 Column 10</td>
+					<td>Row 15 Column 11</td>
+					<td>Row 15 Column 12</td>
+					<td>Row 15 Column 13</td>
+					<td>Row 15 Column 14</td>
+					<td>Row 15 Column 15</td>
+					<td>Row 15 Column 16</td>
+					<td>Row 15 Column 17</td>
+					<td>Row 15 Column 18</td>
+					<td>Row 15 Column 19</td>
+					<td>Row 15 Column 20</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
 			<div class="scroll-action-spacer">
 				This space is intentionally consumed to demonstrate the scroll
 				chevrons clamping at the bottom of the table.
 			</div>
-    	</div>
-    </body>
+		</div>
+	
 
-</html>
+
+</div>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>

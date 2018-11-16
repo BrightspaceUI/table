@@ -1,5 +1,7 @@
-<link rel="import" href="../../polymer/polymer.html">
-<dom-module id="reset">
+import '../../@polymer/polymer/polymer-legacy.js';
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<dom-module id="reset">
 	<template>
 		<style>
 		html, body, div, span, applet, object, iframe,
@@ -49,4 +51,6 @@ text-decoration: none;
 }
 </style>
 </template>
-</dom-module>
+</dom-module>`;
+
+document.head.appendChild($_documentContainer.content);
