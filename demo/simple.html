@@ -63,7 +63,6 @@ $_documentContainer.innerHTML = `<custom-style>
 document.body.appendChild($_documentContainer.content);
 </script>
 	</head>
-
 	<body class="d2l-typography" unresolved>
 		<div class="container">
 			<div class="screenshots screenshot-wide">
@@ -503,8 +502,8 @@ document.body.appendChild($_documentContainer.content);
 		<script type="module">
 import '../d2l-table.js';
 import './reset.js';
-import '../../d2l-typography/d2l-typography.js';
-import { dom } from '../../@polymer/polymer/lib/legacy/polymer.dom.js';
+import 'd2l-typography/d2l-typography.js';
+import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
 
 function createCellContent() {
 	var span = document.createElement('span');

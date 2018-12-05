@@ -1,5 +1,5 @@
-import '../@polymer/polymer/polymer-legacy.js';
-import '../d2l-colors/d2l-colors.js';
+import '@polymer/polymer/polymer-legacy.js';
+import 'd2l-colors/d2l-colors.js';
 import './d2l-table-shared-styles.js';
 const $_documentContainer = document.createElement('template');
 
