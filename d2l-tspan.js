@@ -1,9 +1,9 @@
-import '../@polymer/polymer/polymer-legacy.js';
+import '@polymer/polymer/polymer-legacy.js';
 import './d2l-table-observer-behavior.js';
-import ResizeObserver from '../resize-observer-polyfill/dist/ResizeObserver.es.js';
+import ResizeObserver from 'resize-observer-polyfill/dist/ResizeObserver.es.js';
 import './d2l-td.js';
-import { Polymer } from '../@polymer/polymer/lib/legacy/polymer-fn.js';
-import { dom } from '../@polymer/polymer/lib/legacy/polymer.dom.js';
+import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
 const $_documentContainer = document.createElement('template');
 
 $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
