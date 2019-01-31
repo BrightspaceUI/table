@@ -23,7 +23,8 @@ $_documentContainer.innerHTML = `<custom-style>
 				text-align:left;
 				vertical-align:middle;
 				font-weight:inherit;
-				padding:1rem;
+				padding: 0.5rem 1rem;
+				height: 41px; /* min-height to be 62px including border */
 			};
 			--d2l-table-header: {
 				color:var(--d2l-color-ferrite);
@@ -31,6 +32,8 @@ $_documentContainer.innerHTML = `<custom-style>
 				line-height:1rem;
 				background-color:var(--d2l-table-header-background-color);
 				margin:1rem 0;
+				padding: 0.5rem 1rem;
+				height: 27px; /* min-height to be 48px including border */
 			};
 			--d2l-table: {
 				background-color:transparent;
