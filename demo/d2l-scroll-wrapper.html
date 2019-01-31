@@ -6,6 +6,8 @@
 		<script src="./update-direction.js"></script>
 		<script type="module" src="../d2l-scroll-wrapper.js"></script>
 		<script type="module" src="../../d2l-typography/d2l-typography.js"></script>
+	</head>
+	<body class="d2l-typography">
 		<!-- FIXME(polymer-modulizer):
 		These imperative modules that innerHTML your HTML are
 		a hacky way to be sure that any mixins in included style
@@ -42,8 +44,6 @@ $_documentContainer.innerHTML = `<custom-style>
 
 document.body.appendChild($_documentContainer.content);
 </script>
-	</head>
-	<body class="d2l-typography">
 		<script type="module">
 const $_documentContainer = document.createElement('template');
 

@@ -11,6 +11,9 @@ import 'd2l-typography/d2l-typography.js';
 		<script src="./update-direction.js"></script>
 		<script type="module" src="../d2l-table.js"></script>
 		<script type="module" src="../../d2l-typography/d2l-typography.js"></script>
+	</head>
+
+	<body unresolved class="d2l-typography">
 		<!-- FIXME(polymer-modulizer):
 		These imperative modules that innerHTML your HTML are
 		a hacky way to be sure that any mixins in included style
@@ -43,9 +46,6 @@ $_documentContainer.innerHTML = `<custom-style>
 
 document.body.appendChild($_documentContainer.content);
 </script>
-	</head>
-
-	<body unresolved class="d2l-typography">
 		<!-- header, footer, caption, and colgroup tests -->
 		<script type="module">
 const $_documentContainer = document.createElement('template');

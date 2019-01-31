@@ -7,6 +7,9 @@
 		<script type="module" src="../d2l-table.js"></script>
 		<script type="module" src="./reset.js"></script>
 		<script type="module" src="../../d2l-typography/d2l-typography.js"></script>
+	</head>
+
+	<body class="d2l-typography">
 		<!-- FIXME(polymer-modulizer):
 		These imperative modules that innerHTML your HTML are
 		a hacky way to be sure that any mixins in included style
@@ -62,9 +65,10 @@ $_documentContainer.innerHTML = `<custom-style>
 
 document.body.appendChild($_documentContainer.content);
 </script>
-	</head>
-	<body class="d2l-typography" unresolved>
-		<div class="container">
+		<script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="container">
 			<div class="screenshots screenshot-wide">
 				<d2l-table-wrapper><table class="d2l-table">
 					<thead>
@@ -498,7 +502,10 @@ document.body.appendChild($_documentContainer.content);
 					</d2l-tbody>
 				</d2l-table>
 			</div>
-		</div>
+		</div>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
 		<script type="module">
 import '../d2l-table.js';
 import './reset.js';
@@ -577,10 +584,12 @@ function createD2LTable() {
 
 }
 
-setTimeout(function() {
-	createTable();
-	createD2LTable();
-}, 0);
+window.addEventListener('WebComponentsReady', function() {
+	setTimeout(function() {
+		createTable();
+		createD2LTable();
+	}, 0);
+});
 </script>
 	</body>
 </html>
