@@ -7,6 +7,9 @@
 		<script type="module" src="../d2l-table.js"></script>
 		<script type="module" src="./reset.js"></script>
 		<script type="module" src="../../d2l-typography/d2l-typography.js"></script>
+	</head>
+
+	<body class="d2l-typography">
 		<!-- FIXME(polymer-modulizer):
 		These imperative modules that innerHTML your HTML are
 		a hacky way to be sure that any mixins in included style
@@ -17,16 +20,19 @@
 		-->
 	<script type="module">
 const $_documentContainer = document.createElement('template');
+
 $_documentContainer.innerHTML = `<custom-style>
 			<style is="custom-style" include="reset d2l-table-style d2l-typography">
 				html {
 					font-size: 20px;
 					background: #fff;
 				}
+
 				body {
 					margin: 0;
 					-ms-overflow-style: none;
 				}
+
 				.container {
 					text-align: left;
 					display: inline-block;
@@ -56,11 +62,13 @@ $_documentContainer.innerHTML = `<custom-style>
 				}
 			</style>
 		</custom-style>`;
+
 document.body.appendChild($_documentContainer.content);
 </script>
-	</head>
-	<body class="d2l-typography" unresolved>
-		<div class="container">
+		<script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="container">
 			<div class="screenshots screenshot-wide">
 				<d2l-table-wrapper><table class="d2l-table">
 					<thead>
@@ -494,22 +502,29 @@ document.body.appendChild($_documentContainer.content);
 					</d2l-tbody>
 				</d2l-table>
 			</div>
-		</div>
+		</div>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
 		<script type="module">
 import '../d2l-table.js';
 import './reset.js';
 import 'd2l-typography/d2l-typography.js';
 import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
+
 function createCellContent() {
 	var span = document.createElement('span');
 	span.appendChild(document.createTextNode(' '));
 	return span;
 }
+
 function createTable() {
+
 	var wrapper = document.getElementById('dynamic-wrapper');
 	var tbl = document.createElement('table');
 	tbl.className = 'd2l-table';
 	dom(wrapper).appendChild(tbl);
+
 	var thead = document.createElement('thead');
 	var headerRow = document.createElement('tr');
 	for (var i = 0; i < 3; i++) {
@@ -519,9 +534,11 @@ function createTable() {
 	}
 	thead.appendChild(headerRow);
 	tbl.appendChild(thead);
+
 	var tbody = document.createElement('tbody');
 	tbl.appendChild(tbody);
 	setTimeout(function() {
+
 		for (var j = 0; j < 3; j++) {
 			var row = document.createElement('tr');
 			for (var k = 0; k < 3; k++) {
@@ -531,10 +548,15 @@ function createTable() {
 			}
 			tbody.appendChild(row);
 		}
+
 	}, 0);
+
 }
+
 function createD2LTable() {
+
 	var tbl = document.getElementById('d2l-dynamic');
+
 	var thead = document.createElement('d2l-thead');
 	var headerRow = document.createElement('d2l-tr');
 	for (var i = 0; i < 3; i++) {
@@ -544,8 +566,10 @@ function createD2LTable() {
 	}
 	dom(thead).appendChild(headerRow);
 	dom(tbl).appendChild(thead);
+
 	var tbody = document.createElement('d2l-tbody');
 	dom(tbl).appendChild(tbody);
+
 	setTimeout(function() {
 		for (var j = 0; j < 3; j++) {
 			var row = document.createElement('d2l-tr');
@@ -557,11 +581,15 @@ function createD2LTable() {
 			dom(tbody).appendChild(row);
 		}
 	}, 0);
+
 }
-setTimeout(function() {
-	createTable();
-	createD2LTable();
-}, 0);
+
+window.addEventListener('WebComponentsReady', function() {
+	setTimeout(function() {
+		createTable();
+		createD2LTable();
+	}, 0);
+});
 </script>
 	</body>
 </html>
