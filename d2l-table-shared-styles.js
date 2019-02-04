@@ -20,9 +20,7 @@ $_documentContainer.innerHTML = `<custom-style>
 				border-top:var(--d2l-table-border);
 				border-right:var(--d2l-table-border);
 				display:table-cell;
-				text-align:left;
 				vertical-align:middle;
-				font-weight:inherit;
 				padding: 0.5rem 1rem;
 				height: 41px; /* min-height to be 62px including border */
 			};

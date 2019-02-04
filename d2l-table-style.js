@@ -35,6 +35,8 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 			d2l-td,
 			d2l-th {
 				@apply --d2l-table-cell;
+				font-weight: inherit;
+				text-align: left;
 			}
 
 			.d2l-table-cell-first,
@@ -391,7 +393,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 			[dir="rtl"] [sticky-headers] .d2l-table [selected] + :not([selected]) td:last-child {
 				border-left: var(--d2l-table-border);
 			}
-			
+
 			[dir="rtl"] [sticky-headers] .d2l-table [header] + [header] > td,
 			[dir="rtl"] [sticky-headers] .d2l-table [header] + [header] > th,
 			[dir="rtl"] [sticky-headers] .d2l-table thead tr:not(:first-child) th {
