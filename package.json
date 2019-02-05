@@ -60,7 +60,6 @@
     "d2l-icons": "BrightspaceUI/icons#semver:^6",
     "@polymer/iron-resizable-behavior": "^3.0.0",
     "@polymer/polymer": "^3.0.0",
-    "stickyfilljs": "^2.1.0",
-    "resize-observer-polyfill": "^1.5.0"
+    "stickyfilljs": "^2.1.0"
   }
 }

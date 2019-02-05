@@ -1,6 +1,6 @@
 import '@polymer/polymer/polymer-legacy.js';
 import './d2l-table-observer-behavior.js';
-import ResizeObserver from 'resize-observer-polyfill/dist/ResizeObserver.es.js';
+import './d2l-tspan-resize-observer-polyfill.js';
 import './d2l-td.js';
 import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
 import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
