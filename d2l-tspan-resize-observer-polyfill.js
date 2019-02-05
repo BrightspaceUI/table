@@ -4,37 +4,41 @@ if (window.ResizeObserver === undefined) {
 
 	window.ResizeObserver = function(callback) {
 		this._callback = callback;
-		this._trackedNodes = [];
-
-		this._checkForChanges = function() {
-			this._trackedNodes.forEach(function(trackedNode) {
-				if (
-					trackedNode.ref.offsetWidth !== trackedNode.lastWidth ||
-					trackedNode.ref.offsetHeight !== trackedNode.lastHeight
-				) {
-					trackedNode.lastWidth = trackedNode.ref.offsetWidth;
-					trackedNode.lastHeight = trackedNode.ref.offsetHeight;
-					this._callback(trackedNode.ref);
-				}
-			}.bind(this));
-			window.requestAnimationFrame(this._checkForChanges.bind(this));
-		}.bind(this);
-		this._checkForChanges();
+		this._cancellationTokens = [];
 	};
 
 	ResizeObserver.prototype.observe = function(node) {
-		this._trackedNodes.push({
+		var cancellationToken = {
 			ref: node,
-			lastWidth: node.offsetWidth,
-			lastHeight: node.offsetHeight
-		});
+			cancelled: false
+		};
+		this._cancellationTokens.push(cancellationToken);
 		this._callback(node);
+
+		var lastWidth = node.offsetWidth;
+		var lastHeight = node.offsetHeight;
+		var _checkForChanges = function() {
+			if (
+				node.offsetWidth !== lastWidth ||
+				node.offsetHeight !== lastHeight
+			) {
+				lastWidth = node.offsetWidth;
+				lastHeight = node.offsetHeight;
+				this._callback(node);
+			}
+
+			if (!cancellationToken.cancelled) {
+				window.requestAnimationFrame(_checkForChanges);
+			}
+		}.bind(this);
+		_checkForChanges();
 	};
 
 	ResizeObserver.prototype.unobserve = function(node) {
-		for (var i = 0; i < this._trackedNodes.length; i++) {
-			if (this._trackedNodes[i].ref === node) {
-				this._trackedNodes.splice(i, 1);
+		for (var i = 0; i < this._cancellationTokens.length; i++) {
+			if (this._cancellationTokens[i].ref === node) {
+				this._cancellationTokens[i].cancelled = true;
+				this._cancellationTokens.splice(i, 1);
 				break;
 			}
 		}
