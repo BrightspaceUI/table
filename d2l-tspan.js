@@ -19,20 +19,34 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
 				border: none;
 			}
 
-			#float {
+			.float,
+			.float-with-border {
 				position: absolute;
 				width: 100%;
-				border: var(--d2l-table-border);
-				border-bottom: none;
 				padding: 1rem;
 				left: 0;
 				box-sizing: border-box;			
 			}
 
-			:host([custom-border]) #float {
+			.float {
+				border: var(--d2l-table-border);
+				z-index: 0;
+				border-bottom: none;
+				box-shadow: 0 1px 0 var(--d2l-table-border-color);
+			}
+
+			:host([custom-border]) .float,
+			.float-with-border {
 				transition-property: border-color;
 				transition-timing-function: ease;
 				transition: border-color 0.5s, box-shadow 0.5s;
+			}
+
+			.float-with-border {
+				z-index: 2;
+				border: 2px solid var(--d2l-color-celestine);
+				border-bottom: none;
+				box-shadow: 0 2px 0 var(--d2l-color-celestine);
 			}
 
 			#float.d2l-table-row-first {
@@ -47,7 +61,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
 			}
 		</style>
 		<d2l-td id="cell">
-			<div id="float">
+			<div id="float" class="float">
 				<slot></slot>
 			</div>
 		</d2l-td>
@@ -85,7 +99,7 @@ Polymer({
 			value: false,
 			reflectToAttribute: true,
 		},
-		feedbackInFocus: {
+		_feedbackInFocus: {
 			type: Boolean,
 			value: false
 		}
@@ -112,33 +126,27 @@ Polymer({
 		}
 	},
 	focus: function() {
-		if (this.customBorder && !this.feedbackInFocus) {
-			this.feedbackInFocus = true;
+		if (this.customBorder && !this._feedbackInFocus) {
+			this._feedbackInFocus = true;
 			this.addBorderToFloat();
 		}
 	},
 	_focusOutHandler: function(event) {
 		if (this.customBorder) {
-			this.feedbackInFocus = false;
+			this._feedbackInFocus = false;
 			this.removeBorderFromFloat();
 		}
 	},
 	addBorderToFloat: function() {
 		if (this.customBorder) {
 			var float = dom(this.root).querySelector('#float');
-			float.style.border = '2px solid var(--d2l-color-celestine)';
-			float.style.borderBottom = 'none';
-			float.style.boxShadow = '0 2px 0 var(--d2l-color-celestine)';
-			float.style.zIndex = 2;
+			float.classList.add('float-with-border');
 		}
 	},
 	removeBorderFromFloat: function() {
-		if (this.customBorder && !this.feedbackInFocus) {
+		if (this.customBorder && !this._feedbackInFocus) {
 			var float = dom(this.root).querySelector('#float');
-			float.style.border = '1px solid var(--d2l-table-border-color)';
-			float.style.borderBottom = 'none';
-			float.style.boxShadow = '0 1px 0 var(--d2l-table-border-color)';
-			float.style.zIndex = 0;
+			float.classList.remove('float-with-border');
 		}
 	}
 });
