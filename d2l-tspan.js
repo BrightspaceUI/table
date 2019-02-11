@@ -134,7 +134,7 @@ Polymer({
 			this.addFocusStylingToFloat();
 		}
 	},
-	_focusOutHandler: function(event) {
+	_focusOutHandler: function() {
 		if (this.focused) {
 			this._feedbackInFocus = false;
 			this.removeFocusStylingFromFloat();
