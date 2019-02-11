@@ -4,6 +4,7 @@ import './d2l-tspan-resize-observer-polyfill.js';
 import './d2l-td.js';
 import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
 import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
+import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 const $_documentContainer = document.createElement('template');
 
 $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
@@ -19,8 +20,8 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
 				border: none;
 			}
 
-			.float,
-			.float-with-border {
+			.d2l-tspan-float,
+			.d2l-tspan-float-focused {
 				position: absolute;
 				width: 100%;
 				padding: 1rem;
@@ -28,21 +29,21 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
 				box-sizing: border-box;			
 			}
 
-			.float {
+			.d2l-tspan-float {
 				border: var(--d2l-table-border);
 				z-index: 0;
 				border-bottom: none;
 				box-shadow: 0 1px 0 var(--d2l-table-border-color);
 			}
 
-			:host([custom-border]) .float,
-			.float-with-border {
+			:host([focused]) .d2l-tspan-float,
+			.d2l-tspan-float-focused {
 				transition-property: border-color;
 				transition-timing-function: ease;
 				transition: border-color 0.5s, box-shadow 0.5s;
 			}
 
-			.float-with-border {
+			.d2l-tspan-float-focused {
 				z-index: 2;
 				border: 2px solid var(--d2l-color-celestine);
 				border-bottom: none;
@@ -61,7 +62,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
 			}
 		</style>
 		<d2l-td id="cell">
-			<div id="float" class="float">
+			<div id="float" class="d2l-tspan-float">
 				<slot></slot>
 			</div>
 		</d2l-td>
@@ -94,7 +95,7 @@ Polymer({
 				return this._focusOutHandler.bind(this);
 			}
 		},
-		customBorder: {
+		focused: {
 			type: Boolean,
 			value: false,
 			reflectToAttribute: true,
@@ -110,7 +111,9 @@ Polymer({
 	attached: function() {
 		var slot = dom(this.root).querySelector('#float');
 		this._sizeObserver.observe(slot);
-		slot.addEventListener('focusout', this._boundFocusOutHandler);
+		afterNextRender(this, function() {
+			slot.addEventListener('focusout', this._boundFocusOutHandler);
+		}.bind(this));
 	},
 	detached: function() {
 		var slot = dom(this.root).querySelector('#float');
@@ -126,27 +129,27 @@ Polymer({
 		}
 	},
 	focus: function() {
-		if (this.customBorder && !this._feedbackInFocus) {
+		if (this.focused && !this._feedbackInFocus) {
 			this._feedbackInFocus = true;
-			this.addBorderToFloat();
+			this.addFocusStylingToFloat();
 		}
 	},
 	_focusOutHandler: function(event) {
-		if (this.customBorder) {
+		if (this.focused) {
 			this._feedbackInFocus = false;
-			this.removeBorderFromFloat();
+			this.removeFocusStylingFromFloat();
 		}
 	},
-	addBorderToFloat: function() {
-		if (this.customBorder) {
+	addFocusStylingToFloat: function() {
+		if (this.focused) {
 			var float = dom(this.root).querySelector('#float');
-			float.classList.add('float-with-border');
+			float.classList.add('d2l-tspan-float-focused');
 		}
 	},
-	removeBorderFromFloat: function() {
-		if (this.customBorder && !this._feedbackInFocus) {
+	removeFocusStylingFromFloat: function() {
+		if (this.focused && !this._feedbackInFocus) {
 			var float = dom(this.root).querySelector('#float');
-			float.classList.remove('float-with-border');
+			float.classList.remove('d2l-tspan-float-focused');
 		}
 	}
 });
