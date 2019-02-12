@@ -128,7 +128,7 @@ Polymer({
 			this.root.host.style.height = this.$.float.offsetHeight + 'px';
 		}
 	},
-	focus: function() {
+	focusFeedback: function() {
 		if (this.focused && !this._feedbackInFocus) {
 			this._feedbackInFocus = true;
 			this.addFocusStylingToFloat();
