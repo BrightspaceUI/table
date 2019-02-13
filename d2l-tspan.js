@@ -21,7 +21,8 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
 			}
 
 			.d2l-tspan-float,
-			.d2l-tspan-float-focused {
+			:host([focused]) .d2l-tspan-float:hover,
+			:host([_feedback-in-focus]) .d2l-tspan-float {
 				position: absolute;
 				width: 100%;
 				padding: 1rem;
@@ -37,13 +38,15 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
 			}
 
 			:host([focused]) .d2l-tspan-float,
-			.d2l-tspan-float-focused {
+			:host([focused]) .d2l-tspan-float:hover,
+			:host([_feedback-in-focus]) .d2l-tspan-float {
 				transition-property: border-color;
 				transition-timing-function: ease;
 				transition: border-color 0.5s, box-shadow 0.5s;
 			}
 
-			.d2l-tspan-float-focused {
+			:host([focused]) .d2l-tspan-float:hover,
+			:host([_feedback-in-focus]) .d2l-tspan-float {
 				z-index: 2;
 				border: 2px solid var(--d2l-color-celestine);
 				border-bottom: none;
@@ -98,11 +101,12 @@ Polymer({
 		focused: {
 			type: Boolean,
 			value: false,
-			reflectToAttribute: true,
+			reflectToAttribute: true
 		},
 		_feedbackInFocus: {
 			type: Boolean,
-			value: false
+			value: false,
+			reflectToAttribute: true
 		}
 	},
 	ready: function() {
@@ -131,25 +135,11 @@ Polymer({
 	focusFeedback: function() {
 		if (this.focused && !this._feedbackInFocus) {
 			this._feedbackInFocus = true;
-			this.addFocusStylingToFloat();
 		}
 	},
 	_focusOutHandler: function() {
 		if (this.focused) {
 			this._feedbackInFocus = false;
-			this.removeFocusStylingFromFloat();
-		}
-	},
-	addFocusStylingToFloat: function() {
-		if (this.focused) {
-			var float = dom(this.root).querySelector('#float');
-			float.classList.add('d2l-tspan-float-focused');
-		}
-	},
-	removeFocusStylingFromFloat: function() {
-		if (this.focused && !this._feedbackInFocus) {
-			var float = dom(this.root).querySelector('#float');
-			float.classList.remove('d2l-tspan-float-focused');
 		}
 	}
 });
