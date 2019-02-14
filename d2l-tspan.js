@@ -20,26 +20,19 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
 				border: none;
 			}
 
-			.d2l-tspan-float,
-			:host([focused-styling]) .d2l-tspan-float:hover,
-			:host([_feedback-in-focus]) .d2l-tspan-float {
+			.d2l-tspan-float {
 				position: absolute;
 				width: 100%;
 				padding: 1rem;
 				left: 0;
 				box-sizing: border-box;			
-			}
-
-			.d2l-tspan-float {
 				border: var(--d2l-table-border);
 				z-index: 0;
 				border-bottom: none;
 				box-shadow: 0 1px 0 var(--d2l-table-border-color);
 			}
 
-			:host([focused-styling]) .d2l-tspan-float,
-			:host([focused-styling]) .d2l-tspan-float:hover,
-			:host([_feedback-in-focus]) .d2l-tspan-float {
+			:host([focused-styling]) .d2l-tspan-float {
 				transition-property: border-color;
 				transition-timing-function: ease;
 				transition: border-color 0.5s, box-shadow 0.5s;
