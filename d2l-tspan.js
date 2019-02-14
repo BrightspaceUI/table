@@ -21,7 +21,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
 			}
 
 			.d2l-tspan-float,
-			:host([focused]) .d2l-tspan-float:hover,
+			:host([focused-styling]) .d2l-tspan-float:hover,
 			:host([_feedback-in-focus]) .d2l-tspan-float {
 				position: absolute;
 				width: 100%;
@@ -37,15 +37,15 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
 				box-shadow: 0 1px 0 var(--d2l-table-border-color);
 			}
 
-			:host([focused]) .d2l-tspan-float,
-			:host([focused]) .d2l-tspan-float:hover,
+			:host([focused-styling]) .d2l-tspan-float,
+			:host([focused-styling]) .d2l-tspan-float:hover,
 			:host([_feedback-in-focus]) .d2l-tspan-float {
 				transition-property: border-color;
 				transition-timing-function: ease;
 				transition: border-color 0.5s, box-shadow 0.5s;
 			}
 
-			:host([focused]) .d2l-tspan-float:hover,
+			:host([focused-styling]) .d2l-tspan-float:hover,
 			:host([_feedback-in-focus]) .d2l-tspan-float {
 				z-index: 2;
 				border: 2px solid var(--d2l-color-celestine);
@@ -98,7 +98,13 @@ Polymer({
 				return this._focusOutHandler.bind(this);
 			}
 		},
-		focused: {
+		_boundFocusInHandler: {
+			type: Function,
+			value: function() {
+				return this._focusInHandler.bind(this);
+			}
+		},
+		focusedStyling: {
 			type: Boolean,
 			value: false,
 			reflectToAttribute: true
@@ -117,12 +123,14 @@ Polymer({
 		this._sizeObserver.observe(slot);
 		afterNextRender(this, function() {
 			slot.addEventListener('focusout', this._boundFocusOutHandler);
+			slot.addEventListener('focusin', this._boundFocusInHandler);
 		}.bind(this));
 	},
 	detached: function() {
 		var slot = dom(this.root).querySelector('#float');
 		this._sizeObserver.unobserve(slot);
 		slot.removeEventListener('focusout', this._boundFocusOutHandler);
+		slot.removeEventListener('focusin', this._boundFocusInHandler);
 	},
 	_selectedChanged: function(selected) {
 		this.setAttribute('aria-selected', selected.toString());
@@ -132,13 +140,13 @@ Polymer({
 			this.root.host.style.height = this.$.float.offsetHeight + 'px';
 		}
 	},
-	focusFeedback: function() {
-		if (this.focused && !this._feedbackInFocus) {
+	_focusInHandler: function() {
+		if (this.focusedStyling && !this._feedbackInFocus) {
 			this._feedbackInFocus = true;
 		}
 	},
 	_focusOutHandler: function() {
-		if (this.focused) {
+		if (this.focusedStyling) {
 			this._feedbackInFocus = false;
 		}
 	}
