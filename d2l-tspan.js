@@ -114,16 +114,18 @@ Polymer({
 	attached: function() {
 		var slot = dom(this.root).querySelector('#float');
 		this._sizeObserver.observe(slot);
-		afterNextRender(this, function() {
+		if (this.focusedStyling) {
 			slot.addEventListener('focusout', this._boundFocusOutHandler);
 			slot.addEventListener('focusin', this._boundFocusInHandler);
-		}.bind(this));
+		}
 	},
 	detached: function() {
 		var slot = dom(this.root).querySelector('#float');
 		this._sizeObserver.unobserve(slot);
-		slot.removeEventListener('focusout', this._boundFocusOutHandler);
-		slot.removeEventListener('focusin', this._boundFocusInHandler);
+		if (this.focusedStyling) {
+			slot.removeEventListener('focusout', this._boundFocusOutHandler);
+			slot.removeEventListener('focusin', this._boundFocusInHandler);
+		}
 	},
 	_selectedChanged: function(selected) {
 		this.setAttribute('aria-selected', selected.toString());
