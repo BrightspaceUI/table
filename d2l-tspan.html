@@ -21,7 +21,7 @@
 				width: 100%;
 				padding: 1rem;
 				left: 0;
-				box-sizing: border-box;
+				box-sizing: border-box;			
 				border: var(--d2l-table-border);
 				z-index: 0;
 				border-bottom: none;
@@ -107,16 +107,18 @@
 			attached: function() {
 				var slot = Polymer.dom(this.root).querySelector('#float');
 				this._sizeObserver.observe(slot);
-				Polymer.RenderStatus.afterNextRender(this, function() {
+				if (this.focusedStyling) {
 					slot.addEventListener('focusout', this._boundFocusOutHandler);
 					slot.addEventListener('focusin', this._boundFocusInHandler);
-				}.bind(this));
+				}
 			},
 			detached: function() {
 				var slot = Polymer.dom(this.root).querySelector('#float');
 				this._sizeObserver.unobserve(slot);
-				slot.removeEventListener('focusout', this._boundFocusOutHandler);
-				slot.removeEventListener('focusin', this._boundFocusInHandler);
+				if (this.focusedStyling) {
+					slot.removeEventListener('focusout', this._boundFocusOutHandler);
+					slot.removeEventListener('focusin', this._boundFocusInHandler);
+				}
 			},
 			_selectedChanged: function(selected) {
 				this.setAttribute('aria-selected', selected.toString());
