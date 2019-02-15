@@ -16,14 +16,30 @@
 				border: none;
 			}
 
-			#float {
+			.d2l-tspan-float {
 				position: absolute;
 				width: 100%;
-				border: var(--d2l-table-border);
-				border-bottom: none;
 				padding: 1rem;
 				left: 0;
 				box-sizing: border-box;
+				border: var(--d2l-table-border);
+				z-index: 0;
+				border-bottom: none;
+				box-shadow: 0 1px 0 var(--d2l-table-border-color);
+			}
+
+			:host([focused-styling]) .d2l-tspan-float {
+				transition-property: border-color;
+				transition-timing-function: ease;
+				transition: border-color 0.5s, box-shadow 0.5s;
+			}
+
+			:host([focused-styling]) .d2l-tspan-float:hover,
+			:host([_feedback-in-focus]) .d2l-tspan-float {
+				z-index: 2;
+				border: 2px solid var(--d2l-color-celestine);
+				border-bottom: none;
+				box-shadow: 0 2px 0 var(--d2l-color-celestine);
 			}
 
 			#float.d2l-table-row-first {
@@ -38,7 +54,7 @@
 			}
 		</style>
 		<d2l-td id="cell">
-			<div id="float">
+			<div id="float" class="d2l-tspan-float">
 				<slot></slot>
 			</div>
 		</d2l-td>
@@ -61,6 +77,28 @@
 					value: false,
 					reflectToAttribute: true,
 					observer: '_selectedChanged'
+				},
+				_boundFocusOutHandler: {
+					type: Function,
+					value: function() {
+						return this._focusOutHandler.bind(this);
+					}
+				},
+				_boundFocusInHandler: {
+					type: Function,
+					value: function() {
+						return this._focusInHandler.bind(this);
+					}
+				},
+				focusedStyling: {
+					type: Boolean,
+					value: false,
+					reflectToAttribute: true
+				},
+				_feedbackInFocus: {
+					type: Boolean,
+					value: false,
+					reflectToAttribute: true
 				}
 			},
 			ready: function() {
@@ -69,10 +107,18 @@
 			attached: function() {
 				var slot = Polymer.dom(this.root).querySelector('#float');
 				this._sizeObserver.observe(slot);
+				if (this.focusedStyling) {
+					slot.addEventListener('focusout', this._boundFocusOutHandler);
+					slot.addEventListener('focusin', this._boundFocusInHandler);
+				}
 			},
 			detached: function() {
 				var slot = Polymer.dom(this.root).querySelector('#float');
 				this._sizeObserver.unobserve(slot);
+				if (this.focusedStyling) {
+					slot.removeEventListener('focusout', this._boundFocusOutHandler);
+					slot.removeEventListener('focusin', this._boundFocusInHandler);
+				}
 			},
 			_selectedChanged: function(selected) {
 				this.setAttribute('aria-selected', selected.toString());
@@ -80,6 +126,16 @@
 			_onSizeChanged: function() {
 				if (this.root.host) {
 					this.root.host.style.height = this.$.float.offsetHeight + 'px';
+				}
+			},
+			_focusInHandler: function() {
+				if (this.focusedStyling && !this._feedbackInFocus) {
+					this._feedbackInFocus = true;
+				}
+			},
+			_focusOutHandler: function() {
+				if (this.focusedStyling) {
+					this._feedbackInFocus = false;
 				}
 			}
 		});
