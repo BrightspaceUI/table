@@ -4,7 +4,6 @@ import './d2l-tspan-resize-observer-polyfill.js';
 import './d2l-td.js';
 import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
 import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
-import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 const $_documentContainer = document.createElement('template');
 
 $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
