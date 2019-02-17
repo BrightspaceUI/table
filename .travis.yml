@@ -1,38 +1,40 @@
 cache:
   directories:
-    - "$HOME/.npm"
-    - "$HOME/.cache/bower"
-
+  - "$HOME/.npm"
+  - "$HOME/.cache/bower"
 stages:
-  - test
-  - name: galen test
-    if: type = pull_request
-
+- test
+- name: galen test
+  if: type = pull_request
 jobs:
   include:
-    - stage: test
-      language: node_js
-      node_js:
-        - 10.11.0
-      install:
-        - npm ci
-      script:
-        - concurrently -p name -n lint,polymer:test "npm run lint" "polymer test --skip-plugin local"
-    - stage: galen test
-      language: node_js
-      node_js:
-        - 10.11.0
-      addons:
-        apt:
-          packages:
-          - oracle-java8-installer
-      install:
-        - npm ci
-      before_script:
-        - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-        - export PATH=$JAVA_HOME/bin:$PATH
-      script:
-        - npm run test:galen:sauce
-      after_script:
-        - pip install --user awscli
-        - aws s3 sync reports s3://farnsworth-travis-ci-artifacts/BrightspaceUI/table/$TRAVIS_BUILD_NUMBER
+  - stage: test
+    language: node_js
+    node_js:
+    - 10.11.0
+    install:
+    - npm ci
+    script:
+    - concurrently -p name -n lint,polymer:test "npm run lint" "polymer test --skip-plugin
+      local"
+  - stage: galen test
+    language: node_js
+    node_js:
+    - 10.11.0
+    addons:
+      apt:
+        packages:
+        - oracle-java8-installer
+    install:
+    - npm ci
+    before_script:
+    - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+    - export PATH=$JAVA_HOME/bin:$PATH
+    script:
+    - npm run test:galen:sauce
+    after_script:
+    - pip install --user awscli
+    - aws s3 sync reports s3://farnsworth-travis-ci-artifacts/BrightspaceUI/table/$TRAVIS_BUILD_NUMBER
+env:
+  global:
+    secure: u3QL2w7dYUYMQU9k0bpMm/l6A/ykxji5cMjRP4mdtjYhUPMVAPdsxD8TpVoSGZWxjLG/rlXX2Ptf0Hlsripj6+XDgDl9HrE+TOpyTyUlAvW7buAPcCEznbYHhD6A7hQN5CrKW8r8GRDTpS+L42VKKBbvD9zBITFPHZuMfjRbXEdT18ImGZ50QYAb/X8Uvh88DJ4f8f7Vno3gWUhveRjn8gpadnTbQbcA/aDK/SGQI21V0IwkVXDMVS5k+IS6PsQx5L/465ejQNaVnUTnF1ieWODCelowpxxzPfTYS1hqe5lb6iQJCdmSKuNNuzKKsLRNUDyfsoiaQAKac5U9Z9YSE23MXPV9D+A9q+/O0zWgLKY9am4xGNZXL7S8Oi4Q2bqjDqiM3YhNhwmLcEtFHeYw/jfWPYyRY3a1QZqoArYOmofblVhsB8+gzNqGZdFqjUTLMZXD/nzHJkO6xX4nzotvnDEx3DOi5p1bPwdDQx2aU5KfEd3Ptmg8y1XFKrG0ky82qJHnDvkfPsV6yoxAR4TxMG6nV9Ml71zCvEERWyeFkp2MBfUjNg4PJlXwMvfoilULTNcs82/9XzOihmMGliaM4cJANqdu9KYV7PuREFE9cLdzdkUl1DIRf7+DXThZBwrsK+GsiXvu6dIeZhN1g8oeTTFZxtbofSCuES/bbaRsnB4=

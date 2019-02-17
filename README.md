@@ -248,3 +248,12 @@ To update the screenshots, run `npm run dump`. The screenshots will be placed un
 [Galen]: http://galenframework.com/
 [GalenConfig]: http://galenframework.com/docs/getting-started-configuration/
 [GalenSpec]: http://galenframework.com/docs/reference-galen-spec-language-guide/
+
+## Versioning
+
+Commits and PR merges to master will automatically do a minor version bump which will:
+* Update the version in `package.json`
+* Add a tag matching the new version
+* Create a github release matching the new version
+
+By using either **[increment major]** or **[increment patch]** notation inside your merge message, you can overwrite the default version upgrade of minor to the position of your choice.
