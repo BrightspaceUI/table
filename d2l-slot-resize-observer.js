@@ -12,7 +12,7 @@ D2L.PolymerBehaviors.Table.SlotResizeObserver = {
 	},
 
 	detached: function() {
-		if (!this._destructor) {
+		if (this._destructor) {
 			this._destructor();
 		}
 	},
