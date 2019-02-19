@@ -68,6 +68,7 @@ D2L.PolymerBehaviors.Table.SlotResizeObserver = {
 			this._onSlotSizeChanged(slotWrapper);
 			this._destructor = function() {
 				window.removeEventListener('resize', callback);
+				slot.removeEventListener('slotchange', onSlotNodesChanged);
 				mutationObserver.disconnect();
 			};
 		}
