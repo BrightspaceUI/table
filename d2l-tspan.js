@@ -1,6 +1,6 @@
 import '@polymer/polymer/polymer-legacy.js';
 import './d2l-table-observer-behavior.js';
-import './d2l-tspan-resize-observer-polyfill.js';
+import './d2l-slot-resize-observer.js';
 import './d2l-td.js';
 import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
 import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
@@ -58,7 +58,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
 		</style>
 		<d2l-td id="cell">
 			<div id="float" class="d2l-tspan-float">
-				<slot></slot>
+				<slot id="slot"></slot>
 			</div>
 		</d2l-td>
 	</template>
@@ -69,7 +69,8 @@ document.head.appendChild($_documentContainer.content);
 Polymer({
 	is: 'd2l-tspan',
 	behaviors: [
-		D2L.PolymerBehaviors.Table.LocalObserverBehavior
+		D2L.PolymerBehaviors.Table.LocalObserverBehavior,
+		D2L.PolymerBehaviors.Table.SlotResizeObserver
 	],
 	properties: {
 		role: {
@@ -107,12 +108,9 @@ Polymer({
 			reflectToAttribute: true
 		}
 	},
-	ready: function() {
-		this._sizeObserver = new ResizeObserver(this._onSizeChanged.bind(this));
-	},
 	attached: function() {
 		var slot = dom(this.root).querySelector('#float');
-		this._sizeObserver.observe(slot);
+		this._initSlotResizeObserver(slot, this.$.slot);
 		if (this.focusedStyling) {
 			slot.addEventListener('focusout', this._boundFocusOutHandler);
 			slot.addEventListener('focusin', this._boundFocusInHandler);
@@ -120,7 +118,6 @@ Polymer({
 	},
 	detached: function() {
 		var slot = dom(this.root).querySelector('#float');
-		this._sizeObserver.unobserve(slot);
 		if (this.focusedStyling) {
 			slot.removeEventListener('focusout', this._boundFocusOutHandler);
 			slot.removeEventListener('focusin', this._boundFocusInHandler);
@@ -129,7 +126,7 @@ Polymer({
 	_selectedChanged: function(selected) {
 		this.setAttribute('aria-selected', selected.toString());
 	},
-	_onSizeChanged: function() {
+	_onSlotSizeChanged: function() {
 		if (this.root.host) {
 			this.root.host.style.height = this.$.float.offsetHeight + 'px';
 		}
