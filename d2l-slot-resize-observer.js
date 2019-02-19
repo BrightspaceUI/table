@@ -59,6 +59,7 @@ D2L.PolymerBehaviors.Table.SlotResizeObserver = {
 						subtree: true
 					});
 				});
+				callback();
 			};
 
 			slot.addEventListener('slotchange', onSlotNodesChanged);
