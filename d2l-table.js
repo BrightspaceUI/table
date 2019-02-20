@@ -161,7 +161,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table">
 				};
 			}
 		</style>
-		<d2l-scroll-wrapper show-actions="">
+		<d2l-scroll-wrapper show-actions="" needs-table>
 			<slot id="slot"></slot>
 		</d2l-scroll-wrapper>
 	</template>
@@ -176,13 +176,6 @@ Polymer({
 	],
 	listeners: {
 		'd2l-table-local-observer': '_handleLocalObserver'
-	},
-	properties: {
-		role: {
-			type: String,
-			value: 'table',
-			reflectToAttribute: true
-		}
 	},
 	__applyInQueue: false,
 	attached: function() {
