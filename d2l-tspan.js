@@ -1,9 +1,9 @@
 import '@polymer/polymer/polymer-legacy.js';
 import './d2l-table-observer-behavior.js';
-import './d2l-tspan-resize-observer-polyfill.js';
 import './d2l-td.js';
 import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
 import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
+import 'd2l-resize-aware/d2l-resize-aware.js'
 const $_documentContainer = document.createElement('template');
 
 $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
@@ -58,7 +58,9 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
 		</style>
 		<d2l-td id="cell">
 			<div id="float" class="d2l-tspan-float">
-				<slot></slot>
+				<d2l-resize-aware id="resize-detector">
+					<slot></slot>
+				</d2l-resize-aware>
 			</div>
 		</d2l-td>
 	</template>
@@ -108,19 +110,20 @@ Polymer({
 		}
 	},
 	ready: function() {
-		this._sizeObserver = new ResizeObserver(this._onSizeChanged.bind(this));
+		this._onSizeChanged = this._onSizeChanged.bind(this);
 	},
 	attached: function() {
+		this.$['resize-detector'].addEventListener('d2l-resize-aware-resized', this._onSizeChanged);
 		var slot = dom(this.root).querySelector('#float');
-		this._sizeObserver.observe(slot);
 		if (this.focusedStyling) {
 			slot.addEventListener('focusout', this._boundFocusOutHandler);
 			slot.addEventListener('focusin', this._boundFocusInHandler);
 		}
+		this.root.host.style.height = this.$.float.offsetHeight + 'px';
 	},
 	detached: function() {
+		this.$['resize-detector'].removeEventListener('d2l-resize-aware-resized', this._onSizeChanged);
 		var slot = dom(this.root).querySelector('#float');
-		this._sizeObserver.unobserve(slot);
 		if (this.focusedStyling) {
 			slot.removeEventListener('focusout', this._boundFocusOutHandler);
 			slot.removeEventListener('focusin', this._boundFocusInHandler);
@@ -129,10 +132,8 @@ Polymer({
 	_selectedChanged: function(selected) {
 		this.setAttribute('aria-selected', selected.toString());
 	},
-	_onSizeChanged: function() {
-		if (this.root.host) {
-			this.root.host.style.height = this.$.float.offsetHeight + 'px';
-		}
+	_onSizeChanged: function(event) {
+		this.root.host.style.height = this.$.float.offsetHeight + 'px';
 	},
 	_focusInHandler: function() {
 		if (this.focusedStyling && !this._feedbackInFocus) {
