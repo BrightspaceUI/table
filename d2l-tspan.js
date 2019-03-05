@@ -1,6 +1,6 @@
 import '@polymer/polymer/polymer-legacy.js';
 import './d2l-table-observer-behavior.js';
-import './d2l-tspan-resize-observer-polyfill.js';
+import ResizeObserver from './d2l-tspan-resize-observer.js';
 import './d2l-td.js';
 import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
 import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
@@ -24,7 +24,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
 				width: 100%;
 				padding: 1rem;
 				left: 0;
-				box-sizing: border-box;			
+				box-sizing: border-box;
 				border: var(--d2l-table-border);
 				z-index: 0;
 				border-bottom: none;
@@ -62,7 +62,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
 			</div>
 		</d2l-td>
 	</template>
-	
+
 </dom-module>`;
 
 document.head.appendChild($_documentContainer.content);
