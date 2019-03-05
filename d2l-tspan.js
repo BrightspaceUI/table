@@ -132,7 +132,7 @@ Polymer({
 	_selectedChanged: function(selected) {
 		this.setAttribute('aria-selected', selected.toString());
 	},
-	_onSizeChanged: function(event) {
+	_onSizeChanged: function() {
 		this.root.host.style.height = this.$.float.offsetHeight + 'px';
 	},
 	_focusInHandler: function() {
