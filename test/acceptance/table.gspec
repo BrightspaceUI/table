@@ -147,7 +147,7 @@
 
 		@forEach [${part}.tr-*] as tr
 			${tr}:
-				image file dumps/${path}/objects/${tr}.png, error 6px
+				image file dumps/${path}/objects/${tr}.png, error 17px
 
 	@forEach [rows] as part
 		${part}:
