@@ -55,6 +55,11 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
 				border-bottom-left-radius: var(--d2l-table-border-radius);
 				border-bottom-right-radius: var(--d2l-table-border-radius);
 			}
+
+			d2l-resize-aware {
+				display: block;
+				width: 100%;
+			}
 		</style>
 		<d2l-td id="cell">
 			<div id="float" class="d2l-tspan-float">
