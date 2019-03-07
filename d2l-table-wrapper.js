@@ -118,6 +118,7 @@ import './d2l-scroll-wrapper.js';
 import './d2l-table-col-sort-button.js';
 import './d2l-table-observer-behavior.js';
 import './d2l-table-style.js';
+import './d2l-table-lightweight-style.js';
 import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
 import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 const $_documentContainer = document.createElement('template');

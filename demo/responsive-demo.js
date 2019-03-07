@@ -1,154 +1,156 @@
 import '@polymer/polymer/polymer-legacy.js';
-import '../d2l-table.js';
 import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
-const $_documentContainer = document.createElement('template');
 
-$_documentContainer.innerHTML = `<dom-module id="responsive-demo">
-	<template strip-whitespace="">
-		<style include="d2l-table-style">
-			:host {
-				display: block;
-			}
-		</style>
-		<h3>Small Table</h3>
-		<d2l-table-wrapper><table class="d2l-table" selectable="">
-			<thead>
-			<tr>
-				<th>Column header 1</th>
-				<th>Column header 2</th>
-			</tr>
-			</thead>
-			<tfoot>
-			<tr>
-				<th>Column footer 1</th>
-				<th>Column footer 2</th>
-			</tr>
-			</tfoot>
-			<tbody>
-			<tr>
-				<th>Row 1 Column 1</th>
-				<td>Row 1 Column 2</td>
-			</tr>
-			</tbody>
-		</table></d2l-table-wrapper>
-		<h3>Simple Table</h3>
-		<d2l-table-wrapper><table class="d2l-table" selectable="">
-			<tbody><tr>
-				<th>Column header 1</th>
-				<th>Column header 2</th>
-			</tr>
-			<tr>
-				<th>Row 1 Column 1</th>
-				<td>Row 1 Column 2</td>
-			</tr>
-		</tbody></table></d2l-table-wrapper>
-		<h3>Medium Table</h3>
-		<d2l-table-wrapper><table class="d2l-table" selectable="">
-			<thead>
-			<tr>
-				<th>Column header 1</th>
-				<th>Column header 2</th>
-				<th>Column header 3</th>
-				<th>Column header 4</th>
-			</tr>
-			</thead>
-			<tfoot>
-			<tr>
-				<th>Column footer 1</th>
-				<th>Column footer 2</th>
-				<th>Column footer 3</th>
-				<th>Column footer 4</th>
-			</tr>
-			</tfoot>
-			<tbody>
-			<tr>
-				<th>Row 1 Column 1</th>
-				<td>Row 1 Column 2</td>
-				<td>Row 1 Column 3</td>
-				<td>Row 1 Column 4</td>
-			</tr>
-			</tbody>
-		</table></d2l-table-wrapper>
-		<h3>Large Table</h3>
-		<d2l-table-wrapper><table class="d2l-table" selectable="">
-			<thead>
-			<tr>
-				<th>Column header 1</th>
-				<th>Column header 2</th>
-				<th>Column header 3</th>
-				<th>Column header 4</th>
-				<th>Column header 5</th>
-				<th>Column header 6</th>
-				<th>Column header 7</th>
-				<th>Column header 8</th>
-				<th>Column header 9</th>
-				<th>Column header 10</th>
-				<th>Column header 11</th>
-				<th>Column header 12</th>
-				<th>Column header 13</th>
-				<th>Column header 14</th>
-				<th>Column header 15</th>
-				<th>Column header 16</th>
-				<th>Column header 17</th>
-				<th>Column header 18</th>
-				<th>Column header 19</th>
-				<th>Column header 20</th>
-			</tr>
-			</thead>
-			<tfoot>
-			<tr>
-				<th>Column footer 1</th>
-				<th>Column footer 2</th>
-				<th>Column footer 3</th>
-				<th>Column footer 4</th>
-				<th>Column footer 5</th>
-				<th>Column footer 6</th>
-				<th>Column footer 7</th>
-				<th>Column footer 8</th>
-				<th>Column footer 9</th>
-				<th>Column footer 10</th>
-				<th>Column footer 11</th>
-				<th>Column footer 12</th>
-				<th>Column footer 13</th>
-				<th>Column footer 14</th>
-				<th>Column footer 15</th>
-				<th>Column footer 16</th>
-				<th>Column footer 17</th>
-				<th>Column footer 18</th>
-				<th>Column footer 19</th>
-				<th>Column footer 20</th>
-			</tr>
-			</tfoot>
-			<tbody>
-			<tr>
-				<th>Row 1 Column 1</th>
-				<td>Row 1 Column 2</td>
-				<td>Row 1 Column 3</td>
-				<td>Row 1 Column 4</td>
-				<td>Row 1 Column 5</td>
-				<td>Row 1 Column 6</td>
-				<td>Row 1 Column 7</td>
-				<td>Row 1 Column 8</td>
-				<td>Row 1 Column 9</td>
-				<td>Row 1 Column 10</td>
-				<td>Row 1 Column 11</td>
-				<td>Row 1 Column 12</td>
-				<td>Row 1 Column 13</td>
-				<td>Row 1 Column 14</td>
-				<td>Row 1 Column 15</td>
-				<td>Row 1 Column 16</td>
-				<td>Row 1 Column 17</td>
-				<td>Row 1 Column 18</td>
-				<td>Row 1 Column 19</td>
-				<td>Row 1 Column 20</td>
-			</tr>
-			</tbody>
-		</table></d2l-table-wrapper>
-	</template>
-	
-</dom-module>`;
+export function getTemplate(styleType) {
+	const $_documentContainer = document.createElement('template');
 
-document.head.appendChild($_documentContainer.content);
-Polymer({
-	is: 'responsive-demo'
-});
+	$_documentContainer.innerHTML = `<dom-module id="responsive-demo">
+		<template strip-whitespace="">
+			<style include="${styleType}">
+				:host {
+					display: block;
+				}
+			</style>
+			<h3>Small Table</h3>
+			<d2l-table-wrapper><table class="d2l-table" selectable="">
+				<thead>
+				<tr>
+					<th>Column header 1</th>
+					<th>Column header 2</th>
+				</tr>
+				</thead>
+				<tfoot>
+				<tr>
+					<th>Column footer 1</th>
+					<th>Column footer 2</th>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr>
+					<th>Row 1 Column 1</th>
+					<td>Row 1 Column 2</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<h3>Simple Table</h3>
+			<d2l-table-wrapper><table class="d2l-table" selectable="">
+				<tbody><tr>
+					<th>Column header 1</th>
+					<th>Column header 2</th>
+				</tr>
+				<tr>
+					<th>Row 1 Column 1</th>
+					<td>Row 1 Column 2</td>
+				</tr>
+			</tbody></table></d2l-table-wrapper>
+			<h3>Medium Table</h3>
+			<d2l-table-wrapper><table class="d2l-table" selectable="">
+				<thead>
+				<tr>
+					<th>Column header 1</th>
+					<th>Column header 2</th>
+					<th>Column header 3</th>
+					<th>Column header 4</th>
+				</tr>
+				</thead>
+				<tfoot>
+				<tr>
+					<th>Column footer 1</th>
+					<th>Column footer 2</th>
+					<th>Column footer 3</th>
+					<th>Column footer 4</th>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr>
+					<th>Row 1 Column 1</th>
+					<td>Row 1 Column 2</td>
+					<td>Row 1 Column 3</td>
+					<td>Row 1 Column 4</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+			<h3>Large Table</h3>
+			<d2l-table-wrapper><table class="d2l-table" selectable="">
+				<thead>
+				<tr>
+					<th>Column header 1</th>
+					<th>Column header 2</th>
+					<th>Column header 3</th>
+					<th>Column header 4</th>
+					<th>Column header 5</th>
+					<th>Column header 6</th>
+					<th>Column header 7</th>
+					<th>Column header 8</th>
+					<th>Column header 9</th>
+					<th>Column header 10</th>
+					<th>Column header 11</th>
+					<th>Column header 12</th>
+					<th>Column header 13</th>
+					<th>Column header 14</th>
+					<th>Column header 15</th>
+					<th>Column header 16</th>
+					<th>Column header 17</th>
+					<th>Column header 18</th>
+					<th>Column header 19</th>
+					<th>Column header 20</th>
+				</tr>
+				</thead>
+				<tfoot>
+				<tr>
+					<th>Column footer 1</th>
+					<th>Column footer 2</th>
+					<th>Column footer 3</th>
+					<th>Column footer 4</th>
+					<th>Column footer 5</th>
+					<th>Column footer 6</th>
+					<th>Column footer 7</th>
+					<th>Column footer 8</th>
+					<th>Column footer 9</th>
+					<th>Column footer 10</th>
+					<th>Column footer 11</th>
+					<th>Column footer 12</th>
+					<th>Column footer 13</th>
+					<th>Column footer 14</th>
+					<th>Column footer 15</th>
+					<th>Column footer 16</th>
+					<th>Column footer 17</th>
+					<th>Column footer 18</th>
+					<th>Column footer 19</th>
+					<th>Column footer 20</th>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr>
+					<th>Row 1 Column 1</th>
+					<td>Row 1 Column 2</td>
+					<td>Row 1 Column 3</td>
+					<td>Row 1 Column 4</td>
+					<td>Row 1 Column 5</td>
+					<td>Row 1 Column 6</td>
+					<td>Row 1 Column 7</td>
+					<td>Row 1 Column 8</td>
+					<td>Row 1 Column 9</td>
+					<td>Row 1 Column 10</td>
+					<td>Row 1 Column 11</td>
+					<td>Row 1 Column 12</td>
+					<td>Row 1 Column 13</td>
+					<td>Row 1 Column 14</td>
+					<td>Row 1 Column 15</td>
+					<td>Row 1 Column 16</td>
+					<td>Row 1 Column 17</td>
+					<td>Row 1 Column 18</td>
+					<td>Row 1 Column 19</td>
+					<td>Row 1 Column 20</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+		</template>
+
+	</dom-module>`;
+
+	document.head.appendChild($_documentContainer.content);
+	Polymer({
+		is: 'responsive-demo'
+	});
+}

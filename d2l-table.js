@@ -114,6 +114,7 @@ import './d2l-scroll-wrapper.js';
 import './d2l-table-col-sort-button.js';
 import './d2l-table-observer-behavior.js';
 import './d2l-table-style.js';
+import './d2l-table-lightweight-style.js';
 import './d2l-table-wrapper.js';
 import './d2l-tbody.js';
 import './d2l-td.js';
