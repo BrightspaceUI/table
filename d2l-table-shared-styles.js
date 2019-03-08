@@ -30,7 +30,7 @@ $_documentContainer.innerHTML = `<custom-style>
 				height: 41px; /* min-height to be 62px including border */
 			}
 			--d2l-table-light-cell: {
-				border-bottom: var(--d2l-table-light-border);
+				border-top: var(--d2l-table-light-border);
 				display: table-cell;
 				vertical-align: middle;
 				padding: 0.6rem;
