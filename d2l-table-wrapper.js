@@ -30,6 +30,7 @@
 Attribute | Description
 ----------|-------------
 `selectable` | Add hover effect for rows
+`type` | Table style - "default" or "light"
 
 ### Row Attributes
 
@@ -56,6 +57,10 @@ Custom property | Description | Default
 `--d2l-table-row-background-color-selected` | Selected row background color | `var(--d2l-color-celestine-plus-2)` |
 `--d2l-table-border-overflow` | Border to show when the table overflows | `dashed 1px #d3d9e3` |
 
+`--d2l-table-light-border-color` | Border color for light style | `var(--d2l-color-gypsum)` |
+`--d2l-table-light-border` | Border for light style | `1px solid var(--d2l-table-light-border-color)` |
+`--d2l-table-light-header-background-color` | Header background color (th elements under `<thead>` or `<tr header>`) for light style | `#fff` |
+
 ```
 	<link rel="import" href="d2l-table.html">
 	<custom-style>
@@ -73,11 +78,6 @@ Custom property | Description | Default
 			--d2l-table-border-overflow: none;
 		}
 
-		/* tweak default border radius for all tables on the page. No d2l-table-wrapper
-		   element is required *\/
-		html {
-			--d2l-table-border-radius: 0.4rem;
-		}
 	</style>
 	</custom-style>
 	<d2l-table-wraper class="ugly-table">
@@ -118,7 +118,6 @@ import './d2l-scroll-wrapper.js';
 import './d2l-table-col-sort-button.js';
 import './d2l-table-observer-behavior.js';
 import './d2l-table-style.js';
-import './d2l-table-lightweight-style.js';
 import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
 import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 const $_documentContainer = document.createElement('template');
@@ -174,6 +173,14 @@ Polymer({
 			type: Boolean,
 			value: false,
 			observer: '_applyStickyHeaders',
+			reflectToAttribute: true
+		},
+		/*
+		* Styling type, possible options are "default" or "light"
+		*/
+		type: {
+			type: String,
+			value: 'default',
 			reflectToAttribute: true
 		}
 	},

@@ -10,7 +10,7 @@
 			import { getTemplate } from './responsive-demo.js';
 			window.Polymer = window.Polymer || {};
 			window.Polymer.dom = 'shadow';
-			getTemplate('d2l-table-style');
+			getTemplate('default');
 		</script>
 		<script type="module" src="../../d2l-typography/d2l-typography.js"></script>
 	</head>
@@ -55,7 +55,7 @@ document.body.appendChild($_documentContainer.content);
 const $_documentContainer = document.createElement('template');
 
 $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
-			<h1>Responsive table demo</h1>
+			<h1>Responsive table demo - default</h1>
 			<h2>100%</h2>
 			<responsive-demo class="full-page-width"></responsive-demo>
 			<h2>Tablet</h2>

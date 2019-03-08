@@ -1,12 +1,12 @@
 import '@polymer/polymer/polymer-legacy.js';
 import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
 
-export function getTemplate(styleType) {
+export function getTemplate(tableType) {
 	const $_documentContainer = document.createElement('template');
 
 	$_documentContainer.innerHTML = `<dom-module id="sticky-headers-demo">
 		<template strip-whitespace="">
-			<style include="${styleType}">
+			<style include="d2l-table-style">
 				:host {
 					display: block;
 				}
@@ -17,7 +17,7 @@ export function getTemplate(styleType) {
 			<div id="app">
 
 				<p>Just Headers</p>
-				<d2l-table-wrapper sticky-headers="">
+				<d2l-table-wrapper sticky-headers="" type="${tableType}">
 					<table class="d2l-table" selectable="">
 						<tbody>
 							<tr header="">
@@ -377,7 +377,7 @@ export function getTemplate(styleType) {
 				</d2l-table-wrapper>
 
 				<p>Headers and First Column</p>
-				<d2l-table-wrapper sticky-headers="">
+				<d2l-table-wrapper sticky-headers="" type="${tableType}">
 					<table class="d2l-table" selectable="">
 						<tbody>
 							<tr header="">
@@ -845,7 +845,7 @@ export function getTemplate(styleType) {
 				</d2l-table-wrapper>
 
 				<p>Multi-Header Table</p>
-				<d2l-table-wrapper sticky-headers="">
+				<d2l-table-wrapper sticky-headers="" type="${tableType}">
 					<table id="multi" class="d2l-table" selectable="">
 						<thead>
 							<tr>
@@ -1213,7 +1213,7 @@ export function getTemplate(styleType) {
 				</d2l-table-wrapper>
 
 				<p>Just one row</p>
-				<d2l-table-wrapper sticky-headers="">
+				<d2l-table-wrapper sticky-headers="" type="${tableType}">
 					<table class="d2l-table">
 						<tbody>
 							<tr>
@@ -1226,7 +1226,7 @@ export function getTemplate(styleType) {
 				</d2l-table-wrapper>
 
 				<p>One header and one data table</p>
-				<d2l-table-wrapper sticky-headers="">
+				<d2l-table-wrapper sticky-headers="" type="${tableType}">
 					<table class="d2l-table">
 						<tbody>
 							<tr header="">

@@ -3,7 +3,7 @@
 
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>d2l-table-lightweight-style demo</title>
+		<title>d2l-table type="light" demo</title>
 		<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 		<script type="module">
 			import '../d2l-table.js';
@@ -13,7 +13,7 @@
 
 			const style = html`
 				<custom-style>
-					<style is="custom-style" include="d2l-table-lightweight-style d2l-typography">
+					<style is="custom-style" include="d2l-table-style d2l-typography">
 						html {
 						  font-size: 20px;
 						}
@@ -47,7 +47,7 @@ const $_documentContainer = document.createElement('template');
 $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 			<div class="screenshots screenshot-small">
 			<!-- Using d2l-table-wrapper -->
-				<d2l-table-wrapper><table class="d2l-table">
+				<d2l-table-wrapper type="light"><table class="d2l-table">
 					<thead>
 					<tr>
 						<th>First Name</th>
@@ -72,7 +72,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 
 			<div class="screenshots screenshot-small">
 				<!-- Using d2l-t* elements with header -->
-				<d2l-table>
+				<d2l-table type="light">
 					<d2l-thead>
 					<d2l-tr>
 						<d2l-th>First Name</d2l-th>
@@ -96,7 +96,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 			</div>
 
 			<p>Footer only</p>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<tfoot>
 				<tr>
 					<th>First Name</th>
@@ -119,7 +119,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 			</table></d2l-table-wrapper>
 
 			<p>Caption only</p>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<caption>Caption</caption>
 				<tbody>
 				<tr>
@@ -136,7 +136,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 			</table></d2l-table-wrapper>
 
 			<p>Header and footer</p>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<thead>
 				<tr>
 					<th>First Name</th>
@@ -166,7 +166,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 			</table></d2l-table-wrapper>
 
 			<p>Header and caption</p>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<caption>Caption</caption>
 				<thead>
 				<tr>
@@ -190,7 +190,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 			</table></d2l-table-wrapper>
 
 			<p>Footer and caption</p>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<caption>Caption</caption>
 				<tfoot>
 				<tr>
@@ -214,7 +214,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 			</table></d2l-table-wrapper>
 
 			<p>Header and footer and caption</p>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<caption>Caption</caption>
 				<thead>
 				<tr>
@@ -245,7 +245,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 			</table></d2l-table-wrapper>
 
 			<p>Header only plus colgroup</p>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<colgroup></colgroup>
 				<thead>
 				<tr>
@@ -269,7 +269,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 			</table></d2l-table-wrapper>
 
 			<p>Footer only plus colgroup</p>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<colgroup></colgroup>
 				<tfoot>
 				<tr>
@@ -293,7 +293,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 			</table></d2l-table-wrapper>
 
 			<p>Caption only plus colgroup</p>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<caption>Caption</caption>
 				<colgroup></colgroup>
 				<tbody>
@@ -311,7 +311,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 			</table></d2l-table-wrapper>
 
 			<p>Header and footer plus colgroup</p>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<colgroup></colgroup>
 				<thead>
 				<tr>
@@ -342,7 +342,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 			</table></d2l-table-wrapper>
 
 			<p>Header and caption plus colgroup</p>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<caption>Caption</caption>
 				<colgroup></colgroup>
 				<thead>
@@ -367,7 +367,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 			</table></d2l-table-wrapper>
 
 			<p>Footer and caption plus colgroup</p>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<caption>Caption</caption>
 				<colgroup></colgroup>
 				<tfoot>
@@ -393,7 +393,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 		<div>
 
 			<p>Header and footer and caption plus colgroup</p>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<caption>Caption</caption>
 				<colgroup></colgroup>
 				<thead>
@@ -428,7 +428,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 		<p>Selected and Active Rows</p>
 		<div>
 			<p>Active only</p>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<tbody>
 				<tr active="">
 					<td>Darlene</td>
@@ -448,7 +448,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 				</tbody>
 			</table></d2l-table-wrapper>
 			<br>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<tbody>
 				<tr>
 					<td>Darlene</td>
@@ -468,7 +468,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 				</tbody>
 			</table></d2l-table-wrapper>
 			<br>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<tbody>
 				<tr>
 					<td>Darlene</td>
@@ -489,7 +489,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 			</table></d2l-table-wrapper>
 
 			<p>Selected only</p>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<tbody>
 				<tr selected="">
 					<td>Darlene</td>
@@ -509,7 +509,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 				</tbody>
 			</table></d2l-table-wrapper>
 			<br>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<tbody>
 				<tr>
 					<td>Darlene</td>
@@ -529,7 +529,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 				</tbody>
 			</table></d2l-table-wrapper>
 			<br>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<tbody>
 				<tr>
 					<td>Darlene</td>
@@ -550,7 +550,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 			</table></d2l-table-wrapper>
 
 			<p>Selected and active</p>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<tbody>
 				<tr active="" selected="">
 					<td>Darlene</td>
@@ -569,9 +569,9 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 				</tr>
 				</tbody>
 			</table></d2l-table-wrapper>
-
+			<br>
 			<div class="screenshots screenshot-rows">
-				<d2l-table-wrapper><table class="d2l-table">
+				<d2l-table-wrapper type="light"><table class="d2l-table">
 					<tbody>
 					<tr>
 						<td>Darlene</td>
@@ -592,7 +592,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 				</table></d2l-table-wrapper>
 			</div>
 			<br>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<tbody>
 				<tr>
 					<td>Darlene</td>
@@ -616,7 +616,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 		<p>Sorting icons</p>
 		<div class="screenshots screenshot-sort">
 			<p>Active only</p>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<thead>
 					<tr><th>
 						<d2l-table-col-sort-button>Ascending</d2l-table-col-sort-button>
@@ -645,7 +645,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 
 		<p>Additional mixed styles</p>
 		<div>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<thead>
 					<tr>
 						<th>First Name</th>
@@ -678,7 +678,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 				</tbody>
 			</table></d2l-table-wrapper>
 			<br>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<thead>
 					<tr>
 						<th>First</th>
@@ -722,7 +722,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 			</table></d2l-table-wrapper>
 
 			<p>Small table (header only)</p>
-			<d2l-table-wrapper><table class="d2l-table">
+			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<thead>
 				<tr>
 					<th><d2l-table-col-sort-button>First Name</d2l-table-col-sort-button></th>
@@ -736,7 +736,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 
 			<p>Table with Floating Row Spanning Cells</p>
 			<div style="width: 50%;" class="screenshots screenshot-tspan">
-				<d2l-table>
+				<d2l-table type="light">
 					<d2l-thead>
 					<d2l-tr>
 						<d2l-th>Column One</d2l-th>
@@ -772,7 +772,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 			</div>
 
 			<p>Large Table</p>
-			<d2l-table-wrapper><table class="d2l-table" selectable="">
+			<d2l-table-wrapper type="light"><table class="d2l-table" selectable="">
 				<caption>Table Caption</caption>
 				<colgroup></colgroup>
 				<colgroup></colgroup>
