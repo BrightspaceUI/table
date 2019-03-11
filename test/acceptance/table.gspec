@@ -143,11 +143,11 @@
 
 	@forEach [&imageCompare] as part
 		${part}:
-			image file dumps/${path}/objects/${part}.png, error 12px
+			image file dumps/${path}/objects/${part}.png, error 17px
 
 		@forEach [${part}.tr-*] as tr
 			${tr}:
-				image file dumps/${path}/objects/${tr}.png, error 6px
+				image file dumps/${path}/objects/${tr}.png, error 17px
 
 	@forEach [rows] as part
 		${part}:
