@@ -121,7 +121,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 			d2l-table[type="default"] .d2l-table-row-first > .d2l-table-cell-last {
 				border-top-right-radius: var(--d2l-table-border-radius);
 			}
-			[dir="rtl"] d2l-table-wrapper[type="default"] .d2l-table-row-first > .d2l-table-cell-last:not(.d2l-table-cell-first).
+			[dir="rtl"] d2l-table-wrapper[type="default"] .d2l-table-row-first > .d2l-table-cell-last:not(.d2l-table-cell-first),
 			[dir="rtl"] d2l-table[type="default"] .d2l-table-row-first > .d2l-table-cell-last:not(.d2l-table-cell-first) {
 				border-top-right-radius: 0;
 			}
