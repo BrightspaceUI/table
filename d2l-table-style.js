@@ -444,13 +444,18 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 
 			d2l-table-wrapper[type="default"][sticky-headers] tr[header] th,
 			d2l-table-wrapper[type="default"][sticky-headers] tr[header] td,
-			d2l-table-wrapper[type="default"][sticky-headers] thead tr th,
+			d2l-table-wrapper[type="default"][sticky-headers] thead tr th {
+				position: -webkit-sticky;
+				position: sticky;
+				top: -5px;
+			}
+
 			d2l-table-wrapper[type="light"][sticky-headers] tr[header] th,
 			d2l-table-wrapper[type="light"][sticky-headers] tr[header] td,
 			d2l-table-wrapper[type="light"][sticky-headers] thead tr th {
 				position: -webkit-sticky;
 				position: sticky;
-				top: -5px;
+				top: -3.5px;
 			}
 
 			d2l-table-wrapper[type="default"][sticky-headers] tbody tr:not([header]) td,
