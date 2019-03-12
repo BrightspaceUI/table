@@ -24,11 +24,18 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
 				width: 100%;
 				padding: 1rem;
 				left: 0;
-				box-sizing: border-box;			
-				border: var(--d2l-table-border);
+				box-sizing: border-box;
 				z-index: 0;
+			}
+
+			:host([type="default"]) .d2l-tspan-float {
+				border: var(--d2l-table-border);
 				border-bottom: none;
 				box-shadow: 0 1px 0 var(--d2l-table-border-color);
+			}
+
+			:host([type="light"]) .d2l-tspan-float {
+				border-top: var(--d2l-table-light-border);
 			}
 
 			:host([focused-styling]) .d2l-tspan-float {
@@ -45,15 +52,19 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
 				box-shadow: 0 2px 0 var(--d2l-color-celestine);
 			}
 
-			#float.d2l-table-row-first {
+			:host([type="default"]) #float.d2l-table-row-first {
 				border-top-left-radius: var(--d2l-table-border-radius);
 				border-top-right-radius: var(--d2l-table-border-radius);
 			}
 
-			#float.d2l-table-row-last {
+			:host([type="default"]) #float.d2l-table-row-last {
 				border-bottom: var(--d2l-table-border);
 				border-bottom-left-radius: var(--d2l-table-border-radius);
 				border-bottom-right-radius: var(--d2l-table-border-radius);
+			}
+
+			:host([type="light"]) #float.d2l-table-row-last {
+				border-bottom: var(--d2l-table-light-border);
 			}
 
 			d2l-resize-aware {
@@ -69,7 +80,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-tspan">
 			</div>
 		</d2l-td>
 	</template>
-	
+
 </dom-module>`;
 
 document.head.appendChild($_documentContainer.content);
@@ -90,6 +101,11 @@ Polymer({
 			value: false,
 			reflectToAttribute: true,
 			observer: '_selectedChanged'
+		},
+		type: {
+			type: String,
+			value: 'default',
+			reflectToAttribute: true
 		},
 		_boundFocusOutHandler: {
 			type: Function,

@@ -9,6 +9,11 @@ $_documentContainer.innerHTML = `<custom-style>
 			--d2l-table-border: 1px solid var(--d2l-table-border-color);
 			--d2l-table-border-radius: 0.3rem;
 			--d2l-table-header-background-color: var(--d2l-color-regolith);
+
+			--d2l-table-light-border-color: var(--d2l-color-gypsum);
+			--d2l-table-light-border: 1px solid var(--d2l-table-light-border-color);
+			--d2l-table-light-header-background-color: #fff;
+
 			--d2l-table-body-background-color: #fff;
 			--d2l-table-row-background-color-active: var(--d2l-color-celestine-plus-2);
 			--d2l-table-row-border-color-active-selected: var(--d2l-color-celestine-plus-1);
@@ -16,14 +21,22 @@ $_documentContainer.innerHTML = `<custom-style>
 			--d2l-table-row-border-color-selected: var(--d2l-color-celestine-plus-1);
 			--d2l-table-row-background-color-selected: var(--d2l-color-celestine-plus-2);
 
-			--d2l-table-cell:{
+			--d2l-table-cell: {
 				border-top:var(--d2l-table-border);
 				border-right:var(--d2l-table-border);
 				display:table-cell;
 				vertical-align:middle;
 				padding: 0.5rem 1rem;
 				height: 41px; /* min-height to be 62px including border */
-			};
+			}
+			--d2l-table-light-cell: {
+				border-top: var(--d2l-table-light-border);
+				display: table-cell;
+				vertical-align: middle;
+				padding: 0.6rem;
+				height: 1.15rem; /* min-height to be 48px including border */
+			}
+
 			--d2l-table-header: {
 				color:var(--d2l-color-ferrite);
 				font-size:.7rem;
@@ -32,7 +45,17 @@ $_documentContainer.innerHTML = `<custom-style>
 				margin:1rem 0;
 				padding: 0.5rem 1rem;
 				height: 27px; /* min-height to be 48px including border */
-			};
+			}
+			--d2l-table-light-header: {
+				background-color:var(--d2l-table-light-header-background-color);
+				color: var(--d2l-color-ferrite);
+				font-size: 0.7rem;
+				font-weight: regular
+				line-height: 1rem;
+				padding: 0.6rem;
+				height: 1.15rem; /* min-height to be 48px including border */
+			}
+
 			--d2l-table: {
 				background-color:transparent;
 				border-collapse:separate!important;
@@ -41,21 +64,21 @@ $_documentContainer.innerHTML = `<custom-style>
 				font-size: 0.8rem;
 				font-weight: 400;
 				width:100%;
-			};
+			}
 			--d2l-table-head: {
 				display:table-header-group;
-			};
+			}
 			--d2l-table-foot: {
 				display:table-footer-group;
 				background-color:var(--d2l-table-body-background-color);
-			};
+			}
 			--d2l-table-body: {
 				display: table-row-group;
 				background-color:var(--d2l-table-body-background-color);
-			};
+			}
 			--d2l-table-row: {
 				display:table-row;
-			};
+			}
 		}
 	</style>
 </custom-style>`;

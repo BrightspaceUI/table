@@ -163,6 +163,30 @@ HTML:
 </table></d2l-table-wrapper>
 ```
 
+#### Light Style - Full Design Spec Still In Progress
+
+<img src="/images/light.png?raw=true" width="350">
+
+Lightweight data tables are used to display tabular data in rows when column dividers or individual cell colors are not required. They are best suited for data that is primarily organized by row while still allowing users to order the rows by using column header sorting.
+
+You can get this style by setting the `type` attribute to `light`.
+
+HTML:
+```html
+<!-- use the style include in custom components -->
+<style include="d2l-table-style"></style>
+<d2l-table-wrapper type="light"><table class="d2l-table">
+	...
+</table></d2l-table-wrapper>
+
+<style include="d2l-table-style"></style>
+<d2l-table type="light">
+	<d2l-tbody>
+		...
+	</d2l-tbody>
+</d2l-table>
+```
+
 ### Sticky Headers
 
 Note: This feature is only works with browsers that support `position: sticky` which currently includes:
