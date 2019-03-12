@@ -6,36 +6,27 @@ const $_documentContainer = document.createElement('template');
 $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 	<template>
 		<style>
-			d2l-table-wrapper[type="default"] .d2l-table,
-			d2l-table-wrapper[type="light"] .d2l-table {
+			.d2l-table {
 				@apply --d2l-table;
 			}
 
-			d2l-table-wrapper[type="default"] .d2l-table > thead,
-			d2l-table[type="default"] d2l-thead,
-			d2l-table-wrapper[type="light"] .d2l-table > thead,
-			d2l-table[type="light"] d2l-thead {
+			.d2l-table > thead,
+			d2l-thead {
 				@apply --d2l-table-head;
 			}
 
-			d2l-table-wrapper[type="default"] .d2l-table > tfoot,
-			d2l-table[type="default"] d2l-tfoot,
-			d2l-table-wrapper[type="light"] .d2l-table > tfoot,
-			d2l-table[type="light"] d2l-tfoot {
+			.d2l-table > tfoot,
+			d2l-tfoot {
 				@apply --d2l-table-foot;
 			}
 
-			d2l-table-wrapper[type="default"] .d2l-table > tbody,
-			d2l-table[type="default"] d2l-tbody,
-			d2l-table-wrapper[type="light"] .d2l-table > tbody,
-			d2l-table[type="light"] d2l-tbody {
+			.d2l-table > tbody,
+			d2l-tbody {
 				@apply --d2l-table-body;
 			}
 
-			d2l-table-wrapper[type="default"] .d2l-table > * > tr,
-			d2l-table[type="default"] d2l-tr,
-			d2l-table-wrapper[type="light"] .d2l-table > * > tr,
-			d2l-table[type="light"] d2l-tr {
+			.d2l-table > * > tr,
+			d2l-tr {
 				@apply --d2l-table-row;
 			}
 
