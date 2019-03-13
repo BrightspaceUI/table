@@ -50,7 +50,7 @@ $_documentContainer.innerHTML = `<custom-style>
 				background-color:var(--d2l-table-light-header-background-color);
 				color: var(--d2l-color-ferrite);
 				font-size: 0.7rem;
-				font-weight: regular
+				font-weight: normal;
 				line-height: 1rem;
 				padding: 0.6rem;
 				height: 1.15rem; /* min-height to be 48px including border */
