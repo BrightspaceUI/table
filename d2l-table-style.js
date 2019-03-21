@@ -18,11 +18,13 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 			.d2l-table > tfoot,
 			d2l-tfoot {
 				@apply --d2l-table-foot;
+				background-color:var(--d2l-table-body-background-color);
 			}
 
 			.d2l-table > tbody,
 			d2l-tbody {
 				@apply --d2l-table-body;
+				background-color:var(--d2l-table-body-background-color);
 			}
 
 			.d2l-table > * > tr,
@@ -35,6 +37,8 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 			d2l-table[type="default"] d2l-td,
 			d2l-table[type="default"] d2l-th {
 				@apply --d2l-table-cell;
+				border-top:var(--d2l-table-border);
+				border-right:var(--d2l-table-border);
 				font-weight: inherit;
 				text-align: left;
 			}
@@ -44,6 +48,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 			d2l-table[type="light"] d2l-td,
 			d2l-table[type="light"] d2l-th {
 				@apply --d2l-table-light-cell;
+				border-top: var(--d2l-table-light-border);
 				font-weight: inherit;
 				text-align: left;
 			}
@@ -76,6 +81,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 			d2l-table[type="default"] d2l-tr[header] > d2l-th {
 				font-family: inherit;
 				@apply --d2l-table-header;
+				background-color:var(--d2l-table-header-background-color);
 			}
 
 			d2l-table-wrapper[type="light"] .d2l-table > thead > tr > th,
@@ -84,6 +90,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 			d2l-table[type="light"] d2l-tr[header] > d2l-th {
 				font-family: inherit;
 				@apply --d2l-table-light-header;
+				background-color:var(--d2l-table-light-header-background-color);
 			}
 
 			d2l-table-wrapper[type="light"] .d2l-table > thead > tr.d2l-table-row-first > th,

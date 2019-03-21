@@ -22,15 +22,12 @@ $_documentContainer.innerHTML = `<custom-style>
 			--d2l-table-row-background-color-selected: var(--d2l-color-celestine-plus-2);
 
 			--d2l-table-cell: {
-				border-top:var(--d2l-table-border);
-				border-right:var(--d2l-table-border);
 				display:table-cell;
 				vertical-align:middle;
 				padding: 0.5rem 1rem;
 				height: 41px; /* min-height to be 62px including border */
 			}
 			--d2l-table-light-cell: {
-				border-top: var(--d2l-table-light-border);
 				display: table-cell;
 				vertical-align: middle;
 				padding: 0.6rem;
@@ -41,13 +38,11 @@ $_documentContainer.innerHTML = `<custom-style>
 				color:var(--d2l-color-ferrite);
 				font-size:.7rem;
 				line-height:1rem;
-				background-color:var(--d2l-table-header-background-color);
 				margin:1rem 0;
 				padding: 0.5rem 1rem;
 				height: 27px; /* min-height to be 48px including border */
 			}
 			--d2l-table-light-header: {
-				background-color:var(--d2l-table-light-header-background-color);
 				color: var(--d2l-color-ferrite);
 				font-size: 0.7rem;
 				font-weight: normal;
@@ -70,11 +65,9 @@ $_documentContainer.innerHTML = `<custom-style>
 			}
 			--d2l-table-foot: {
 				display:table-footer-group;
-				background-color:var(--d2l-table-body-background-color);
 			}
 			--d2l-table-body: {
 				display: table-row-group;
-				background-color:var(--d2l-table-body-background-color);
 			}
 			--d2l-table-row: {
 				display:table-row;
