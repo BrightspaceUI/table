@@ -39,7 +39,7 @@
     "eslint": "^4.15.0",
     "eslint-config-brightspace": "^0.4.0",
     "eslint-plugin-html": "^4.0.1",
-    "galenframework": "^2.3.6",
+    "galenframework": "^2.4.4",
     "polymer-cli": "^1.9.5",
     "rimraf": "^2.6.2",
     "sauce-connect-launcher": "^1.2.3",

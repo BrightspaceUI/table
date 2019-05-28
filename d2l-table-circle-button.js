@@ -41,14 +41,12 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-circle-button">
 			}
 			button.d2l-table-circle-button:hover,
 			button.d2l-table-circle-button:focus {
+				border-color: var(--d2l-color-celestine);
+				box-shadow: 0 2px 14px 1px rgba(0,0,0,0.06);
 				outline-style: none;
 			}
 			button.d2l-table-circle-button > d2l-icon {
 				transition: color 0.3s ease;
-			}
-			button.d2l-table-circle-button:hover > d2l-icon,
-			button.d2l-table-circle-button:focus > d2l-icon {
-				color: var(--d2l-color-celestine-minus-1);
 			}
 		</style>
 		<button class="d2l-table-circle-button" type="button">
