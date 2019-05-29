@@ -99,7 +99,7 @@
 			tr-*          tr
 		foot              tfoot
 			tr-*          tr
-			
+
 	table-with-tspan	.screenshot-tspan
 		tr-*      	    d2l-tr,d2l-tspan
 
@@ -171,19 +171,19 @@
 		@on sticky
 			wide.scroll-wrapper.right-action:
 				inside partly wide 10px top, -15px left
-				image file dumps/${path}/objects/wide.scroll-wrapper.right-action.png, error 20px
+				image file dumps/${path}/objects/wide.scroll-wrapper.right-action.png, file dumps/${path}/objects/wide.scroll-wrapper.right-action-2.png, error 20px, tolerance 40
 
 			d2l-wide.scroll-wrapper.right-action:
 				inside partly d2l-wide 10px top, -15px left
-				image file dumps/${path}/objects/d2l-wide.scroll-wrapper.right-action.png, error 20px
+				image file dumps/${path}/objects/d2l-wide.scroll-wrapper.right-action.png, file dumps/${path}/objects/wide.scroll-wrapper.right-action-2.png, error 20px, tolerance 40
 	@on ltr
 		wide.scroll-wrapper.right-action:
 			inside partly wide 10px top, 275px left
-			image file dumps/${path}/objects/wide.scroll-wrapper.right-action.png, error 20px
+			image file dumps/${path}/objects/wide.scroll-wrapper.right-action.png, file dumps/${path}/objects/wide.scroll-wrapper.right-action-2.png, error 20px, tolerance 40
 
 		d2l-wide.scroll-wrapper.right-action:
 			inside partly d2l-wide 10px top, 275px left
-			image file dumps/${path}/objects/d2l-wide.scroll-wrapper.right-action.png, error 20px
+			image file dumps/${path}/objects/d2l-wide.scroll-wrapper.right-action.png, file dumps/${path}/objects/wide.scroll-wrapper.right-action-2.png, error 20px, tolerance 40
 
 	small.head:
 		above small.body 0px
@@ -204,7 +204,7 @@
 
 	d2l-small.foot:
 		aligned horizontally bottom d2l-small
-		
+
 	@forEach [sort] as part
 		${part}.sort-button-1.sort-icon, ${part}.sort-button-2.sort-icon:
 			# The 1px is to compensate for the border
