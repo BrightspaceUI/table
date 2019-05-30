@@ -7,20 +7,20 @@ var browsers = {
 	chromeWindows: new SauceBrowserFactory({
 		browser: 'Chrome',
 		platform: 'WIN10',
-		size: '1400x900',
 		tags: ['sticky'],
 		desiredCapabilities: {
-			seleniumVersion: '3.14.0'
+			seleniumVersion: '3.14.0',
+			screenResolution: '1600x1200'
 		}
 	}),
 	ie11Windows: new SauceBrowserFactory({
 		browser: 'internet explorer',
 		version: '11',
 		platform: 'WIN10',
-		size: '1400x900',
 		tags: ['sticky'],
 		desiredCapabilities: {
-			seleniumVersion: '3.14.0'
+			seleniumVersion: '3.14.0',
+			screenResolution: '1600x1200'
 		}
 	}),
 	// getSize doesn't work in Edge 18: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/20071753/
@@ -31,7 +31,8 @@ var browsers = {
 		browserVersion: '17.17134',
 		tags: ['no-d2l-shadow'],
 		desiredCapabilities: {
-			seleniumVersion: '3.14.0'
+			seleniumVersion: '3.14.0',
+			screenResolution: '1600x1200'
 		}
 	}),
 	chromeMac: new SauceBrowserFactory({
@@ -39,13 +40,13 @@ var browsers = {
 		platform: 'SIERRA',
 		tags: ['sticky'],
 		desiredCapabilities: {
-			seleniumVersion: '3.14.0'
+			seleniumVersion: '3.14.0',
+			screenResolution: '1600x1200'
 		}
 	}),
 	safariMac: new SauceBrowserFactory({
 		browser: 'Safari',
 		platform: 'EL_CAPITAN',
-		size: '1400x900',
 		tags: ['no-d2l-shadow', 'sticky']
 	})
 };
