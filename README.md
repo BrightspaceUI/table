@@ -265,8 +265,8 @@ To update the screenshots, run `npm run dump`. The screenshots will be placed un
 
 [bower-url]: http://bower.io/search/?q=d2l-table
 [bower-image]: https://img.shields.io/bower/v/d2l-table.svg
-[ci-url]: https://travis-ci.org/BrightspaceUI/table
-[ci-image]: https://img.shields.io/travis-ci/BrightspaceUI/table/master.svg
+[ci-url]: https://travis-ci.com/BrightspaceUI/table
+[ci-image]: https://travis-ci.com/BrightspaceUI/table.svg?branch=master
 [dependencies-url]: https://david-dm.org/BrightspaceUI/table
 [dependencies-image]: https://img.shields.io/david/BrightspaceUI/table.svg
 [Galen]: http://galenframework.com/
