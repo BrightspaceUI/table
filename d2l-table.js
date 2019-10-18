@@ -138,6 +138,9 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table">
 				--d2l-table-header-background-color: var(--d2l-color-regolith);
 				--d2l-table-border-overflow: dashed 1px #d3d9e3;
 			}
+			:host([hidden]) {
+				display: none;
+			}
 			d2l-scroll-wrapper {
 				--d2l-scroll-wrapper-h-scroll: {
 					border-left: var(--d2l-table-border-overflow);
@@ -165,7 +168,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table">
 			<slot id="slot"></slot>
 		</d2l-scroll-wrapper>
 	</template>
-	
+
 </dom-module>`;
 
 document.head.appendChild($_documentContainer.content);
