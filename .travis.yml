@@ -1,38 +1,30 @@
-cache:
-  directories:
-    - "$HOME/.npm"
-    - "$HOME/.cache/bower"
-
-stages:
-  - test
-  - name: galen test
-    if: type = pull_request
-
-jobs:
-  include:
-    - stage: test
-      language: node_js
-      node_js:
-        - 10.11.0
-      install:
-        - npm ci
-      script:
-        - concurrently -p name -n lint,polymer:test "npm run lint" "polymer test --skip-plugin local"
-    - stage: galen test
-      language: node_js
-      node_js:
-        - 10.11.0
-      addons:
-        apt:
-          packages:
-          - oracle-java8-installer
-      install:
-        - npm ci
-      before_script:
-        - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-        - export PATH=$JAVA_HOME/bin:$PATH
-      script:
-        - npm run test:galen:sauce
-      after_script:
-        - pip install --user awscli
-        - aws s3 sync reports s3://farnsworth-travis-ci-artifacts/BrightspaceUI/table/$TRAVIS_BUILD_NUMBER
+language: node_js
+node_js: node
+addons:
+  chrome: stable
+script:
+- npm run lint
+- |
+  if [ $TRAVIS_PULL_REQUEST != false ] && [ $TRAVIS_SECURE_ENV_VARS == true ]; then
+    echo "Pull request with secure environment variables, running Sauce tests...";
+    npm run test:polymer:sauce || travis_terminate 1;
+  else
+    echo "Not a pull request and/or no secure environment variables, running headless tests...";
+    npm run test:polymer:local || travis_terminate 1;
+  fi
+after_success:
+- frauci-update-version -d=skip && export TRAVIS_TAG=$(frauci-get-version)
+deploy:
+  provider: releases
+  api_key: "$GITHUB_RELEASE_TOKEN"
+  on:
+    tags: true
+env:
+  global:
+  - OWNER_NAME=BrightspaceUI
+  - REPO_NAME=table
+  - SAUCE_USERNAME: Desire2Learn
+  # GITHUB_RELEASE_TOKEN
+  - secure: Su8UzatWB38lxteNZ4M/EEJKH/gposD0TrCdsTVzXgOpEprvpMCbhfEE/khV/wksaDcfsk5NRO3yFQ6TylWwPVpLIvQysEve2UmcfSTGHn1YH5+LxzpAlnMYSEYYjZO+DhLk/UeY/pt/0zDliOLL/DyR1XgC7t+z1kRP1vvd5OUuecY2GLZ4idWLOIaXmaaWCEyRGe+AkZiY+VgNJ2ewEypb2/1zBeyszvfvLLPpVBgIRjYpFP8n5qHmyHDCJMoj7G20YTw/Zo8PoyQWeW+0Mi7Yi3q8p+6w31EhgABUPXpNB8oHqmwyWMngOJdIywEDywGUO70vYPelT5dckB+nkJTSJvJP4aL64jJHMTlsasyZGA2I2S8ZxTofNiPIAjiqsLnEMIAljEtfaGHjMrJ5Pu5c+RTiOsVuDWSqPEAtoR9Xklw4rJwJbYA+t/X+DnM+qEU+qiXGnM9dcCMJmUqbPFi2iTNWZLg+/UIPM2yWMgFMhUgvOOAArY+ujvdSAkjnXzPetTfiA7sga9lzIIPMihXxARHNmMYms8EKqSvnrVPI4DoRK8/4h2hP2VCrRAOXKQtMOhg+3TreAPGl6YSEoJgIduxDzLda6tXb100lzVY5aHDI7eo6XioFhR7K3jX1rHKbwuXbbiJkKBrMwjdHk9t2AbWvLt1rm2pXlptu9Dw=
+  # SAUCE_ACCESS_KEY
+  - secure: uobQ18PoMjfFE0qVwai+9QqXagiQOLAyQ+/EKTacPNigHoMnjdnloIfQnIeKJfdAZkv/BJAnBnD+oOzlNIBg9oAzOXV2ZrgZSnz9hodVdSKcKd9P0lX9PlzHMC+QyLfS5AHWbAE+WQH6j5lRmXXK+BAWu4t+q604O3jQIcIIPX3Cvocwo1eirYK0DAIypAf6wsaDplUxYG9N9P6HklPsAyOnMCaQJsJu804PsJCJscVP6ojW8bub/RNFWOAmk3oUzDwtdaQfIdsU/580gXlS+nC5H9CRdVtllKHIYzGsoh8M7sm0ht4wg6BJ7kCE0anwQNAI9h0+jXP7k0aRSjVWgoGwyW8BAQROIs6sxIokgJitesPZ1xIuSZMC3bK2u8XPNV3l2Hr1nN5WIvz5fnVHWTkXaL+l71w5old0EKkJfK+pTa72TDGLiVLx9GjwUjaMk8iYCdPOWPQKIvOLBga7SXQeQ5feSg6iy4ndS1zEMCuWpawplXOuC3Iaipt9AMakTMEGuUy1eWLUMDAdRKYya5763jyyhQEvdnsf8JN6jZJXYEeSgxS/kKEOdY9RRmJUFttvDII2dVyn/zjwAqZv+IiRXnn7K6YegsaGcPP3LVZ6L9rlRbflGJ6C7odUqcNWk9EfRTKKN24/EuLHHvHGNHaOZ+eOIDLncAQJeMBSVFI=
