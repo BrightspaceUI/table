@@ -249,26 +249,9 @@ To lint AND run local unit tests:
 npm test
 ```
 
-### Galen
-
-The [Galen][Galen] tests check layout and look of table. Galen is not meant to test functionality. For example, these tests will fail if the border-radius changes. The tests use a combination of screenshots and layout assertions. The results of the tests can be found in *reports/d2l-table/report.html*
-
-__Testing with galen does not currently work on Windows. Use Docker or a VM until it's fixed.__
-
-To update the screenshots, run `npm run dump`. The screenshots will be placed under *dumps/d2l-table/objects*
-
-* run the tests with `npm run test:galen`
-* [galen.config](galen.config) can be used to change the browser that is being tested. See the [config documentation][GalenConfig]
-* [table.gspec](table.gspec) contains the actual assertions. Documentation can be found [here][GalenSpec]
-
-**Note for Windows users:** If you experience an error executing chromedriver (`CreateProcess error=193, %1 is not a valid Win32 application`) you can work around this by deleting the file `node_modules/.bin/chromedriver`. Once removed, Galen will then use the `chromedriver.cmd` file which should work correctly.
-
 [bower-url]: http://bower.io/search/?q=d2l-table
 [bower-image]: https://img.shields.io/bower/v/d2l-table.svg
 [ci-url]: https://travis-ci.com/BrightspaceUI/table
 [ci-image]: https://travis-ci.com/BrightspaceUI/table.svg?branch=master
 [dependencies-url]: https://david-dm.org/BrightspaceUI/table
 [dependencies-image]: https://img.shields.io/david/BrightspaceUI/table.svg
-[Galen]: http://galenframework.com/
-[GalenConfig]: http://galenframework.com/docs/getting-started-configuration/
-[GalenSpec]: http://galenframework.com/docs/reference-galen-spec-language-guide/
