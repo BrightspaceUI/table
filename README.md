@@ -2,8 +2,6 @@
 
 # d2l-table
 
-![Build status](https://github.com/BrightspaceUI/table/workflows/CI/badge.svg)
-
 Tables are styled like this:
 
 A [Polymer](https://www.polymer-project.org)-based web component for D2L tables, which includes styling for tables.
