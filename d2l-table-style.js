@@ -361,6 +361,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 				position: -webkit-sticky;
 				position: sticky;
 				top: 0;
+				z-index: 3;
 			}
 
 			d2l-table-wrapper[type="default"][sticky-headers] tr[header] th,
@@ -426,6 +427,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 				top: -5px;
 				border-left: none;
 				border-top: none;
+				z-index: 3;
 			}
 
 			d2l-table-wrapper[type="default"][sticky-headers] tr[header]:not(.d2l-table-row-first) th,
@@ -446,6 +448,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 				position: -webkit-sticky;
 				position: sticky;
 				top: -5px;
+				z-index: 3;
 			}
 
 			d2l-table-wrapper[type="light"][sticky-headers] tr[header] th,
@@ -454,6 +457,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 				position: -webkit-sticky;
 				position: sticky;
 				top: -3.5px;
+				z-index: 3;
 			}
 
 			d2l-table-wrapper[type="default"][sticky-headers] tbody tr:not([header]) td,
