@@ -39,7 +39,6 @@ Attribute | Description
 `selected` | Apply selected style
 `active` | Apply active style
 `header` | Apply header style
-`last-row` | This row is to be treated as the bottom row in the case where CSS can't detect it. This should only happen if the last row(s) are hidden from view, and the table has no footer
 
 ## Styling
 
