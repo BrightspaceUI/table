@@ -34,7 +34,7 @@ $_documentContainer.innerHTML = `<custom-style>
 			--d2l-table-header: {
 				color:var(--d2l-color-ferrite);
 				font-size:.7rem;
-				line-height:1rem;
+				line-height: 0.9rem;
 				margin:1rem 0;
 				padding: 0.5rem 1rem;
 				height: 27px; /* min-height to be 48px including border */
@@ -43,7 +43,7 @@ $_documentContainer.innerHTML = `<custom-style>
 				color: var(--d2l-color-ferrite);
 				font-size: 0.7rem;
 				font-weight: normal;
-				line-height: 1rem;
+				line-height: 0.9rem;
 				padding: 0.6rem;
 				height: 1.15rem; /* min-height to be 48px including border */
 			}
