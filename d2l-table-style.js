@@ -164,14 +164,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 				border-bottom: var(--d2l-table-light-border);
 			}
 
-			/* un-selected hover rows */
-			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr:not([selected]):hover,
-			d2l-table[type="default"][selectable] d2l-tbody > d2l-tr:not([selected]):hover,
-			d2l-table-wrapper[type="light"] .d2l-table[selectable] > tbody > tr:not([selected]):hover,
-			d2l-table[type="light"][selectable] d2l-tbody > d2l-tr:not([selected]):hover {
-				background-color: var(--d2l-table-row-background-color-active);
-			}
-
 			/* selected rows */
 
 			d2l-table-wrapper[type="default"] .d2l-table > tbody > tr[selected],
@@ -226,62 +218,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 			d2l-table[type="light"] .d2l-table-row-last[selected] > d2l-td,
 			d2l-table[type="light"] .d2l-table-row-last[selected] > d2l-th {
 				border-bottom-color:var(--d2l-table-row-border-color-selected);
-			}
-
-			/* selectable + selected + hover rows */
-
-			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover,
-			d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover,
-			d2l-table-wrapper[type="light"] .d2l-table[selectable] > tbody > tr[selected]:hover,
-			d2l-table[type="light"][selectable] d2l-tbody > d2l-tr[selected]:hover {
-				background-color:var(--d2l-table-row-background-color-active-selected);
-			}
-
-			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover > .d2l-table-cell-last,
-			d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover > .d2l-table-cell-last,
-			[dir="rtl"] d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover > .d2l-table-cell-first,
-			[dir="rtl"] d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover > .d2l-table-cell-first {
-				border-right-color: var(--d2l-table-row-border-color-active-selected);
-			}
-			[dir="rtl"] d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover > .d2l-table-cell-last,
-			[dir="rtl"] d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover > .d2l-table-cell-last {
-				border-right-color: var(--d2l-table-border-color);
-			}
-			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover > .d2l-table-cell-first,
-			d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover > .d2l-table-cell-first,
-			[dir="rtl"] d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover > .d2l-table-cell-last,
-			[dir="rtl"] d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover > .d2l-table-cell-last {
-				border-left-color: var(--d2l-table-row-border-color-active-selected);
-			}
-
-			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover > td,
-			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover > th,
-			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover + tr > td,
-			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover + tr > th,
-			d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover > d2l-td,
-			d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover > d2l-th,
-			d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover + d2l-tr > d2l-td,
-			d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover + d2l-tr > d2l-th,
-			d2l-table-wrapper[type="light"] .d2l-table[selectable] > tbody > tr[selected]:hover > td,
-			d2l-table-wrapper[type="light"] .d2l-table[selectable] > tbody > tr[selected]:hover > th,
-			d2l-table-wrapper[type="light"] .d2l-table[selectable] > tbody > tr[selected]:hover + tr > td,
-			d2l-table-wrapper[type="light"] .d2l-table[selectable] > tbody > tr[selected]:hover + tr > th,
-			d2l-table[type="light"][selectable] d2l-tbody > d2l-tr[selected]:hover > d2l-td,
-			d2l-table[type="light"][selectable] d2l-tbody > d2l-tr[selected]:hover > d2l-th,
-			d2l-table[type="light"][selectable] d2l-tbody > d2l-tr[selected]:hover + d2l-tr > d2l-td,
-			d2l-table[type="light"][selectable] d2l-tbody > d2l-tr[selected]:hover + d2l-tr > d2l-th {
-				border-top-color:var(--d2l-table-row-border-color-active-selected);
-			}
-
-			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > .d2l-table-row-last[selected]:hover > td,
-			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > .d2l-table-row-last[selected]:hover > th,
-			d2l-table[type="default"][selectable] d2l-tbody > .d2l-table-row-last[selected]:hover > d2l-td,
-			d2l-table[type="default"][selectable] d2l-tbody > .d2l-table-row-last[selected]:hover > d2l-th,
-			d2l-table-wrapper[type="light"] .d2l-table[selectable] > tbody > .d2l-table-row-last[selected]:hover > td,
-			d2l-table-wrapper[type="light"] .d2l-table[selectable] > tbody > .d2l-table-row-last[selected]:hover > th,
-			d2l-table[type="light"][selectable] d2l-tbody > .d2l-table-row-last[selected]:hover > d2l-td,
-			d2l-table[type="light"][selectable] d2l-tbody > .d2l-table-row-last[selected]:hover > d2l-th {
-				border-bottom-color:var(--d2l-table-row-border-color-active-selected);
 			}
 
 			/* no-column-border */

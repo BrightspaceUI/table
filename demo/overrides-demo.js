@@ -32,7 +32,7 @@ class OverridesDemo extends PolymerElement {
 			</custom-style>
 			<div class="screenshots screenshot-small">
 				<!-- header only -->
-				<d2l-table-wrapper><table class="d2l-table" selectable>
+				<d2l-table-wrapper><table class="d2l-table">
 					<thead>
 					<tr>
 						<th>First Name</th>
@@ -56,7 +56,7 @@ class OverridesDemo extends PolymerElement {
 			</div>
 			<div class="screenshots screenshot-small">
 				<!-- using d2l-t* elements -->
-				<d2l-table selectable>
+				<d2l-table>
 					<d2l-thead>
 					<d2l-tr>
 						<d2l-th>First Name</d2l-th>
@@ -81,7 +81,7 @@ class OverridesDemo extends PolymerElement {
 			<br>
 			<div class="screenshots screenshot-small">
 				<!-- header only -->
-				<d2l-table-wrapper type="light"><table class="d2l-table" selectable>
+				<d2l-table-wrapper type="light"><table class="d2l-table">
 					<thead>
 					<tr>
 						<th>First Name</th>
@@ -105,7 +105,7 @@ class OverridesDemo extends PolymerElement {
 			</div>
 			<div class="screenshots screenshot-small">
 				<!-- using d2l-t* elements -->
-				<d2l-table type="light" selectable>
+				<d2l-table type="light">
 					<d2l-thead>
 					<d2l-tr>
 						<d2l-th>First Name</d2l-th>

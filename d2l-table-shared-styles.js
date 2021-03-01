@@ -15,9 +15,6 @@ $_documentContainer.innerHTML = `<custom-style>
 			--d2l-table-light-header-background-color: #fff;
 
 			--d2l-table-body-background-color: #fff;
-			--d2l-table-row-background-color-active: var(--d2l-color-celestine-plus-2);
-			--d2l-table-row-border-color-active-selected: var(--d2l-color-celestine-plus-1);
-			--d2l-table-row-background-color-active-selected: #EBF5FC;
 			--d2l-table-row-border-color-selected: var(--d2l-color-celestine-plus-1);
 			--d2l-table-row-background-color-selected: var(--d2l-color-celestine-plus-2);
 

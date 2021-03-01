@@ -29,7 +29,6 @@
 
 Attribute | Description
 ----------|-------------
-`selectable` | Add hover effect for rows
 `type` | Table style - "default" or "light"
 
 ### Row Attributes
