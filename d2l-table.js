@@ -35,7 +35,6 @@ Attribute | Description
 Attribute | Description
 ----------|-------------
 `selected` | Apply selected style
-`active` | Apply active style
 `header` | Apply header style
 
 ## Styling
@@ -47,10 +46,7 @@ Custom property | Description | Default
 `--d2l-table-border` | Border | `1px solid var(--d2l-table-border-color);` |
 `--d2l-table-header-background-color` | Header background color (th elements under `<thead>` or `<tr header>`) | `var(--d2l-color-regolith);` |
 `--d2l-table-body-background-color` | Body background color (non-header) | `#fff` |
-`--d2l-table-row-background-color-active` | Active row background color | `var(--d2l-color-celestine-plus-2)` |
 `--d2l-table-row-border-color-selected` | Selected row border color | `var(--d2l-color-celestine-plus-1)` |
-`--d2l-table-row-border-color-active-selected` | Active and Selected row border color | `var(--d2l-color-celestine-plus-1)` |
-`--d2l-table-row-background-color-active-selected` | Active and Selected row background color | `#EBF5FC` |
 `--d2l-table-row-background-color-selected` | Selected row background color | `var(--d2l-color-celestine-plus-2)` |
 `--d2l-table-border-overflow` | Border to show when the table overflows | `dashed 1px #d3d9e3` |
 
@@ -67,9 +63,6 @@ Custom property | Description | Default
 			--d2l-table-border-radius: 0;
 			--d2l-table-header-background-color: grey;
 			--d2l-table-body-background-color: blue;
-			--d2l-table-row-background-color-active: black;
-			--d2l-table-row-border-color-active-selected: red;
-			--d2l-table-row-background-color-active-selected: red;
 			--d2l-table-row-border-color-selected: black;
 			--d2l-table-row-background-color-selected: black;
 			--d2l-table-border-overflow: none;
