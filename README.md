@@ -120,12 +120,6 @@ HTML:
 	<tr selected>
 		<td>selected</td>
 	</tr>
-	<tr active>
-		<td>active</td>
-	</tr>
-	<tr active selected>
-		<td>active and selected</td>
-	</tr>
 </table></d2l-table-wrapper>
 ```
 

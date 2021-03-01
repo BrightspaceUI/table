@@ -21,9 +21,6 @@ class OverridesDemo extends PolymerElement {
 					--d2l-table-light-border: 3px solid blue;
 					--d2l-table-light-header-background-color: lavender;
 
-					--d2l-table-row-background-color-active: deeppink;
-					--d2l-table-row-border-color-active-selected: darkgreen;
-					--d2l-table-row-background-color-active-selected: seagreen;
 					--d2l-table-row-border-color-selected: red;
 					--d2l-table-row-background-color-selected: salmon;
 				}

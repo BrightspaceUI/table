@@ -164,14 +164,10 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 				border-bottom: var(--d2l-table-light-border);
 			}
 
-			/* active rows or un-selected hover rows */
-			d2l-table-wrapper[type="default"] .d2l-table > tbody > tr[active],
+			/* un-selected hover rows */
 			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr:not([selected]):hover,
-			d2l-table[type="default"] d2l-tbody > d2l-tr[active],
 			d2l-table[type="default"][selectable] d2l-tbody > d2l-tr:not([selected]):hover,
-			d2l-table-wrapper[type="light"] .d2l-table > tbody > tr[active],
 			d2l-table-wrapper[type="light"] .d2l-table[selectable] > tbody > tr:not([selected]):hover,
-			d2l-table[type="light"] d2l-tbody > d2l-tr[active],
 			d2l-table[type="light"][selectable] d2l-tbody > d2l-tr:not([selected]):hover {
 				background-color: var(--d2l-table-row-background-color-active);
 			}
@@ -232,93 +228,55 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 				border-bottom-color:var(--d2l-table-row-border-color-selected);
 			}
 
-			/* active + selected rows */
+			/* selectable + selected + hover rows */
 
-			d2l-table-wrapper[type="default"] .d2l-table > tbody > tr[active][selected],
 			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover,
-			d2l-table[type="default"] d2l-tbody > d2l-tr[active][selected],
 			d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover,
-			d2l-table-wrapper[type="light"] .d2l-table > tbody > tr[active][selected],
 			d2l-table-wrapper[type="light"] .d2l-table[selectable] > tbody > tr[selected]:hover,
-			d2l-table[type="light"] d2l-tbody > d2l-tr[active][selected],
 			d2l-table[type="light"][selectable] d2l-tbody > d2l-tr[selected]:hover {
 				background-color:var(--d2l-table-row-background-color-active-selected);
 			}
 
-			d2l-table-wrapper[type="default"] .d2l-table > tbody > tr[active][selected] > .d2l-table-cell-last,
-			d2l-table[type="default"] d2l-tbody > d2l-tr[active][selected] > .d2l-table-cell-last,
 			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover > .d2l-table-cell-last,
 			d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover > .d2l-table-cell-last,
-			[dir="rtl"] d2l-table-wrapper[type="default"] .d2l-table > tbody > tr[active][selected] > .d2l-table-cell-first,
-			[dir="rtl"] d2l-table[type="default"] d2l-tbody > d2l-tr[active][selected] > .d2l-table-cell-first,
 			[dir="rtl"] d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover > .d2l-table-cell-first,
 			[dir="rtl"] d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover > .d2l-table-cell-first {
 				border-right-color: var(--d2l-table-row-border-color-active-selected);
 			}
-			[dir="rtl"] d2l-table-wrapper[type="default"] .d2l-table > tbody > tr[active][selected] > .d2l-table-cell-last,
-			[dir="rtl"] d2l-table[type="default"] d2l-tbody > d2l-tr[active][selected] > .d2l-table-cell-last,
 			[dir="rtl"] d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover > .d2l-table-cell-last,
 			[dir="rtl"] d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover > .d2l-table-cell-last {
 				border-right-color: var(--d2l-table-border-color);
 			}
-			d2l-table-wrapper[type="default"] .d2l-table > tbody > tr[active][selected] > .d2l-table-cell-first,
-			d2l-table[type="default"] d2l-tbody > d2l-tr[active][selected] > .d2l-table-cell-first,
 			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover > .d2l-table-cell-first,
 			d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover > .d2l-table-cell-first,
 			[dir="rtl"] d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover > .d2l-table-cell-last,
-			[dir="rtl"] d2l-table[type="default"] d2l-tbody > d2l-tr[active][selected] > .d2l-table-cell-last,
-			[dir="rtl"] d2l-table-wrapper[type="default"] .d2l-table > tbody > tr[active][selected] > .d2l-table-cell-last,
 			[dir="rtl"] d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover > .d2l-table-cell-last {
 				border-left-color: var(--d2l-table-row-border-color-active-selected);
 			}
 
-			d2l-table-wrapper[type="default"] .d2l-table > tbody > tr[active][selected] > td,
-			d2l-table-wrapper[type="default"] .d2l-table > tbody > tr[active][selected] > th,
 			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover > td,
 			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover > th,
-			d2l-table-wrapper[type="default"] .d2l-table > tbody > tr[active][selected] + tr > td,
-			d2l-table-wrapper[type="default"] .d2l-table > tbody > tr[active][selected] + tr > th,
 			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover + tr > td,
 			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > tr[selected]:hover + tr > th,
-			d2l-table[type="default"] d2l-tbody > d2l-tr[active][selected] > d2l-td,
-			d2l-table[type="default"] d2l-tbody > d2l-tr[active][selected] > d2l-th,
 			d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover > d2l-td,
 			d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover > d2l-th,
-			d2l-table[type="default"] d2l-tbody > d2l-tr[active][selected] + d2l-tr > d2l-td,
-			d2l-table[type="default"] d2l-tbody > d2l-tr[active][selected] + d2l-tr > d2l-th,
 			d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover + d2l-tr > d2l-td,
 			d2l-table[type="default"][selectable] d2l-tbody > d2l-tr[selected]:hover + d2l-tr > d2l-th,
-			d2l-table-wrapper[type="light"] .d2l-table > tbody > tr[active][selected] > td,
-			d2l-table-wrapper[type="light"] .d2l-table > tbody > tr[active][selected] > th,
 			d2l-table-wrapper[type="light"] .d2l-table[selectable] > tbody > tr[selected]:hover > td,
 			d2l-table-wrapper[type="light"] .d2l-table[selectable] > tbody > tr[selected]:hover > th,
-			d2l-table-wrapper[type="light"] .d2l-table > tbody > tr[active][selected] + tr > td,
-			d2l-table-wrapper[type="light"] .d2l-table > tbody > tr[active][selected] + tr > th,
 			d2l-table-wrapper[type="light"] .d2l-table[selectable] > tbody > tr[selected]:hover + tr > td,
 			d2l-table-wrapper[type="light"] .d2l-table[selectable] > tbody > tr[selected]:hover + tr > th,
-			d2l-table[type="light"] d2l-tbody > d2l-tr[active][selected] > d2l-td,
-			d2l-table[type="light"] d2l-tbody > d2l-tr[active][selected] > d2l-th,
 			d2l-table[type="light"][selectable] d2l-tbody > d2l-tr[selected]:hover > d2l-td,
 			d2l-table[type="light"][selectable] d2l-tbody > d2l-tr[selected]:hover > d2l-th,
-			d2l-table[type="light"] d2l-tbody > d2l-tr[active][selected] + d2l-tr > d2l-td,
-			d2l-table[type="light"] d2l-tbody > d2l-tr[active][selected] + d2l-tr > d2l-th,
 			d2l-table[type="light"][selectable] d2l-tbody > d2l-tr[selected]:hover + d2l-tr > d2l-td,
 			d2l-table[type="light"][selectable] d2l-tbody > d2l-tr[selected]:hover + d2l-tr > d2l-th {
 				border-top-color:var(--d2l-table-row-border-color-active-selected);
 			}
 
-			d2l-table-wrapper[type="default"] .d2l-table-row-last[active][selected] > td,
-			d2l-table-wrapper[type="default"] .d2l-table-row-last[active][selected] > th,
-			d2l-table[type="default"] .d2l-table-row-last[active][selected] > d2l-td,
-			d2l-table[type="default"] .d2l-table-row-last[active][selected] > d2l-th,
 			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > .d2l-table-row-last[selected]:hover > td,
 			d2l-table-wrapper[type="default"] .d2l-table[selectable] > tbody > .d2l-table-row-last[selected]:hover > th,
 			d2l-table[type="default"][selectable] d2l-tbody > .d2l-table-row-last[selected]:hover > d2l-td,
 			d2l-table[type="default"][selectable] d2l-tbody > .d2l-table-row-last[selected]:hover > d2l-th,
-			d2l-table-wrapper[type="light"] .d2l-table-row-last[active][selected] > td,
-			d2l-table-wrapper[type="light"] .d2l-table-row-last[active][selected] > th,
-			d2l-table[type="light"] .d2l-table-row-last[active][selected] > d2l-td,
-			d2l-table[type="light"] .d2l-table-row-last[active][selected] > d2l-th,
 			d2l-table-wrapper[type="light"] .d2l-table[selectable] > tbody > .d2l-table-row-last[selected]:hover > td,
 			d2l-table-wrapper[type="light"] .d2l-table[selectable] > tbody > .d2l-table-row-last[selected]:hover > th,
 			d2l-table[type="light"][selectable] d2l-tbody > .d2l-table-row-last[selected]:hover > d2l-td,
