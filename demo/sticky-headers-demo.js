@@ -18,7 +18,7 @@ export function getTemplate(tableType) {
 
 				<p>Just Headers</p>
 				<d2l-table-wrapper sticky-headers="" type="${tableType}">
-					<table class="d2l-table" selectable="">
+					<table class="d2l-table">
 						<tbody>
 							<tr header="">
 								<th>Column header 1 Really Really REALLY long</th>
@@ -378,7 +378,7 @@ export function getTemplate(tableType) {
 
 				<p>Headers and First Column</p>
 				<d2l-table-wrapper sticky-headers="" type="${tableType}">
-					<table class="d2l-table" selectable="">
+					<table class="d2l-table">
 						<tbody>
 							<tr header="">
 								<th sticky="">Column header 1 Really Really REALLY long</th>
@@ -846,7 +846,7 @@ export function getTemplate(tableType) {
 
 				<p>Multi-Header Table</p>
 				<d2l-table-wrapper sticky-headers="" type="${tableType}">
-					<table id="multi" class="d2l-table" selectable="">
+					<table id="multi" class="d2l-table">
 						<thead>
 							<tr>
 								<th rowspan="2">Column header 1 Really Really REALLY long</th>

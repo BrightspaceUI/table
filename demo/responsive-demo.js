@@ -12,7 +12,7 @@ export function getTemplate(tableType) {
 				}
 			</style>
 			<h3>Small Table</h3>
-			<d2l-table-wrapper type="${tableType}"><table class="d2l-table" selectable="">
+			<d2l-table-wrapper type="${tableType}"><table class="d2l-table">
 				<thead>
 				<tr>
 					<th>Column header 1</th>
@@ -33,7 +33,7 @@ export function getTemplate(tableType) {
 				</tbody>
 			</table></d2l-table-wrapper>
 			<h3>Simple Table</h3>
-			<d2l-table-wrapper type="${tableType}"><table class="d2l-table" selectable="">
+			<d2l-table-wrapper type="${tableType}"><table class="d2l-table">
 				<tbody><tr>
 					<th>Column header 1</th>
 					<th>Column header 2</th>
@@ -44,7 +44,7 @@ export function getTemplate(tableType) {
 				</tr>
 			</tbody></table></d2l-table-wrapper>
 			<h3>Medium Table</h3>
-			<d2l-table-wrapper type="${tableType}"><table class="d2l-table" selectable="">
+			<d2l-table-wrapper type="${tableType}"><table class="d2l-table">
 				<thead>
 				<tr>
 					<th>Column header 1</th>
@@ -71,7 +71,7 @@ export function getTemplate(tableType) {
 				</tbody>
 			</table></d2l-table-wrapper>
 			<h3>Large Table</h3>
-			<d2l-table-wrapper type="${tableType}"><table class="d2l-table" selectable="">
+			<d2l-table-wrapper type="${tableType}"><table class="d2l-table">
 				<thead>
 				<tr>
 					<th>Column header 1</th>
