@@ -15,37 +15,29 @@ const $_documentContainer = document.createElement('template');
 $_documentContainer.innerHTML = `<dom-module id="d2l-table-col-sort-button">
 	<template strip-whitespace="">
 		<style>
-			:host {
-				--d2l-table-col-sort-button: {
-					background-color: transparent;
-					border: none;
-					cursor: pointer;
-					display: inline-block;
-					font-size: inherit;
-					color: inherit;
-					letter-spacing: inherit;
-					margin: 0;
-					padding: 0;
-					text-decoration: none;
-				};
-				--d2l-table-col-sort-button-hover: {
-					outline-style: none;
-					text-decoration: underline;
-				};
-			}
 			button::-moz-focus-inner {
 				border: 0;
 			}
 			button {
+				background-color: transparent;
+				border: none;
+				color: inherit;
+				cursor: pointer;
+				display: inline-block;
 				font-family: inherit;
-				@apply --d2l-table-col-sort-button;
+				font-size: inherit;
+				letter-spacing: inherit;
+				margin: 0;
+				padding: 0;
+				text-decoration: none;
 			}
 			button:disabled {
 				opacity: 0.5;
 			}
 			button:hover,
 			button:focus {
-				@apply --d2l-table-col-sort-button-hover;
+				outline-style: none;
+				text-decoration: underline;
 			}
 			[hidden] {
 				display: none;
