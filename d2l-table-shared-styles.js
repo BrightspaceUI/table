@@ -17,16 +17,6 @@ $_documentContainer.innerHTML = `<custom-style>
 			--d2l-table-body-background-color: #fff;
 			--d2l-table-row-border-color-selected: var(--d2l-color-celestine);
 			--d2l-table-row-background-color-selected: var(--d2l-color-celestine-plus-2);
-
-			--d2l-table: {
-				background-color:transparent;
-				border-collapse:separate!important;
-				border-spacing:0;
-				display:table;
-				font-size: 0.8rem;
-				font-weight: 400;
-				width:100%;
-			}
 		}
 	</style>
 </custom-style>`;
