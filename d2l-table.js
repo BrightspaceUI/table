@@ -151,7 +151,13 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table">
 				--d2l-scroll-wrapper-background-color: var(--d2l-color-sylvite);
 
 				--d2l-scroll-wrapper-inner: {
-					@apply --d2l-table;
+					background-color: transparent;
+					border-collapse: separate!important;
+					border-spacing: 0;
+					display: table;
+					font-size: 0.8rem;
+					font-weight: 400;
+					width: 100%;
 				};
 			}
 		</style>

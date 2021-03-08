@@ -7,50 +7,62 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 	<template>
 		<style>
 			.d2l-table {
-				@apply --d2l-table;
+				background-color: transparent;
+				border-collapse: separate!important;
+				border-spacing: 0;
+				display: table;
+				font-size: 0.8rem;
+				font-weight: 400;
+				width: 100%;
 			}
 
 			.d2l-table > thead,
 			d2l-thead {
-				@apply --d2l-table-head;
+				display: table-header-group;
 			}
 
 			.d2l-table > tfoot,
 			d2l-tfoot {
-				@apply --d2l-table-foot;
-				background-color:var(--d2l-table-body-background-color);
+				background-color: var(--d2l-table-body-background-color);
+				display: table-footer-group;
 			}
 
 			.d2l-table > tbody,
 			d2l-tbody {
-				@apply --d2l-table-body;
-				background-color:var(--d2l-table-body-background-color);
+				background-color: var(--d2l-table-body-background-color);
+				display: table-row-group;
 			}
 
 			.d2l-table > * > tr,
 			d2l-tr {
-				@apply --d2l-table-row;
+				display: table-row;
 			}
 
 			d2l-table-wrapper[type="default"] .d2l-table > * > tr > td,
 			d2l-table-wrapper[type="default"] .d2l-table > * > tr > th,
 			d2l-table[type="default"] d2l-td,
 			d2l-table[type="default"] d2l-th {
-				@apply --d2l-table-cell;
-				border-top:var(--d2l-table-border);
-				border-right:var(--d2l-table-border);
+				border-top: var(--d2l-table-border);
+				border-right: var(--d2l-table-border);
+				display: table-cell;
 				font-weight: inherit;
+				height: 41px; /* min-height to be 62px including border */
+				padding: 0.5rem 1rem;
 				text-align: left;
+				vertical-align: middle;
 			}
 
 			d2l-table-wrapper[type="light"] .d2l-table > * > tr > td,
 			d2l-table-wrapper[type="light"] .d2l-table > * > tr > th,
 			d2l-table[type="light"] d2l-td,
 			d2l-table[type="light"] d2l-th {
-				@apply --d2l-table-light-cell;
 				border-top: var(--d2l-table-light-border);
+				display: table-cell;
 				font-weight: inherit;
+				height: 1.15rem; /* min-height to be 48px including border */
+				padding: 0.6rem;
 				text-align: left;
+				vertical-align: middle;
 			}
 
 			d2l-table-wrapper[type="default"] .d2l-table-cell-first,
@@ -79,18 +91,28 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 			d2l-table-wrapper[type="default"] .d2l-table > * > tr[header] > th,
 			d2l-table[type="default"] d2l-thead > d2l-tr > d2l-th,
 			d2l-table[type="default"] d2l-tr[header] > d2l-th {
+				background-color: var(--d2l-table-header-background-color);
+				color: var(--d2l-color-ferrite);
 				font-family: inherit;
-				@apply --d2l-table-header;
-				background-color:var(--d2l-table-header-background-color);
+				font-size: 0.7rem;
+				line-height: 0.9rem;
+				margin: 1rem 0;
+				padding: 0.5rem 1rem;
+				height: 27px; /* min-height to be 48px including border */
 			}
 
 			d2l-table-wrapper[type="light"] .d2l-table > thead > tr > th,
 			d2l-table-wrapper[type="light"] .d2l-table > * > tr[header] > th,
 			d2l-table[type="light"] d2l-thead > d2l-tr > d2l-th,
 			d2l-table[type="light"] d2l-tr[header] > d2l-th {
+				background-color: var(--d2l-table-light-header-background-color);
+				color: var(--d2l-color-ferrite);
 				font-family: inherit;
-				@apply --d2l-table-light-header;
-				background-color:var(--d2l-table-light-header-background-color);
+				font-size: 0.7rem;
+				font-weight: normal;
+				height: 1.15rem; /* min-height to be 48px including border */
+				line-height: 0.9rem;
+				padding: 0.6rem;
 			}
 
 			d2l-table-wrapper[type="light"] .d2l-table > thead > tr.d2l-table-row-first > th,
