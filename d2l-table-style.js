@@ -424,7 +424,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 			d2l-table-wrapper[type="light"][sticky-headers] tr[header] th[sticky],
 			d2l-table-wrapper[type="light"][sticky-headers] tr[header] td[sticky],
 			d2l-table-wrapper[type="light"][sticky-headers] thead > tr > th[sticky] {
-				z-index: 3;
+				z-index: 4; /* one higher so other header cells go under it */
 				left: 0;
 			}
 
