@@ -47,7 +47,7 @@ Custom property | Description | Default
 `--d2l-table-body-background-color` | Body background color (non-header) | `#fff` |
 `--d2l-table-row-border-color-selected` | Selected row border color | `var(--d2l-color-celestine)` |
 `--d2l-table-row-background-color-selected` | Selected row background color | `var(--d2l-color-celestine-plus-2)` |
-`--d2l-table-border-overflow` | Border to show when the table overflows | `dashed 1px #d3d9e3` |
+`--d2l-table-border-overflow` | Border to show when the table overflows | `dashed 1px var(--d2l-color-mica)` |
 
 `--d2l-table-light-border-color` | Border color for light style | `var(--d2l-color-gypsum)` |
 `--d2l-table-light-border` | Border for light style | `1px solid var(--d2l-table-light-border-color)` |
@@ -127,26 +127,12 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table">
 				width: 100%;
 				--d2l-table-border-color: var(--d2l-color-mica);
 				--d2l-table-header-background-color: var(--d2l-color-regolith);
-				--d2l-table-border-overflow: dashed 1px #d3d9e3;
+				--d2l-table-border-overflow: dashed 1px var(--d2l-color-mica);
 			}
 			:host([hidden]) {
 				display: none;
 			}
 			d2l-scroll-wrapper {
-				--d2l-scroll-wrapper-h-scroll: {
-					border-left: var(--d2l-table-border-overflow);
-					border-right: var(--d2l-table-border-overflow);
-				};
-				--d2l-scroll-wrapper-h-scroll-focus: {
-					border-left: var(--d2l-table-border-overflow-focus);
-					border-right: var(--d2l-table-border-overflow-focus);
-				};
-				--d2l-scroll-wrapper-left: {
-					border-left: none;
-				};
-				--d2l-scroll-wrapper-right: {
-					border-right: none;
-				};
 				--d2l-scroll-wrapper-border-color: var(--d2l-color-galena);
 				--d2l-scroll-wrapper-background-color: var(--d2l-color-sylvite);
 
@@ -161,7 +147,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table">
 				};
 			}
 		</style>
-		<d2l-scroll-wrapper show-actions="" needs-table>
+		<d2l-scroll-wrapper show-actions="" needs-table overflow-border>
 			<slot id="slot"></slot>
 		</d2l-scroll-wrapper>
 	</template>
