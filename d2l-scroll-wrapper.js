@@ -85,9 +85,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-scroll-wrapper">
 
 				--d2l-scroll-wrapper-sticky: {
 					height: 0;
-					/* height of button (40) + distance of button from top (10) + desired spacing (10) */
-					margin-bottom: 60px;
-					margin-top: -60px;
 					overflow: visible;
 				};
 
