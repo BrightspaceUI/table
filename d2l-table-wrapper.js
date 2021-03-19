@@ -129,7 +129,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-wrapper">
 				--d2l-scroll-wrapper-background-color: var(--d2l-color-sylvite);
 			}
 		</style>
-		<d2l-scroll-wrapper show-actions="" is-sticky$="[[stickyHeaders]]" overflow-border>
+		<d2l-scroll-wrapper show-actions is-sticky$="[[stickyHeaders]]">
 			<slot id="slot"></slot>
 		</d2l-scroll-wrapper>
 	</template>

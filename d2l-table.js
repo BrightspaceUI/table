@@ -147,7 +147,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table">
 				};
 			}
 		</style>
-		<d2l-scroll-wrapper show-actions="" needs-table overflow-border>
+		<d2l-scroll-wrapper show-actions needs-table>
 			<slot id="slot"></slot>
 		</d2l-scroll-wrapper>
 	</template>

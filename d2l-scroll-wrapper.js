@@ -138,10 +138,10 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-scroll-wrapper">
 				@apply --d2l-scroll-wrapper-h-scroll;
 			}
 			:host([is-sticky][h-scrollbar]) .wrapper,
-			:host([is-sticky][h-scrollbar][overflow-border]) .wrapper {
+			:host([is-sticky][h-scrollbar][show-actions]) .wrapper {
 				border-right: none;
 			}
-			:host([h-scrollbar][overflow-border]) .wrapper {
+			:host([h-scrollbar][show-actions]) .wrapper {
 				border-left: 1px dashed var(--d2l-scroll-wrapper-overflow-border-color, var(--d2l-color-mica));
 				border-right: 1px dashed var(--d2l-scroll-wrapper-overflow-border-color, var(--d2l-color-mica));
 			}
@@ -150,8 +150,8 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-scroll-wrapper">
 			:host([scrollbar-left]) .wrapper {
 				@apply --d2l-scroll-wrapper-left;
 			}
-			:host([is-rtl][scrollbar-right][overflow-border]) .wrapper,
-			:host(:not([is-rtl])[scrollbar-left][overflow-border]) .wrapper {
+			:host([is-rtl][scrollbar-right][show-actions]) .wrapper,
+			:host(:not([is-rtl])[scrollbar-left][show-actions]) .wrapper {
 				border-left: none;
 			}
 
@@ -159,8 +159,8 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-scroll-wrapper">
 			:host([scrollbar-right]) .wrapper {
 				@apply --d2l-scroll-wrapper-right;
 			}
-			:host([is-rtl][scrollbar-left][overflow-border]) .wrapper,
-			:host(:not([is-rtl])[scrollbar-right][overflow-border]) .wrapper {
+			:host([is-rtl][scrollbar-left][show-actions]) .wrapper,
+			:host(:not([is-rtl])[scrollbar-right][show-actions]) .wrapper {
 				border-right: none;
 			}
 
@@ -341,12 +341,6 @@ Polymer({
 		endIcon: {
 			type: String,
 			value: 'd2l-tier1:chevron-right'
-		},
-
-		overflowBorder: {
-			type: Boolean,
-			value: false,
-			reflectToAttribute: true
 		},
 
 		isRtl: {
