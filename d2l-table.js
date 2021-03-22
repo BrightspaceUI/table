@@ -135,20 +135,19 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table">
 			d2l-scroll-wrapper {
 				--d2l-scroll-wrapper-border-color: var(--d2l-color-galena);
 				--d2l-scroll-wrapper-background-color: var(--d2l-color-sylvite);
-
-				--d2l-scroll-wrapper-inner: {
-					background-color: transparent;
-					border-collapse: separate!important;
-					border-spacing: 0;
-					display: table;
-					font-size: 0.8rem;
-					font-weight: 400;
-					width: 100%;
-				};
+			}
+			.d2l-table-inner {
+				background-color: transparent;
+				border-collapse: separate!important;
+				border-spacing: 0;
+				display: table;
+				font-size: 0.8rem;
+				font-weight: 400;
+				width: 100%;
 			}
 		</style>
-		<d2l-scroll-wrapper show-actions needs-table>
-			<slot id="slot"></slot>
+		<d2l-scroll-wrapper show-actions>
+			<div class="d2l-table-inner" role="table"><slot id="slot"></slot></div>
 		</d2l-scroll-wrapper>
 	</template>
 

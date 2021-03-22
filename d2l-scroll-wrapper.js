@@ -213,7 +213,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-scroll-wrapper">
 			<d2l-table-circle-button class="right action" icon="[[endIcon]]" on-tap="handleTapRight" tabindex="-1" aria-hidden="true" type="button"></d2l-table-circle-button>
 		</d2l-sticky-element>
 		<div id="wrapper" class="wrapper">
-			<div class="inner-wrapper" role$="[[_role]]"><slot></slot></div>
+			<div class="inner-wrapper"><slot></slot></div>
 		</div>
 	</template>
 	
@@ -358,11 +358,6 @@ Polymer({
 			reflectToAttribute: true
 		},
 
-		needsTable: {
-			type: Boolean,
-			value: false
-		},
-
 		/** IE and Edge requires the value to be 1 in some cases **/
 		/**
 			Background: In some occasions in IE and Edge, there is a
@@ -377,10 +372,6 @@ Polymer({
 		_stickyIsDisabled: {
 			type: Boolean,
 			computed: '_computeStickyIsDisabled(scrollbarLeft, scrollbarRight)'
-		},
-		_role: {
-			type: String,
-			computed: '_computeRole(needsTable)'
 		}
 	},
 
@@ -508,9 +499,5 @@ Polymer({
 
 	_computeStickyIsDisabled: function(scrollbarLeft, scrollbarRight) {
 		return Boolean(scrollbarLeft) && Boolean(scrollbarRight);
-	},
-
-	_computeRole: function(needsTable) {
-		return needsTable ? 'table' : null;
 	}
 });
