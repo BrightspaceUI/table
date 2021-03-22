@@ -6,12 +6,7 @@
 	<d2l-scroll-wrapper
 		id="scroll-wrapper"
 		style="width: 300px"
-		scroll-duration="500"
-		scroll-amount="0.8"
-		start-icon="d2l-tier1:chevron-left"
-		end-icon="d2l-tier1:chevron-right"
-		show-actions
-	 >
+		show-actions>
 		 <div style="width: 350px; height: 100px">
 			Stuff
 		 </div>
@@ -47,12 +42,7 @@
 	The attributes are optional
 	<d2l-scroll-wrapper
 		id="scroll-wrapper"
-		style="width: 300px"
-		scroll-duration="500"
-		scroll-amount="0.8"
-		start-icon="d2l-tier1:chevron-left"
-		end-icon="d2l-tier1:chevron-right"
-	>
+		style="width: 300px">
 		<div style="width: 350px">Stuff</div>
 	</d2l-scroll-wrapper>
 ```
@@ -72,6 +62,9 @@ import './d2l-table-circle-button.js';
 import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
 import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 const $_documentContainer = document.createElement('template');
+
+const SCROLL_DURATION = 500;
+const SCROLL_AMOUNT = 0.8;
 
 $_documentContainer.innerHTML = `<dom-module id="d2l-scroll-wrapper">
 	<template strip-whitespace="">
@@ -209,8 +202,8 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-scroll-wrapper">
 			}
 		</style>
 		<d2l-sticky-element class="sticky" disabled="[[_stickyIsDisabled]]">
-			<d2l-table-circle-button class="left action" icon="[[startIcon]]" on-tap="handleTapLeft" tabindex="-1" aria-hidden="true" type="button"></d2l-table-circle-button>
-			<d2l-table-circle-button class="right action" icon="[[endIcon]]" on-tap="handleTapRight" tabindex="-1" aria-hidden="true" type="button"></d2l-table-circle-button>
+			<d2l-table-circle-button class="left action" icon="tier1:chevron-left" on-tap="handleTapLeft" tabindex="-1" aria-hidden="true" type="button"></d2l-table-circle-button>
+			<d2l-table-circle-button class="right action" icon="tier1:chevron-right" on-tap="handleTapRight" tabindex="-1" aria-hidden="true" type="button"></d2l-table-circle-button>
 		</d2l-sticky-element>
 		<div id="wrapper" class="wrapper">
 			<div class="inner-wrapper"><slot></slot></div>
@@ -319,27 +312,6 @@ Polymer({
 			value: false,
 			readOnly: true
 		},
-		/** The duration for smooth scroll. 0 disables smooth scroll */
-		scrollDuration: {
-			type: Number,
-			value: 500
-		},
-		/** The percentage of clientWidth to scroll by on clicking the action buttons */
-		scrollAmount: {
-			type: Number,
-			value: 0.8
-		},
-		/** The icon to use for the start action button (left) */
-		startIcon: {
-			type: String,
-			value: 'd2l-tier1:chevron-left'
-		},
-		/** The icon to use for the end action button (right) */
-		endIcon: {
-			type: String,
-			value: 'd2l-tier1:chevron-right'
-		},
-
 		isRtl: {
 			type: Boolean,
 			value: false,
@@ -427,13 +399,13 @@ Polymer({
 
 	/* Scrolls to the left. Right when dir=rtl */
 	handleTapLeft: function() {
-		var scrollDistance = this.$.wrapper.clientWidth * this.scrollAmount;
+		var scrollDistance = this.$.wrapper.clientWidth * SCROLL_AMOUNT;
 		this.scrollDistance(-scrollDistance, true);
 	},
 
 	/* Scrolls to the right. Left when dir=rtl */
 	handleTapRight: function() {
-		var scrollDistance = this.$.wrapper.clientWidth * this.scrollAmount;
+		var scrollDistance = this.$.wrapper.clientWidth * SCROLL_AMOUNT;
 		this.scrollDistance(scrollDistance, true);
 	},
 
@@ -452,13 +424,12 @@ Polymer({
 
 	/* Sets scrollLeft to the argument. Optionally scroll smoothly. Behavior depends when dir=rtl */
 	scroll: function(left, smooth) {
-		if (smooth && this.scrollDuration > 0) {
+		if (smooth) {
 			var easingFn = function easeOutQuad(t, b, c, d) {
 				t /= d;
 				return -c * t * (t - 2) + b;
 			};
 			var animationId = Math.random();
-			var duration = this.scrollDuration;
 			var startTime = Date.now();
 			var currentScrollLeft = this.$.wrapper.scrollLeft;
 			var deltaScrollLeft = left - currentScrollLeft;
@@ -466,10 +437,10 @@ Polymer({
 			(function updateFrame() {
 				var now = Date.now();
 				var elapsedTime = now - startTime;
-				if (elapsedTime > duration) {
+				if (elapsedTime > SCROLL_DURATION) {
 					this.$.wrapper.scrollLeft = left;
 				} else if (this._currentAnimationId === animationId) {
-					this.$.wrapper.scrollLeft = easingFn(elapsedTime, currentScrollLeft, deltaScrollLeft, duration);
+					this.$.wrapper.scrollLeft = easingFn(elapsedTime, currentScrollLeft, deltaScrollLeft, SCROLL_DURATION);
 					requestAnimationFrame(updateFrame.bind(this));
 				}
 			}).call(this);
