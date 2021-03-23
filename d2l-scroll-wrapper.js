@@ -16,29 +16,6 @@
 ## Usage
 ```
 	<link rel="import" href="d2l-scroll-wrapper.html">
-	<style>
-		#scroll-wrapper {
-			--d2l-scroll-wrapper-action: {
-				/* styles for the left/right action buttons *\/
-			};
-
-			--d2l-scroll-wrapper-action-hidden: {
-				/* css to hide an action button *\/
-			};
-
-			--d2l-scroll-wrapper-action-visible: {
-				/* css to show an action button *\/
-			};
-
-			--d2l-scroll-wrapper-action-start: {
-				/* styles for the action button on the left (scrolls toward start) *\/
-			};
-
-			--d2l-scroll-wrapper-action-end: {
-				/* styles for the action button on the right (scrolls toward end) *\/
-			};
-		}
-	</style>
 	The attributes are optional
 	<d2l-scroll-wrapper
 		id="scroll-wrapper"
@@ -75,38 +52,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-scroll-wrapper">
 				/* For sticky buttons. Prevents Stickyfill from forcing layout
 				   changes by setting position itself */
 				position: relative;
-
-				--d2l-scroll-wrapper-sticky: {
-					height: 0;
-					overflow: visible;
-				};
-
-				--d2l-scroll-wrapper-sticky-hidden: {
-					display: none;
-				};
-
-				--d2l-scroll-wrapper-sticky-visible: {
-					display: block;
-				};
-
-				--d2l-scroll-wrapper-action-hidden: {
-					display: none;
-				};
-
-				--d2l-scroll-wrapper-action-visible: {
-					display: inline;
-					top: 10px;
-				};
-
-				--d2l-scroll-wrapper-action-start: {
-					right: auto;
-					left: var(--d2l-scroll-wrapper-action-offset, -15px);
-				};
-
-				--d2l-scroll-wrapper-action-end: {
-					right: var(--d2l-scroll-wrapper-action-offset, -15px);
-					left: auto;
-				};
 			}
 
 			.wrapper {
@@ -123,10 +68,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-scroll-wrapper">
 				@apply --d2l-scroll-wrapper-inner;
 			}
 
-			:host([is-rtl][h-scrollbar]) .wrapper,
-			:host([h-scrollbar]) .wrapper {
-				@apply --d2l-scroll-wrapper-h-scroll;
-			}
 			:host([is-sticky][h-scrollbar]) .wrapper,
 			:host([is-sticky][h-scrollbar][show-actions]) .wrapper {
 				border-right: none;
@@ -136,41 +77,37 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-scroll-wrapper">
 				border-right: 1px dashed var(--d2l-scroll-wrapper-overflow-border-color, var(--d2l-color-mica));
 			}
 
-			:host([is-rtl][scrollbar-right]) .wrapper,
-			:host([scrollbar-left]) .wrapper {
-				@apply --d2l-scroll-wrapper-left;
-			}
 			:host([is-rtl][scrollbar-right][show-actions]) .wrapper,
 			:host(:not([is-rtl])[scrollbar-left][show-actions]) .wrapper {
 				border-left: none;
 			}
 
-			:host([is-rtl][scrollbar-left]) .wrapper,
-			:host([scrollbar-right]) .wrapper {
-				@apply --d2l-scroll-wrapper-right;
-			}
 			:host([is-rtl][scrollbar-left][show-actions]) .wrapper,
 			:host(:not([is-rtl])[scrollbar-right][show-actions]) .wrapper {
 				border-right: none;
 			}
 
 			.action {
-				@apply --d2l-scroll-wrapper-action-visible;
+				display: inline;
+				top: 10px;
 			}
 
 			.sticky {
-				@apply --d2l-scroll-wrapper-sticky;
-				@apply --d2l-scroll-wrapper-sticky-hidden;
+				display: none;
+				height: 0;
+				overflow: visible;
 			}
 
 			:host([is-rtl]) .left.action,
 			.right.action {
-				@apply --d2l-scroll-wrapper-action-end;
+				left: auto;
+				right: var(--d2l-scroll-wrapper-action-offset, -15px);
 			}
 
 			:host([is-rtl]) .right.action,
 			.left.action {
-				@apply --d2l-scroll-wrapper-action-start;
+				left: var(--d2l-scroll-wrapper-action-offset, -15px);
+				right: auto;
 			}
 
 			:host([is-rtl]) .left,
@@ -192,13 +129,13 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-scroll-wrapper">
 			}
 
 			:host([show-actions][h-scrollbar]) .sticky {
-				@apply --d2l-scroll-wrapper-sticky-visible;
+				display: block;
 			}
 
 			/* Hide the start/end buttons depending on the state */
 			:host([show-actions][scrollbar-right]) .right.action,
 			:host([show-actions][scrollbar-left]) .left.action {
-				@apply --d2l-scroll-wrapper-action-hidden;
+				display: none;
 			}
 		</style>
 		<d2l-sticky-element class="sticky" disabled="[[_stickyIsDisabled]]">

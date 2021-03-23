@@ -23,19 +23,6 @@
 		<test-fixture id="with-scrollbar">
 			<template>
 				<div style="width: 300px">
-					<custom-style>
-					<style is="custom-style">
-						html {
-							--d2l-scroll-wrapper-left: {
-								color: rgb(1, 1, 1);
-							};
-
-							--d2l-scroll-wrapper-right: {
-								color: rgb(2, 2, 2);
-							};
-						}
-					</style>
-					</custom-style>
 					<d2l-scroll-wrapper show-actions>
 						<div style="width: 350px">H</div>
 					</d2l-scroll-wrapper>
@@ -46,19 +33,6 @@
 		<test-fixture id="with-scrollbar-rtl">
 			<template>
 				<div style="width: 300px" dir="rtl">
-					<custom-style>
-					<style is="custom-style">
-						html {
-							--d2l-scroll-wrapper-left: {
-								color: rgb(1, 1, 1);
-							};
-
-							--d2l-scroll-wrapper-right: {
-								color: rgb(2, 2, 2);
-							};
-						}
-					</style>
-					</custom-style>
 					<d2l-scroll-wrapper show-actions>
 						<div style="width: 350px">H</div>
 					</d2l-scroll-wrapper>
@@ -125,48 +99,6 @@ describe('scrollbar', function() {
 				this.scrollWrapper.scroll(50);
 				expect(this.wrapper.scrollLeft).to.equal(50);
 			});
-
-			/*it('should scroll smoothly', function(done) {
-				this.wrapper.scrollLeft = 0;
-				this.wrapper.scrollDuration = 100;
-				this.wrapper.scroll(50, true);
-
-				var wrapper = this.wrapper;
-				requestAnimationFrame(function() {
-					expect(wrapper.scrollLeft).to.be.above(0);
-					expect(wrapper.scrollLeft).to.be.below(50);
-				});
-
-				setTimeout(function() {
-					requestAnimationFrame(function() {
-						expect(wrapper.scrollLeft).to.equal(50);
-						done();
-					});
-				}, 100);
-			});
-
-			it('should scroll smoothly after being called twice', function(done) {
-				this.wrapper.scrollLeft = 0;
-				this.wrapper.scrollDuration = 100;
-				this.wrapper.scroll(50, true);
-				var wrapper = this.wrapper;
-
-				requestAnimationFrame(function() {
-					wrapper.scroll(0, true);
-
-					requestAnimationFrame(function() {
-						expect(wrapper.scrollLeft).to.be.above(0);
-						expect(wrapper.scrollLeft).to.be.below(50);
-					});
-
-					setTimeout(function() {
-						requestAnimationFrame(function() {
-							expect(wrapper.scrollLeft).to.equal(0);
-							done();
-						});
-					}, 100);
-				});
-			});*/
 		});
 	});
 
@@ -263,10 +195,6 @@ describe('scrollbar', function() {
 				}, 1);
 			});
 
-			it('should apply --d2l-scroll-wrapper-left', function() {
-				expect(getComputedStyle(this.wrapper).color).to.equal('rgb(1, 1, 1)');
-			});
-
 			it('should have only one visible action button pointing right', function() {
 				var actions = dom(this.scrollWrapper.root).querySelectorAll('.action');
 				actions = [].filter.call(actions, function(action) {
@@ -303,10 +231,6 @@ describe('scrollbar', function() {
 						doFlush();
 					}
 				}, 0);
-			});
-
-			it('should apply --d2l-scroll-wrapper-right', function() {
-				expect(getComputedStyle(this.wrapper).color).to.equal('rgb(2, 2, 2)');
 			});
 
 			it('should have only one visible action button pointing left', function() {
