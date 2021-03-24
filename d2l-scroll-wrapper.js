@@ -101,12 +101,12 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-scroll-wrapper">
 			:host([is-rtl]) .left.action,
 			.right.action {
 				left: auto;
-				right: var(--d2l-scroll-wrapper-action-offset, -15px);
+				right: -10px;
 			}
 
 			:host([is-rtl]) .right.action,
 			.left.action {
-				left: var(--d2l-scroll-wrapper-action-offset, -15px);
+				left: -10px;
 				right: auto;
 			}
 
