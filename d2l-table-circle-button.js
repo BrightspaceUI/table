@@ -24,9 +24,10 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-circle-button">
 				border: 0;
 			}
 			button.d2l-table-circle-button {
-				background-color: var(--d2l-scroll-wrapper-background-color);
-				border: 1px solid var(--d2l-scroll-wrapper-border-color);
+				background-color: var(--d2l-color-regolith);
+				border: 1px solid var(--d2l-color-mica);
 				border-radius: 50%;
+				box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.15);
 				box-sizing: content-box;
 				cursor: pointer;
 				display: inline-block;
@@ -41,12 +42,11 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-circle-button">
 			}
 			button.d2l-table-circle-button:hover,
 			button.d2l-table-circle-button:focus {
-				border-color: var(--d2l-color-celestine);
-				box-shadow: 0 2px 14px 1px rgba(0,0,0,0.06);
+				background-color: var(--d2l-color-sylvite);
 				outline-style: none;
 			}
-			button.d2l-table-circle-button > d2l-icon {
-				transition: color 0.3s ease;
+			button.d2l-table-circle-button:focus {
+				box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--d2l-color-celestine), 0 2px 12px 0 rgba(0, 0, 0, 0.15);
 			}
 		</style>
 		<button class="d2l-table-circle-button" type="button">
