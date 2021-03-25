@@ -23,9 +23,6 @@ $_documentContainer.innerHTML = `<custom-style>
 		<style is="custom-style" include="d2l-typography">
 			html {
 				font-size: 20px;
-				--d2l-scroll-wrapper-background-color: red;
-				--d2l-scroll-wrapper-border-color: black;
-				--d2l-scroll-wrapper-overflow-border-color: purple;
 			}
 		</style>
 		</custom-style>`;
@@ -38,14 +35,14 @@ const $_documentContainer = document.createElement('template');
 $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 			<d2l-scroll-wrapper id="scroll-wrapper" style="width: 300px" show-actions>
 				 <div style="width: 350px; height: 100px">
-					I have red action buttons that scroll this body. I will have purple lines that appear when I reach either end.
+					I have action buttons that scroll this body. I will have dashed lines that appear when I reach either end.
 				 </div>
 			</d2l-scroll-wrapper>
 
 			<div dir="rtl">
 				<d2l-scroll-wrapper id="scroll-wrapper" style="width: 300px" show-actions>
 					 <div style="width: 350px; height: 100px">
-						I have red action buttons that scroll this body. I will have purple lines that appear when I reach either end.
+						I have action buttons that scroll this body. I will have dashed lines that appear when I reach either end.
 					 </div>
 				</d2l-scroll-wrapper>
 			</div>

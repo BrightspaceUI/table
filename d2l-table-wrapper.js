@@ -124,10 +124,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-wrapper">
 				--d2l-table-header-background-color: var(--d2l-color-regolith);
 				--d2l-table-border-overflow: dashed 1px var(--d2l-color-mica);
 			}
-			d2l-scroll-wrapper {
-				--d2l-scroll-wrapper-border-color: var(--d2l-color-galena);
-				--d2l-scroll-wrapper-background-color: var(--d2l-color-sylvite);
-			}
 		</style>
 		<d2l-scroll-wrapper show-actions is-sticky$="[[stickyHeaders]]">
 			<slot id="slot"></slot>

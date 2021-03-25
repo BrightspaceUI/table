@@ -73,8 +73,8 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-scroll-wrapper">
 				border-right: none;
 			}
 			:host([h-scrollbar][show-actions]) .wrapper {
-				border-left: 1px dashed var(--d2l-scroll-wrapper-overflow-border-color, var(--d2l-color-mica));
-				border-right: 1px dashed var(--d2l-scroll-wrapper-overflow-border-color, var(--d2l-color-mica));
+				border-left: 1px dashed var(--d2l-color-mica);
+				border-right: 1px dashed var(--d2l-color-mica);
 			}
 
 			:host([is-rtl][scrollbar-right][show-actions]) .wrapper,
@@ -89,7 +89,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-scroll-wrapper">
 
 			.action {
 				display: inline;
-				top: 10px;
+				top: 4px;
 			}
 
 			.sticky {
@@ -139,8 +139,8 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-scroll-wrapper">
 			}
 		</style>
 		<d2l-sticky-element class="sticky" disabled="[[_stickyIsDisabled]]">
-			<d2l-table-circle-button class="left action" icon="tier1:chevron-left" on-tap="handleTapLeft" tabindex="-1" aria-hidden="true" type="button"></d2l-table-circle-button>
-			<d2l-table-circle-button class="right action" icon="tier1:chevron-right" on-tap="handleTapRight" tabindex="-1" aria-hidden="true" type="button"></d2l-table-circle-button>
+			<d2l-table-circle-button class="left action" icon="tier1:chevron-left" on-tap="handleTapLeft" aria-hidden="true" type="button"></d2l-table-circle-button>
+			<d2l-table-circle-button class="right action" icon="tier1:chevron-right" on-tap="handleTapRight" aria-hidden="true" type="button"></d2l-table-circle-button>
 		</d2l-sticky-element>
 		<div id="wrapper" class="wrapper">
 			<div class="inner-wrapper"><slot></slot></div>
