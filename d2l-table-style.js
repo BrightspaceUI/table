@@ -277,7 +277,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 				position: -webkit-sticky;
 				position: sticky;
 				top: 0;
-				z-index: 3;
 			}
 
 			d2l-table-wrapper[type="default"][sticky-headers] tr[header] th,
@@ -343,7 +342,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 				top: -5px;
 				border-left: none;
 				border-top: none;
-				z-index: 3;
 			}
 
 			d2l-table-wrapper[type="default"][sticky-headers] tr[header]:not(.d2l-table-row-first) th,
@@ -364,7 +362,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 				position: -webkit-sticky;
 				position: sticky;
 				top: -5px;
-				z-index: 3;
 			}
 
 			d2l-table-wrapper[type="light"][sticky-headers] tr[header] th,
@@ -373,7 +370,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 				position: -webkit-sticky;
 				position: sticky;
 				top: -3.5px;
-				z-index: 3;
 			}
 
 			d2l-table-wrapper[type="default"][sticky-headers] tbody tr:not([header]) td,
@@ -424,7 +420,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 			d2l-table-wrapper[type="light"][sticky-headers] tr[header] th[sticky],
 			d2l-table-wrapper[type="light"][sticky-headers] tr[header] td[sticky],
 			d2l-table-wrapper[type="light"][sticky-headers] thead > tr > th[sticky] {
-				z-index: 4; /* one higher so other header cells go under it */
+				z-index: 3;
 				left: 0;
 			}
 
