@@ -64,10 +64,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-scroll-wrapper">
 				overflow-x: initial;
 			}
 
-			.inner-wrapper {
-				@apply --d2l-scroll-wrapper-inner;
-			}
-
 			:host([is-sticky][h-scrollbar]) .wrapper,
 			:host([is-sticky][h-scrollbar][show-actions]) .wrapper {
 				border-right: none;
