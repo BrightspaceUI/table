@@ -138,9 +138,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-scroll-wrapper">
 			<d2l-table-circle-button class="left action" icon="tier1:chevron-left" on-tap="handleTapLeft" aria-hidden="true" type="button"></d2l-table-circle-button>
 			<d2l-table-circle-button class="right action" icon="tier1:chevron-right" on-tap="handleTapRight" aria-hidden="true" type="button"></d2l-table-circle-button>
 		</d2l-sticky-element>
-		<div id="wrapper" class="wrapper">
-			<div class="inner-wrapper"><slot></slot></div>
-		</div>
+		<div id="wrapper" class="wrapper"><slot></slot></div>
 	</template>
 	
 </dom-module>`;
