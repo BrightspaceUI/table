@@ -133,6 +133,16 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-scroll-wrapper">
 			:host([show-actions][scrollbar-left]) .left.action {
 				display: none;
 			}
+
+			@media print {
+				/* Hide wrapper visuals from print view */
+				:host .sticky {
+					display: none !important;
+				}
+				:host .wrapper {
+					border: none !important;
+				}
+			}
 		</style>
 		<d2l-sticky-element class="sticky" disabled="[[_stickyIsDisabled]]">
 			<d2l-table-circle-button class="left action" icon="tier1:chevron-left" on-tap="handleTapLeft" aria-hidden="true" type="button"></d2l-table-circle-button>
