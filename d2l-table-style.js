@@ -260,11 +260,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 
 			/* sticky-headers */
 
-			[dir="rtl"] d2l-table-wrapper[type="default"][sticky-headers] table,
-			[dir="rtl"] d2l-table-wrapper[type="light"][sticky-headers] table {
-				padding-left: 20px;
-			}
-
 			d2l-table-wrapper[type="default"][sticky-headers] tr,
 			d2l-table-wrapper[type="light"][sticky-headers] tr {
 				background-color: inherit;
