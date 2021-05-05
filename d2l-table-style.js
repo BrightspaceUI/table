@@ -287,11 +287,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 			d2l-table-wrapper[type="default"][sticky-headers] td[sticky].d2l-table-cell-first,
 			d2l-table-wrapper[type="default"][sticky-headers] th[sticky].d2l-table-cell-first,
 			d2l-table-wrapper[type="default"][sticky-headers] td[sticky]:first-child,
-			d2l-table-wrapper[type="default"][sticky-headers] th[sticky]:first-child,
-			d2l-table-wrapper[type="light"][sticky-headers] td[sticky].d2l-table-cell-first,
-			d2l-table-wrapper[type="light"][sticky-headers] th[sticky].d2l-table-cell-first,
-			d2l-table-wrapper[type="light"][sticky-headers] td[sticky]:first-child,
-			d2l-table-wrapper[type="light"][sticky-headers] th[sticky]:first-child {
+			d2l-table-wrapper[type="default"][sticky-headers] th[sticky]:first-child {
 				left: -5px;
 			}
 
@@ -305,11 +301,7 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 			[dir="rtl"] d2l-table-wrapper[type="default"][sticky-headers] td[sticky].d2l-table-cell-first,
 			[dir="rtl"] d2l-table-wrapper[type="default"][sticky-headers] th[sticky].d2l-table-cell-first,
 			[dir="rtl"] d2l-table-wrapper[type="default"][sticky-headers] td[sticky]:first-child,
-			[dir="rtl"] d2l-table-wrapper[type="default"][sticky-headers] th[sticky]:first-child,
-			[dir="rtl"] d2l-table-wrapper[type="light"][sticky-headers] td[sticky].d2l-table-cell-first,
-			[dir="rtl"] d2l-table-wrapper[type="light"][sticky-headers] th[sticky].d2l-table-cell-first,
-			[dir="rtl"] d2l-table-wrapper[type="light"][sticky-headers] td[sticky]:first-child,
-			[dir="rtl"] d2l-table-wrapper[type="light"][sticky-headers] th[sticky]:first-child {
+			[dir="rtl"] d2l-table-wrapper[type="default"][sticky-headers] th[sticky]:first-child {
 				right: -5px;
 			}
 
@@ -364,7 +356,6 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table-style">
 			d2l-table-wrapper[type="light"][sticky-headers] thead tr th {
 				position: -webkit-sticky;
 				position: sticky;
-				top: -3.5px;
 			}
 
 			d2l-table-wrapper[type="default"][sticky-headers] tbody tr:not([header]) td,

@@ -102,7 +102,6 @@ Custom property | Description | Default
   then delete this comment!
 */
 import '@polymer/polymer/polymer-legacy.js';
-
 import 'd2l-colors/d2l-colors.js';
 import 'fastdom/fastdom.js';
 import './d2l-scroll-wrapper.js';
@@ -257,8 +256,9 @@ Polymer({
 			}
 
 			var ths = this.querySelectorAll('.d2l-table tr[header]:not(:first-child) th, .d2l-table thead tr:not(:first-child) th');
+			const offset = this.type === 'default' ? -3 : 1; // default: -5px top + 2px border, light: 0 top + 1px border
 			for (var i = 0; i < ths.length; i++) {
-				ths[i].style.top = topHeader.clientHeight - 3 + 'px';
+				ths[i].style.top = topHeader.clientHeight + offset + 'px';
 			}
 		}.bind(this));
 	},
