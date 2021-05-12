@@ -99,7 +99,7 @@ Custom property | Description | Default
 */
 import '@polymer/polymer/polymer-legacy.js';
 
-import 'd2l-colors/d2l-colors.js';
+import '@brightspace-ui/core/components/colors/colors.js';
 import 'fastdom/fastdom.js';
 import './d2l-scroll-wrapper.js';
 import './d2l-table-col-sort-button.js';
@@ -126,11 +126,18 @@ $_documentContainer.innerHTML = `<dom-module id="d2l-table">
 				display: block;
 				width: 100%;
 				--d2l-table-border-color: var(--d2l-color-mica);
+				--d2l-table-border: 1px solid var(--d2l-table-border-color);
 				--d2l-table-header-background-color: var(--d2l-color-regolith);
-				--d2l-table-border-overflow: dashed 1px var(--d2l-color-mica);
+				--d2l-table-border-radius: 0.3rem;
+				--d2l-table-row-border-color-selected: var(--d2l-color-celestine);
+				--d2l-table-row-background-color-selected: var(--d2l-color-celestine-plus-2);
 			}
 			:host([hidden]) {
 				display: none;
+			}
+			:host([type="light"]) {
+				--d2l-table-border-color: var(--d2l-color-gypsum);
+				--d2l-table-header-background-color: #ffffff;
 			}
 			.d2l-table-inner {
 				background-color: transparent;
@@ -246,7 +253,7 @@ Polymer({
 			if (node.nodeType === 1) {
 				var tagName = node.tagName.toLowerCase();
 				if (tagName === 'd2l-tr' || tagName === 'd2l-tspan') {
-					rows.push({elem: node, cells: []});
+					rows.push({ elem: node, cells: [] });
 				} else if (tagName === 'd2l-td' || tagName === 'd2l-th') {
 					if (rows.length > 0) {
 						rows[rows.length - 1].cells.push(node);
