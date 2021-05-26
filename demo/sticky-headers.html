@@ -1,52 +1,1253 @@
 <!doctype html>
 <html>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+		<link rel="stylesheet" href="/node_modules/@brightspace-ui/core/components/demo/styles.css" type="text/css">
+		<title>d2l-table demo</title>
+		<script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+		<script type="module">
+			import '@brightspace-ui/core/components/demo/demo-page.js';
+			import '../d2l-table.js';
+		</script>
+		<custom-style>
+			<style is="custom-style" include="d2l-table-style">
+				/* allow the demo to show the scroll actions clamping */
+				.scroll-action-spacer {
+					font-style: italic;
+					padding-bottom: 600px;
+					padding-top: 600px;
+				}
+			</style>
+		</custom-style>
+	</head>
+	<body unresolved>
+		<d2l-demo-page page-title="d2l-table sticky (imported from core)">
+			<p>Just Headers</p>
+				<d2l-table-wrapper sticky-headers>
+					<table class="d2l-table">
+						<tbody>
+							<tr header="">
+								<th>Column header 1 Really Really REALLY long</th>
+								<th>Column header 2</th>
+								<th>Column header 3</th>
+								<th>Column header 4</th>
+								<th>Column header 5</th>
+								<th>Column header 6</th>
+								<th>Column header 7</th>
+								<th>Column header 8</th>
+								<th>Column header 9</th>
+								<th>Column header 10</th>
+								<th>Column header 11</th>
+								<th>Column header 12</th>
+								<th>Column header 13</th>
+								<th>Column header 14</th>
+								<th>Column header 15</th>
+								<th>Column header 16</th>
+								<th>Column header 17</th>
+								<th>Column header 18</th>
+								<th>Column header 19</th>
+								<th>Column header 20</th>
+							</tr>
+							<tr selected="">
+								<td>Row 1 Column 1</td>
+								<td>Row 1 Column 2</td>
+								<td>Row 1 Column 3 - Also really really really long</td>
+								<td>Row 1 Column 4</td>
+								<td>Row 1 Column 5</td>
+								<td>Row 1 Column 6</td>
+								<td>Row 1 Column 7</td>
+								<td>Row 1 Column 8</td>
+								<td>Row 1 Column 9</td>
+								<td>Row 1 Column 10</td>
+								<td>Row 1 Column 11</td>
+								<td>Row 1 Column 12</td>
+								<td>Row 1 Column 13</td>
+								<td>Row 1 Column 14</td>
+								<td>Row 1 Column 15</td>
+								<td>Row 1 Column 16</td>
+								<td>Row 1 Column 17</td>
+								<td>Row 1 Column 18</td>
+								<td>Row 1 Column 19</td>
+								<td>Row 1 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 2 Column 1</td>
+								<td>Row 2 Column 2</td>
+								<td>Row 2 Column 3</td>
+								<td>Row 2 Column 4</td>
+								<td>Row 2 Column 5</td>
+								<td>Row 2 Column 6</td>
+								<td>Row 2 Column 7</td>
+								<td>Row 2 Column 8</td>
+								<td>Row 2 Column 9</td>
+								<td>Row 2 Column 10</td>
+								<td>Row 2 Column 11</td>
+								<td>Row 2 Column 12</td>
+								<td>Row 2 Column 13</td>
+								<td>Row 2 Column 14</td>
+								<td>Row 2 Column 15</td>
+								<td>Row 2 Column 16</td>
+								<td>Row 2 Column 17</td>
+								<td>Row 2 Column 18</td>
+								<td>Row 2 Column 19</td>
+								<td>Row 2 Column 20</td>
+							</tr>
+							<tr selected="">
+								<td>Row 3 Column 1</td>
+								<td>Row 3 Column 2</td>
+								<td>Row 3 Column 3</td>
+								<td>Row 3 Column 4</td>
+								<td>Row 3 Column 5</td>
+								<td>Row 3 Column 6</td>
+								<td>Row 3 Column 7</td>
+								<td>Row 3 Column 8</td>
+								<td>Row 3 Column 9</td>
+								<td>Row 3 Column 10</td>
+								<td>Row 3 Column 11</td>
+								<td>Row 3 Column 12</td>
+								<td>Row 3 Column 13</td>
+								<td>Row 3 Column 14</td>
+								<td>Row 3 Column 15</td>
+								<td>Row 3 Column 16</td>
+								<td>Row 3 Column 17</td>
+								<td>Row 3 Column 18</td>
+								<td>Row 3 Column 19</td>
+								<td>Row 3 Column 20</td>
+							</tr>
+							<tr selected="">
+								<td>Row 4 Column 1</td>
+								<td>Row 4 Column 2</td>
+								<td>Row 4 Column 3</td>
+								<td>Row 4 Column 4</td>
+								<td>Row 4 Column 5</td>
+								<td>Row 4 Column 6</td>
+								<td>Row 4 Column 7</td>
+								<td>Row 4 Column 8</td>
+								<td>Row 4 Column 9</td>
+								<td>Row 4 Column 10</td>
+								<td>Row 4 Column 11</td>
+								<td>Row 4 Column 12</td>
+								<td>Row 4 Column 13</td>
+								<td>Row 4 Column 14</td>
+								<td>Row 4 Column 15</td>
+								<td>Row 4 Column 16</td>
+								<td>Row 4 Column 17</td>
+								<td>Row 4 Column 18</td>
+								<td>Row 4 Column 19</td>
+								<td>Row 4 Column 20</td>
+							</tr>
+							<tr selected="">
+								<td>Row 5 Column 1</td>
+								<td>Row 5 Column 2</td>
+								<td>Row 5 Column 3</td>
+								<td>Row 5 Column 4</td>
+								<td>Row 5 Column 5</td>
+								<td>Row 5 Column 6</td>
+								<td>Row 5 Column 7</td>
+								<td>Row 5 Column 8</td>
+								<td>Row 5 Column 9</td>
+								<td>Row 5 Column 10</td>
+								<td>Row 5 Column 11</td>
+								<td>Row 5 Column 12</td>
+								<td>Row 5 Column 13</td>
+								<td>Row 5 Column 14</td>
+								<td>Row 5 Column 15</td>
+								<td>Row 5 Column 16</td>
+								<td>Row 5 Column 17</td>
+								<td>Row 5 Column 18</td>
+								<td>Row 5 Column 19</td>
+								<td>Row 5 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 6 Column 1</td>
+								<td>Row 6 Column 2</td>
+								<td>Row 6 Column 3</td>
+								<td>Row 6 Column 4</td>
+								<td>Row 6 Column 5</td>
+								<td>Row 6 Column 6</td>
+								<td>Row 6 Column 7</td>
+								<td>Row 6 Column 8</td>
+								<td>Row 6 Column 9</td>
+								<td>Row 6 Column 10</td>
+								<td>Row 6 Column 11</td>
+								<td>Row 6 Column 12</td>
+								<td>Row 6 Column 13</td>
+								<td>Row 6 Column 14</td>
+								<td>Row 6 Column 15</td>
+								<td>Row 6 Column 16</td>
+								<td>Row 6 Column 17</td>
+								<td>Row 6 Column 18</td>
+								<td>Row 6 Column 19</td>
+								<td>Row 6 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 7 Column 1</td>
+								<td>Row 7 Column 2</td>
+								<td>Row 7 Column 3</td>
+								<td>Row 7 Column 4</td>
+								<td>Row 7 Column 5</td>
+								<td>Row 7 Column 6</td>
+								<td>Row 7 Column 7</td>
+								<td>Row 7 Column 8</td>
+								<td>Row 7 Column 9</td>
+								<td>Row 7 Column 10</td>
+								<td>Row 7 Column 11</td>
+								<td>Row 7 Column 12</td>
+								<td>Row 7 Column 13</td>
+								<td>Row 7 Column 14</td>
+								<td>Row 7 Column 15</td>
+								<td>Row 7 Column 16</td>
+								<td>Row 7 Column 17</td>
+								<td>Row 7 Column 18</td>
+								<td>Row 7 Column 19</td>
+								<td>Row 7 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 8 Column 1</td>
+								<td>Row 8 Column 2</td>
+								<td>Row 8 Column 3</td>
+								<td>Row 8 Column 4</td>
+								<td>Row 8 Column 5</td>
+								<td>Row 8 Column 6</td>
+								<td>Row 8 Column 7</td>
+								<td>Row 8 Column 8</td>
+								<td>Row 8 Column 9</td>
+								<td>Row 8 Column 10</td>
+								<td>Row 8 Column 11</td>
+								<td>Row 8 Column 12</td>
+								<td>Row 8 Column 13</td>
+								<td>Row 8 Column 14</td>
+								<td>Row 8 Column 15</td>
+								<td>Row 8 Column 16</td>
+								<td>Row 8 Column 17</td>
+								<td>Row 8 Column 18</td>
+								<td>Row 8 Column 19</td>
+								<td>Row 8 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 9 Column 1</td>
+								<td>Row 9 Column 2</td>
+								<td>Row 9 Column 3</td>
+								<td>Row 9 Column 4</td>
+								<td>Row 9 Column 5</td>
+								<td>Row 9 Column 6</td>
+								<td>Row 9 Column 7</td>
+								<td>Row 9 Column 8</td>
+								<td>Row 9 Column 9</td>
+								<td>Row 9 Column 10</td>
+								<td>Row 9 Column 11</td>
+								<td>Row 9 Column 12</td>
+								<td>Row 9 Column 13</td>
+								<td>Row 9 Column 14</td>
+								<td>Row 9 Column 15</td>
+								<td>Row 9 Column 16</td>
+								<td>Row 9 Column 17</td>
+								<td>Row 9 Column 18</td>
+								<td>Row 9 Column 19</td>
+								<td>Row 9 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 10 Column 1</td>
+								<td>Row 10 Column 2</td>
+								<td>Row 10 Column 3</td>
+								<td>Row 10 Column 4</td>
+								<td>Row 10 Column 5</td>
+								<td>Row 10 Column 6</td>
+								<td>Row 10 Column 7</td>
+								<td>Row 10 Column 8</td>
+								<td>Row 10 Column 9</td>
+								<td>Row 10 Column 10</td>
+								<td>Row 10 Column 11</td>
+								<td>Row 10 Column 12</td>
+								<td>Row 10 Column 13</td>
+								<td>Row 10 Column 14</td>
+								<td>Row 10 Column 15</td>
+								<td>Row 10 Column 16</td>
+								<td>Row 10 Column 17</td>
+								<td>Row 10 Column 18</td>
+								<td>Row 10 Column 19</td>
+								<td>Row 10 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 11 Column 1</td>
+								<td>Row 11 Column 2</td>
+								<td>Row 11 Column 3</td>
+								<td>Row 11 Column 4</td>
+								<td>Row 11 Column 5</td>
+								<td>Row 11 Column 6</td>
+								<td>Row 11 Column 7</td>
+								<td>Row 11 Column 8</td>
+								<td>Row 11 Column 9</td>
+								<td>Row 11 Column 10</td>
+								<td>Row 11 Column 11</td>
+								<td>Row 11 Column 12</td>
+								<td>Row 11 Column 13</td>
+								<td>Row 11 Column 14</td>
+								<td>Row 11 Column 15</td>
+								<td>Row 11 Column 16</td>
+								<td>Row 11 Column 17</td>
+								<td>Row 11 Column 18</td>
+								<td>Row 11 Column 19</td>
+								<td>Row 11 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 12 Column 1</td>
+								<td>Row 12 Column 2</td>
+								<td>Row 12 Column 3</td>
+								<td>Row 12 Column 4</td>
+								<td>Row 12 Column 5</td>
+								<td>Row 12 Column 6</td>
+								<td>Row 12 Column 7</td>
+								<td>Row 12 Column 8</td>
+								<td>Row 12 Column 9</td>
+								<td>Row 12 Column 10</td>
+								<td>Row 12 Column 11</td>
+								<td>Row 12 Column 12</td>
+								<td>Row 12 Column 13</td>
+								<td>Row 12 Column 14</td>
+								<td>Row 12 Column 15</td>
+								<td>Row 12 Column 16</td>
+								<td>Row 12 Column 17</td>
+								<td>Row 12 Column 18</td>
+								<td>Row 12 Column 19</td>
+								<td>Row 12 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 13 Column 1</td>
+								<td>Row 13 Column 2</td>
+								<td>Row 13 Column 3</td>
+								<td>Row 13 Column 4</td>
+								<td>Row 13 Column 5</td>
+								<td>Row 13 Column 6</td>
+								<td>Row 13 Column 7</td>
+								<td>Row 13 Column 8</td>
+								<td>Row 13 Column 9</td>
+								<td>Row 13 Column 10</td>
+								<td>Row 13 Column 11</td>
+								<td>Row 13 Column 12</td>
+								<td>Row 13 Column 13</td>
+								<td>Row 13 Column 14</td>
+								<td>Row 13 Column 15</td>
+								<td>Row 13 Column 16</td>
+								<td>Row 13 Column 17</td>
+								<td>Row 13 Column 18</td>
+								<td>Row 13 Column 19</td>
+								<td>Row 13 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 14 Column 1</td>
+								<td>Row 14 Column 2</td>
+								<td>Row 14 Column 3</td>
+								<td>Row 14 Column 4</td>
+								<td>Row 14 Column 5</td>
+								<td>Row 14 Column 6</td>
+								<td>Row 14 Column 7</td>
+								<td>Row 14 Column 8</td>
+								<td>Row 14 Column 9</td>
+								<td>Row 14 Column 10</td>
+								<td>Row 14 Column 11</td>
+								<td>Row 14 Column 12</td>
+								<td>Row 14 Column 13</td>
+								<td>Row 14 Column 14</td>
+								<td>Row 14 Column 15</td>
+								<td>Row 14 Column 16</td>
+								<td>Row 14 Column 17</td>
+								<td>Row 14 Column 18</td>
+								<td>Row 14 Column 19</td>
+								<td>Row 14 Column 20</td>
+							</tr>
+							<tr selected="">
+								<td>Row 15 Column 1</td>
+								<td>Row 15 Column 2</td>
+								<td>Row 15 Column 3</td>
+								<td>Row 15 Column 4</td>
+								<td>Row 15 Column 5</td>
+								<td>Row 15 Column 6</td>
+								<td>Row 15 Column 7</td>
+								<td>Row 15 Column 8</td>
+								<td>Row 15 Column 9</td>
+								<td>Row 15 Column 10</td>
+								<td>Row 15 Column 11</td>
+								<td>Row 15 Column 12</td>
+								<td>Row 15 Column 13</td>
+								<td>Row 15 Column 14</td>
+								<td>Row 15 Column 15</td>
+								<td>Row 15 Column 16</td>
+								<td>Row 15 Column 17</td>
+								<td>Row 15 Column 18</td>
+								<td>Row 15 Column 19</td>
+								<td>Row 15 Column 20</td>
+							</tr>
+						</tbody>
+					</table>
+				</d2l-table-wrapper>
 
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-	<script type="module">
-		import 'd2l-typography/d2l-typography.js';
-		import '../d2l-table.js';
-		import { getTemplate } from './sticky-headers-demo.js';
-		getTemplate('default');
-	</script>
-	<script src="./update-direction.js"></script>
-	<script type="module" src="../../d2l-typography/d2l-typography.js"></script>
-</head>
+				<p>Headers and First Column</p>
+				<d2l-table-wrapper sticky-headers>
+					<table class="d2l-table">
+						<tbody>
+							<tr header="">
+								<th sticky="">Column header 1 Really Really REALLY long</th>
+								<th>Column header 2</th>
+								<th>Column header 3</th>
+								<th>Column header 4</th>
+								<th>Column header 5</th>
+								<th>Column header 6</th>
+								<th>Column header 7</th>
+								<th>Column header 8</th>
+								<th>Column header 9</th>
+								<th>Column header 10</th>
+								<th>Column header 11</th>
+								<th>Column header 12</th>
+								<th>Column header 13</th>
+								<th>Column header 14</th>
+								<th>Column header 15</th>
+								<th>Column header 16</th>
+								<th>Column header 17</th>
+								<th>Column header 18</th>
+								<th>Column header 19</th>
+								<th>Column header 20</th>
+							</tr>
+							<tr selected="">
+								<td sticky="">Row 1 Column 1
+									<table>
+										<tbody>
+											<tr>
+												<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+												<td> / </td>
+												<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+												<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></d2l-icon></td>
+												<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></d2l-icon></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+								<td>Row 1 Column 2</td>
+								<td>Row 1 Column 3 - Also really really really long</td>
+								<td>Row 1 Column 4</td>
+								<td>Row 1 Column 5</td>
+								<td>Row 1 Column 6</td>
+								<td>Row 1 Column 7</td>
+								<td>Row 1 Column 8</td>
+								<td>Row 1 Column 9</td>
+								<td>Row 1 Column 10</td>
+								<td>Row 1 Column 11</td>
+								<td>Row 1 Column 12</td>
+								<td>Row 1 Column 13
+									<table>
+										<tbody>
+											<tr>
+												<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+												<td> / </td>
+												<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+												<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></d2l-icon></td>
+												<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></d2l-icon></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+								<td>Row 1 Column 14</td>
+								<td>Row 1 Column 15</td>
+								<td>Row 1 Column 16</td>
+								<td>Row 1 Column 17</td>
+								<td>Row 1 Column 18</td>
+								<td>Row 1 Column 19</td>
+								<td>Row 1 Column 20
+									<table>
+										<tbody>
+											<tr>
+												<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+												<td> / </td>
+												<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+												<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></d2l-icon></td>
+												<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></d2l-icon></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td sticky="">Row 2 Column 1
+									<table>
+										<tbody>
+											<tr>
+												<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+												<td> / </td>
+												<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+												<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></d2l-icon></td>
+												<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></d2l-icon></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+								<td>Row 2 Column 2</td>
+								<td>Row 2 Column 3</td>
+								<td>Row 2 Column 4</td>
+								<td>Row 2 Column 5</td>
+								<td>Row 2 Column 6</td>
+								<td>Row 2 Column 7</td>
+								<td>Row 2 Column 8</td>
+								<td>Row 2 Column 9</td>
+								<td>Row 2 Column 10</td>
+								<td>Row 2 Column 11</td>
+								<td>Row 2 Column 12</td>
+								<td>Row 2 Column 13
+									<table>
+										<tbody>
+											<tr>
+												<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+												<td> / </td>
+												<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+												<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></d2l-icon></td>
+												<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></d2l-icon></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+								<td>Row 2 Column 14</td>
+								<td>Row 2 Column 15</td>
+								<td>Row 2 Column 16</td>
+								<td>Row 2 Column 17</td>
+								<td>Row 2 Column 18</td>
+								<td>Row 2 Column 19</td>
+								<td>Row 2 Column 20
+									<table>
+										<tbody>
+											<tr>
+												<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+												<td> / </td>
+												<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+												<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></d2l-icon></td>
+												<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></d2l-icon></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+							<tr selected="">
+								<td sticky="">Row 3 Column 1</td>
+								<td>Row 3 Column 2</td>
+								<td>Row 3 Column 3</td>
+								<td>Row 3 Column 4</td>
+								<td>Row 3 Column 5</td>
+								<td>Row 3 Column 6</td>
+								<td>Row 3 Column 7</td>
+								<td>Row 3 Column 8</td>
+								<td>Row 3 Column 9</td>
+								<td>Row 3 Column 10</td>
+								<td>Row 3 Column 11</td>
+								<td>Row 3 Column 12</td>
+								<td>Row 3 Column 13</td>
+								<td>Row 3 Column 14</td>
+								<td>Row 3 Column 15</td>
+								<td>Row 3 Column 16</td>
+								<td>Row 3 Column 17</td>
+								<td>Row 3 Column 18</td>
+								<td>Row 3 Column 19</td>
+								<td>Row 3 Column 20</td>
+							</tr>
+							<tr selected="">
+								<td sticky="">Row 4 Column 1</td>
+								<td>Row 4 Column 2</td>
+								<td>Row 4 Column 3</td>
+								<td>Row 4 Column 4</td>
+								<td>Row 4 Column 5</td>
+								<td>Row 4 Column 6</td>
+								<td>Row 4 Column 7</td>
+								<td>Row 4 Column 8</td>
+								<td>Row 4 Column 9</td>
+								<td>Row 4 Column 10</td>
+								<td>Row 4 Column 11</td>
+								<td>Row 4 Column 12</td>
+								<td>Row 4 Column 13</td>
+								<td>Row 4 Column 14</td>
+								<td>Row 4 Column 15</td>
+								<td>Row 4 Column 16</td>
+								<td>Row 4 Column 17</td>
+								<td>Row 4 Column 18</td>
+								<td>Row 4 Column 19</td>
+								<td>Row 4 Column 20</td>
+							</tr>
+							<tr selected="">
+								<td sticky="">Row 5 Column 1</td>
+								<td>Row 5 Column 2</td>
+								<td>Row 5 Column 3</td>
+								<td>Row 5 Column 4</td>
+								<td>Row 5 Column 5</td>
+								<td>Row 5 Column 6</td>
+								<td>Row 5 Column 7</td>
+								<td>Row 5 Column 8</td>
+								<td>Row 5 Column 9</td>
+								<td>Row 5 Column 10</td>
+								<td>Row 5 Column 11</td>
+								<td>Row 5 Column 12</td>
+								<td>Row 5 Column 13</td>
+								<td>Row 5 Column 14</td>
+								<td>Row 5 Column 15</td>
+								<td>Row 5 Column 16</td>
+								<td>Row 5 Column 17</td>
+								<td>Row 5 Column 18</td>
+								<td>Row 5 Column 19</td>
+								<td>Row 5 Column 20</td>
+							</tr>
+							<tr>
+								<td sticky="">Row 6 Column 1</td>
+								<td>Row 6 Column 2</td>
+								<td>Row 6 Column 3</td>
+								<td>Row 6 Column 4</td>
+								<td>Row 6 Column 5</td>
+								<td>Row 6 Column 6</td>
+								<td>Row 6 Column 7</td>
+								<td>Row 6 Column 8</td>
+								<td>Row 6 Column 9</td>
+								<td>Row 6 Column 10</td>
+								<td>Row 6 Column 11</td>
+								<td>Row 6 Column 12</td>
+								<td>Row 6 Column 13</td>
+								<td>Row 6 Column 14</td>
+								<td>Row 6 Column 15</td>
+								<td>Row 6 Column 16</td>
+								<td>Row 6 Column 17</td>
+								<td>Row 6 Column 18</td>
+								<td>Row 6 Column 19</td>
+								<td>Row 6 Column 20</td>
+							</tr>
+							<tr>
+								<td sticky="">Row 7 Column 1</td>
+								<td>Row 7 Column 2</td>
+								<td>Row 7 Column 3</td>
+								<td>Row 7 Column 4</td>
+								<td>Row 7 Column 5</td>
+								<td>Row 7 Column 6</td>
+								<td>Row 7 Column 7</td>
+								<td>Row 7 Column 8</td>
+								<td>Row 7 Column 9</td>
+								<td>Row 7 Column 10</td>
+								<td>Row 7 Column 11</td>
+								<td>Row 7 Column 12</td>
+								<td>Row 7 Column 13</td>
+								<td>Row 7 Column 14</td>
+								<td>Row 7 Column 15</td>
+								<td>Row 7 Column 16</td>
+								<td>Row 7 Column 17</td>
+								<td>Row 7 Column 18</td>
+								<td>Row 7 Column 19</td>
+								<td>Row 7 Column 20</td>
+							</tr>
+							<tr>
+								<td sticky="">Row 8 Column 1</td>
+								<td>Row 8 Column 2</td>
+								<td>Row 8 Column 3</td>
+								<td>Row 8 Column 4</td>
+								<td>Row 8 Column 5</td>
+								<td>Row 8 Column 6</td>
+								<td>Row 8 Column 7</td>
+								<td>Row 8 Column 8</td>
+								<td>Row 8 Column 9</td>
+								<td>Row 8 Column 10</td>
+								<td>Row 8 Column 11</td>
+								<td>Row 8 Column 12</td>
+								<td>Row 8 Column 13</td>
+								<td>Row 8 Column 14</td>
+								<td>Row 8 Column 15</td>
+								<td>Row 8 Column 16</td>
+								<td>Row 8 Column 17</td>
+								<td>Row 8 Column 18</td>
+								<td>Row 8 Column 19</td>
+								<td>Row 8 Column 20</td>
+							</tr>
+							<tr>
+								<td sticky="">Row 9 Column 1</td>
+								<td>Row 9 Column 2</td>
+								<td>Row 9 Column 3</td>
+								<td>Row 9 Column 4</td>
+								<td>Row 9 Column 5</td>
+								<td>Row 9 Column 6</td>
+								<td>Row 9 Column 7</td>
+								<td>Row 9 Column 8</td>
+								<td>Row 9 Column 9</td>
+								<td>Row 9 Column 10</td>
+								<td>Row 9 Column 11</td>
+								<td>Row 9 Column 12</td>
+								<td>Row 9 Column 13</td>
+								<td>Row 9 Column 14</td>
+								<td>Row 9 Column 15</td>
+								<td>Row 9 Column 16</td>
+								<td>Row 9 Column 17</td>
+								<td>Row 9 Column 18</td>
+								<td>Row 9 Column 19</td>
+								<td>Row 9 Column 20</td>
+							</tr>
+							<tr>
+								<td sticky="">Row 10 Column 1</td>
+								<td>Row 10 Column 2</td>
+								<td>Row 10 Column 3</td>
+								<td>Row 10 Column 4</td>
+								<td>Row 10 Column 5</td>
+								<td>Row 10 Column 6</td>
+								<td>Row 10 Column 7</td>
+								<td>Row 10 Column 8</td>
+								<td>Row 10 Column 9</td>
+								<td>Row 10 Column 10</td>
+								<td>Row 10 Column 11</td>
+								<td>Row 10 Column 12</td>
+								<td>Row 10 Column 13</td>
+								<td>Row 10 Column 14</td>
+								<td>Row 10 Column 15</td>
+								<td>Row 10 Column 16</td>
+								<td>Row 10 Column 17</td>
+								<td>Row 10 Column 18</td>
+								<td>Row 10 Column 19</td>
+								<td>Row 10 Column 20</td>
+							</tr>
+							<tr>
+								<td sticky="">Row 11 Column 1</td>
+								<td>Row 11 Column 2</td>
+								<td>Row 11 Column 3</td>
+								<td>Row 11 Column 4</td>
+								<td>Row 11 Column 5</td>
+								<td>Row 11 Column 6</td>
+								<td>Row 11 Column 7</td>
+								<td>Row 11 Column 8</td>
+								<td>Row 11 Column 9</td>
+								<td>Row 11 Column 10</td>
+								<td>Row 11 Column 11</td>
+								<td>Row 11 Column 12</td>
+								<td>Row 11 Column 13</td>
+								<td>Row 11 Column 14</td>
+								<td>Row 11 Column 15</td>
+								<td>Row 11 Column 16</td>
+								<td>Row 11 Column 17</td>
+								<td>Row 11 Column 18</td>
+								<td>Row 11 Column 19</td>
+								<td>Row 11 Column 20</td>
+							</tr>
+							<tr>
+								<td sticky="">Row 12 Column 1</td>
+								<td>Row 12 Column 2</td>
+								<td>Row 12 Column 3</td>
+								<td>Row 12 Column 4</td>
+								<td>Row 12 Column 5</td>
+								<td>Row 12 Column 6</td>
+								<td>Row 12 Column 7</td>
+								<td>Row 12 Column 8</td>
+								<td>Row 12 Column 9</td>
+								<td>Row 12 Column 10</td>
+								<td>Row 12 Column 11</td>
+								<td>Row 12 Column 12</td>
+								<td>Row 12 Column 13</td>
+								<td>Row 12 Column 14</td>
+								<td>Row 12 Column 15</td>
+								<td>Row 12 Column 16</td>
+								<td>Row 12 Column 17</td>
+								<td>Row 12 Column 18</td>
+								<td>Row 12 Column 19</td>
+								<td>Row 12 Column 20</td>
+							</tr>
+							<tr>
+								<td sticky="">Row 13 Column 1</td>
+								<td>Row 13 Column 2</td>
+								<td>Row 13 Column 3</td>
+								<td>Row 13 Column 4</td>
+								<td>Row 13 Column 5</td>
+								<td>Row 13 Column 6</td>
+								<td>Row 13 Column 7</td>
+								<td>Row 13 Column 8</td>
+								<td>Row 13 Column 9</td>
+								<td>Row 13 Column 10</td>
+								<td>Row 13 Column 11</td>
+								<td>Row 13 Column 12</td>
+								<td>Row 13 Column 13</td>
+								<td>Row 13 Column 14</td>
+								<td>Row 13 Column 15</td>
+								<td>Row 13 Column 16</td>
+								<td>Row 13 Column 17</td>
+								<td>Row 13 Column 18</td>
+								<td>Row 13 Column 19</td>
+								<td>Row 13 Column 20</td>
+							</tr>
+							<tr>
+								<td sticky="">Row 14 Column 1</td>
+								<td>Row 14 Column 2</td>
+								<td>Row 14 Column 3</td>
+								<td>Row 14 Column 4</td>
+								<td>Row 14 Column 5</td>
+								<td>Row 14 Column 6</td>
+								<td>Row 14 Column 7</td>
+								<td>Row 14 Column 8</td>
+								<td>Row 14 Column 9</td>
+								<td>Row 14 Column 10</td>
+								<td>Row 14 Column 11</td>
+								<td>Row 14 Column 12</td>
+								<td>Row 14 Column 13</td>
+								<td>Row 14 Column 14</td>
+								<td>Row 14 Column 15</td>
+								<td>Row 14 Column 16</td>
+								<td>Row 14 Column 17</td>
+								<td>Row 14 Column 18</td>
+								<td>Row 14 Column 19</td>
+								<td>Row 14 Column 20</td>
+							</tr>
+							<tr selected="">
+								<td sticky="">Row 15 Column 1
+									<table>
+										<tbody>
+											<tr>
+												<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+												<td> / </td>
+												<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+												<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></d2l-icon></td>
+												<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></d2l-icon></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+								<td>Row 15 Column 2</td>
+								<td>Row 15 Column 3</td>
+								<td>Row 15 Column 4</td>
+								<td>Row 15 Column 5</td>
+								<td>Row 15 Column 6</td>
+								<td>Row 15 Column 7</td>
+								<td>Row 15 Column 8</td>
+								<td>Row 15 Column 9</td>
+								<td>Row 15 Column 10</td>
+								<td>Row 15 Column 11</td>
+								<td>Row 15 Column 12</td>
+								<td>Row 15 Column 13
+									<table>
+										<tbody>
+											<tr>
+												<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+												<td> / </td>
+												<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+												<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></d2l-icon></td>
+												<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></d2l-icon></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+								<td>Row 15 Column 14</td>
+								<td>Row 15 Column 15</td>
+								<td>Row 15 Column 16</td>
+								<td>Row 15 Column 17</td>
+								<td>Row 15 Column 18</td>
+								<td>Row 15 Column 19</td>
+								<td>Row 15 Column 20
+									<table>
+										<tbody>
+											<tr>
+												<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+												<td> / </td>
+												<td><input style="width:100%;min-width:1rem;max-width:5.25rem;"></td>
+												<td><d2l-icon icon="d2l-tier1:chevron-right" style="width:18px;height:18px;"></d2l-icon></td>
+												<td><d2l-icon icon="d2l-tier1:calculate" style="width:18px;height:18px;"></d2l-icon></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</d2l-table-wrapper>
 
-<body unresolved class="d2l-typography">
-	<!-- FIXME(polymer-modulizer):
-		These imperative modules that innerHTML your HTML are
-		a hacky way to be sure that any mixins in included style
-		modules are ready before any elements that reference them are
-		instantiated, otherwise the CSS @apply mixin polyfill won't be
-		able to expand the underlying CSS custom properties.
-		See: https://github.com/Polymer/polymer-modulizer/issues/154
-		-->
-	<script type="module">
-const $_documentContainer = document.createElement('template');
+				<p>Multi-Header Table</p>
+				<d2l-table-wrapper sticky-headers>
+					<table id="multi" class="d2l-table">
+						<thead>
+							<tr>
+								<th rowspan="2">Column header 1 Really Really REALLY long</th>
+								<th sticky="">Column header 2</th>
+								<th rowspan="2">Column header 3</th>
+								<th>Column header 4</th>
+								<th rowspan="2">Column header 5</th>
+								<th rowspan="2">Column header 6</th>
+								<th rowspan="2">Column header 7</th>
+								<th rowspan="2">Column header 8</th>
+								<th>Column header 9</th>
+								<th rowspan="2">Column header 10</th>
+								<th rowspan="2">Column header 11</th>
+								<th rowspan="2">Column header 12</th>
+								<th rowspan="2">Column header 13</th>
+								<th rowspan="2">Column header 14</th>
+								<th rowspan="2">Column header 15</th>
+								<th>Column header 16</th>
+								<th rowspan="2">Column header 17</th>
+								<th rowspan="2">Column header 18</th>
+								<th rowspan="2">Column header 19</th>
+								<th rowspan="2">Column header 20</th>
+							</tr>
+							<tr>
+								<th sticky="">Sub Header</th>
+								<th>Sub Header</th>
+								<th>Sub Header</th>
+								<th>Sub Header</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr selected="">
+								<td>Row 1 Column 1</td>
+								<td sticky="">Row 1 Column 2</td>
+								<td>Row 1 Column 3 - Also really really really long</td>
+								<td>Row 1 Column 4</td>
+								<td>Row 1 Column 5</td>
+								<td>Row 1 Column 6</td>
+								<td>Row 1 Column 7</td>
+								<td>Row 1 Column 8</td>
+								<td>Row 1 Column 9</td>
+								<td>Row 1 Column 10</td>
+								<td>Row 1 Column 11</td>
+								<td>Row 1 Column 12</td>
+								<td>Row 1 Column 13</td>
+								<td>Row 1 Column 14</td>
+								<td>Row 1 Column 15</td>
+								<td>Row 1 Column 16</td>
+								<td>Row 1 Column 17</td>
+								<td>Row 1 Column 18</td>
+								<td>Row 1 Column 19</td>
+								<td>Row 1 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 2 Column 1</td>
+								<td sticky="">Row 2 Column 2</td>
+								<td>Row 2 Column 3</td>
+								<td>Row 2 Column 4</td>
+								<td>Row 2 Column 5</td>
+								<td>Row 2 Column 6</td>
+								<td>Row 2 Column 7</td>
+								<td>Row 2 Column 8</td>
+								<td>Row 2 Column 9</td>
+								<td>Row 2 Column 10</td>
+								<td>Row 2 Column 11</td>
+								<td>Row 2 Column 12</td>
+								<td>Row 2 Column 13</td>
+								<td>Row 2 Column 14</td>
+								<td>Row 2 Column 15</td>
+								<td>Row 2 Column 16</td>
+								<td>Row 2 Column 17</td>
+								<td>Row 2 Column 18</td>
+								<td>Row 2 Column 19</td>
+								<td>Row 2 Column 20</td>
+							</tr>
+							<tr selected="">
+								<td>Row 3 Column 1</td>
+								<td sticky="">Row 3 Column 2</td>
+								<td>Row 3 Column 3</td>
+								<td>Row 3 Column 4</td>
+								<td>Row 3 Column 5</td>
+								<td>Row 3 Column 6</td>
+								<td>Row 3 Column 7</td>
+								<td>Row 3 Column 8</td>
+								<td>Row 3 Column 9</td>
+								<td>Row 3 Column 10</td>
+								<td>Row 3 Column 11</td>
+								<td>Row 3 Column 12</td>
+								<td>Row 3 Column 13</td>
+								<td>Row 3 Column 14</td>
+								<td>Row 3 Column 15</td>
+								<td>Row 3 Column 16</td>
+								<td>Row 3 Column 17</td>
+								<td>Row 3 Column 18</td>
+								<td>Row 3 Column 19</td>
+								<td>Row 3 Column 20</td>
+							</tr>
+							<tr selected="">
+								<td>Row 4 Column 1</td>
+								<td sticky="">Row 4 Column 2</td>
+								<td>Row 4 Column 3</td>
+								<td>Row 4 Column 4</td>
+								<td>Row 4 Column 5</td>
+								<td>Row 4 Column 6</td>
+								<td>Row 4 Column 7</td>
+								<td>Row 4 Column 8</td>
+								<td>Row 4 Column 9</td>
+								<td>Row 4 Column 10</td>
+								<td>Row 4 Column 11</td>
+								<td>Row 4 Column 12</td>
+								<td>Row 4 Column 13</td>
+								<td>Row 4 Column 14</td>
+								<td>Row 4 Column 15</td>
+								<td>Row 4 Column 16</td>
+								<td>Row 4 Column 17</td>
+								<td>Row 4 Column 18</td>
+								<td>Row 4 Column 19</td>
+								<td>Row 4 Column 20</td>
+							</tr>
+							<tr selected="">
+								<td>Row 5 Column 1</td>
+								<td sticky="">Row 5 Column 2</td>
+								<td>Row 5 Column 3</td>
+								<td>Row 5 Column 4</td>
+								<td>Row 5 Column 5</td>
+								<td>Row 5 Column 6</td>
+								<td>Row 5 Column 7</td>
+								<td>Row 5 Column 8</td>
+								<td>Row 5 Column 9</td>
+								<td>Row 5 Column 10</td>
+								<td>Row 5 Column 11</td>
+								<td>Row 5 Column 12</td>
+								<td>Row 5 Column 13</td>
+								<td>Row 5 Column 14</td>
+								<td>Row 5 Column 15</td>
+								<td>Row 5 Column 16</td>
+								<td>Row 5 Column 17</td>
+								<td>Row 5 Column 18</td>
+								<td>Row 5 Column 19</td>
+								<td>Row 5 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 6 Column 1</td>
+								<td sticky="">Row 6 Column 2</td>
+								<td>Row 6 Column 3</td>
+								<td>Row 6 Column 4</td>
+								<td>Row 6 Column 5</td>
+								<td>Row 6 Column 6</td>
+								<td>Row 6 Column 7</td>
+								<td>Row 6 Column 8</td>
+								<td>Row 6 Column 9</td>
+								<td>Row 6 Column 10</td>
+								<td>Row 6 Column 11</td>
+								<td>Row 6 Column 12</td>
+								<td>Row 6 Column 13</td>
+								<td>Row 6 Column 14</td>
+								<td>Row 6 Column 15</td>
+								<td>Row 6 Column 16</td>
+								<td>Row 6 Column 17</td>
+								<td>Row 6 Column 18</td>
+								<td>Row 6 Column 19</td>
+								<td>Row 6 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 7 Column 1</td>
+								<td sticky="">Row 7 Column 2</td>
+								<td>Row 7 Column 3</td>
+								<td>Row 7 Column 4</td>
+								<td>Row 7 Column 5</td>
+								<td>Row 7 Column 6</td>
+								<td>Row 7 Column 7</td>
+								<td>Row 7 Column 8</td>
+								<td>Row 7 Column 9</td>
+								<td>Row 7 Column 10</td>
+								<td>Row 7 Column 11</td>
+								<td>Row 7 Column 12</td>
+								<td>Row 7 Column 13</td>
+								<td>Row 7 Column 14</td>
+								<td>Row 7 Column 15</td>
+								<td>Row 7 Column 16</td>
+								<td>Row 7 Column 17</td>
+								<td>Row 7 Column 18</td>
+								<td>Row 7 Column 19</td>
+								<td>Row 7 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 8 Column 1</td>
+								<td sticky="">Row 8 Column 2</td>
+								<td>Row 8 Column 3</td>
+								<td>Row 8 Column 4</td>
+								<td>Row 8 Column 5</td>
+								<td>Row 8 Column 6</td>
+								<td>Row 8 Column 7</td>
+								<td>Row 8 Column 8</td>
+								<td>Row 8 Column 9</td>
+								<td>Row 8 Column 10</td>
+								<td>Row 8 Column 11</td>
+								<td>Row 8 Column 12</td>
+								<td>Row 8 Column 13</td>
+								<td>Row 8 Column 14</td>
+								<td>Row 8 Column 15</td>
+								<td>Row 8 Column 16</td>
+								<td>Row 8 Column 17</td>
+								<td>Row 8 Column 18</td>
+								<td>Row 8 Column 19</td>
+								<td>Row 8 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 9 Column 1</td>
+								<td sticky="">Row 9 Column 2</td>
+								<td>Row 9 Column 3</td>
+								<td>Row 9 Column 4</td>
+								<td>Row 9 Column 5</td>
+								<td>Row 9 Column 6</td>
+								<td>Row 9 Column 7</td>
+								<td>Row 9 Column 8</td>
+								<td>Row 9 Column 9</td>
+								<td>Row 9 Column 10</td>
+								<td>Row 9 Column 11</td>
+								<td>Row 9 Column 12</td>
+								<td>Row 9 Column 13</td>
+								<td>Row 9 Column 14</td>
+								<td>Row 9 Column 15</td>
+								<td>Row 9 Column 16</td>
+								<td>Row 9 Column 17</td>
+								<td>Row 9 Column 18</td>
+								<td>Row 9 Column 19</td>
+								<td>Row 9 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 10 Column 1</td>
+								<td sticky="">Row 10 Column 2</td>
+								<td>Row 10 Column 3</td>
+								<td>Row 10 Column 4</td>
+								<td>Row 10 Column 5</td>
+								<td>Row 10 Column 6</td>
+								<td>Row 10 Column 7</td>
+								<td>Row 10 Column 8</td>
+								<td>Row 10 Column 9</td>
+								<td>Row 10 Column 10</td>
+								<td>Row 10 Column 11</td>
+								<td>Row 10 Column 12</td>
+								<td>Row 10 Column 13</td>
+								<td>Row 10 Column 14</td>
+								<td>Row 10 Column 15</td>
+								<td>Row 10 Column 16</td>
+								<td>Row 10 Column 17</td>
+								<td>Row 10 Column 18</td>
+								<td>Row 10 Column 19</td>
+								<td>Row 10 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 11 Column 1</td>
+								<td sticky="">Row 11 Column 2</td>
+								<td>Row 11 Column 3</td>
+								<td>Row 11 Column 4</td>
+								<td>Row 11 Column 5</td>
+								<td>Row 11 Column 6</td>
+								<td>Row 11 Column 7</td>
+								<td>Row 11 Column 8</td>
+								<td>Row 11 Column 9</td>
+								<td>Row 11 Column 10</td>
+								<td>Row 11 Column 11</td>
+								<td>Row 11 Column 12</td>
+								<td>Row 11 Column 13</td>
+								<td>Row 11 Column 14</td>
+								<td>Row 11 Column 15</td>
+								<td>Row 11 Column 16</td>
+								<td>Row 11 Column 17</td>
+								<td>Row 11 Column 18</td>
+								<td>Row 11 Column 19</td>
+								<td>Row 11 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 12 Column 1</td>
+								<td sticky="">Row 12 Column 2</td>
+								<td>Row 12 Column 3</td>
+								<td>Row 12 Column 4</td>
+								<td>Row 12 Column 5</td>
+								<td>Row 12 Column 6</td>
+								<td>Row 12 Column 7</td>
+								<td>Row 12 Column 8</td>
+								<td>Row 12 Column 9</td>
+								<td>Row 12 Column 10</td>
+								<td>Row 12 Column 11</td>
+								<td>Row 12 Column 12</td>
+								<td>Row 12 Column 13</td>
+								<td>Row 12 Column 14</td>
+								<td>Row 12 Column 15</td>
+								<td>Row 12 Column 16</td>
+								<td>Row 12 Column 17</td>
+								<td>Row 12 Column 18</td>
+								<td>Row 12 Column 19</td>
+								<td>Row 12 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 13 Column 1</td>
+								<td sticky="">Row 13 Column 2</td>
+								<td>Row 13 Column 3</td>
+								<td>Row 13 Column 4</td>
+								<td>Row 13 Column 5</td>
+								<td>Row 13 Column 6</td>
+								<td>Row 13 Column 7</td>
+								<td>Row 13 Column 8</td>
+								<td>Row 13 Column 9</td>
+								<td>Row 13 Column 10</td>
+								<td>Row 13 Column 11</td>
+								<td>Row 13 Column 12</td>
+								<td>Row 13 Column 13</td>
+								<td>Row 13 Column 14</td>
+								<td>Row 13 Column 15</td>
+								<td>Row 13 Column 16</td>
+								<td>Row 13 Column 17</td>
+								<td>Row 13 Column 18</td>
+								<td>Row 13 Column 19</td>
+								<td>Row 13 Column 20</td>
+							</tr>
+							<tr>
+								<td>Row 14 Column 1</td>
+								<td sticky="">Row 14 Column 2</td>
+								<td>Row 14 Column 3</td>
+								<td>Row 14 Column 4</td>
+								<td>Row 14 Column 5</td>
+								<td>Row 14 Column 6</td>
+								<td>Row 14 Column 7</td>
+								<td>Row 14 Column 8</td>
+								<td>Row 14 Column 9</td>
+								<td>Row 14 Column 10</td>
+								<td>Row 14 Column 11</td>
+								<td>Row 14 Column 12</td>
+								<td>Row 14 Column 13</td>
+								<td>Row 14 Column 14</td>
+								<td>Row 14 Column 15</td>
+								<td>Row 14 Column 16</td>
+								<td>Row 14 Column 17</td>
+								<td>Row 14 Column 18</td>
+								<td>Row 14 Column 19</td>
+								<td>Row 14 Column 20</td>
+							</tr>
+							<tr selected="">
+								<td>Row 15 Column 1</td>
+								<td sticky="">Row 15 Column 2</td>
+								<td>Row 15 Column 3</td>
+								<td>Row 15 Column 4</td>
+								<td>Row 15 Column 5</td>
+								<td>Row 15 Column 6</td>
+								<td>Row 15 Column 7</td>
+								<td>Row 15 Column 8</td>
+								<td>Row 15 Column 9</td>
+								<td>Row 15 Column 10</td>
+								<td>Row 15 Column 11</td>
+								<td>Row 15 Column 12</td>
+								<td>Row 15 Column 13</td>
+								<td>Row 15 Column 14</td>
+								<td>Row 15 Column 15</td>
+								<td>Row 15 Column 16</td>
+								<td>Row 15 Column 17</td>
+								<td>Row 15 Column 18</td>
+								<td>Row 15 Column 19</td>
+								<td>Row 15 Column 20</td>
+							</tr>
+						</tbody>
+					</table>
+				</d2l-table-wrapper>
 
-$_documentContainer.innerHTML = `<custom-style>
-		<style is="custom-style" include="d2l-typography">
-			html {
-				font-size: 20px;
-			}
-		</style>
-	</custom-style>`;
+				<p>Just one row</p>
+				<d2l-table-wrapper sticky-headers>
+					<table class="d2l-table">
+						<tbody>
+							<tr>
+								<td>
+									One thing
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</d2l-table-wrapper>
 
-document.body.appendChild($_documentContainer.content);
-</script>
-	<!-- header, footer, caption, and colgroup tests -->
-	<script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
-	<sticky-headers-demo></sticky-headers-demo>
-</div>
-`;
-
-document.body.appendChild($_documentContainer.content);
-</script>
-</body>
-
+				<p>One header and one data table</p>
+				<d2l-table-wrapper sticky-headers>
+					<table class="d2l-table">
+						<tbody>
+							<tr header="">
+								<th>
+									One thing
+								</th>
+							</tr>
+							<tr>
+								<td>
+									One thing
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</d2l-table-wrapper>
+		</d2l-demo-page>
+	</body>
 </html>

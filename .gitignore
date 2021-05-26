@@ -1,4 +1,2 @@
 node_modules
-*.css
-.DS_STORE
 package-lock.json

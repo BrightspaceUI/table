@@ -1,53 +1,31 @@
 <!doctype html>
 <html>
-
 	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+		<link rel="stylesheet" href="/node_modules/@brightspace-ui/core/components/demo/styles.css" type="text/css">
 		<title>d2l-table type="light" demo</title>
-		<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 		<script type="module">
+			import '@brightspace-ui/core/components/demo/demo-page.js';
 			import '../d2l-table.js';
-			import 'd2l-typography/d2l-typography.js';
-
-			import {html} from '@polymer/polymer/lib/utils/html-tag.js';
-
-			const style = html`
-				<custom-style>
-					<style is="custom-style" include="d2l-table-style d2l-typography">
-						html {
-						  font-size: 20px;
-						}
-
-						.screenshots {
-						  display: inline-block;
-							margin: 0 30px;
-						}
-
-						/* allow the demo to show the scroll actions clamping */
-						.scroll-action-spacer {
-							font-style: italic;
-							padding-bottom: 600px;
-							padding-top: 600px;
-						}
-					</style>
-				</custom-style>
-				`;
-
-			document.head.appendChild(style.content);
 		</script>
-		<script src="./update-direction.js"></script>
+		<custom-style>
+			<style is="custom-style" include="d2l-table-style">
+				/* allow the demo to show the scroll actions clamping */
+				.scroll-action-spacer {
+					font-style: italic;
+					padding-bottom: 600px;
+					padding-top: 600px;
+				}
+			</style>
+		</custom-style>
 	</head>
-
-	<body unresolved class="d2l-typography">
-
-		<!-- header, footer, caption, and colgroup tests -->
-		<script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
-			<div class="screenshots screenshot-small">
-			<!-- Using d2l-table-wrapper -->
-				<d2l-table-wrapper type="light"><table class="d2l-table">
+	<body unresolved>
+		<d2l-demo-page page-title="d2l-table, light (imported from core)">
+		
+			<h2>Using d2l-table-wrapper</h2>
+			<d2l-table-wrapper type="light">
+				<table class="d2l-table">
 					<thead>
 					<tr>
 						<th>First Name</th>
@@ -67,13 +45,12 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 						<td>Sandoval</td>
 					</tr>
 					</tbody>
-				</table></d2l-table-wrapper>
-			</div>
+				</table>
+			</d2l-table-wrapper>
 
-			<div class="screenshots screenshot-small">
-				<!-- Using d2l-t* elements with header -->
-				<d2l-table type="light">
-					<d2l-thead>
+			<h2>Using d2l-t* elements with header</h2>
+			<d2l-table type="light">
+				<d2l-thead>
 					<d2l-tr>
 						<d2l-th>First Name</d2l-th>
 						<d2l-th>Middle Name</d2l-th>
@@ -91,11 +68,10 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 						<d2l-td>Robert</d2l-td>
 						<d2l-td>Sandoval</d2l-td>
 					</d2l-tr>
-					</d2l-tbody>
-				</d2l-table>
-			</div>
+				</d2l-tbody>
+			</d2l-table>
 
-			<p>Footer only</p>
+			<h2>Footer only</h2>
 			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<tfoot>
 				<tr>
@@ -118,7 +94,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 				</tbody>
 			</table></d2l-table-wrapper>
 
-			<p>Caption only</p>
+			<h2>Caption only</h2>
 			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<caption>Caption</caption>
 				<tbody>
@@ -135,7 +111,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 				</tbody>
 			</table></d2l-table-wrapper>
 
-			<p>Header and footer</p>
+			<h2>Header and footer</h2>
 			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<thead>
 				<tr>
@@ -165,7 +141,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 				</tbody>
 			</table></d2l-table-wrapper>
 
-			<p>Header and caption</p>
+			<h2>Header and caption</h2>
 			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<caption>Caption</caption>
 				<thead>
@@ -189,7 +165,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 				</tbody>
 			</table></d2l-table-wrapper>
 
-			<p>Footer and caption</p>
+			<h2>Footer and caption</h2>
 			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<caption>Caption</caption>
 				<tfoot>
@@ -213,106 +189,9 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 				</tbody>
 			</table></d2l-table-wrapper>
 
-			<p>Header and footer and caption</p>
+			<h2>Header and footer and caption</h2>
 			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<caption>Caption</caption>
-				<thead>
-				<tr>
-					<th>First Name</th>
-					<th>Middle Name</th>
-					<th>Last Name</th>
-				</tr>
-				</thead>
-				<tfoot>
-				<tr>
-					<th>First Name</th>
-					<th>Middle Name</th>
-					<th>Last Name</th>
-				</tr>
-				</tfoot>
-				<tbody>
-				<tr>
-					<td>Darlene</td>
-					<td>Bridget</td>
-					<td>Waters</td>
-				</tr>
-				<tr>
-					<td>David</td>
-					<td>Robert</td>
-					<td>Sandoval</td>
-				</tr>
-				</tbody>
-			</table></d2l-table-wrapper>
-
-			<p>Header only plus colgroup</p>
-			<d2l-table-wrapper type="light"><table class="d2l-table">
-				<colgroup></colgroup>
-				<thead>
-				<tr>
-					<th>First Name</th>
-					<th>Middle Name</th>
-					<th>Last Name</th>
-				</tr>
-				</thead>
-				<tbody>
-				<tr>
-					<td>Darlene</td>
-					<td>Bridget</td>
-					<td>Waters</td>
-				</tr>
-				<tr>
-					<td>David</td>
-					<td>Robert</td>
-					<td>Sandoval</td>
-				</tr>
-				</tbody>
-			</table></d2l-table-wrapper>
-
-			<p>Footer only plus colgroup</p>
-			<d2l-table-wrapper type="light"><table class="d2l-table">
-				<colgroup></colgroup>
-				<tfoot>
-				<tr>
-					<th>First Name</th>
-					<th>Middle Name</th>
-					<th>Last Name</th>
-				</tr>
-				</tfoot>
-				<tbody>
-				<tr>
-					<td>Darlene</td>
-					<td>Bridget</td>
-					<td>Waters</td>
-				</tr>
-				<tr>
-					<td>David</td>
-					<td>Robert</td>
-					<td>Sandoval</td>
-				</tr>
-				</tbody>
-			</table></d2l-table-wrapper>
-
-			<p>Caption only plus colgroup</p>
-			<d2l-table-wrapper type="light"><table class="d2l-table">
-				<caption>Caption</caption>
-				<colgroup></colgroup>
-				<tbody>
-				<tr>
-					<td>Darlene</td>
-					<td>Bridget</td>
-					<td>Waters</td>
-				</tr>
-				<tr>
-					<td>David</td>
-					<td>Robert</td>
-					<td>Sandoval</td>
-				</tr>
-				</tbody>
-			</table></d2l-table-wrapper>
-
-			<p>Header and footer plus colgroup</p>
-			<d2l-table-wrapper type="light"><table class="d2l-table">
-				<colgroup></colgroup>
 				<thead>
 				<tr>
 					<th>First Name</th>
@@ -341,7 +220,104 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 				</tbody>
 			</table></d2l-table-wrapper>
 
-			<p>Header and caption plus colgroup</p>
+			<h2>Header only plus colgroup</h2>
+			<d2l-table-wrapper type="light"><table class="d2l-table">
+				<colgroup></colgroup>
+				<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+
+			<h2>Footer only plus colgroup</h2>
+			<d2l-table-wrapper type="light"><table class="d2l-table">
+				<colgroup></colgroup>
+				<tfoot>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+
+			<h2>Caption only plus colgroup</h2>
+			<d2l-table-wrapper type="light"><table class="d2l-table">
+				<caption>Caption</caption>
+				<colgroup></colgroup>
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+
+			<h2>Header and footer plus colgroup</h2>
+			<d2l-table-wrapper type="light"><table class="d2l-table">
+				<colgroup></colgroup>
+				<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</thead>
+				<tfoot>
+				<tr>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+				</tr>
+				</tfoot>
+				<tbody>
+				<tr>
+					<td>Darlene</td>
+					<td>Bridget</td>
+					<td>Waters</td>
+				</tr>
+				<tr>
+					<td>David</td>
+					<td>Robert</td>
+					<td>Sandoval</td>
+				</tr>
+				</tbody>
+			</table></d2l-table-wrapper>
+
+			<h2>Header and caption plus colgroup</h2>
 			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<caption>Caption</caption>
 				<colgroup></colgroup>
@@ -366,7 +342,7 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 				</tbody>
 			</table></d2l-table-wrapper>
 
-			<p>Footer and caption plus colgroup</p>
+			<h2>Footer and caption plus colgroup</h2>
 			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<caption>Caption</caption>
 				<colgroup></colgroup>
@@ -390,9 +366,8 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 				</tr>
 				</tbody>
 			</table></d2l-table-wrapper>
-		<div>
 
-			<p>Header and footer and caption plus colgroup</p>
+			<h2>Header and footer and caption plus colgroup</h2>
 			<d2l-table-wrapper type="light"><table class="d2l-table">
 				<caption>Caption</caption>
 				<colgroup></colgroup>
@@ -423,11 +398,10 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 				</tr>
 				</tbody>
 			</table></d2l-table-wrapper>
-		</div>
 
-		<p>Selected Rows</p>
-		<div>
-			<d2l-table-wrapper type="light"><table class="d2l-table">
+		<h2>Selected Rows</h2>
+		<d2l-table-wrapper type="light">
+			<table class="d2l-table">
 				<tbody>
 				<tr selected="">
 					<td>Darlene</td>
@@ -445,9 +419,11 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 					<td>Sandoval</td>
 				</tr>
 				</tbody>
-			</table></d2l-table-wrapper>
-			<br>
-			<d2l-table-wrapper type="light"><table class="d2l-table">
+			</table>
+		</d2l-table-wrapper>
+		<br><br>
+		<d2l-table-wrapper type="light">
+			<table class="d2l-table">
 				<tbody>
 				<tr>
 					<td>Darlene</td>
@@ -465,9 +441,11 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 					<td>Sandoval</td>
 				</tr>
 				</tbody>
-			</table></d2l-table-wrapper>
-			<br>
-			<d2l-table-wrapper type="light"><table class="d2l-table">
+			</table>
+		</d2l-table-wrapper>
+		<br><br>
+		<d2l-table-wrapper type="light">
+			<table class="d2l-table">
 				<tbody>
 				<tr>
 					<td>Darlene</td>
@@ -485,12 +463,12 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 					<td>Sandoval</td>
 				</tr>
 				</tbody>
-			</table></d2l-table-wrapper>
-		</div>
-
-		<p>Sorting icons</p>
-		<div class="screenshots screenshot-sort">
-			<d2l-table-wrapper type="light"><table class="d2l-table">
+			</table>
+		</d2l-table-wrapper>
+		
+		<h2>Sorting icons</h2>
+		<d2l-table-wrapper type="light">
+			<table class="d2l-table">
 				<thead>
 					<tr><th>
 						<d2l-table-col-sort-button>Ascending</d2l-table-col-sort-button>
@@ -514,12 +492,12 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 					<td>321</td>
 				</tr>
 				</tbody>
-			</table></d2l-table-wrapper>
-		</div>
-
-		<p>Additional mixed styles</p>
-		<div>
-			<d2l-table-wrapper type="light"><table class="d2l-table">
+			</table>
+		</d2l-table-wrapper>
+		
+		<h2>Additional mixed styles</h2>
+		<d2l-table-wrapper type="light">
+			<table class="d2l-table">
 				<thead>
 					<tr>
 						<th>First Name</th>
@@ -550,9 +528,11 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 						<td>-%</td>
 					</tr>
 				</tbody>
-			</table></d2l-table-wrapper>
-			<br>
-			<d2l-table-wrapper type="light"><table class="d2l-table">
+			</table>
+		</d2l-table-wrapper>
+		<br><br>
+		<d2l-table-wrapper type="light">
+			<table class="d2l-table">
 				<thead>
 					<tr>
 						<th>First</th>
@@ -593,10 +573,12 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 						<td>-%</td>
 					</tr>
 				</tbody>
-			</table></d2l-table-wrapper>
+			</table>
+		</d2l-table-wrapper>
 
-			<p>Small table (header only)</p>
-			<d2l-table-wrapper type="light"><table class="d2l-table">
+		<h2>Small table (header only)</h2>
+		<d2l-table-wrapper type="light">
+			<table class="d2l-table">
 				<thead>
 				<tr>
 					<th><d2l-table-col-sort-button>First Name</d2l-table-col-sort-button></th>
@@ -606,12 +588,13 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 					<th>Final Calculated Grade</th>
 				</tr>
 				</thead>
-			</table></d2l-table-wrapper>
+			</table>
+		</d2l-table-wrapper>
 
-			<p>Table with Floating Row Spanning Cells</p>
-			<div style="width: 50%;" class="screenshots screenshot-tspan">
-				<d2l-table type="light">
-					<d2l-thead>
+		<h2>Table with Floating Row Spanning Cells</h2>
+		<div style="width: 50%;" class="screenshots screenshot-tspan">
+			<d2l-table type="light">
+				<d2l-thead>
 					<d2l-tr>
 						<d2l-th>Column One</d2l-th>
 						<d2l-th>Column Two</d2l-th>
@@ -641,12 +624,13 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 					<d2l-tspan type="light">
 						Rounded corners!
 					</d2l-tspan>
-					</d2l-tbody>
-				</d2l-table>
-			</div>
+				</d2l-tbody>
+			</d2l-table>
+		</div>
 
-			<p>Large Table</p>
-			<d2l-table-wrapper type="light"><table class="d2l-table">
+		<h2>Large Table</h2>
+		<d2l-table-wrapper type="light">
+			<table class="d2l-table">
 				<caption>Table Caption</caption>
 				<colgroup></colgroup>
 				<colgroup></colgroup>
@@ -1005,15 +989,14 @@ $_documentContainer.innerHTML = `<div class="d2l-demo-fixture">
 					<td>Row 15 Column 19</td>
 					<td>Row 15 Column 20</td>
 				</tr>
-				</tbody>
-			</table></d2l-table-wrapper>
-			<div class="scroll-action-spacer">
-				This space is intentionally consumed to demonstrate the scroll
-				chevrons clamping at the bottom of the table.
-			</div>
-		</div>
-
-</div>`;
-
-document.body.appendChild($_documentContainer.content);
-</script>
+			</tbody>
+		</table>
+	</d2l-table-wrapper>
+	<div class="scroll-action-spacer">
+		This space is intentionally consumed to demonstrate the scroll
+		chevrons clamping at the bottom of the table.
+	</div>
+	
+		</d2l-demo-page>
+	</body>
+</html>
