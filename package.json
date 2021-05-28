@@ -28,7 +28,7 @@
     "eslint-plugin-sort-class-members": "^1.11.0",
     "polymer-cli": "^1"
   },
-  "version": "2.8.0",
+  "version": "2.8.1",
   "main": "d2l-table.js",
   "dependencies": {
     "@brightspace-ui/core": "^1.134",
