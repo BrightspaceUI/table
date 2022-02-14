@@ -31,7 +31,7 @@
   "version": "2.8.1",
   "main": "d2l-table.js",
   "dependencies": {
-    "@brightspace-ui/core": "^1.134",
+    "@brightspace-ui/core": "^2",
     "@polymer/polymer": "^3",
     "d2l-resize-aware": "github:BrightspaceUI/resize-aware#semver:^1",
     "fastdom": "^1.0.8"
