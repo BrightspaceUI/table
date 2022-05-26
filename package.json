@@ -9,7 +9,7 @@
     "type": "git",
     "url": "https://github.com/BrightspaceUI/table.git"
   },
-  "name": "d2l-table",
+  "name": "@brightspace-ui/table",
   "scripts": {
     "lint": "npm run lint:wc && npm run lint:js",
     "lint:js": "eslint . --ext .js,.html demo/**/*.html",
@@ -30,6 +30,24 @@
   },
   "version": "3.0.0",
   "main": "d2l-table.js",
+  "files": [
+    "d2l-scroll-wrapper.js",
+    "d2l-table-col-sort-button.js",
+    "d2l-table-observer-behavior.js",
+    "d2l-table-style.js",
+    "d2l-table-wrapper.js",
+    "d2l-table.js",
+    "d2l-tbody.js",
+    "d2l-td.js",
+    "d2l-tfoot.js",
+    "d2l-th.js",
+    "d2l-thead.js",
+    "d2l-tr.js",
+    "d2l-tspan.js"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@brightspace-ui/core": "^2",
     "@polymer/polymer": "^3",
