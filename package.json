@@ -50,8 +50,8 @@
   },
   "dependencies": {
     "@brightspace-ui/core": "^2",
+    "@brightspace-ui/resize-aware": "^1",
     "@polymer/polymer": "^3",
-    "d2l-resize-aware": "github:BrightspaceUI/resize-aware#semver:^1",
     "fastdom": "^1.0.8"
   }
 }
