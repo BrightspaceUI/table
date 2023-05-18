@@ -132,7 +132,7 @@ Polymer({
 		}
 	},
 	ready: function() {
-		this._resizeObserver = new ResizeObserver(()=> this._onSizeChanged())
+		this._resizeObserver = new ResizeObserver(()=> this._onSizeChanged());
 	},
 	attached: function() {
 		const resizeDetector = this.$['resize-detector'];
