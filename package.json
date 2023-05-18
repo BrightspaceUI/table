@@ -14,13 +14,15 @@
     "lint": "npm run lint:wc && npm run lint:js",
     "lint:js": "eslint . --ext .js,.html demo/**/*.html",
     "lint:wc": "polymer lint",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "start": "wds --node-resolve --watch --open demo/"
   },
   "author": "D2L Corporation",
   "license": "Apache-2.0",
   "devDependencies": {
     "@babel/core": "^7.14.2",
     "@babel/eslint-parser": "^7",
+    "@web/dev-server": "^0.2",
     "@webcomponents/webcomponentsjs": "^2",
     "eslint": "^7",
     "eslint-config-brightspace": "^0.14",
@@ -50,8 +52,8 @@
   },
   "dependencies": {
     "@brightspace-ui/core": "^2",
-    "@brightspace-ui/resize-aware": "^1",
     "@polymer/polymer": "^3",
-    "fastdom": "^1.0.8"
+    "fastdom": "^1.0.8",
+    "resize-observer-polyfill": "^1"
   }
 }
