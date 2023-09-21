@@ -27,7 +27,7 @@
     "eslint-config-brightspace": "^0.4.0",
     "eslint-plugin-html": "^4.0.1"
   },
-  "version": "2.2.8",
+  "version": "2.2.9",
   "resolutions": {
     "inherits": "2.0.3",
     "samsam": "1.1.3",
