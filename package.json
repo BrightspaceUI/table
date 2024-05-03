@@ -49,7 +49,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@brightspace-ui/core": "^2",
+    "@brightspace-ui/core": "^3",
     "@polymer/polymer": "^3",
     "fastdom": "^1.0.8",
     "resize-observer-polyfill": "^1"
