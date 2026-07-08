@@ -46,7 +46,8 @@
     "d2l-tspan.js"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
     "@brightspace-ui/core": "^3",
